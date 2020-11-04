@@ -7,7 +7,7 @@ class Monitoring extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
-        cek_login();
+        // cek_login();
     }
 
     public function index()

@@ -36,7 +36,8 @@ class Login extends CI_Controller
                 if ($user['role_id'] == 1) {
                     $data = [
                         'username' => $user['username'],
-                        'role_id' => $user['role_id']
+                        'role_id' => $user['role_id'],
+                        'nip' => $user['nip']
                     ];
 
                     $this->session->set_userdata($data);
@@ -44,7 +45,8 @@ class Login extends CI_Controller
                 } else if ($user['role_id'] == 2) {
                     $data = [
                         'username' => $user['username'],
-                        'role_id' => $user['role_id']
+                        'role_id' => $user['role_id'],
+                        'nip' => $user['nip'],
                     ];
 
                     $this->session->set_userdata($data);
@@ -52,7 +54,8 @@ class Login extends CI_Controller
                 } else if ($user['role_id'] == 3) {
                     $data = [
                         'username' => $user['username'],
-                        'role_id' => $user['role_id']
+                        'role_id' => $user['role_id'],
+                        'nip' => $user['nip'],
                     ];
 
                     $this->session->set_userdata($data);
@@ -60,7 +63,8 @@ class Login extends CI_Controller
                 } else if ($user['role_id'] == 4) {
                     $data = [
                         'username' => $user['username'],
-                        'role_id' => $user['role_id']
+                        'role_id' => $user['role_id'],
+                        'nip' => $user['nip'],
                     ];
 
                     $this->session->set_userdata($data);

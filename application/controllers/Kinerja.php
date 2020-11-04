@@ -7,7 +7,7 @@ class Kinerja extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
-        cek_login();
+        // cek_login();
     }
 
     public function index()
@@ -78,13 +78,13 @@ class Kinerja extends CI_Controller
         );
 
         $this->leader_model->kinerja_input($data, 'tb_ldr_kinerja');
-        redirect('Kinerja/kinerja');
+        redirect('Kinerja');
     }
     public function kinerja_proses_hapus($id)
     {
         $where = array('id' => $id);
         $this->leader_model->kinerja_hapus($where, 'tb_ldr_kinerja');
-        redirect("Kinerja/kinerja");
+        redirect("Kinerja");
     }
     public function kinerja_proses_update()
     {
@@ -111,7 +111,7 @@ class Kinerja extends CI_Controller
             'id' => $id
         );
         $this->leader_model->kinerja_update_proses($where, $data, 'tb_ldr_kinerja');
-        redirect('Kinerja/kinerja');
+        redirect('Kinerja');
     }
     public function kinerja_search()
     {

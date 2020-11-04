@@ -7,20 +7,22 @@ class Daily extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
-        cek_login();
+        // cek_login();
     }
 
     public function index()
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['daily'] = $this->leader_model->daily_tampil()->result();
+        // $data['daily'] = $this->leader_model->daily_tampil()->result();
         $data['judul'] = 'Leader Daily';
-
+        $nip = $this->session->userdata('nip');
+        $data['daily'] = $this->db->get_where('tb_ldr_daily', ['nip' => $nip])->result_array();
+        
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
         $this->load->view('_partials/sidebar', $data);
-        $this->load->view('halaman/v_daily');
+        $this->load->view('halaman/v_daily', $data);
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }
@@ -75,15 +77,16 @@ class Daily extends CI_Controller
             'urgensi'    => $urgensi,
         );
 
+        
         $this->leader_model->daily_input($data, 'tb_ldr_daily');
-        redirect('halaman/v_daily');
+        redirect('Daily');
     }
 
     public function daily_proses_hapus($id)
     {
         $where = array('id' => $id);
         $this->leader_model->daily_hapus($where, 'tb_ldr_daily');
-        redirect("halaman/v_daily");
+        redirect("Daily");
     }
 
     public function daily_update($id)
@@ -116,6 +119,6 @@ class Daily extends CI_Controller
             'id' => $id
         );
         $this->leader_model->daily_update_proses($where, $data, 'tb_ldr_daily');
-        redirect('halaman/v_daily');
+        redirect('Daily');
     }
 }
