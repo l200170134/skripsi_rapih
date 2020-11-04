@@ -12,8 +12,8 @@ class Daily extends CI_Controller
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
-        $this->load->view('_partials/sidebar_karyawan', $data);
-        $this->load->view('halaman/daily');
+        $this->load->view('_partials/sidebar', $data);
+        $this->load->view('halaman/v_daily');
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }
@@ -26,8 +26,8 @@ class Daily extends CI_Controller
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
-        $this->load->view('_partials/sidebar_karyawan', $data);
-        $this->load->view('leader/daily_form');
+        $this->load->view('_partials/sidebar', $data);
+        $this->load->view('halaman/v_daily_form');
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }
@@ -40,8 +40,8 @@ class Daily extends CI_Controller
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
-        $this->load->view('_partials/sidebar_karyawan', $data);
-        $this->load->view('leader/daily_report');
+        $this->load->view('_partials/sidebar', $data);
+        $this->load->view('halaman/v_daily_report');
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }
@@ -69,15 +69,14 @@ class Daily extends CI_Controller
         );
 
         $this->leader_model->daily_input($data, 'tb_ldr_daily');
-        redirect('leader/Leader/daily');
-        redirect('leader/Leader/daily');
+        redirect('halaman/v_daily');
     }
 
     public function daily_proses_hapus($id)
     {
         $where = array('id' => $id);
         $this->leader_model->daily_hapus($where, 'tb_ldr_daily');
-        redirect("leader/Leader/daily");
+        redirect("halaman/v_daily");
     }
 
     public function daily_update($id)
@@ -89,8 +88,8 @@ class Daily extends CI_Controller
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
-        $this->load->view('_partials/sidebar_karyawan', $data);
-        $this->load->view('leader/daily_update', $data);
+        $this->load->view('_partials/sidebar', $data);
+        $this->load->view('halaman/v_daily_update', $data);
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }
@@ -110,6 +109,6 @@ class Daily extends CI_Controller
             'id' => $id
         );
         $this->leader_model->daily_update_proses($where, $data, 'tb_ldr_daily');
-        redirect('leader/Leader/daily');
+        redirect('halaman/v_daily');
     }
 }
