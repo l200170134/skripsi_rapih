@@ -9,7 +9,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('leader/Leader') ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
                         <!--               <li class="breadcrumb-item"><a href="leader_monitoring.php">Monitoring</a></li>
               <li class="breadcrumb-item"><a href="leader_monitoring_daily.php">Daily</a></li> -->
                         <li class="breadcrumb-item active">Kinerja</li>
@@ -75,7 +75,7 @@
                                         Submit
                                     </button>
                                     <?php echo form_close() ?>
-                                    <a href="<?php echo base_url('leader/Leader/kinerja_form') ?>" class="btn btn-success">Evaluasi</a>
+                                    <a href="<?php echo base_url('Kinerja/kinerja_form') ?>" class="btn btn-success">Evaluasi</a>
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                                         <i class="fas fa-plus"></i> KPI
                                     </button>
@@ -153,9 +153,9 @@
 
                                                 </td>
                                                 <td align="center">
-                                                    <?php echo anchor('leader/Leader/kinerja_update/' . $kj->id, '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?></td>
+                                                    <?php echo anchor('Kinerja/kinerja_update/' . $kj->id, '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?></td>
                                                 <td align="center" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                    <?php echo anchor('leader/Leader/kinerja_proses_hapus/' . $kj->id, '<div class="btn btn-danger ml-2"><i class="fas fa-trash"></i></div>'); ?></td>
+                                                    <?php echo anchor('Kinerja/kinerja_proses_hapus/' . $kj->id, '<div class="btn btn-danger ml-2"><i class="fas fa-trash"></i></div>'); ?></td>
                                             </tr>
                                         <?php endforeach ?>
                                     </tbody>

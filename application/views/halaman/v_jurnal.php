@@ -9,7 +9,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('leader/Leader') ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
                         <li class="breadcrumb-item active">Jurnal</li>
                     </ol>
                 </div><!-- /.col -->
@@ -30,7 +30,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <a href="<?php echo base_url('leader/Leader/jurnal_form') ?>" class="btn btn-block btn-sm btn-success mb-3" style="width: 100px;">New Journal</a>
+                            <a href="<?php echo base_url('Jurnal/jurnal_form') ?>" class="btn btn-block btn-sm btn-success mb-3" style="width: 100px;">New Journal</a>
                             <div class="bungkus p-0" style="overflow: scroll;">
                                 <table class="table table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                     <tr align="center">
@@ -55,7 +55,7 @@
                                                 <!--                       <td><?php echo $ju->jam ?></td> -->
                                                 <td><?php echo $ju->tgl ?></td>
                                                 <td align="center" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                    <?php echo anchor('leader/Leader/jurnal_proses_hapus/' . $ju->id, '<div class="btn btn-danger ml-2"><i class="fas fa-trash"></i></div>'); ?>
+                                                    <?php echo anchor('Jurnal/jurnal_proses_hapus/' . $ju->id, '<div class="btn btn-danger ml-2"><i class="fas fa-trash"></i></div>'); ?>
                                                 </td>
                                             <?php endforeach ?>
                                             </tr>

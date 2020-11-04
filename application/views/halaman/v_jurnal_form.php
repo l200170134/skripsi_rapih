@@ -8,8 +8,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('leader/Leader') ?>">Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('leader/Leader/jurnal') ?>">Jurnal</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('Jurnal/jurnal') ?>">Jurnal</a></li>
                         <li class="breadcrumb-item active">Form</li>
                     </ol>
                 </div><!-- /.col -->
@@ -29,7 +29,7 @@
                             <h3 class="card-title">Form Daily Journal</h3>
                         </div>
                         <!-- /.card-header -->
-                        <form role="form" action="<?php echo base_url('leader/Leader/jurnal_proses_tambah'); ?>" method="post">
+                        <form role="form" action="<?php echo base_url('Jurnal/jurnal_proses_tambah'); ?>" method="post">
                             <div class="card-body">
                                 <input name="nip" type="text" class="form-control" value="0" hidden>
                                 <input name="tgl" type="text" class="form-control" value=" <?php echo date("d-m-Y"); ?> " hidden>
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <a href="<?php echo base_url('leader/Leader/jurnal') ?>" class="btn btn-secondary">Cancel</a>
+                                    <a href="<?php echo base_url('Jurnal/jurnal') ?>" class="btn btn-secondary">Cancel</a>
                                 </div>
                         </form>
                     </div>

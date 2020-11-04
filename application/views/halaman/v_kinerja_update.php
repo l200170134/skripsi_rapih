@@ -9,8 +9,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('leader/Leader') ?>">Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('leader/Leader/kinerja') ?>">Kinerja</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('Kinerja/kinerja') ?>">Kinerja</a></li>
                         <li class="breadcrumb-item active">Update</li>
                     </ol>
                 </div><!-- /.col -->
@@ -31,7 +31,7 @@
                         </div>
                         <!-- /.card-header -->
                         <?php foreach ($kinerja as $kj) { ?>
-                            <form role="form" method="post" action="<?php echo base_url('leader/Leader/kinerja_proses_update'); ?>">
+                            <form role="form" method="post" action="<?php echo base_url('Kinerja/kinerja_proses_update'); ?>">
                                 <input type="hidden" name="id" value="<?php echo $kj->id ?>">
                                 <div class="card-body">
                                     <div class="row">
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <a href="<?php echo base_url('leader/Leader/kinerja') ?>" class="btn btn-secondary">Cancel</a>
+                                    <a href="<?php echo base_url('Kinerja/kinerja') ?>" class="btn btn-secondary">Cancel</a>
                                 </div>
                             </form>
                         <?php } ?>
