@@ -10,8 +10,7 @@ function cek_login()
         // mengambil url
         $a = $ci->uri->segment(1);
         $b = $ci->uri->segment(2);
-        $c = $ci->uri->segment(3);
-        $menu = $a . '/' . $b . '/' . $c;
+        $menu = $a . '/' . $b;
 
 
         // mengambil id user_sidebar berdasrkan url menu
@@ -20,7 +19,7 @@ function cek_login()
 
         $userAccess = $ci->db->get_where('user_access_page', ['role_id' => $role_id, 'id_page' => $id_page]);
         if ($userAccess->num_rows() < 1) {
-            // redirect('home/Login/blocked');
+            redirect('home/Login/blocked');
         } else {
         }
     }

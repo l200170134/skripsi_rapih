@@ -15,7 +15,7 @@ class Daily extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['daily'] = $this->leader_model->daily_tampil()->result();
-        $data['judul'] = 'Leader Daily';
+        $data['judul'] = 'Daily Activity';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -29,7 +29,7 @@ class Daily extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Leader Daily';
+        $data['judul'] = 'Daily Activity';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -43,7 +43,7 @@ class Daily extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Leader Daily';
+        $data['judul'] = 'Daily Activity';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -91,7 +91,7 @@ class Daily extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $where = array('id' => $id);
         $data['daily'] = $this->leader_model->daily_update($where, 'tb_ldr_daily')->result();
-        $data['judul'] = 'Leader Daily';
+        $data['judul'] = 'Daily Activity';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

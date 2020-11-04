@@ -14,7 +14,7 @@ class Kinerja extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Leader Kinerja';
+        $data['judul'] = 'Kinerja';
         $data['kinerja'] = $this->leader_model->kinerja_tampil()->result();
 
         $this->load->view('_partials/header');
@@ -28,7 +28,7 @@ class Kinerja extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Leader Kinerja';
+        $data['judul'] = 'Kinerja';
         $where = array('id' => $id);
         $data['kinerja'] = $this->leader_model->kinerja_update($where, 'tb_ldr_kinerja')->result();
 
@@ -43,7 +43,7 @@ class Kinerja extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Leader Kinerja';
+        $data['judul'] = 'Kinerja';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

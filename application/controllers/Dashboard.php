@@ -14,7 +14,7 @@ class Dashboard extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Hrd Dashboard';
+        $data['judul'] = 'Dashboard';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -23,5 +23,6 @@ class Dashboard extends CI_Controller
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
         $this->load->view('_partials/js_hrd');
+        $this->load->view('_partials/js_karyawan');
     }
 }
