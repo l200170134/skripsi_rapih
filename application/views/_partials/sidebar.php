@@ -1,77 +1,90 @@
-<!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-  <!-- Brand Logo -->
-  <a href="<?php echo base_url('hrd/Hrd') ?>" class="brand-link">
-    <img src="<?php echo base_url('assets/dist/img/logo_pt_icon.png') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">PT. Sinar Grafindo</span>
-  </a>
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="<?php echo base_url('assets/dist/img/') . $user['image'] ?>" class="img-circle elevation-2" alt="User Image">
-      </div>
-      <div class="info">
-        <span class="brand-text font-weight-light" style="color: white;">Nama HRD</span>
-        <!-- <a href="#" class="d-block">Nama Karyawan</a> -->
-      </div>
-    </div>
+    <?php
+    $role_id = $this->session->userdata('role_id');
+    if ($role_id == 1) {
+      $url_dashboard = 'karyawan/Karyawan';
+    } else if ($role_id == 2) {
+      $url_dashboard = 'leader/Leader';
+    } else if ($role_id == 3) {
+      $url_dashboard = 'hrd/Hrd';
+    } else if ($role_id == 4) {
+      $url_dashboard = 'hrd/Hrd';
+    } else {
+      redirect('home/Login');
+    }
+    ?>
 
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
+    <p class="brand-link mb-0">
+      <img src="<?php echo base_url('assets/dist/img/logo_pt_icon.png') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">PT. Sinar Grafindo</span>
+    </p>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="<?php echo base_url('assets/dist/img/') . $user['image'] ?>" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <span class="brand-text font-weight-light" style="color: white;"><?php echo $this->session->userdata('username'); ?></span>
+          <!-- <a href="#" class="d-block">Nama Karyawan</a> -->
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-        <li class="nav-item">
-          <a href="<?php echo base_url('hrd/Hrd/data_pribadi') ?>" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-              Data Pribadi
-            </p>
-          </a>
-        </li>
+          <!-- QUERY MENU -->
 
-        <li class="nav-item">
-          <a href="<?php echo base_url('hrd/Hrd/data_karyawan') ?>" class="nav-link">
-            <i class="nav-icon fas fa-user-friends"></i>
-            <p>
-              Data Karyawan
-            </p>
-          </a>
-        </li>
+          <?php
+          // $sidebar = $this->db->get_where('user_access_sidebar', ['role_id' => $role_id])->result_array();
+          $this->db->select('*');
+          $this->db->from('user_access_sidebar');
+          $this->db->where('role_id', $role_id);
+          $this->db->order_by('urutan', 'asc');
+          $query = $this->db->get();
+          $sidebar = $query->result_array();
 
-        <li class="nav-item">
-          <a href="<?php echo base_url('hrd/Hrd/daily') ?>" class="nav-link">
-            <i class="nav-icon fas fa-archive"></i>
-            <p>
-              Daily Activity
-            </p>
-          </a>
-        </li>
+          foreach ($sidebar as $sb) :
+            $id_sidebar = $sb['sidebar_id'];
+            $menu = $this->db->get_where('user_sidebar', ['id_sidebar' => $id_sidebar, 'is_active' => 1])->result_array();
 
-        <li class="nav-item">
-          <a href="<?php echo base_url('hrd/Hrd/gaji') ?>" class="nav-link">
-            <i class="nav-icon fas fa-credit-card"></i>
-            <p>
-              Gaji
-            </p>
-          </a>
-        </li>
+            foreach ($menu as $m) :
+          ?>
+              <li class="nav-item">
+                <?php if ($judul == $m['segment_menu']) : ?>
+                  <a href="<?php echo base_url($m['url']); ?>" class="nav-link active">
+                  <?php else : ?>
+                    <a href="<?php echo base_url($m['url']); ?>" class="nav-link">
+                    <?php endif; ?>
 
-        <li class="nav-item">
-          <a href="<?php echo base_url('home/Login/logout') ?>" class="nav-link">
-            <i class="nav-icon fas fa-sign-out-alt"></i>
-            <p>
-              Log Out
-            </p>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
-  </div>
-  <!-- /.sidebar -->
-</aside>
+                    <i class="<?php echo $m['icon']; ?>"></i>
+                    <p><?php echo $m['judul']; ?></p>
+                    </a>
+              </li>
+
+          <?php
+            endforeach;
+          endforeach;
+          ?>
+          <li class="nav-item">
+            <a href="<?php echo base_url('home/Login/logout') ?>" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Log Out
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
