@@ -14,7 +14,7 @@ class Data_pribadi extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Hrd Data Pribadi';
+        $data['judul'] = 'Data Pribadi';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

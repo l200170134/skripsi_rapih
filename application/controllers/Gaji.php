@@ -14,7 +14,7 @@ class Gaji extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Hrd Gaji';
+        $data['judul'] = 'Gaji';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -28,7 +28,7 @@ class Gaji extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Hrd Data Karyawan';
+        $data['judul'] = 'Gaji';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -42,7 +42,7 @@ class Gaji extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Hrd Data Karyawan';
+        $data['judul'] = 'Gaji';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

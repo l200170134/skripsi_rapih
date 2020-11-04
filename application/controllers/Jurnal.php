@@ -10,12 +10,12 @@ class Jurnal extends CI_Controller
         // cek_login();
     }
 
-    public function jurnal()
+    public function index()
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['jurnal'] = $this->leader_model->jurnal_tampil()->result();
-        $data['judul'] = 'Leader Jurnal';
+        $data['judul'] = 'Jurnal';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -28,7 +28,7 @@ class Jurnal extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Leader Jurnal';
+        $data['judul'] = 'Jurnal';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

@@ -44,7 +44,7 @@
             foreach ($menu as $m) :
           ?>
               <li class="nav-item">
-                <?php if ($judul == $m['segment_menu']) : ?>
+                <?php if ($judul == $m['judul']) : ?>
                   <a href="<?php echo base_url($m['url']); ?>" class="nav-link active">
                   <?php else : ?>
                     <a href="<?php echo base_url($m['url']); ?>" class="nav-link">

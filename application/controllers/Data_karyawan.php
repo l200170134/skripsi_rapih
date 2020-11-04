@@ -13,7 +13,7 @@ class Data_karyawan extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Hrd Data Karyawan';
+        $data['judul'] = 'Data Karyawan';
         $data['divisi'] = $this->hrd_model->divisi_tampil()->result();
 
         $this->load->view('_partials/header');
@@ -28,7 +28,7 @@ class Data_karyawan extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Hrd Data Karyawan';
+        $data['judul'] = 'Data Karyawan';
         $data['nama_divisi'] = $this->db->get_where('tb_divisi', ['id_divisi' => $id_divisi])->result_array();
         $data['divisi'] = $this->db->get_where('user', ['id_divisi' => $id_divisi])->result_array();
 
@@ -44,7 +44,7 @@ class Data_karyawan extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Hrd Data Karyawan';
+        $data['judul'] = 'Data Karyawan';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -58,7 +58,7 @@ class Data_karyawan extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = 'Hrd Data Karyawan';
+        $data['judul'] = 'Data Karyawan';
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
