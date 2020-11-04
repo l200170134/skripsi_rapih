@@ -1,22 +1,6 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-
-    <?php
-    $role_id = $this->session->userdata('role_id');
-    if ($role_id == 1) {
-      $url_dashboard = 'karyawan/Karyawan';
-    } else if ($role_id == 2) {
-      $url_dashboard = 'leader/Leader';
-    } else if ($role_id == 3) {
-      $url_dashboard = 'hrd/Hrd';
-    } else if ($role_id == 4) {
-      $url_dashboard = 'hrd/Hrd';
-    } else {
-      redirect('home/Login');
-    }
-    ?>
-
     <p class="brand-link mb-0">
       <img src="<?php echo base_url('assets/dist/img/logo_pt_icon.png') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">PT. Sinar Grafindo</span>
@@ -45,6 +29,7 @@
 
           <?php
           // $sidebar = $this->db->get_where('user_access_sidebar', ['role_id' => $role_id])->result_array();
+          $role_id = $this->session->userdata('role_id');
           $this->db->select('*');
           $this->db->from('user_access_sidebar');
           $this->db->where('role_id', $role_id);

@@ -40,7 +40,7 @@ class Login extends CI_Controller
                     ];
 
                     $this->session->set_userdata($data);
-                    redirect('karyawan/Karyawan');
+                    redirect('Dashboard');
                 } else if ($user['role_id'] == 2) {
                     $data = [
                         'username' => $user['username'],
@@ -48,7 +48,7 @@ class Login extends CI_Controller
                     ];
 
                     $this->session->set_userdata($data);
-                    redirect('leader/Leader');
+                    redirect('Dashboard');
                 } else if ($user['role_id'] == 3) {
                     $data = [
                         'username' => $user['username'],
@@ -56,7 +56,7 @@ class Login extends CI_Controller
                     ];
 
                     $this->session->set_userdata($data);
-                    redirect('hrd/Hrd');
+                    redirect('Dashboard');
                 } else if ($user['role_id'] == 4) {
                     $data = [
                         'username' => $user['username'],
@@ -64,7 +64,7 @@ class Login extends CI_Controller
                     ];
 
                     $this->session->set_userdata($data);
-                    redirect('hrd/Hrd');
+                    redirect('Dashboard');
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda tak termasuk level manapun!</div>');
                     redirect('home/Login');

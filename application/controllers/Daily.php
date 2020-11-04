@@ -3,6 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Daily extends CI_Controller
 {
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->library('session');
+        cek_login();
+    }
+
     public function index()
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
