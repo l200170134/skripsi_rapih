@@ -9,8 +9,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('leader/Leader') ?>">Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('leader/Leader/jurnal') ?>">Jurnal</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('Jurnal/jurnal') ?>">Jurnal</a></li>
                         <li class="breadcrumb-item active">Update</li>
                     </ol>
                 </div><!-- /.col -->
@@ -30,7 +30,7 @@
                             <h3 class="card-title">Update Daily Journal</h3>
                         </div>
                         <!-- /.card-header -->
-                        <form role="form" action="<?php echo base_url('leader/Leader/jurnal_update') ?>">
+                        <form role="form" action="<?php echo base_url('Jurnal/jurnal_update') ?>">
                             <div class="card-body">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Norhadi" readonly>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="<?php echo base_url('leader/Leader/jurnal') ?>" class="btn btn-secondary">Cancel</a>
+                                <a href="<?php echo base_url('Jurnal/jurnal') ?>" class="btn btn-secondary">Cancel</a>
 
                             </div>
                         </form>

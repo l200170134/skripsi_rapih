@@ -9,8 +9,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('leader/Leader') ?>">Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('leader/Leader/kinerja') ?>">Kinerja</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('Kinerja/kinerja') ?>">Kinerja</a></li>
                         <li class="breadcrumb-item active">Form</li>
                     </ol>
                 </div><!-- /.col -->
@@ -30,7 +30,7 @@
                             <h3 class="card-title">Form Evaluasi Kinerja Karyawan</h3>
                         </div>
                         <!-- /.card-header -->
-                        <form role="form" method="post" action="<?php echo base_url('leader/Leader/kinerja_proses_tambah') ?>">
+                        <form role="form" method="post" action="<?php echo base_url('Kinerja/kinerja_proses_tambah') ?>">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -125,7 +125,7 @@
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="<?php echo base_url('leader/Leader/kinerja') ?>" class="btn btn-secondary">Cancel</a>
+                                <a href="<?php echo base_url('Kinerja/kinerja') ?>" class="btn btn-secondary">Cancel</a>
                             </div>
                         </form>
                     </div>
