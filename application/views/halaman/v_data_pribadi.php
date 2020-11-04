@@ -14,7 +14,7 @@ $level_akses = $this->session->userdata('role_id');
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active"><a href="<?php echo base_url('hrd/Hrd/index') ?>">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
                         <li class="breadcrumb-item">Profil</li>
                         <!-- <li class="breadcrumb-item active">Dashboard</li> -->
                     </ol>
@@ -171,7 +171,7 @@ $level_akses = $this->session->userdata('role_id');
                                                 <td>10-12-2020</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="<?php echo base_url('hrd/Hrd/status_update') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
+                                                        <a href="<?php echo base_url('Status/status_update') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
                                                         <a href="#" onclick="return confirm('Yakin menghapus data ?')" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></a>
                                                     </div>
                                                 </td>
@@ -183,7 +183,7 @@ $level_akses = $this->session->userdata('role_id');
                                                 <td>10-02-2021</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="<?php echo base_url('hrd/Hrd/status_update') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
+                                                        <a href="<?php echo base_url('Status/status_update') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
                                                         <a href="#" onclick="return confirm('Yakin menghapus data ?')" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></a>
                                                     </div>
                                                 </td>

@@ -9,7 +9,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url('hrd/Hrd/index') ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
                         <!-- <li class="breadcrumb-item active">Dashboard</li> -->
                     </ol>
                 </div><!-- /.col -->
@@ -50,7 +50,7 @@
                             <div class="card-footer">
                                 <a href="#" class="btn btn-primary">Submit</a>
                                 <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                                <a href="<?php echo base_url('hrd/Hrd/daily') ?>" class="btn btn-secondary">Cancel</a>
+                                <a href="<?php echo base_url('Daily') ?>" class="btn btn-secondary">Cancel</a>
                             </div>
                         </form>
                     </div>

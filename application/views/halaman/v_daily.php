@@ -9,7 +9,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active"><a href="<?php echo base_url('hrd/Hrd/index') ?>">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
                         <li class="breadcrumb-item">Daily Activity</li>
                     </ol>
                 </div><!-- /.col -->
@@ -35,8 +35,8 @@
                         <div class="card-body">
                             <table>
                                 <tr>
-                                    <td class="pr-2"><a href="<?php echo base_url('hrd/Hrd/daily_form') ?>" class="btn btn-block btn-sm btn-success" style="width: 100px;">New Task</a></td>
-                                    <td><a href="<?php echo base_url('hrd/Hrd/daily_report') ?>" class="btn btn-block btn-sm btn-primary" style="width: 100px;">Report</a></td>
+                                    <td class="pr-2"><a href="<?php echo base_url('Daily/daily_form') ?>" class="btn btn-block btn-sm btn-success" style="width: 100px;">New Task</a></td>
+                                    <td><a href="<?php echo base_url('Daily/daily_report') ?>" class="btn btn-block btn-sm btn-primary" style="width: 100px;">Report</a></td>
                                 </tr>
                             </table>
                             <br>
@@ -71,7 +71,7 @@
                                         <td align="center"><span class="badge badge-danger">Top</span></td>
                                         <td align="center">
                                             <div class="btn-group">
-                                                <a href="<?php echo base_url('hrd/Hrd/daily_update') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
+                                                <a href="<?php echo base_url('Daily/daily_update') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
                                                 <a href="#" onclick="return confirm('Yakin menghapus data ?')" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></a>
                                             </div>
                                         </td>
@@ -86,7 +86,7 @@
                                         <td align="center"><span class="badge badge-primary">Finish</span></td>
                                         <td align="center">
                                             <div class="btn-group">
-                                                <a href="<?php echo base_url('hrd/Hrd/daily_update') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
+                                                <a href="<?php echo base_url('Daily/daily_update') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
                                                 <a href="#" onclick="return confirm('Yakin menghapus data ?')" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></a>
                                             </div>
                                         </td>
@@ -101,7 +101,7 @@
                                         <td align="center"><span class="badge badge-danger">Top</span></td>
                                         <td align="center">
                                             <div class="btn-group">
-                                                <a href="<?php echo base_url('hrd/Hrd/daily_update') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
+                                                <a href="<?php echo base_url('Daily/daily_update') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
                                                 <a href="#" onclick="return confirm('Yakin menghapus data ?')" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></a>
                                             </div>
                                         </td>
