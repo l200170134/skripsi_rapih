@@ -7,7 +7,7 @@ class Data_karyawan extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
-        // cek_login();
+        cek_login();
     }
     public function index()
     {
@@ -35,7 +35,7 @@ class Data_karyawan extends CI_Controller
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
         $this->load->view('_partials/sidebar', $data);
-        $this->load->view('halaman/v_detail_karyawan', $data);
+        $this->load->view('halaman/v_data_karyawan_detail', $data);
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }

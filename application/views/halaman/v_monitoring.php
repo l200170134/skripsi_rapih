@@ -44,7 +44,7 @@
                                         <td class="p-2">1</td>
                                         <td class="p-2">Hafidz Al Afaf</td>
                                         <td align="center" class="p-2"><a href="<?php echo base_url('Monitoring/monitoring_daily') ?>" class="btn btn-success btn-sm">Today</a></td>
-                                        <td align="center" class="p-2"><a href="<?php echo base_url('Monitorong/monitoring_report') ?>" class="btn btn-primary btn-sm">Report</a></td>
+                                        <td align="center" class="p-2"><a href="<?php echo base_url('Monitoring/monitoring_report   ') ?>" class="btn btn-primary btn-sm">Report</a></td>
                                     </tr>
                                 </tbody>
                             </table>

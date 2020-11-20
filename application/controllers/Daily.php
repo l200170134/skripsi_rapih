@@ -7,24 +7,18 @@ class Daily extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
-        // cek_login();
+        cek_login();
     }
 
     public function index()
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-<<<<<<< HEAD
         // $data['daily'] = $this->leader_model->daily_tampil()->result();
-        $data['judul'] = 'Leader Daily';
+        $data['judul'] = 'Daily Activity';
         $nip = $this->session->userdata('nip');
         $data['daily'] = $this->db->get_where('tb_ldr_daily', ['nip' => $nip])->result_array();
-        
-=======
-        $data['daily'] = $this->leader_model->daily_tampil()->result();
-        $data['judul'] = 'Daily Activity';
 
->>>>>>> ccb7f6cf03794e895a2ff908333e17c6a38fe7b0
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
         $this->load->view('_partials/sidebar', $data);
@@ -83,7 +77,7 @@ class Daily extends CI_Controller
             'urgensi'    => $urgensi,
         );
 
-        
+
         $this->leader_model->daily_input($data, 'tb_ldr_daily');
         redirect('Daily');
     }

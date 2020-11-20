@@ -45,7 +45,7 @@
                                         <i class="<?php echo $dv->icon; ?>"></i>
                                     </div>
 
-                                    <?php echo anchor('hrd/Hrd/detail_karyawan/' . $dv->id_divisi, '<div class="small-box-footer"><center>Lihat detail <i class="fas fa-arrow-circle-right"></i></center></div>'); ?>
+                                    <?php echo anchor('Data_karyawan/detail_karyawan/' . $dv->id_divisi, '<div class="small-box-footer"><center>Lihat detail <i class="fas fa-arrow-circle-right"></i></center></div>'); ?>
                                 </div>
                             </div>
 
