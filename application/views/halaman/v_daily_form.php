@@ -31,31 +31,31 @@
             </div>
             <!-- /.card-header -->
             <form role="form" action="<?php echo base_url('Daily/daily_proses_tambah') ?>" method="POST">
-                <div class="card-body">
-                  <!-- Bagian Hidden -->
-                  <?php
-                    $nip = $this->session->userdata('nip');
-                  ?>
-                  <input name="nip" type="text" value="<?php echo $nip;?>" class="form-control">
-                  <input name="hasil" type="text" value="Proses" class="form-control" hidden>
-                  <input name="status" type="text" value="Pending" class="form-control" hidden>
-                  <input name="catatan" type="text" value="-" class="form-control" hidden>
-                  <input name="evaluasi" type="text" value="-" class="form-control" hidden>
-                  <input name="urgensi" type="text" value="Not Graded" class="form-control" hidden>
+              <div class="card-body">
+                <!-- Bagian Hidden -->
+                <?php
+                $nip = $this->session->userdata('nip');
+                ?>
+                <input name="nip" type="text" value="<?php echo $nip; ?>" class="form-control" hidden>
+                <input name="hasil" type="text" value="Proses" class="form-control" hidden>
+                <input name="status" type="text" value="Pending" class="form-control" hidden>
+                <input name="catatan" type="text" value="-" class="form-control" hidden>
+                <input name="evaluasi" type="text" value="-" class="form-control" hidden>
+                <input name="urgensi" type="text" value="Not Graded" class="form-control" hidden>
 
-                  <div class="form-group">
-                    <input name="tgl" type="text" class="form-control" value=" <?php echo date("d-m-Y") ?> " hidden>
-                  </div>
-                  <div class="form-group">
-                    <textarea name="aktivitas" class="form-control" rows="3" placeholder="Tuliskan rencana aktivitas" required></textarea>
-                  </div>
+                <div class="form-group">
+                  <input name="tgl" type="text" class="form-control" value=" <?php echo date("d-m-Y") ?> " hidden>
                 </div>
-                <div class="card-footer">
-                    <!-- <a href="leader_daily.php" class="btn btn-primary">Submit</a> -->
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                     <a href="<?php echo base_url('Daily') ?>" class="btn btn-secondary">Cancel</a>
+                <div class="form-group">
+                  <textarea name="aktivitas" class="form-control" rows="3" placeholder="Tuliskan rencana aktivitas" required></textarea>
                 </div>
-              </form>
+              </div>
+              <div class="card-footer">
+                <!-- <a href="leader_daily.php" class="btn btn-primary">Submit</a> -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="<?php echo base_url('Daily') ?>" class="btn btn-secondary">Cancel</a>
+              </div>
+            </form>
           </div>
         </div>
         <!-- ./col -->

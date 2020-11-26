@@ -1,3 +1,6 @@
+<?php
+$level_akses = $this->session->userdata('role_id');
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -65,9 +68,13 @@
                                             <th width="90px">Tanggal</th>
                                             <th width="260px">Aktivitas</th>
                                             <th width="260px">Catatan</th>
-                                            <th width="260px">Evaluasi</th>
-                                            <th width="80px">Status</th>
-                                            <th width="80px">Urgensi</th>
+
+                                            <?php
+                                            if ($level_akses != 2) : ?>
+                                                <th width="260px">Evaluasi</th>
+                                                <th width="80px">Status</th>
+                                                <th width="80px">Urgensi</th>
+                                            <?php endif; ?>
                                         </tr>
                                     </thead>
                                     <tr>
@@ -75,27 +82,13 @@
                                         <td>6/10/2020</td>
                                         <td>Membuat invoice permintaan produk kertas A4</td>
                                         <td>Invoice belum diketahui nominalnya</td>
-                                        <td>Minta data permintaan</td>
-                                        <td align="center"><span class="badge badge-danger">Pending</span></td>
-                                        <td align="center"><span class="badge badge-danger">Top</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>7/10/2020</td>
-                                        <td>Membuat laporan penjualan bulan Oktober</td>
-                                        <td>Laporan belum dimintakan tanda tangan</td>
-                                        <td>Segera konfirmasi ke Kepala Gudang</td>
-                                        <td align="center"><span class="badge badge-primary">Approve</span></td>
-                                        <td align="center"><span class="badge badge-primary">Finish</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>8/10/2020</td>
-                                        <td>Membuat laporan penjualan bulan Oktober</td>
-                                        <td>Laporan belum dimintakan tanda tangan</td>
-                                        <td>Segera konfirmasi ke Kepala Gudang</td>
-                                        <td align="center"><span class="badge badge-danger">Pending</span></td>
-                                        <td align="center"><span class="badge badge-warning">Middle</span></td>
+
+                                        <?php
+                                        if ($level_akses != 2) : ?>
+                                            <td>Minta data permintaan</td>
+                                            <td align="center"><span class="badge badge-danger">Pending</span></td>
+                                            <td align="center"><span class="badge badge-danger">Top</span></td>
+                                        <?php endif; ?>
                                     </tr>
                                     <tbody>
                                     </tbody>

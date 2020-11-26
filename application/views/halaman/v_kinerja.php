@@ -98,7 +98,13 @@ $level_akses = $this->session->userdata('role_id');
                                             <th width="200px">Periode</th>
                                             <th width="100px">Point</th>
                                             <th width="200px">Keterangan</th>
-                                            <th width="100px" colspan="2">Aksi</th>
+                                            <?php
+                                            if ($level_akses != 4) :
+                                            ?>
+                                                <th width="100px" colspan="2">Aksi</th>
+                                            <?php
+                                            endif;
+                                            ?>
                                         </tr>
                                     </thead>
                                     <tbody align="center">
@@ -159,10 +165,12 @@ $level_akses = $this->session->userdata('role_id');
                                                     ?>
 
                                                 </td>
-                                                <td align="center">
-                                                    <?php echo anchor('Kinerja/kinerja_update/' . $kj->id, '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?></td>
-                                                <td align="center" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                    <?php echo anchor('Kinerja/kinerja_proses_hapus/' . $kj->id, '<div class="btn btn-danger ml-2"><i class="fas fa-trash"></i></div>'); ?></td>
+                                                <?php if ($level_akses != 4) : ?>
+                                                    <td align="center">
+                                                        <?php echo anchor('Kinerja/kinerja_update/' . $kj->id, '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?></td>
+                                                    <td align="center" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
+                                                        <?php echo anchor('Kinerja/kinerja_proses_hapus/' . $kj->id, '<div class="btn btn-danger ml-2"><i class="fas fa-trash"></i></div>'); ?></td>
+                                                <?php endif; ?>
                                             </tr>
                                         <?php endforeach ?>
                                     </tbody>

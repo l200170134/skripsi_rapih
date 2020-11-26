@@ -33,10 +33,6 @@ $level_akses = $this->session->userdata('role_id');
                         <div class="card-header">
                             <?php foreach ($nama_divisi as $nd) : ?>
                                 <h5>Tabel Karyawan <?php echo $nd['divisi'] ?></h5>
-                                <div class="alert alert-sm alert-success alert-dismissible m-1">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    Menampilkan seluruh data karyawan <?php echo $nd['divisi'] ?>
-                                </div>
                             <?php endforeach; ?>
                         </div>
                         <!-- /.card-header -->
@@ -44,10 +40,16 @@ $level_akses = $this->session->userdata('role_id');
 
                             <?php if ($level_akses != 4) { ?>
                                 <table>
+<<<<<<< HEAD
                                         <td>     
                                          <?php foreach ($nama_divisi as $nd) : ?>
                                             <?php echo anchor('Data_karyawan/tambah_data_karyawan/' . $nd['id_divisi'], '<div class="btn btn-block btn-md btn-success">Tambah</div>'); ?>    
                                         <?php endforeach; ?>
+=======
+                                    <tr>
+                                        <td class="pr-2">
+                                            <a href="<?php echo base_url('Data_karyawan/tambah_data_karyawan') ?>" class="btn btn-block btn-md btn-success">Tambah Karyawan</a>
+>>>>>>> 40bd0c9fcf3ab16f552645ccdcf892688f36f6a2
                                         </td>
                                     </tr>
                                 </table>
@@ -55,6 +57,7 @@ $level_akses = $this->session->userdata('role_id');
                                 <table>
                                     <tr>
                                         <td class="pr-2"><a href="<?php echo base_url('Monitoring') ?>" class="btn btn-block btn-md btn-success">Monitoring</a></td>
+                                        <td class="pr-2"><a href="<?php echo base_url('Kinerja') ?>" class="btn btn-block btn-md btn-primary">Kinerja</a></td>
                                     </tr>
                                 </table>
                             <?php } ?>
@@ -86,8 +89,15 @@ $level_akses = $this->session->userdata('role_id');
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $dv['nip']; ?></td>
                                             <td><?php echo $dv['nama']; ?></td>
+<<<<<<< HEAD
                                             <td><?php echo $dv['jabatan']; ?></td>
                                             <td><?php echo $dv['perusahaan']; ?></td>
+=======
+                                            <td><?php echo $dv['id_divisi']; ?></td>
+
+                                            <td></td>
+                                            <td></td>
+>>>>>>> 40bd0c9fcf3ab16f552645ccdcf892688f36f6a2
 
                                             <?php
                                             if ($level_akses != '4') { ?>
@@ -96,8 +106,12 @@ $level_akses = $this->session->userdata('role_id');
                                                 <td align="center">
                                                     <div class="btn-group">
                                                         <a href="<?php echo base_url('Data_pribadi') ?>" class="btn btn-success btn-sm" title="Lihat Detail"><i class="fas fa-eye" style="color:white;"></i></a>
+<<<<<<< HEAD
 
                                                         <?php  echo anchor('Data_karyawan/update_data_karyawan/'.$dv['id_user'],'<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
+=======
+                                                        <a href="<?php echo base_url('Data_karyawan/tambah_data_karyawan') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
+>>>>>>> 40bd0c9fcf3ab16f552645ccdcf892688f36f6a2
 
                                                         <a href="" onclick="return confirm('Yakin menghapus data ?')" class="btn btn-danger btn-sm" title="Hapus"><i class="fas fa-trash"></i></a>
                                                     </div>

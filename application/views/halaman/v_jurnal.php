@@ -26,42 +26,29 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Jurnal</h3>
+                            <h3 class="card-title">Jurnal Harian Divisi</h3>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body">
-                            <a href="<?php echo base_url('Jurnal/jurnal_form') ?>" class="btn btn-block btn-sm btn-success mb-3" style="width: 100px;">New Journal</a>
-                            <div class="bungkus p-0" style="overflow: scroll;">
-                                <table class="table table-hover" style="table-layout: fixed; word-wrap: break-word;">
+                        <div class="card-body" style="overflow: scroll;">
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead>
                                     <tr align="center">
-                                        <th width="50px">No</th>
-                                        <th width="50px">NIP</th>
-                                        <th width="350px">Aktivitas</th>
-                                        <th width="80px">Jam</th>
-                                        <th width="100px">Tanggal</th>
-                                        <th width="60px">Aksi</th>
+                                        <th width="5%">No</th>
+                                        <th width="55%">Nama</th>
+                                        <th width="20%">Foto</th>
+                                        <th width="20%">Aksi</th>
                                     </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $no = 1;
-                                        foreach ($jurnal as $ju) : ?>
-                                            <tr align="center">
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-2">1</td>
+                                        <td class="p-2">Hafidz Al Afaf</td>
+                                        <td></td>
+                                        <td align="center" class="p-2"><a href="<?php echo base_url('Jurnal/jurnal_list') ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye" style="color:white;"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                                                <td><?php echo $no++ ?></td>
-                                                <td><a href="<?php echo $ju->nip ?>"><span class="badge badge-primary"><?php echo $ju->nip ?></span></a></td>
-                                                <td><?php echo $ju->aktivitas ?></td>
-                                                <td>Jam error</td>
-                                                <!--                       <td><?php echo $ju->jam ?></td> -->
-                                                <td><?php echo $ju->tgl ?></td>
-                                                <td align="center" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                    <?php echo anchor('Jurnal/jurnal_proses_hapus/' . $ju->id, '<div class="btn btn-danger ml-2"><i class="fas fa-trash"></i></div>'); ?>
-                                                </td>
-                                            <?php endforeach ?>
-                                            </tr>
-                                    </tbody>
-                                </table>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -71,4 +58,4 @@
     </section>
     <!-- /.content -->
 </div>
-<!-- /.content-wrapper
+<!-- /.content-wrapper -->

@@ -41,6 +41,7 @@
                                         <th width="25%">Catatan</th>
                                         <th width="25%">Evaluasi</th>
                                         <th width="5%">Status</th>
+                                        <th width="5%">Urgensi</th>
                                         <th width="10%">Aksi</th>
                                     </tr>
                                     </tr>
@@ -52,6 +53,7 @@
                                     <td>Invoice belum diketahui nominalnya</td>
                                     <td>Minta data permintaan</td>
                                     <td align="center"><span class="badge badge-danger">Pending</span></td>
+                                    <td align="center"><span class="badge badge-danger">Top</span></td>
                                     <td align="center">
                                         <div class="btn-group">
                                             <a href="<?php echo base_url('Monitoring/monitoring_update') ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit" style="color:white;"></i></a>
