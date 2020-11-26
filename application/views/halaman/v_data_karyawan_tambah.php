@@ -29,6 +29,9 @@
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Form Input Data Karyawan</h3>
+
+                                
+
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
@@ -45,10 +48,10 @@
                                         <label for="nama">Tempat, Tanggal Lahir</label>
                                             <div class="row">
                                                 <div class="col-lg-6 col-12">
-                                                <input type="text" class="form-control" placeholder="Masukkan Tempat Lahir">
+                                                <input type="text" class="form-control" placeholder="Masukkan Tempat Lahir" name="tempat_lahir">
                                                 </div>
                                                 <div class="col-lg-6 col-12">
-                                                <input type="date" class="form-control">
+                                                <input type="date" class="form-control" name="tgl_lahir">
                                                 </div>
                                             </div>
                                         </div>
@@ -59,25 +62,43 @@
                                         <div class="form-group">
                                             <label>Divis</label> 
                                                                                                                                  
+                                            <!-- <select class="form-control">
+                                                <option></option>
+                                                <?php //foreach ($divisi as $dv) : ?>
+                                                <option value="<?php //echo $dv->id_divisi; ?>"><?php //echo $dv->divisi; ?></option>
+                                                <?php //endforeach; ?>
+                                            </select> -->
+
                                             <select class="form-control" name="id_divisi">
-                                                <option>-- Pilih --</option>
-                                                <?php foreach ($divisi as $dv) : ?>
-                                                <option value="<?php echo $dv->id_divisi; ?>"><?php echo $dv->divisi; ?></option>
+                                                <?php foreach ($nama_divisi as $nd) : ?>
+                                                <option value="<?php echo $nd['id_divisi'] ?>"><?php echo $nd['divisi'] ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                             
                                         </div>
                                         <div class="form-group">
+                                            <label>Jabatan</label> 
+                                                                                                                                 
+                                            <select class="form-control" name="jabatan">
+                                                <option>-- Pilih --</option>
+                                                <option>Staff</option>
+                                                <option>Asisten Manajer</option>
+                                                <option>Manajer</option>
+                                                <option>Direksi</option>
+                                            </select>
+                                            
+                                        </div>
+                                        <div class="form-group">
                                             <label for="no_hp">No. HP</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Nomor HP anda">
+                                            <input type="text" class="form-control" name="no_hp" placeholder="Masukkan Nomor HP anda">
                                         </div>
                                         <div class="form-group">
                                             <label for="no_keluarga">No. HP Keluarga</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Nomor HP Keluarga anda">
+                                            <input type="text" class="form-control" name="no_hp_kel" placeholder="Masukkan Nomor HP Keluarga anda">
                                         </div>
                                         <div class="form-group">
                                             <label for="rekening">Bank</label>
-                                            <select name="" class="form-control">
+                                            <select name="bank" class="form-control">
                                                 <option value="">-- Pilih --</option>
                                                 <option value="BNI">BNI</option>
                                                 <option value="BRI">BRI</option>
@@ -89,11 +110,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="rekening">No. Rekening</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Nomor Rekening Anda">
+                                            <input type="text" class="form-control" name="no_rek" placeholder="Masukkan Nomor Rekening Anda">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control" name="" placeholder="Masukkan alamat email anda">
+                                            <input type="email" class="form-control" name="email" placeholder="Masukkan alamat email anda">
                                         </div>
                                     </div>
                                     <!-- End form bagian kiri -->
@@ -102,18 +123,18 @@
                                     <div class="col-lg-6 col-12 pl-3 pr-3">
                                         <div class="form-group">
                                             <label for="npwp">NPWP</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Nomor NPWP Anda">
+                                            <input type="text" class="form-control" name="npwp" placeholder="Masukkan Nomor NPWP Anda">
                                         </div>
                                         <div class="form-group">
                                             <label for="ttl">Perusahaan</label>
-                                            <select name="" class="form-control">
+                                            <select name="perusahaan" class="form-control">
                                                 <option value="">-- Pilih --</option>
                                                 <option value="PT. Sinar Grafindo">PT. Sinar Grafindo</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="ttl">Office</label>
-                                            <select name="" class="form-control">
+                                            <select name="office" class="form-control">
                                                 <option value="">-- Pilih --</option>
                                                 <option value="Bandung">Bandung</option>
                                                 <option value="Tangerang">Tangerang</option>
@@ -123,7 +144,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Status Pernikahan</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="pernikahan">
                                                 <option>-- Pilih --</option>
                                                 <option>Menikah</option>
                                                 <option>Belum Menikah</option>
@@ -151,11 +172,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat Tinggal</label>
-                                            <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sekarang..." name=""></textarea>
+                                            <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sekarang..." name="alamat"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat di KTP</label>
-                                            <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sesuai KTP..." name=""></textarea>
+                                            <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sesuai KTP..." name="alamat_ktp"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="upload_foto">Upload Foto</label>

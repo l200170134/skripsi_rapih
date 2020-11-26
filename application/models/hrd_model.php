@@ -12,8 +12,18 @@ class Hrd_model extends CI_Model
         return $this->db->get('user_role');
     }
 
-    public function hrd_input($data,$table)
+    public function input($data,$table)
 	{
 		$this->db->insert($table,$data);
+    }
+
+    public function update($where, $table)
+    {
+        return $this->db->get_where($table, $where);
+    }
+    public function update_proses($where, $data, $table)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
     }
 }

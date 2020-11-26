@@ -21,7 +21,8 @@
 
     <!-- Main content -->
     <section class="content">
-        <form role="form" action="<?php echo base_url('Data_karyawan/detail_karyawan_tambah'); ?>" method="post">
+    <?php foreach($update as $ud) :?>
+        <form role="form" action="<?php echo base_url('Data_karyawan/detail_karyawan_update'); ?>" method="post">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
@@ -34,24 +35,37 @@
                             <!-- form start -->
 
                             <div class="card-body">
+                                <input type="hidden" name="id_user" value="<?php echo $ud->id_user; ?>">
                                 <div class="row">
                                     <!-- form bagian kiri -->
                                     <div class="col-lg-6 col-12 pl-3 pr-3">
                                         <div class="form-group">
                                             <label for="nama">Nama</label>
-                                            <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap">
+                                            <input type="text" class="form-control" name="nama" value="<?php echo $ud->nama; ?>" >
                                         </div>
                                         <div class="form-group">
                                             <label>NIP</label>
-                                            <input type="text" class="form-control" name="nip" placeholder="Masukkan Nomor Induk Pegawai">
+                                            <input type="text" class="form-control" name="" placeholder="Masukkan Nomor Induk Pegawai">
                                         </div>
                                         <div class="form-group">
-                                            <label>Divis</label>
-                                            <select class="form-control" name="id_divisi">
-                                                <option>-- Pilih --</option>
-                                                <option value="1">Direksi</option>
-                                                <option value="2">HRD dan GA</option>
-                                                <option value="3">Marketing</option>
+                                            <label>Divisi</label>
+                                            <select name="id_divisi" class="form-control">
+                                                <?php 
+                                                    $id_divisi = $ud->id_divisi;
+                                                    $divisi= $this->db->get('tb_divisi')->result_array();
+                                                    foreach ($divisi as $div):
+                                                        if($div['id_divisi']==$id_divisi){ ?>
+                                                            <option value="<?php echo $ud->id_divisi; ?>" selected><?php echo $div['divisi']; ?></option>
+                                                        <?php 
+                                                            } else { ?>
+                                                             <option value="<?php echo $ud->id_divisi; ?>"><?php echo $div['divisi']; ?></option>
+                                                        <?php
+                                                            }
+                                                        ?>   
+                                                ?>
+
+                                                
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -76,7 +90,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="ttl">Tempat, Tanggal Lahir</label>
-                                            <input type="text" class="form-control" name="ttl" placeholder="Masukkan Tempat Tanggal Lahir">
+                                            <input type="text" class="form-control" name="" placeholder="Masukkan Tempat Tanggal Lahir">
                                         </div>
                                     </div>
                                     <!-- End form bagian kiri -->
@@ -157,11 +171,11 @@
                                     <div class="col-lg-6 col-12 pl-3 pr-3">
                                         <div class="form-group">
                                             <label for="ttl">Username</label>
-                                            <input type="text" class="form-control" name="username" placeholder="Format: Nama + Tanggal Lahir">
+                                            <input type="text" class="form-control" name="" placeholder="Format: Nama + Tanggal Lahir">
                                         </div>
                                         <div class="form-group">
                                             <label for="ttl">Password</label>
-                                            <input type="text" class="form-control" name="password" placeholder="Masukkan Password">
+                                            <input type="text" class="form-control" name="" placeholder="Masukkan Password">
                                         </div>
                                     </div>
                                     <!-- End New Left Colum -->
@@ -169,7 +183,7 @@
                                     <div class="col-lg-6 col-12 pl-3 pr-3">
                                         <div class="form-group">
                                             <label for="ttl">Hak Akses</label>
-                                            <select class="form-control" name="role_id">
+                                            <select class="form-control" name="">
                                                 <option>Pilih Hak Akses</option>
                                                 <option value="1">Karyawan</option>
                                                 <option value="2">Leader</option>
@@ -179,7 +193,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="ttl">Aktivasi</label>
-                                            <select class="form-control" name="is_active">
+                                            <select class="form-control" name="">
                                                 <option>Pilih Aktivasi</option>
                                                 <option value="1">Aktiv</option>
                                                 <option value="0">Tidak Aktiv</option>
@@ -208,6 +222,7 @@
                 <!-- /.row (main row) -->
             </div><!-- /.container-fluid -->
         </form>
+        <?php endforeach; ?>  
     </section>
     <!-- /.content -->
 </div>

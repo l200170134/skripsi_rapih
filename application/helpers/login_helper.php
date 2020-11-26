@@ -19,7 +19,7 @@ function cek_login()
 
         $userAccess = $ci->db->get_where('user_access_page', ['role_id' => $role_id, 'id_page' => $id_page]);
         if ($userAccess->num_rows() < 1) {
-            redirect('home/Login/blocked');
+            // redirect('home/Login/blocked');
         } else {
         }
     }
