@@ -1,3 +1,7 @@
+<?php
+$level_akses = $this->session->userdata('role_id');
+?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -38,14 +42,19 @@
                         <!-- /.card-header -->
                         <div class="card-body">
 
-                            <?php if ($this->session->userdata('role_id') != 4) { ?>
+                            <?php if ($level_akses != 4) { ?>
                                 <table>
                                     <tr>
                                         <td class="pr-2"><a href="<?php echo base_url('Data_karyawan/tambah_data_karyawan') ?>" class="btn btn-block btn-md btn-success">Tambah Karyawan</a></td>
                                     </tr>
                                 </table>
-                            <?php } else {
-                            } ?>
+                            <?php } else if ($level_akses == 4) { ?>
+                                <table>
+                                    <tr>
+                                        <td class="pr-2"><a href="<?php echo base_url('Monitoring') ?>" class="btn btn-block btn-md btn-success">Monitoring</a></td>
+                                    </tr>
+                                </table>
+                            <?php } ?>
 
                             <br>
                             <div class="bungkus" style="overflow: scroll;">
@@ -59,7 +68,7 @@
                                             <th width="150px">Jabatan</th>
                                             <th width="150px">Perusahaan</th>
 
-                                            <?php if ($this->session->userdata('role_id') != 4) { ?>
+                                            <?php if ($level_akses != 4) { ?>
                                                 <th width="80px">Gaji</th>
                                                 <th width="80px">Kinerja</th>
                                             <?php } else {
@@ -80,7 +89,7 @@
                                             <td></td>
 
                                             <?php
-                                            if ($this->session->userdata('role_id') != '4') { ?>
+                                            if ($level_akses != '4') { ?>
                                                 <td class="d-flex justify-content-center"><a href="<?php echo base_url('Gaji') ?>" class="btn btn-primary btn-sm" title="Lihat Gaji">Lihat</a></td>
                                                 <td align="center"><a href="<?php echo base_url('Kinerja') ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja">Lihat</a></td>
                                                 <td align="center">
