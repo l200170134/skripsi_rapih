@@ -1,3 +1,7 @@
+<?php
+$level_akses = $this->session->userdata('role_id');
+?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->

@@ -7,7 +7,7 @@ class Daily extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
-        // cek_login();
+        cek_login();
     }
 
     public function index()
@@ -18,7 +18,6 @@ class Daily extends CI_Controller
         $data['judul'] = 'Daily Activity';
         $nip = $this->session->userdata('nip');
         $data['daily'] = $this->db->get_where('tb_ldr_daily', ['nip' => $nip])->result_array();
-        
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -78,7 +77,7 @@ class Daily extends CI_Controller
             'urgensi'    => $urgensi,
         );
 
-        
+
         $this->leader_model->daily_input($data, 'tb_ldr_daily');
         redirect('Daily');
     }

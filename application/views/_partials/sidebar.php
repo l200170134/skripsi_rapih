@@ -28,8 +28,9 @@
           <!-- QUERY MENU -->
 
           <?php
-          // $sidebar = $this->db->get_where('user_access_sidebar', ['role_id' => $role_id])->result_array();
+
           $role_id = $this->session->userdata('role_id');
+          // Ambil data dari user_access_sidebar
           $this->db->select('*');
           $this->db->from('user_access_sidebar');
           $this->db->where('role_id', $role_id);
@@ -39,6 +40,7 @@
 
           foreach ($sidebar as $sb) :
             $id_sidebar = $sb['sidebar_id'];
+            // mengambil data user_sidebar yang memiliki id_sidebar = ID sidebar di tabel user access sidebar dan is active = 0,
             $menu = $this->db->get_where('user_sidebar', ['id_sidebar' => $id_sidebar, 'is_active' => 1])->result_array();
 
             foreach ($menu as $m) :

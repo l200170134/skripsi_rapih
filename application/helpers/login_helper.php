@@ -13,7 +13,7 @@ function cek_login()
         $menu = $a . '/' . $b;
 
 
-        // mengambil id user_sidebar berdasrkan url menu
+        // mengambil id user_page berdasrkan url menu
         $queryMenu = $ci->db->get_where('user_page', ['url_page' => $menu])->row_array();
         $id_page = $queryMenu['id_page'];
 

@@ -1,3 +1,7 @@
+<?php
+$level_akses = $this->session->userdata('role_id');
+?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -35,7 +39,6 @@
                         <div class="card-body">
                             <p>Divisi <span class="badge badge-success">MARKETING</span></p>
                             <!-- <form role="form"> -->
-                            <?php echo form_open('leader/Leader/kinerja_search') ?>
                             <div class="row">
                                 <div class="col-lg-2 mb-3">
                                     <select name="" class="form-control">
@@ -74,11 +77,15 @@
                                     <button type="submit" class="btn btn-primary">
                                         Submit
                                     </button>
-                                    <?php echo form_close() ?>
-                                    <a href="<?php echo base_url('Kinerja/kinerja_form') ?>" class="btn btn-success">Evaluasi</a>
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-                                        <i class="fas fa-plus"></i> KPI
-                                    </button>
+
+                                    <?php
+                                    if ($level_akses != 4) : ?>
+                                        <a href="<?php echo base_url('Kinerja/kinerja_form') ?>" class="btn btn-success">Evaluasi</a>
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fas fa-plus"></i> KPI
+                                        </button>
+                                    <?php endif; ?>
+
                                 </div>
                             </div>
                             <!-- </form> -->
