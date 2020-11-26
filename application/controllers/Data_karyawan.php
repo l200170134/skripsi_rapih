@@ -14,12 +14,12 @@ class Data_karyawan extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Karyawan';
-        $data['divisi'] = $this->hrd_model->divisi_tampil()->result();
+        $data['divisi'] = $this->hrd_model->hrd_view_divisi()->result();
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
         $this->load->view('_partials/sidebar',  $data);
-        $this->load->view('halaman/v_data_karyawan');
+        $this->load->view('halaman/v_data_karyawan', $data);
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }
@@ -35,7 +35,7 @@ class Data_karyawan extends CI_Controller
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
         $this->load->view('_partials/sidebar', $data);
-        $this->load->view('halaman/v_detail_karyawan', $data);
+        $this->load->view('halaman/v_data_karyawan_detail', $data);
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }
@@ -45,11 +45,14 @@ class Data_karyawan extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Karyawan';
+        $data['divisi'] = $this->hrd_model->hrd_view_divisi()->result();
+        $data['role'] = $this->hrd_model->hrd_view_role()->result();
+        
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
         $this->load->view('_partials/sidebar',  $data);
-        $this->load->view('halaman/v_data_karyawan_tambah');
+        $this->load->view('halaman/v_data_karyawan_tambah', $data);
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }
@@ -88,8 +91,8 @@ class Data_karyawan extends CI_Controller
 
         );
 
-        $this->hrd_model->karyawan_input($data, 'user');
+        $this->hrd_model->hrd_input($data, 'user');
         $id = $data['id_divisi'];
-        redirect('halaman/v_detail_karyawan' . $id);
+        redirect('Data_karyawan/detail_karyawan/' . $id);
     }
 }

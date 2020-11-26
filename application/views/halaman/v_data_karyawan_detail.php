@@ -41,7 +41,9 @@
                             <?php if ($this->session->userdata('role_id') != 4) { ?>
                                 <table>
                                     <tr>
-                                        <td class="pr-2"><a href="<?php echo base_url('Data_karyawan/tambah_data_karyawan') ?>" class="btn btn-block btn-md btn-success">Tambah Karyawan</a></td>
+                                        <td class="pr-2">
+                                        <a href="<?php echo base_url('Data_karyawan/tambah_data_karyawan') ?>" class="btn btn-block btn-md btn-success">Tambah Karyawan</a>
+                                        </td>
                                     </tr>
                                 </table>
                             <?php } else {
@@ -58,7 +60,7 @@
                                             <th width="130px">Divisi</th>
                                             <th width="150px">Jabatan</th>
                                             <th width="150px">Perusahaan</th>
-
+                                        
                                             <?php if ($this->session->userdata('role_id') != 4) { ?>
                                                 <th width="80px">Gaji</th>
                                                 <th width="80px">Kinerja</th>
@@ -76,6 +78,7 @@
                                             <td><?php echo $dv['nip']; ?></td>
                                             <td><?php echo $dv['nama']; ?></td>
                                             <td><?php echo $dv['id_divisi']; ?></td>
+                                            
                                             <td></td>
                                             <td></td>
 
@@ -87,6 +90,7 @@
                                                     <div class="btn-group">
                                                         <a href="<?php echo base_url('Data_pribadi') ?>" class="btn btn-success btn-sm" title="Lihat Detail"><i class="fas fa-eye" style="color:white;"></i></a>
                                                         <a href="<?php echo base_url('Data_karyawan/tambah_data_karyawan') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
+                                                       
                                                         <a href="" onclick="return confirm('Yakin menghapus data ?')" class="btn btn-danger btn-sm" title="Hapus"><i class="fas fa-trash"></i></a>
                                                     </div>
                                                 </td>
