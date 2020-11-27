@@ -98,7 +98,6 @@ $level_akses = $this->session->userdata('role_id');
 
                                                         <?php  echo anchor('Data_karyawan/update_data_karyawan/'.$dv['id_user'],'<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
 
-
                                                         <a href="" onclick="return confirm('Yakin menghapus data ?')" class="btn btn-danger btn-sm" title="Hapus"><i class="fas fa-trash"></i></a>
                                                     </div>
                                                 </td>
