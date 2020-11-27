@@ -40,12 +40,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="p-2">1</td>
-                                        <td class="p-2">Hafidz Al Afaf</td>
-                                        <td align="center" class="p-2"><a href="<?php echo base_url('Monitoring/monitoring_daily') ?>" class="btn btn-success btn-sm">Today</a></td>
-                                        <td align="center" class="p-2"><a href="<?php echo base_url('Monitoring/monitoring_report   ') ?>" class="btn btn-primary btn-sm">Report</a></td>
-                                    </tr>
+
+                                    <?php
+                                    $a = 1;
+                                    foreach ($list_user as $ls) :
+                                    ?>
+                                        <tr>
+                                            <td class="p-2"><?php echo $a++; ?></td>
+                                            <td class="p-2"><?php echo $ls['nama']; ?></td>
+                                            <td align="center" class="p-2">
+                                                <?php echo anchor('Monitoring/monitoring_daily/' . $ls['nip'], '<div class="btn btn-success btn-sm">Today</div>'); ?>
+                                            </td>
+                                            <td align="center" class="p-2">
+                                                <a href="<?php echo base_url('Monitoring/monitoring_report   ') ?>" class="btn btn-primary btn-sm">Report</a>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    endforeach;
+                                    ?>
+
                                 </tbody>
                             </table>
 

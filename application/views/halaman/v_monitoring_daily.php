@@ -46,21 +46,71 @@
                                     </tr>
                                     </tr>
                                 </thead>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Membuat invoice permintaan produk kertas A4</td>
-                                    <td align="center"><span class="badge badge-success">Selesai</span></td>
-                                    <td>Invoice belum diketahui nominalnya</td>
-                                    <td>Minta data permintaan</td>
-                                    <td align="center"><span class="badge badge-danger">Pending</span></td>
-                                    <td align="center"><span class="badge badge-danger">Top</span></td>
-                                    <td align="center">
-                                        <div class="btn-group">
-                                            <a href="<?php echo base_url('Monitoring/monitoring_update') ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit" style="color:white;"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+
                                 <tbody>
+                                    <?php
+                                    $a = 1;
+                                    foreach ($daily as $dl) :
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $a++; ?></td>
+                                            <!-- kolom aktifitas -->
+                                            <td><?php echo $dl['aktivitas']; ?></td>
+                                            <!-- kolom hasil -->
+                                            <?php if ($dl['hasil'] == 'Proses') { ?>
+                                                <td align="center"><span class="badge badge-primary"><?php echo $dl['hasil']; ?></span></td>
+                                            <?php } else if ($dl['hasil'] == 'Selesai') { ?>
+                                                <td align="center"><span class="badge badge-success"><?php echo $dl['hasil']; ?></span></td>
+                                            <?php } else if ($dl['hasil'] == 'Belum') { ?>
+                                                <td align="center"><span class="badge badge-danger"><?php echo $dl['hasil']; ?></span></td>
+                                            <?php } else { ?>
+                                                <td align="center"><span class="badge badge-danger"></span></td>
+                                            <?php } ?>
+                                            <!-- kolom catatan -->
+                                            <td><?php echo $dl['catatan']; ?></td>
+
+                                            <!-- kolom evaluasi -->
+                                            <td class="p-1">
+                                                <?php
+                                                foreach ($evaluasi as $ev) :
+                                                    if ($dl['id'] == $ev['id_daily']) {
+                                                        echo $ev['evaluasi'];
+                                                ?>
+                                                        <br>
+                                                        <p style="font-size:12px; font-weight:bold;" class="mb-0 text-info"><?php echo $ev['penulis']; ?></p>
+                                                <?php } else {
+                                                    }
+                                                endforeach; ?>
+                                            </td>
+
+                                            <!-- kolom status -->
+                                            <?php if ($dl['status'] == 'Pending') { ?>
+                                                <td align="center"><span class="badge badge-danger"><?php echo $dl['status']; ?></span></td>
+                                            <?php } else if ($dl['status'] == 'Approve') { ?>
+                                                <td align="center"><span class="badge badge-success"><?php echo $dl['status']; ?></span></td>
+                                            <?php } else { ?>
+                                                <td align="center"><span class="badge badge-danger"></span></td>
+                                            <?php } ?>
+                                            <!-- kolom urgensi -->
+                                            <?php if ($dl['urgensi'] == 'Top') { ?>
+                                                <td align="center"><span class="badge badge-danger"><?php echo $dl['urgensi']; ?></span></td>
+                                            <?php } else if ($dl['urgensi'] == 'Middle') { ?>
+                                                <td align="center"><span class="badge badge-warning"><?php echo $dl['urgensi']; ?></span></td>
+                                            <?php } else if ($dl['urgensi'] == 'Low') { ?>
+                                                <td align="center"><span class="badge badge-info"><?php echo $dl['urgensi']; ?></span></td>
+                                            <?php } else { ?>
+                                                <td align="center"><span class="badge badge-info"></span></td>
+                                            <?php } ?>
+                                            <!-- kolom aksi -->
+                                            <td align="center">
+                                                <div class="btn-group">
+                                                    <?php echo anchor('Monitoring/monitoring_update/' . $dl['id'], '<div class="btn btn-warning btn-sm"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    endforeach;
+                                    ?>
                                 </tbody>
                             </table>
                         </div>

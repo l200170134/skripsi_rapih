@@ -37,7 +37,8 @@ class Login extends CI_Controller
                     $data = [
                         'username' => $user['username'],
                         'role_id' => $user['role_id'],
-                        'nip' => $user['nip']
+                        'nip' => $user['nip'],
+                        'divisi' => $user['id_divisi']
                     ];
 
                     $this->session->set_userdata($data);
@@ -47,6 +48,7 @@ class Login extends CI_Controller
                         'username' => $user['username'],
                         'role_id' => $user['role_id'],
                         'nip' => $user['nip'],
+                        'divisi' => $user['id_divisi']
                     ];
 
                     $this->session->set_userdata($data);
@@ -56,6 +58,7 @@ class Login extends CI_Controller
                         'username' => $user['username'],
                         'role_id' => $user['role_id'],
                         'nip' => $user['nip'],
+                        'divisi' => $user['id_divisi']
                     ];
 
                     $this->session->set_userdata($data);
@@ -65,6 +68,7 @@ class Login extends CI_Controller
                         'username' => $user['username'],
                         'role_id' => $user['role_id'],
                         'nip' => $user['nip'],
+                        'divisi' => $user['id_divisi']
                     ];
 
                     $this->session->set_userdata($data);
@@ -88,6 +92,8 @@ class Login extends CI_Controller
     {
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('role_id');
+        $this->session->unset_userdata('nip');
+        $this->session->unset_userdata('divisi');
         $this->session->set_flashdata('message', '<div class="alert alert-warning text-white" role="alert">Anda telah logout!</div>');
         redirect('home/Login');
     }

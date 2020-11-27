@@ -31,29 +31,29 @@
               <h3 class="card-title">Update Daily Monitoring</h3>
             </div>
             <!-- /.card-header -->
-            <form role="form">
+            <form role="form" action="<?php echo base_url('Monitoring/monitoring_tambah/' . $id); ?>" method="post">
               <div class="card-body">
                 <div class="form-group">
-                  <textarea class="form-control" rows="3" placeholder="Tuliskan evaluasi" required></textarea>
+                  <textarea class="form-control" name="evaluasi" rows="3" placeholder="Tuliskan evaluasi" required></textarea>
                 </div>
                 <div class="form-group">
-                  <select name="hasil" class="form-control" required>
+                  <select name="status" class="form-control" required>
                     <option>Status...</option>
                     <option value="Pending">Pending</option>
                     <option value="Approve">Approve</option>
                   </select>
                 </div>
                 <div class="form-group">
-                  <select name="hasil" class="form-control" required>
+                  <select name="urgensi" class="form-control" required>
                     <option selected>Urgensi...</option>
-                    <option value="#">Top</option>
-                    <option value="#">Middle</option>
-                    <option value="#">Low</option>
+                    <option value="Top">Top</option>
+                    <option value="Middle">Middle</option>
+                    <option value="Low">Low</option>
                   </select>
                 </div>
               </div>
               <div class="card-footer">
-                <a href="#" class="btn btn-primary">Submit</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
                 <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                 <a href="<?php echo base_url('Monitoring/monitoring_daily') ?>" class="btn btn-secondary">Cancel</a>
               </div>
