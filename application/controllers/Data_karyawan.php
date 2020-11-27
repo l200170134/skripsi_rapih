@@ -64,6 +64,7 @@ class Data_karyawan extends CI_Controller
         $data['judul'] = 'Data Karyawan';
         $where = array('id_user' => $id_user);
         $data['update'] = $this->hrd_model->update($where, 'user')->result();
+        
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -77,11 +78,51 @@ class Data_karyawan extends CI_Controller
     {
         $id_user        = $this->input->post('id_user');
         $nama           = $this->input->post('nama');
+        $nip            = $this->input->post('nip');
         $id_divisi      = $this->input->post('id_divisi');
+        $username       = $this->input->post('username');
+        $password       = $this->input->post('password');
+        $role_id        = $this->input->post('role_id');
+        $is_active      = $this->input->post('is_active');
+        $email          = $this->input->post('email');
+
+        $tempat_lahir   = $this->input->post('tempat_lahir');
+        $tgl_lahir      = $this->input->post('tgl_lahir');
+        $no_hp          = $this->input->post('no_hp');
+        $no_hp_kel      = $this->input->post('no_hp_kel');
+        $bank           = $this->input->post('bank');
+        $no_rek         = $this->input->post('no_rek');
+        $npwp           = $this->input->post('npwp');
+        $perusahaan     = $this->input->post('perusahaan');
+        $office         = $this->input->post('office');
+        $pernikahan     = $this->input->post('pernikahan');
+        $alamat         = $this->input->post('alamat');
+        $alamat_ktp     = $this->input->post('alamat_ktp');
+        $jabatan        = $this->input->post('jabatan');        
 
         $data = array(
-            'nama'      => $nama,
-            'id_divisi' => $id_divisi, 
+            'nama'          => $nama,
+            'nip'           => $nip,
+            'id_divisi'     => $id_divisi,
+            'username'      => $username,
+            'password'      => $password,
+            'role_id'       => $role_id,
+            'is_active'     => $is_active,
+            'email'         => $email,
+
+            'tempat_lahir'  => $tempat_lahir,
+            'tgl_lahir'     => $tgl_lahir,
+            'no_hp'         => $no_hp,
+            'no_hp_kel'     => $no_hp_kel,
+            'bank'          => $bank,
+            'no_rek'        => $no_rek,
+            'npwp'          => $npwp,
+            'perusahaan'    => $perusahaan,
+            'office'        => $office,
+            'pernikahan'    => $pernikahan,
+            'alamat'        => $alamat,
+            'alamat_ktp'    => $alamat_ktp,
+            'jabatan'       => $jabatan, 
         );
 
         $where = array(
@@ -127,19 +168,19 @@ class Data_karyawan extends CI_Controller
             'is_active'     => $is_active,
             'email'         => $email,
 
-            'tempat_lahir'           => $tempat_lahir,
-            'tgl_lahir'           => $tgl_lahir,
-            'no_hp'           => $no_hp,
-            'no_hp_kel'           => $no_hp_kel,
-            'bank'           => $bank,
-            'no_rek'           => $no_rek,
-            'npwp'           => $npwp,
-            'perusahaan'           => $perusahaan,
-            'office'           => $office,
-            'pernikahan'           => $pernikahan,
-            'alamat'           => $alamat,
-            'alamat_ktp'           => $alamat_ktp,
-            'jabatan'           => $jabatan,
+            'tempat_lahir'  => $tempat_lahir,
+            'tgl_lahir'     => $tgl_lahir,
+            'no_hp'         => $no_hp,
+            'no_hp_kel'     => $no_hp_kel,
+            'bank'          => $bank,
+            'no_rek'        => $no_rek,
+            'npwp'          => $npwp,
+            'perusahaan'    => $perusahaan,
+            'office'        => $office,
+            'pernikahan'    => $pernikahan,
+            'alamat'        => $alamat,
+            'alamat_ktp'    => $alamat_ktp,
+            'jabatan'       => $jabatan,
         );
 
         $this->hrd_model->input($data, 'user');

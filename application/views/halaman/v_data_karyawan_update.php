@@ -29,7 +29,7 @@
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">From Tambah Karyawan</h3>
+                                <h3 class="card-title">Form Update Data Karyawan</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
@@ -44,8 +44,19 @@
                                             <input type="text" class="form-control" name="nama" value="<?php echo $ud->nama; ?>" >
                                         </div>
                                         <div class="form-group">
+                                        <label for="nama">Tempat, Tanggal Lahir</label>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-12">
+                                                <input type="text" class="form-control" name="tempat_lahir" value="<?php echo $ud->tempat_lahir; ?>">
+                                                </div>
+                                                <div class="col-lg-6 col-12">
+                                                <input type="date" class="form-control" name="tgl_lahir" value="<?php echo $ud->tgl_lahir; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label>NIP</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Nomor Induk Pegawai">
+                                            <input type="text" class="form-control" name="nip" value="<?php echo $ud->nip; ?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Divisi</label>
@@ -68,52 +79,81 @@
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
+                                         <div class="form-group">
+                                            <label>Jabatan</label>                                                                 
+                                            <select class="form-control" name="jabatan">
+                                                <option value="Staff"<?php echo ($ud->jabatan == 'Staff' ? ' selected' : ''); ?>>Staff</option>
+                                                <option value="Asisten Manajer"<?php echo ($ud->jabatan == 'Asisten Manajer' ? ' selected' : ''); ?>>Asisten Manajer</option>
+                                                <option value="Manajer"<?php echo ($ud->jabatan == 'Manajer' ? ' selected' : ''); ?>>Manajer</option>
+                                                <option value="Direksi"<?php echo ($ud->jabatan == 'Direksi' ? ' selected' : ''); ?>>Direksi</option>
+                                            </select>
+                                            
+                                        </div>
                                         <div class="form-group">
                                             <label for="no_hp">No. HP</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Nomor HP anda">
+                                            <input type="text" class="form-control" name="no_hp" value="<?php echo $ud->no_hp; ?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="no_keluarga">No. HP Keluarga</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Nomor HP Keluarga anda">
+                                            <input type="text" class="form-control" name="no_hp_kel" value="<?php echo $ud->no_hp_kel; ?>">
                                         </div>
+                                        <div class="form-group">
+                                            <label for="rekening">Bank</label>
+                                            <select name="bank" class="form-control">
+                                                <option value="">-- Pilih --</option>
+                                                <option value="BNI">BNI</option>
+                                                <option value="BRI">BRI</option>
+                                                <option value="MANDIRI">MANDIRI</option>
+                                                <option value="PERMATA">PERMATA</option>
+                                                <option value="BANK JATENG">BANK JATENG</option>
+                                                <option value="BCA">BCA</option>
+                                            </select>
+                                        </div>                   
                                         <div class="form-group">
                                             <label for="rekening">No. Rekening</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Nomor Rekening Anda">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="npwp">NPWP</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Nomor NPWP Anda">
+                                            <input type="text" class="form-control" name="no_rek" placeholder="Masukkan Nomor Rekening Anda">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control" name="" placeholder="Masukkan alamat email anda">
+                                            <input type="email" class="form-control" name="email" value="<?php echo $ud->email; ?>">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="ttl">Tempat, Tanggal Lahir</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Tempat Tanggal Lahir">
-                                        </div>
+
                                     </div>
                                     <!-- End form bagian kiri -->
 
                                     <!-- form bagian kanan -->
+                                    
                                     <div class="col-lg-6 col-12 pl-3 pr-3">
                                         <div class="form-group">
+                                            <label for="npwp">NPWP</label>
+                                            <input type="text" class="form-control" name="npwp" value="<?php echo $ud->tempat_lahir; ?>">
+                                        </div>
+                                         <div class="form-group">
                                             <label for="ttl">Perusahaan</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Nama Perusahaan">
+                                            <select name="perusahaan" class="form-control">
+                                                <option value="">-- Pilih --</option>
+                                                <option value="PT. Sinar Grafindo">PT. Sinar Grafindo</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="ttl">Office</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Nama Perusahaan">
+                                            <select name="office" class="form-control">
+                                                <option value="">-- Pilih --</option>
+                                                <option value="Bandung">Bandung</option>
+                                                <option value="Tangerang">Tangerang</option>
+                                                <option value="Solo">Solo</option>
+                                                <option value="Surabaya">Surabaya</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Status Pernikahan</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="pernikahan">
                                                 <option>-- Pilih --</option>
                                                 <option>Menikah</option>
                                                 <option>Belum Menikah</option>
                                             </select>
                                         </div>
-                                        <div class="form-group pb-2 border-bottom border-dark">
+                                        <div class="form-group pb-2">
                                             <div class="row">
                                                 <div class="col-lg-4 col-12">
                                                     <label>Status Karyawan</label>
@@ -135,11 +175,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat Tinggal</label>
-                                            <textarea class="form-control" rows="3" placeholder="Masukkan Alamat Tinggal Sekarang..." name=""></textarea>
+                                            <textarea class="form-control" rows="2" value="<?php echo $ud->alamat; ?>" name="alamat"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat di KTP</label>
-                                            <textarea class="form-control" rows="3" placeholder="Masukkan Alamat Tinggal Sesuai KTP..." name=""></textarea>
+                                            <textarea class="form-control" rows="2" value="<?php echo $ud->alamat_ktp; ?>" name="alamat_ktp"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="upload_foto">Upload Foto</label>
@@ -159,9 +199,9 @@
                         </div>
                         <!-- /.card -->
                         <!-- New Card -->
-                        <div class="card card-primary">
+                        <div class="card card-secondary">
                             <div class="card-header">
-                                <h3 class="card-title">From Tambah Karyawan</h3>
+                                <h3 class="card-title">Form User Access</h3>
                             </div>
                             <!-- New Card Body -->
                             <div class="card-body">
@@ -171,11 +211,11 @@
                                     <div class="col-lg-6 col-12 pl-3 pr-3">
                                         <div class="form-group">
                                             <label for="ttl">Username</label>
-                                            <input type="text" class="form-control" name="" placeholder="Format: Nama + Tanggal Lahir">
+                                            <input type="text" class="form-control" name="username" value="<?php echo $ud->username; ?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="ttl">Password</label>
-                                            <input type="text" class="form-control" name="" placeholder="Masukkan Password">
+                                            <input type="password" class="form-control" name="password" value="<?php echo $ud->password; ?>">
                                         </div>
                                     </div>
                                     <!-- End New Left Colum -->
@@ -183,7 +223,7 @@
                                     <div class="col-lg-6 col-12 pl-3 pr-3">
                                         <div class="form-group">
                                             <label for="ttl">Hak Akses</label>
-                                            <select class="form-control" name="">
+                                            <select class="form-control" name="role_id">
                                                 <option>Pilih Hak Akses</option>
                                                 <option value="1">Karyawan</option>
                                                 <option value="2">Leader</option>
@@ -193,7 +233,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="ttl">Aktivasi</label>
-                                            <select class="form-control" name="">
+                                            <select class="form-control" name="is_active">
                                                 <option>Pilih Aktivasi</option>
                                                 <option value="1">Aktiv</option>
                                                 <option value="0">Tidak Aktiv</option>

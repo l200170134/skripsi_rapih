@@ -51,7 +51,7 @@
                                                 <input type="text" class="form-control" placeholder="Masukkan Tempat Lahir" name="tempat_lahir">
                                                 </div>
                                                 <div class="col-lg-6 col-12">
-                                                <input type="date" class="form-control" name="tgl_lahir">
+                                                <input type="date" class="form-control" name="tgl_lahir" value="<?php echo date('Y-m-d',); ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -78,15 +78,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Jabatan</label> 
-                                                                                                                                 
                                             <select class="form-control" name="jabatan">
-                                                <option>-- Pilih --</option>
-                                                <option>Staff</option>
-                                                <option>Asisten Manajer</option>
-                                                <option>Manajer</option>
-                                                <option>Direksi</option>
-                                            </select>
-                                            
+                                                <option>--Pilih--</option>
+                                                <?php 
+                                                    $jabatan = $this->db->get('tb_jabatan')->result_array();
+                                                    foreach ($jabatan as $jb):
+                                                 ?>
+                                                <option value="<?php echo $jb['jabatan']; ?>"><?php echo $jb['jabatan']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>                                            
                                         </div>
                                         <div class="form-group">
                                             <label for="no_hp">No. HP</label>
@@ -99,13 +99,14 @@
                                         <div class="form-group">
                                             <label for="rekening">Bank</label>
                                             <select name="bank" class="form-control">
-                                                <option value="">-- Pilih --</option>
-                                                <option value="BNI">BNI</option>
-                                                <option value="BRI">BRI</option>
-                                                <option value="MANDIRI">MANDIRI</option>
-                                                <option value="PERMATA">PERMATA</option>
-                                                <option value="BANK JATENG">BANK JATENG</option>
-                                                <option value="BCA">BCA</option>
+                                                <option>-Pilih--</option>
+                                            <?php 
+                                                $bank = $this->db->get('tb_bank')->result_array();
+                                                foreach ($bank as $bk):?>
+                                                <option value="<?php echo $bk['bank']; ?>"><?php echo $bk['bank']; ?></option>
+                                            <?php 
+                                                endforeach;
+                                             ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -129,17 +130,24 @@
                                             <label for="ttl">Perusahaan</label>
                                             <select name="perusahaan" class="form-control">
                                                 <option value="">-- Pilih --</option>
-                                                <option value="PT. Sinar Grafindo">PT. Sinar Grafindo</option>
+                                                <?php 
+                                                    $perusahaan = $this->db->get('tb_perusahaan')->result_array();
+                                                    foreach ($perusahaan as $ph):
+                                                 ?>
+                                                <option><?php echo $ph['perusahaan']; ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="ttl">Office</label>
                                             <select name="office" class="form-control">
                                                 <option value="">-- Pilih --</option>
-                                                <option value="Bandung">Bandung</option>
-                                                <option value="Tangerang">Tangerang</option>
-                                                <option value="Solo">Solo</option>
-                                                <option value="Surabaya">Surabaya</option>
+                                                <?php 
+                                                    $office = $this->db->get('tb_office')->result_array();
+                                                    foreach ($office as $of):
+                                                 ?>
+                                                <option value="<?php echo $of['office']; ?>"><?php echo $of['office']; ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
