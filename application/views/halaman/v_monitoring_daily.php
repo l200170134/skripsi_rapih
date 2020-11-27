@@ -77,7 +77,7 @@
                                                         echo $ev['evaluasi'];
                                                 ?>
                                                         <br>
-                                                        <p style="font-size:12px; font-weight:bold;" class="mb-0 text-info"><?php echo $ev['penulis']; ?></p>
+                                                        <p style="font-size:12px; font-weight:bold;" class="mb-0 text-info">Oleh: <?php echo $ev['penulis']; ?></p>
                                                 <?php } else {
                                                     }
                                                 endforeach; ?>
