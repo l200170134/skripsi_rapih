@@ -51,7 +51,7 @@
                                                 <input type="text" class="form-control" placeholder="Masukkan Tempat Lahir" name="tempat_lahir">
                                                 </div>
                                                 <div class="col-lg-6 col-12">
-                                                <input type="date" class="form-control" name="tgl_lahir" value="<?php echo date('Y-m-d',); ?>">
+                                                <input type="date" class="form-control" name="tgl_lahir" value=" <?php echo date("d-m-Y") ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -113,15 +113,15 @@
                                             <label for="rekening">No. Rekening</label>
                                             <input type="text" class="form-control" name="no_rek" placeholder="Masukkan Nomor Rekening Anda">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="email" class="form-control" name="email" placeholder="Masukkan alamat email anda">
-                                        </div>
                                     </div>
                                     <!-- End form bagian kiri -->
 
                                     <!-- form bagian kanan -->
                                     <div class="col-lg-6 col-12 pl-3 pr-3">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" name="email" placeholder="Masukkan alamat email anda">
+                                        </div>
                                         <div class="form-group">
                                             <label for="npwp">NPWP</label>
                                             <input type="text" class="form-control" name="npwp" placeholder="Masukkan Nomor NPWP Anda">
@@ -158,26 +158,6 @@
                                                 <option>Belum Menikah</option>
                                             </select>
                                         </div>
-                                        <div class="form-group pb-2">
-                                            <div class="row">
-                                                <div class="col-lg-4 col-12">
-                                                    <label>Status Karyawan</label>
-                                                    <select class="form-control">
-                                                        <option>-- Pilih --</option>
-                                                        <option>PKWT</option>
-                                                        <option>PKWTT</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-lg-4 col-12">
-                                                    <p class="mb-2">Tanggal Mulai</p>
-                                                    <input type="date" class="form-control" name="">
-                                                </div>
-                                                <div class="col-lg-4 col-12">
-                                                    <p class="mb-2">Tanggal Akhir</p>
-                                                    <input type="date" class="form-control" name="">
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="form-group">
                                             <label>Alamat Tinggal</label>
                                             <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sekarang..." name="alamat"></textarea>
@@ -190,7 +170,7 @@
                                             <label for="upload_foto">Upload Foto</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" name="">
+                                                    <input type="file" class="custom-file-input" name="image">
                                                     <label class="custom-file-label" for="upload_foto">Choose file</label>
                                                 </div>
                                             </div>
@@ -250,7 +230,7 @@
 
                                 <div class="card-footer d-flex justify-content-center m-2">
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-secondary ml-2">Cancel</button>
+
                                 </div>
                                 <!--             </form>  -->
                             </div>

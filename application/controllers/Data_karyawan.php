@@ -18,7 +18,7 @@ class Data_karyawan extends CI_Controller
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
-        $this->load->view('_partials/sidebar',  $data);
+        $this->load->view('_partials/sidebar', $data);
         $this->load->view('halaman/v_data_karyawan', $data);
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
@@ -57,12 +57,12 @@ class Data_karyawan extends CI_Controller
         $this->load->view('_partials/js');
     }
 
-    public function update_data_karyawan($id_user)
+    public function update_data_karyawan($nip)
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Karyawan';
-        $where = array('id_user' => $id_user);
+        $where = array('nip' => $nip);
         $data['update'] = $this->hrd_model->update($where, 'user')->result();
         
 
@@ -101,15 +101,15 @@ class Data_karyawan extends CI_Controller
         $jabatan        = $this->input->post('jabatan');        
 
         $data = array(
-            'nama'          => $nama,
             'nip'           => $nip,
-            'id_divisi'     => $id_divisi,
             'username'      => $username,
             'password'      => $password,
             'role_id'       => $role_id,
             'is_active'     => $is_active,
+            'nama'          => $nama,
+            'id_divisi'     => $id_divisi,
+            'image'         => $image,
             'email'         => $email,
-
             'tempat_lahir'  => $tempat_lahir,
             'tgl_lahir'     => $tgl_lahir,
             'no_hp'         => $no_hp,
@@ -122,11 +122,11 @@ class Data_karyawan extends CI_Controller
             'pernikahan'    => $pernikahan,
             'alamat'        => $alamat,
             'alamat_ktp'    => $alamat_ktp,
-            'jabatan'       => $jabatan, 
+            'jabatan'       => $jabatan,
         );
 
         $where = array(
-            'id_user'        => $id_user
+            'nip'        => $nip
         );
 
         $this->hrd_model->update_proses($where, $data, 'user');
@@ -145,7 +145,8 @@ class Data_karyawan extends CI_Controller
         $email      = $this->input->post('email');
 
         $tempat_lahir = $this->input->post('tempat_lahir');
-        $tgl_lahir        = $this->input->post('tgl_lahir');
+        $tgl_lahir  = $this->input->post('tgl_lahir');
+        $tgl_lahir  = date('d-m-Y', strtotime($tgl_lahir));
         $no_hp      = $this->input->post('no_hp');
         $no_hp_kel  = $this->input->post('no_hp_kel');
         $bank       = $this->input->post('bank');
@@ -157,17 +158,18 @@ class Data_karyawan extends CI_Controller
         $alamat     = $this->input->post('alamat');
         $alamat_ktp = $this->input->post('alamat_ktp');
         $jabatan    = $this->input->post('jabatan');
+        $image      = $this->input->post('image');
 
         $data = array(
-            'nama'          => $nama,
             'nip'           => $nip,
-            'id_divisi'     => $id_divisi,
             'username'      => $username,
             'password'      => $password,
             'role_id'       => $role_id,
             'is_active'     => $is_active,
+            'nama'          => $nama,
+            'id_divisi'     => $id_divisi,
+            'image'         => $image,
             'email'         => $email,
-
             'tempat_lahir'  => $tempat_lahir,
             'tgl_lahir'     => $tgl_lahir,
             'no_hp'         => $no_hp,
