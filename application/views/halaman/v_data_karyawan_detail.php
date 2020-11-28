@@ -94,7 +94,7 @@ $level_akses = $this->session->userdata('role_id');
                                                 <td align="center"><a href="<?php echo base_url('Kinerja') ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja">Lihat</a></td>
                                                 <td align="center">
                                                     <div class="btn-group">
-                                                        <a href="<?php echo base_url('Data_pribadi') ?>" class="btn btn-success btn-sm" title="Lihat Detail"><i class="fas fa-eye" style="color:white;"></i></a>
+                                                        <?php  echo anchor('Data_pribadi/'.$dv['nip'],'<div class="btn btn-success"><i class="fas fa-eye" style="color:white;"></i></div>'); ?>
 
                                                         <?php  echo anchor('Data_karyawan/update_data_karyawan/'.$dv['nip'],'<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
 

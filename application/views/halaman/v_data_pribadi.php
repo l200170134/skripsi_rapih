@@ -23,9 +23,9 @@ $level_akses = $this->session->userdata('role_id');
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
     <section class="content">
+<?php foreach ($karyawan as $kar): ?>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -39,8 +39,16 @@ $level_akses = $this->session->userdata('role_id');
                                     <img class="profile-img img-fluid img-circle img-lg" src="<?php echo base_url('assets/dist/img/user4-128x128.jpg') ?>" alt="User profile picture">
                                 </div>
                                 <div class="col-lg-6">
-                                    <h5 class="profile-username mb-0 mt-3">Norhadi</h5>
-                                    <p class="text-muted mb-0">Staff Marketing</p>
+                                    <h5 class="profile-username mb-0 mt-3"><?php echo $kar['nama']; ?></h5>
+                                    <p class="text-muted mb-0">
+                                        <?php
+                                            echo $kar['jabatan'];
+                                            echo " - ";
+                                            $get_id = $kar['id_divisi'];
+                                            $divisi = $this->db->get_where('tb_divisi', ['id_divisi' => $get_id])->row_array();
+                                            echo $divisi['divisi'];
+                                        ?>
+                                    </p>
                                     <p class="text-muted">Office Solo</p>
                                 </div>
                                 <div class="col-lg-2">
@@ -114,6 +122,8 @@ $level_akses = $this->session->userdata('role_id');
             </div>
         </div>
     </section>
+
+<?php endforeach; ?>
 
     <?php if ($level_akses == 3) { ?>
         <section class="content">
@@ -198,6 +208,7 @@ $level_akses = $this->session->userdata('role_id');
             </div>
         </section>
         <!-- /.content -->
+
 
     <?php } else {
     } ?>

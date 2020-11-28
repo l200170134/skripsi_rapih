@@ -107,11 +107,11 @@
                                                     foreach ($bank as $bk):
                                                         if($bk['bank']==$get_bank) {
                                                 ?>
-                                                    <option value=" <?php echo $bk['bank']; ?> " selected> <?php echo $bk['bank']; ?> </option>
+                                                    <option value="<?php echo $bk['bank']; ?>" selected> <?php echo $bk['bank']; ?> </option>
                                                     <?php
                                                         } else { 
                                                      ?>
-                                                     <option value=" <?php echo $bk['bank']; ?> "> <?php echo $bk['bank']; ?> </option>
+                                                     <option value="<?php echo $bk['bank']; ?>"> <?php echo $bk['bank']; ?> </option>
                                                      <?php 
                                                      }
                                                       ?>
@@ -134,22 +134,23 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="npwp">NPWP</label>
-                                            <input type="text" class="form-control" name="npwp" value="<?php echo $ud->tempat_lahir; ?>">
+                                            <input type="text" class="form-control" name="npwp" value="<?php echo $ud->npwp; ?>">
                                         </div>
                                          <div class="form-group">
                                             <label for="ttl">Perusahaan</label>
                                             <select name="perusahaan" class="form-control">
+
                                                 <?php 
                                                     $get_perusahaan = $ud->perusahaan;
                                                     $perusahaan = $this->db->get('tb_perusahaan')->result_array();
                                                     foreach ($perusahaan as $ph):
                                                         if($ph['perusahaan']==$get_perusahaan) {
                                                 ?>
-                                                    <option value="<?php echo $ud->perusahaan; ?>" selected> <?php echo $ph['perusahaan']; ?> </option>
+                                                    <option value="<?php echo $ph['perusahaan']; ?>" selected> <?php echo $ph['perusahaan']; ?> </option>
                                                     <?php
                                                         } else { 
                                                      ?>
-                                                     <option value=" <?php echo $ph['perusahaan']; ?> "> <?php echo $ph['perusahaan']; ?> </option>
+                                                     <option value="<?php echo $ph['perusahaan']; ?>"> <?php echo $ph['perusahaan']; ?> </option>
                                                      <?php 
                                                      }
                                                       ?>
@@ -165,11 +166,11 @@
                                                     foreach ($office as $ofc):
                                                         if($ofc['office']==$get_office) {
                                                 ?>
-                                                    <option value=" <?php echo $ud->office; ?> " selected> <?php echo $ofc['office']; ?> </option>
+                                                    <option value="<?php echo $ofc['office']; ?>" selected> <?php echo $ofc['office']; ?> </option>
                                                     <?php
                                                         } else { 
                                                      ?>
-                                                     <option value=" <?php echo $ofc['office']; ?> "> <?php echo $ofc['office']; ?> </option>
+                                                     <option value="<?php echo $ofc['office']; ?>"> <?php echo $ofc['office']; ?> </option>
                                                      <?php 
                                                      }
                                                       ?>
@@ -186,11 +187,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat Tinggal</label>
-                                            <textarea class="form-control" rows="2" value="<?php echo $ud->alamat; ?>" name="alamat"></textarea>
+                                            <textarea class="form-control" rows="2" name="alamat"><?php echo $ud->alamat; ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat di KTP</label>
-                                            <textarea class="form-control" rows="2" value="<?php echo $ud->alamat_ktp; ?>" name="alamat_ktp"></textarea>
+                                            <textarea class="form-control" rows="2" name="alamat_ktp"><?php echo $ud->alamat_ktp; ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="upload_foto">Upload Foto</label>
@@ -241,10 +242,10 @@
                                                     $role= $this->db->get('user_role')->result_array();
                                                     foreach ($role as $ro):
                                                         if($ro['id_role']==$get_role){ ?>
-                                                            <option value="<?php echo $ud->role_id; ?>" selected><?php echo $ro['nama_role']; ?></option>
+                                                            <option value="<?php echo $ro['id_role']; ?>" selected><?php echo $ro['nama_role']; ?></option>
                                                         <?php 
                                                             } else { ?>
-                                                             <option value="<?php echo $ud->role_id; ?>"><?php echo $ro['nama_role']; ?></option>
+                                                             <option value="<?php echo $ro['id_role']; ?>"><?php echo $ro['nama_role']; ?></option>
                                                         <?php
                                                             }
                                                         ?>   

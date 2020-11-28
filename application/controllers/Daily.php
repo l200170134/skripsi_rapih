@@ -62,7 +62,6 @@ class Daily extends CI_Controller
         $aktivitas  = $this->input->post('aktivitas');
         $hasil      = $this->input->post('hasil');
         $catatan    = $this->input->post('catatan');
-        $evaluasi   = $this->input->post('evaluasi');
         $status     = $this->input->post('status');
         $urgensi    = $this->input->post('urgensi');
 
@@ -72,7 +71,6 @@ class Daily extends CI_Controller
             'aktivitas' => $aktivitas,
             'hasil'     => $hasil,
             'catatan'   => $catatan,
-            'evaluasi'  => $evaluasi,
             'status'    => $status,
             'urgensi'    => $urgensi,
         );
