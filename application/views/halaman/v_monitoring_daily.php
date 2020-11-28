@@ -98,6 +98,8 @@
                                                 <td align="center"><span class="badge badge-warning"><?php echo $dl['urgensi']; ?></span></td>
                                             <?php } else if ($dl['urgensi'] == 'Low') { ?>
                                                 <td align="center"><span class="badge badge-info"><?php echo $dl['urgensi']; ?></span></td>
+                                            <?php } else if ($dl['urgensi'] == 'Selesai') { ?>
+                                                <td align="center"><span class="badge badge-success"><?php echo $dl['urgensi']; ?></span></td>
                                             <?php } else { ?>
                                                 <td align="center"><span class="badge badge-info"></span></td>
                                             <?php } ?>

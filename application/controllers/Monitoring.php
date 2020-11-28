@@ -47,6 +47,8 @@ class Monitoring extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Monitoring';
+        $data['evaluasi'] = $this->db->get_where('tb_evaluasi', ['id_daily' => $id])->row_array();
+        $data['daily'] = $this->db->get_where('tb_ldr_daily', ['id' => $id])->row_array();
         $data['id'] = $id;
 
         $this->load->view('_partials/header');
@@ -57,6 +59,31 @@ class Monitoring extends CI_Controller
         $this->load->view('_partials/js');
     }
 
+    public function monitoring_proses_update($id)
+    {
+        $evaluasi   = $this->input->post('evaluasi');
+        $nama       = $this->session->userdata('username');
+        $status     = $this->input->post('status');
+        $urgensi    = $this->input->post('urgensi');
+        $active     = 1;
+
+        // update tabel evaluasi
+        $this->db->set('evaluasi', $evaluasi);
+        $this->db->where('id_daily', $id);
+        $this->db->update('tb_evaluasi');
+
+        // Update tabel daily
+        $this->db->set('status', $status);
+        $this->db->set('urgensi', $urgensi);
+        $this->db->where('id', $id);
+        $this->db->update('tb_ldr_daily');
+
+        // mendapatkan nip pegawai
+        $nipp = $this->db->get_where('tb_ldr_daily', ['id' => $id])->row_array();
+        $nip = $nipp['nip'];
+        redirect('Monitoring/monitoring_daily/' . $nip);
+    }
+
     public function monitoring_tambah($id)
     {
         $id_daily   = $id;
@@ -64,12 +91,14 @@ class Monitoring extends CI_Controller
         $nama       = $this->session->userdata('username');
         $status     = $this->input->post('status');
         $urgensi    = $this->input->post('urgensi');
+        $active     = 1;
 
         // Insert tabel evaluasi
         $isi_evaluasi = array(
             'id_daily'  => $id_daily,
             'evaluasi'  => $evaluasi,
-            'penulis'   => $nama
+            'penulis'   => $nama,
+            'status'    => $active
         );
         $this->db->insert('tb_evaluasi', $isi_evaluasi);
 
