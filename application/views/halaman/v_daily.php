@@ -1,5 +1,6 @@
 <?php
 $level_akses = $this->session->userdata('role_id');
+$nip = $this->session->userdata('nip');
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -36,10 +37,9 @@ $level_akses = $this->session->userdata('role_id');
               <table>
                 <tr>
                   <td class="pr-2"><a href="<?php echo base_url('Daily/daily_form') ?>" class="btn btn-block btn-sm btn-success" style="width: 100px;">New Task</a></td>
-                  <td><a href="<?php echo base_url('Daily/daily_report') ?>" class="btn btn-block btn-sm btn-primary" style="width: 100px;">Report</a></td>
+                  <td><a href="<?php echo base_url('Daily/daily_report/' . $nip) ?>" class="btn btn-block btn-sm btn-primary" style="width: 100px;">Report</a></td>
                 </tr>
               </table>
-
               <br>
               <div class="bungkus p-0" style="overflow: scroll;">
                 <table class="table table-hover table-bordered" style="table-layout: fixed; word-wrap: break-word;">
@@ -76,12 +76,29 @@ $level_akses = $this->session->userdata('role_id');
 
                         <?php
                         if ($level_akses != 2) : ?>
-                          <td><?php echo $dy['evaluasi']; ?></td>
+                          <td>
+                            <?php
+                            foreach ($evaluasi as $ev) :
+                              if ($dy['id'] == $ev['id_daily']) {
+                                echo $ev['evaluasi'];
+                            ?>
+                                <br>
+                                <p style="font-size:12px; font-weight:bold;" class="mb-0 text-info">Oleh: <?php echo $ev['penulis']; ?></p>
+                            <?php } else {
+                              }
+                            endforeach; ?>
+                          </td>
+
                           <td class="pl-3">
                             <?php echo ($dy['status'] == 'Pending' ? '<span class="badge badge-danger">Pending</span>' : ''); ?>
                             <?php echo ($dy['status'] == 'Approve' ? '<span class="badge badge-success">Approve</span>' : ''); ?>
                           </td>
-                          <td class="pl-2"><span class="badge badge-warning" style="color:white;"><?php echo $dy['urgensi']; ?></span></td>
+                          <td class="pl-2">
+                            <?php echo ($dy['urgensi'] == 'Top' ? '<span class="badge badge-danger" style="color:white;">Top</span>' : ''); ?>
+                            <?php echo ($dy['urgensi'] == 'Middle' ? '<span class="badge badge-warning" style="color:white;">Middle</span>' : ''); ?>
+                            <?php echo ($dy['urgensi'] == 'Low' ? '<span class="badge badge-info" style="color:white;">Low</span>' : ''); ?>
+                            <?php echo ($dy['urgensi'] == 'Selesai' ? '<span class="badge badge-success" style="color:white;">Selesai</span>' : ''); ?>
+                          </td>
                         <?php endif; ?>
 
                         <td class="pl-2">

@@ -1,5 +1,6 @@
 <?php
 $nip = $daily['nip'];
+$user =  $user['username'];
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -35,7 +36,7 @@ $nip = $daily['nip'];
             </div>
 
             <?php
-            if ($evaluasi['status'] == 0) { ?>
+            if ($user != $evaluasi['penulis']) { ?>
               <!-- /.card-header -->
               <form role="form" action="<?php echo base_url('Monitoring/monitoring_tambah/' . $id); ?>" method="post">
                 <div class="card-body">
@@ -45,17 +46,17 @@ $nip = $daily['nip'];
                   <div class="form-group">
                     <select name="status" class="form-control" required>
                       <option>Status...</option>
-                      <option value="Pending">Pending</option>
-                      <option value="Approve">Approve</option>
+                      <option value="Pending" <?php echo ($daily['status'] == 'Pending' ? 'selected' : ''); ?>>Pending</option>
+                      <option value="Approve" <?php echo ($daily['status'] == 'Approve' ? 'selected' : ''); ?>>Approve</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <select name="urgensi" class="form-control" required>
                       <option selected>Urgensi...</option>
-                      <option value="Top">Top</option>
-                      <option value="Middle">Middle</option>
-                      <option value="Low">Low</option>
-                      <option value="Selesai">Selesai</option>
+                      <option value="Top" <?php echo ($daily['urgensi'] == 'Top' ? 'selected' : ''); ?>>Top</option>
+                      <option value="Middle" <?php echo ($daily['urgensi'] == 'Middle' ? 'selected' : ''); ?>>Middle</option>
+                      <option value="Low" <?php echo ($daily['urgensi'] == 'Low' ? 'selected' : ''); ?>>Low</option>
+                      <option value="Selesai" <?php echo ($daily['urgensi'] == 'Selesai' ? 'selected' : ''); ?>>Selesai</option>
                     </select>
                   </div>
                 </div>

@@ -40,19 +40,19 @@ $level_akses = $this->session->userdata('role_id');
 
                             <?php if ($level_akses != 4) { ?>
                                 <table>
-                                        <tr>
-                                        <td>     
-                                         <?php foreach ($nama_divisi as $nd) : ?>
-                                            <?php echo anchor('Data_karyawan/tambah_data_karyawan/' . $nd['id_divisi'], '<div class="btn btn-block btn-md btn-success">Tambah</div>'); ?>    
-                                        <?php endforeach; ?>
+                                    <tr>
+                                        <td>
+                                            <?php foreach ($nama_divisi as $nd) : ?>
+                                                <?php echo anchor('Data_karyawan/tambah_data_karyawan/' . $nd['id_divisi'], '<div class="btn btn-block btn-md btn-success">Tambah</div>'); ?>
+                                            <?php endforeach; ?>
                                         </td>
-                                        </tr>
+                                    </tr>
                                 </table>
                             <?php } else if ($level_akses == 4) { ?>
                                 <table>
                                     <tr>
-                                        <td class="pr-2"><a href="<?php echo base_url('Monitoring') ?>" class="btn btn-block btn-md btn-success">Monitoring</a></td>
-                                        <td class="pr-2"><a href="<?php echo base_url('Kinerja') ?>" class="btn btn-block btn-md btn-primary">Kinerja</a></td>
+                                        <td class="pr-2"><a href="<?php echo base_url('Monitoring/monitoring_direksi/' . $id_divisi); ?>" class="btn btn-block btn-md btn-success">Monitoring</a></td>
+                                        <td class="pr-2"><a href="<?php echo base_url('Kinerja/kinerja_direksi/' . $id_divisi) ?>" class="btn btn-block btn-md btn-primary">Kinerja</a></td>
                                     </tr>
                                 </table>
                             <?php } ?>
@@ -94,9 +94,9 @@ $level_akses = $this->session->userdata('role_id');
                                                 <td align="center"><a href="<?php echo base_url('Kinerja') ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja">Lihat</a></td>
                                                 <td align="center">
                                                     <div class="btn-group">
-                                                        <?php  echo anchor('Data_pribadi/'.$dv['nip'],'<div class="btn btn-success"><i class="fas fa-eye" style="color:white;"></i></div>'); ?>
+                                                        <?php echo anchor('Data_pribadi/' . $dv['nip'], '<div class="btn btn-success"><i class="fas fa-eye" style="color:white;"></i></div>'); ?>
 
-                                                        <?php  echo anchor('Data_karyawan/update_data_karyawan/'.$dv['nip'],'<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
+                                                        <?php echo anchor('Data_karyawan/update_data_karyawan/' . $dv['nip'], '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
 
                                                         <a href="" onclick="return confirm('Yakin menghapus data ?')" class="btn btn-danger btn-sm" title="Hapus"><i class="fas fa-trash"></i></a>
                                                     </div>

@@ -26,6 +26,23 @@ class Monitoring extends CI_Controller
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }
+
+    public function monitoring_direksi($id_divisi)
+    {
+        // mengambil data dari database berdasarakan session yang sudah terbentuk
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['judul'] = 'Monitoring';
+        $data['list_user'] = $this->db->get_where('user', ['id_divisi' => $id_divisi])->result_array();
+
+
+        $this->load->view('_partials/header');
+        $this->load->view('_partials/navbar');
+        $this->load->view('_partials/sidebar', $data);
+        $this->load->view('halaman/v_monitoring');
+        $this->load->view('_partials/footer');
+        $this->load->view('_partials/js');
+    }
+
     public function monitoring_daily($nip)
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
@@ -46,8 +63,10 @@ class Monitoring extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $user = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $user = $user['username'];
         $data['judul'] = 'Monitoring';
-        $data['evaluasi'] = $this->db->get_where('tb_evaluasi', ['id_daily' => $id])->row_array();
+        $data['evaluasi'] = $this->db->get_where('tb_evaluasi', ['id_daily' => $id, 'penulis' => $user])->row_array();
         $data['daily'] = $this->db->get_where('tb_ldr_daily', ['id' => $id])->row_array();
         $data['id'] = $id;
 

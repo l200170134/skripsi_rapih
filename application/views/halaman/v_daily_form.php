@@ -39,9 +39,9 @@
                 <input name="nip" type="text" value="<?php echo $nip; ?>" class="form-control" hidden>
                 <input name="hasil" type="text" value="Proses" class="form-control" hidden>
                 <input name="status" type="text" value="Pending" class="form-control" hidden>
-                <input name="catatan" type="text" value="-" class="form-control" hidden>
-                <input name="evaluasi" type="text" value="-" class="form-control" hidden>
-                <input name="urgensi" type="text" value="Not Graded" class="form-control" hidden>
+                <input name="catatan" type="text" value="" class="form-control" hidden>
+                <input name="evaluasi" type="text" value="" class="form-control" hidden>
+                <input name="urgensi" type="text" value="" class="form-control" hidden>
 
                 <div class="form-group">
                   <input name="tgl" type="text" class="form-control" value=" <?php echo date("d-m-Y") ?> " hidden>

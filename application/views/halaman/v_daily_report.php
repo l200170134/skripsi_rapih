@@ -77,20 +77,57 @@ $level_akses = $this->session->userdata('role_id');
                                             <?php endif; ?>
                                         </tr>
                                     </thead>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>6/10/2020</td>
-                                        <td>Membuat invoice permintaan produk kertas A4</td>
-                                        <td>Invoice belum diketahui nominalnya</td>
+
+                                    <tbody>
 
                                         <?php
-                                        if ($level_akses != 2) : ?>
-                                            <td>Minta data permintaan</td>
-                                            <td align="center"><span class="badge badge-danger">Pending</span></td>
-                                            <td align="center"><span class="badge badge-danger">Top</span></td>
-                                        <?php endif; ?>
-                                    </tr>
-                                    <tbody>
+                                        $a = 1;
+                                        foreach ($daily as $dy) : ?>
+                                            <tr>
+                                                <td><?php echo $a++; ?></td>
+                                                <td><?php echo $dy['tgl']; ?></td>
+                                                <td><?php echo $dy['aktivitas']; ?></td>
+                                                <td><?php echo $dy['catatan']; ?></td>
+
+                                                <?php
+                                                if ($level_akses != 2) : ?>
+                                                    <td><?php
+                                                        foreach ($evaluasi as $ev) :
+                                                            if ($dy['id'] == $ev['id_daily']) {
+                                                                echo $ev['evaluasi'];
+                                                        ?>
+                                                                <br>
+                                                                <p style="font-size:12px; font-weight:bold;" class="mb-0 text-info">Oleh: <?php echo $ev['penulis']; ?></p>
+                                                        <?php } else {
+                                                            }
+                                                        endforeach; ?>
+                                                    </td>
+
+                                                    <!-- kolom status -->
+                                                    <?php if ($dy['status'] == 'Pending') { ?>
+                                                        <td align="center" class="pl-1 pr-1"><span class="badge badge-danger"><?php echo $dy['status']; ?></span></td>
+                                                    <?php } else if ($dy['status'] == 'Approve') { ?>
+                                                        <td align="center" class="pl-1 pr-1"><span class="badge badge-success"><?php echo $dy['status']; ?></span></td>
+                                                    <?php } else { ?>
+                                                        <td align="center" class="pl-1 pr-1"><span class="badge badge-danger"></span></td>
+                                                    <?php } ?>
+
+                                                    <!-- kolom urgensi -->
+                                                    <?php if ($dy['urgensi'] == 'Top') { ?>
+                                                        <td align="center" class="pl-1 pr-1"><span class="badge badge-danger"><?php echo $dy['urgensi']; ?></span></td>
+                                                    <?php } else if ($dy['urgensi'] == 'Middle') { ?>
+                                                        <td align="center" class="pl-1 pr-1"><span class="badge badge-warning"><?php echo $dy['urgensi']; ?></span></td>
+                                                    <?php } else if ($dy['urgensi'] == 'Low') { ?>
+                                                        <td align="center" class="pl-1 pr-1"><span class="badge badge-info"><?php echo $dy['urgensi']; ?></span></td>
+                                                    <?php } else if ($dy['urgensi'] == 'Selesai') { ?>
+                                                        <td align="center" class="pl-1 pr-1"><span class="badge badge-success"><?php echo $dy['urgensi']; ?></span></td>
+                                                    <?php } else { ?>
+                                                        <td align="center"><span class="badge badge-info"></span></td>
+                                                    <?php } ?>
+                                                <?php endif; ?>
+                                            </tr>
+                                        <?php endforeach; ?>
+
                                     </tbody>
                                 </table>
                             </div>

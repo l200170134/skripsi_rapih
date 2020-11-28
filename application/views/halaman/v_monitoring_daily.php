@@ -58,11 +58,11 @@
                                             <td><?php echo $dl['aktivitas']; ?></td>
                                             <!-- kolom hasil -->
                                             <?php if ($dl['hasil'] == 'Proses') { ?>
-                                                <td align="center"><span class="badge badge-primary"><?php echo $dl['hasil']; ?></span></td>
+                                                <td align="center" class="pl-1 pr-1"><span class="badge badge-primary"><?php echo $dl['hasil']; ?></span></td>
                                             <?php } else if ($dl['hasil'] == 'Selesai') { ?>
-                                                <td align="center"><span class="badge badge-success"><?php echo $dl['hasil']; ?></span></td>
+                                                <td align="center" class="pl-1 pr-1"><span class="badge badge-success"><?php echo $dl['hasil']; ?></span></td>
                                             <?php } else if ($dl['hasil'] == 'Belum') { ?>
-                                                <td align="center"><span class="badge badge-danger"><?php echo $dl['hasil']; ?></span></td>
+                                                <td align="center" class="pl-1 pr-1"><span class="badge badge-danger"><?php echo $dl['hasil']; ?></span></td>
                                             <?php } else { ?>
                                                 <td align="center"><span class="badge badge-danger"></span></td>
                                             <?php } ?>
@@ -85,26 +85,26 @@
 
                                             <!-- kolom status -->
                                             <?php if ($dl['status'] == 'Pending') { ?>
-                                                <td align="center"><span class="badge badge-danger"><?php echo $dl['status']; ?></span></td>
+                                                <td align="center" class="pl-1 pr-1"><span class="badge badge-danger"><?php echo $dl['status']; ?></span></td>
                                             <?php } else if ($dl['status'] == 'Approve') { ?>
-                                                <td align="center"><span class="badge badge-success"><?php echo $dl['status']; ?></span></td>
+                                                <td align="center" class="pl-1 pr-1"><span class="badge badge-success"><?php echo $dl['status']; ?></span></td>
                                             <?php } else { ?>
-                                                <td align="center"><span class="badge badge-danger"></span></td>
+                                                <td align="center" class="pl-1 pr-1"><span class="badge badge-danger"></span></td>
                                             <?php } ?>
                                             <!-- kolom urgensi -->
                                             <?php if ($dl['urgensi'] == 'Top') { ?>
-                                                <td align="center"><span class="badge badge-danger"><?php echo $dl['urgensi']; ?></span></td>
+                                                <td align="center" class="pl-1 pr-1"><span class="badge badge-danger"><?php echo $dl['urgensi']; ?></span></td>
                                             <?php } else if ($dl['urgensi'] == 'Middle') { ?>
-                                                <td align="center"><span class="badge badge-warning"><?php echo $dl['urgensi']; ?></span></td>
+                                                <td align="center" class="pl-1 pr-1"><span class="badge badge-warning"><?php echo $dl['urgensi']; ?></span></td>
                                             <?php } else if ($dl['urgensi'] == 'Low') { ?>
-                                                <td align="center"><span class="badge badge-info"><?php echo $dl['urgensi']; ?></span></td>
+                                                <td align="center" class="pl-1 pr-1"><span class="badge badge-info"><?php echo $dl['urgensi']; ?></span></td>
                                             <?php } else if ($dl['urgensi'] == 'Selesai') { ?>
-                                                <td align="center"><span class="badge badge-success"><?php echo $dl['urgensi']; ?></span></td>
+                                                <td align="center" class="pl-1 pr-1"><span class="badge badge-success"><?php echo $dl['urgensi']; ?></span></td>
                                             <?php } else { ?>
                                                 <td align="center"><span class="badge badge-info"></span></td>
                                             <?php } ?>
                                             <!-- kolom aksi -->
-                                            <td align="center">
+                                            <td align="center" class="pl-1 pr-1">
                                                 <div class="btn-group">
                                                     <?php echo anchor('Monitoring/monitoring_update/' . $dl['id'], '<div class="btn btn-warning btn-sm"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
                                                 </div>

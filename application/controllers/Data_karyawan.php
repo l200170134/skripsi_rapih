@@ -31,6 +31,7 @@ class Data_karyawan extends CI_Controller
         $data['judul'] = 'Data Karyawan';
         $data['nama_divisi'] = $this->db->get_where('tb_divisi', ['id_divisi' => $id_divisi])->result_array();
         $data['divisi'] = $this->db->get_where('user', ['id_divisi' => $id_divisi])->result_array();
+        $data['id_divisi'] = $id_divisi;
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -64,7 +65,7 @@ class Data_karyawan extends CI_Controller
         $data['judul'] = 'Data Karyawan';
         $where = array('nip' => $nip);
         $data['update'] = $this->hrd_model->update($where, 'user')->result();
-        
+
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -98,7 +99,7 @@ class Data_karyawan extends CI_Controller
         $pernikahan     = $this->input->post('pernikahan');
         $alamat         = $this->input->post('alamat');
         $alamat_ktp     = $this->input->post('alamat_ktp');
-        $jabatan        = $this->input->post('jabatan');        
+        $jabatan        = $this->input->post('jabatan');
 
         $data = array(
             'nip'           => $nip,
@@ -130,7 +131,7 @@ class Data_karyawan extends CI_Controller
         );
 
         $this->hrd_model->update_proses($where, $data, 'user');
-        redirect('Data_karyawan/detail_karyawan/' .$id_divisi);
+        redirect('Data_karyawan/detail_karyawan/' . $id_divisi);
     }
 
     public function detail_karyawan_tambah()

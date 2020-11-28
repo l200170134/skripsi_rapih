@@ -37,6 +37,7 @@
           $this->db->order_by('urutan', 'asc');
           $query = $this->db->get();
           $sidebar = $query->result_array();
+          $id_divisi = $this->session->userdata('id_divisi');
 
           foreach ($sidebar as $sb) :
             $id_sidebar = $sb['sidebar_id'];
