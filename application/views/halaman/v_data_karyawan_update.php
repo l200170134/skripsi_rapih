@@ -44,6 +44,14 @@
                                             <input type="text" class="form-control" name="nama" value="<?php echo $ud->nama; ?>" >
                                         </div>
                                         <div class="form-group">
+                                            <label for="ttl">Jenis Kelamin</label>
+                                            <select class="form-control" name="jk">
+                                                <option>-- Pilih --</option>
+                                                <option value="Laki-Laki"<?php echo ($ud->jk == 'Laki-Laki' ? ' selected' : ''); ?>>Laki-Laki</option>
+                                                 <option value="Perempuan"<?php echo ($ud->jk == 'Perempuan' ? ' selected' : ''); ?>>Perempuan</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                         <label for="nama">Tempat, Tanggal Lahir</label>
                                             <div class="row">
                                                 <div class="col-lg-6 col-12">
@@ -131,6 +139,10 @@
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <input type="email" class="form-control" name="email" value="<?php echo $ud->email; ?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="npwp">NIK</label>
+                                            <input type="text" class="form-control" name="nik" value="<?php echo $ud->nik; ?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="npwp">NPWP</label>

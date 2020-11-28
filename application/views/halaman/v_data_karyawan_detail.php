@@ -33,7 +33,10 @@ $level_akses = $this->session->userdata('role_id');
                         <div class="card-header">
                             <?php foreach ($nama_divisi as $nd) : ?>
                                 <h5>Tabel Karyawan <?php echo $nd['divisi'] ?></h5>
-                            <?php endforeach; ?>
+                                <!-- Variabel Global  -->
+                            <?php
+                                $this->session->set_userdata('id_divisi', $nd['id_divisi']);
+                            endforeach; ?>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -94,11 +97,12 @@ $level_akses = $this->session->userdata('role_id');
                                                 <td align="center"><a href="<?php echo base_url('Kinerja') ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja">Lihat</a></td>
                                                 <td align="center">
                                                     <div class="btn-group">
-                                                        <?php echo anchor('Data_pribadi/' . $dv['nip'], '<div class="btn btn-success"><i class="fas fa-eye" style="color:white;"></i></div>'); ?>
+                                                        <?php echo anchor('Data_pribadi/data_pribadi/' . $dv['nip'], '<div class="btn btn-success"><i class="fas fa-eye" style="color:white;"></i></div>'); ?>
 
                                                         <?php echo anchor('Data_karyawan/update_data_karyawan/' . $dv['nip'], '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
-
-                                                        <a href="" onclick="return confirm('Yakin menghapus data ?')" class="btn btn-danger btn-sm" title="Hapus"><i class="fas fa-trash"></i></a>
+                                                        <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
+                                                            <?php echo anchor('Data_karyawan/hapus_data_karyawan/' . $dv['nip'], '<div class="btn btn-danger"><i class="fas fa-trash" style="color:white;"></i></div>'); ?>
+                                                        </label>
                                                     </div>
                                                 </td>
                                             <?php } else { ?>
