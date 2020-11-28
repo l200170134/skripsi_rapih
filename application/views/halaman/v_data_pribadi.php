@@ -49,14 +49,14 @@ $level_akses = $this->session->userdata('role_id');
                                             echo $divisi['divisi'];
                                         ?>
                                     </p>
-                                    <p class="text-muted">Office Solo</p>
+                                    <p class="text-muted"><?php echo $kar['office']; ?></p>
                                 </div>
                                 <div class="col-lg-2">
-                                    <p class="mb-0"><i class="fas fa-phone-alt mr-3" style="color:#007bff;"></i>082324898695<br></p>
-                                    <p class="mb-0"><i class="fas fa-envelope mr-3" style="color:#007bff;"></i>norhadi@gmail.com<br></p>
+                                    <p class="mb-0"><i class="fas fa-phone-alt mr-3" style="color:#007bff;"></i><?php echo $kar['no_hp']; ?><br></p>
+                                    <p class="mb-0"><i class="fas fa-envelope mr-3" style="color:#007bff;"></i><?php echo $kar['email']; ?><br></p>
                                 </div>
                                 <div class="col-lg-2">
-                                    <p class="mb-0"><i class="fas fa-phone-alt mr-3" style="color:#dc3545;"></i>082324898695<br></p>
+                                    <p class="mb-0"><i class="fas fa-phone-alt mr-3" style="color:#dc3545;"></i><?php echo $kar['no_hp_kel']; ?><br></p>
                                 </div>
                             </div>
                         </div>
@@ -78,19 +78,25 @@ $level_akses = $this->session->userdata('role_id');
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <label class="mb-0">Jenis Kelamin</label>
-                                            <p class="text-muted">Laki-Laki</p>
+                                            <p class="text-muted"><?php echo $kar['jk']; ?></p>
                                             <label class="mb-0">Status Pernikahan</label>
-                                            <p class="text-muted">Belum Kawin</p>
+                                            <p class="text-muted"><?php echo $kar['pernikahan']; ?></p>
                                             <label class="mb-0">Alamat Tinggal</label>
-                                            <p class="text-muted">Ds. Sriwedari RT. 2 RW.1 Kecamatan Jaken, Kabupaten Pati, Jawa Tengah, Indonesi</p>
+                                            <p class="text-muted"><?php echo $kar['alamat']; ?></p>
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="mb-0">Tempat, Tanggal Lahir</label>
-                                            <p class="text-muted">Pati, 21 Februari 1999</p>
+                                            <p class="text-muted">
+                                            <?php 
+                                                echo $kar['tempat_lahir'];
+                                                echo ',';
+                                                echo $kar['tgl_lahir'];
+                                            ?>
+                                            </p>
                                             <label class="mb-0">NIK</label>
-                                            <p class="text-muted">3338564320001</p>
+                                            <p class="text-muted"><?php echo $kar['pernikahan']; ?></p>
                                             <label class="mb-0">Alamat KTP</label>
-                                            <p class="text-muted">Ds. Sriwedari RT. 2 RW.1 Kecamatan Jaken, Kabupaten Pati, Jawa Tengah, Indonesi</p>
+                                            <p class="text-muted"><?php echo $kar['alamat_ktp']; ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -99,19 +105,31 @@ $level_akses = $this->session->userdata('role_id');
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <label class="mb-0">NIP</label>
-                                            <p class="text-muted">MKT-001-2020</p>
+                                            <p class="text-muted"><?php echo $kar['nip']; ?></p>
                                             <label class="mb-0">NPWP</label>
-                                            <p class="text-muted">9984503445</p>
+                                            <p class="text-muted"><?php echo $kar['npwp']; ?></p>
                                             <label class="mb-0">Status</label>
                                             <p class="text-muted">PKWT</p>
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="mb-0">No. Rekening</label>
-                                            <p class="text-muted">BNI/44567534</p>
+                                            <p class="text-muted">
+                                                <?php 
+                                                    echo $kar['bank']; 
+                                                    echo '/';
+                                                    echo $kar['no_rek'];
+                                                ?>
+                                            </p>
                                             <label class="mb-0">Divisi</label>
-                                            <p class="text-muted">Marketing</p>
+                                            <p class="text-muted">
+                                                <?php
+                                                $get_id = $kar['id_divisi'];
+                                                $divisi = $this->db->get_where('tb_divisi', ['id_divisi' => $get_id])->row_array();
+                                                echo $divisi['divisi'];
+                                                ?>
+                                            </p>
                                             <label class="mb-0">Perusahaan</label>
-                                            <p class="text-muted">PT. Sinar Grafindo</p>
+                                            <p class="text-muted"><?php echo $kar['perusahaan']; ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -131,19 +149,41 @@ $level_akses = $this->session->userdata('role_id');
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
+                            <div class="card-header">
+                            <div class="card-title">Akses</div>
+                            </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-3">
                                         <label class="mb-0">Username</label>
-                                        <p class="mb-0">Norhadi</p>
+                                        <p class="mb-0"><?php echo $kar['username']; ?></p>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-3">
                                         <label class="mb-0">Password</label>
-                                        <p class="mb-0">8HA9C0A</p>
+                                        <p class="mb-0"><?php echo $kar['password']; ?></p>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-3">
                                         <label class="mb-0">Level</label>
-                                        <p class="mb-0">Leader HRD</p>
+                                        <p class="mb-0">
+                                            <?php
+                                                $get_id = $kar['role_id'];
+                                                $divisi = $this->db->get_where('user_role', ['id_role' => $get_id])->row_array();
+                                                echo $divisi['nama_role'];
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label class="mb-0">Status Karyawan</label>
+                                        <p class="mb-0">
+                                            <?php 
+                                            $get_id = $kar['is_active'];
+                                            if ($get_id=='0'){
+                                                echo 'Tidak Aktif';
+                                            } else {
+                                                echo 'Aktif';
+                                            }
+                                            ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

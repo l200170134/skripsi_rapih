@@ -56,6 +56,14 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="ttl">Jenis Kelamin</label>
+                                            <select class="form-control" name="jk">
+                                                <option>-- Pilih --</option>
+                                                <option value="Laki-Laki">Laki-Laki</option>
+                                                <option value="Perempuan">Perempuan</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                             <label>NIP</label>
                                             <input type="text" class="form-control" name="nip" placeholder="Masukkan Nomor Induk Pegawai">
                                         </div>
@@ -121,6 +129,10 @@
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <input type="email" class="form-control" name="email" placeholder="Masukkan alamat email anda">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="npwp">NIK</label>
+                                            <input type="text" class="form-control" name="nik" placeholder="Masukkan Nomor NPWP Anda">
                                         </div>
                                         <div class="form-group">
                                             <label for="npwp">NPWP</label>
