@@ -85,7 +85,7 @@ $level_akses = $this->session->userdata('role_id');
                                         foreach ($daily as $dy) : ?>
                                             <tr>
                                                 <td><?php echo $a++; ?></td>
-                                                <td><?php echo $dy['tgl']; ?></td>
+                                                <td><?php echo date('d-m-Y', strtotime($dy['tgl'])); ?></td>
                                                 <td><?php echo $dy['aktivitas']; ?></td>
                                                 <td><?php echo $dy['catatan']; ?></td>
 

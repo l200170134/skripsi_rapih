@@ -29,27 +29,23 @@
                             <h3 class="card-title">Form Daily Journal</h3>
                         </div>
                         <!-- /.card-header -->
-                        <form role="form" action="<?php echo base_url('Jurnal/jurnal_proses_tambah'); ?>" method="post">
+                        <form role="form" action="<?php echo base_url('Jurnal/jurnal_proses_tambah/' . $nip); ?>" method="post">
                             <div class="card-body">
                                 <input name="nip" type="text" class="form-control" value="0" hidden>
                                 <input name="tgl" type="text" class="form-control" value=" <?php echo date("d-m-Y"); ?> " hidden>
                                 <input name="jam" type="text" class="form-control" value=" <?php echo date("H:m:s"); ?> " hidden>
                                 <div class="form-group">
-                                    <input name="aktivitas" type="text" class="form-control" placeholder="Aktivitas">
+                                    <textarea name="aktivitas" rows="3" class="form-control" placeholder="Masukkan aktivitas" required></textarea>
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <a href="<?php echo base_url('Jurnal') ?>" class="btn btn-secondary">Cancel</a>
+                                    <a href="<?php echo base_url('Jurnal/jurnal_list/' . $nip) ?>" class="btn btn-secondary">Cancel</a>
                                 </div>
                         </form>
                     </div>
                 </div>
                 <!-- ./col -->
             </div>
-            <!-- /.row -->
-            <!-- Main row -->
-
-            <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

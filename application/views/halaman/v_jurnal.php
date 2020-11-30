@@ -30,22 +30,30 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body" style="overflow: scroll;">
-                            <table class="table table-bordered table-hover table-sm">
+                            <table class="table table-bordered table-hover table-sm" style="table-layout: fixed; word-wrap: break-word;">
                                 <thead>
                                     <tr align="center">
-                                        <th width="5%">No</th>
-                                        <th width="55%">Nama</th>
-                                        <th width="20%">Foto</th>
-                                        <th width="20%">Aksi</th>
+                                        <th width="50px">No</th>
+                                        <th width="300px">Nama</th>
+                                        <th width="150px">Foto</th>
+                                        <th width="80px">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="p-2">1</td>
-                                        <td class="p-2">Hafidz Al Afaf</td>
-                                        <td></td>
-                                        <td align="center" class="p-2"><a href="<?php echo base_url('Jurnal/jurnal_list') ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye" style="color:white;"></i></a></td>
-                                    </tr>
+                                    <?php
+                                    $a = 1;
+                                    foreach ($karyawan as $kr) :
+                                    ?>
+                                        <tr>
+                                            <td align="center"><?php echo $a++; ?></td>
+                                            <td align="rignt" class="pl-3"><?php echo $kr['nama'] ?></td>
+                                            <td align="center">Foto belum tersedia</td>
+                                            <td align="center" class="p-2"><a href="<?php echo base_url('Jurnal/jurnal_list/' . $kr['nip']) ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye" style="color:white;"></i></a></td>
+                                        </tr>
+
+                                    <?php
+                                    endforeach;
+                                    ?>
                                 </tbody>
                             </table>
 

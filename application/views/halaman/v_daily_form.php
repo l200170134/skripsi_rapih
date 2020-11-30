@@ -44,7 +44,7 @@
                 <input name="urgensi" type="text" value="" class="form-control" hidden>
 
                 <div class="form-group">
-                  <input name="tgl" type="text" class="form-control" value=" <?php echo date("d-m-Y") ?> " hidden>
+                  <input name="tgl" type="text" class="form-control" value=" <?php echo date("Y-m-d") ?> " hidden>
                 </div>
                 <div class="form-group">
                   <textarea name="aktivitas" class="form-control" rows="3" placeholder="Tuliskan rencana aktivitas" required></textarea>

@@ -31,19 +31,17 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body" style="overflow: scroll;">
-                            <table class="table table-bordered table-hover">
+                            <table class="table table-bordered table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                 <thead>
                                     <tr align="center">
-                                    <tr align="center">
-                                        <th width="5%">No</th>
-                                        <th width="25%">Aktivitas</th>
-                                        <th width="5%" align="center">Hasil</th>
-                                        <th width="25%">Catatan</th>
-                                        <th width="25%">Evaluasi</th>
-                                        <th width="5%">Status</th>
-                                        <th width="5%">Urgensi</th>
-                                        <th width="10%">Aksi</th>
-                                    </tr>
+                                        <th width="50px">No</th>
+                                        <th width="250px">Aktivitas</th>
+                                        <th width="70px" align="center">Hasil</th>
+                                        <th width="250px">Catatan</th>
+                                        <th width="250px">Evaluasi</th>
+                                        <th width="70px">Status</th>
+                                        <th width="80px">Urgensi</th>
+                                        <th width="70px">Aksi</th>
                                     </tr>
                                 </thead>
 

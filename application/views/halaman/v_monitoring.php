@@ -52,7 +52,7 @@
                                                 <?php echo anchor('Monitoring/monitoring_daily/' . $ls['nip'], '<div class="btn btn-success btn-sm">Today</div>'); ?>
                                             </td>
                                             <td align="center" class="p-2">
-                                                <a href="<?php echo base_url('Monitoring/monitoring_report   ') ?>" class="btn btn-primary btn-sm">Report</a>
+                                                <a href="<?php echo base_url('Monitoring/monitoring_report/' . $ls['nip']) ?>" class="btn btn-primary btn-sm">Report</a>
                                             </td>
                                         </tr>
                                     <?php

@@ -14,10 +14,10 @@ class Daily extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        // $data['daily'] = $this->leader_model->daily_tampil()->result();
         $data['judul'] = 'Daily Activity';
         $nip = $this->session->userdata('nip');
-        $data['daily'] = $this->db->get_where('tb_ldr_daily', ['nip' => $nip, 'status !=' => 'Approve'])->result_array();
+        $tanggal = date('Y-m-d');
+        $data['daily'] = $this->db->query("SELECT * FROM tb_ldr_daily WHERE (nip = $nip AND status != 'Approve') OR (nip = $nip AND tgl = '$tanggal' ) ORDER BY tgl ASC")->result_array();
         $data['evaluasi'] = $this->db->get('tb_evaluasi')->result_array();
 
         $this->load->view('_partials/header');
@@ -48,7 +48,8 @@ class Daily extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Daily Activity';
         $nip = $this->session->userdata('nip');
-        $data['daily'] = $this->db->get_where('tb_ldr_daily', ['nip' => $nip, 'status' => 'Approve'])->result_array();
+        $tanggal = date('Y-m-d');
+        $data['daily'] = $this->db->query("SELECT * FROM tb_ldr_daily WHERE nip = $nip AND status = 'Approve' AND tgl != '$tanggal' ORDER BY tgl DESC")->result_array();
         $data['evaluasi'] = $this->db->get('tb_evaluasi')->result_array();
 
         $this->load->view('_partials/header');
@@ -62,6 +63,7 @@ class Daily extends CI_Controller
     public function daily_proses_tambah()
     {
         $nip        = $this->input->post('nip');
+        $id_divisi  = $this->session->userdata('divisi');
         $tgl        = $this->input->post('tgl');
         $aktivitas  = $this->input->post('aktivitas');
         $hasil      = $this->input->post('hasil');
@@ -71,6 +73,7 @@ class Daily extends CI_Controller
 
         $data = array(
             'nip'       => $nip,
+            'id_divisi' => $id_divisi,
             'tgl'       => $tgl,
             'aktivitas' => $aktivitas,
             'hasil'     => $hasil,

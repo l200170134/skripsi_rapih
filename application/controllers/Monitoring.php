@@ -47,7 +47,8 @@ class Monitoring extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['daily'] = $this->db->get_where('tb_ldr_daily', ['nip' => $nip])->result_array();
+        $tanggal = date('Y-m-d');
+        $data['daily'] = $this->db->query("SELECT * FROM tb_ldr_daily WHERE (nip = $nip AND status != 'Approve') OR (nip = $nip AND tgl = '$tanggal' ) ORDER BY tgl ASC")->result_array();
         $daily = $this->session->userdata('id_daily');
         $data['evaluasi'] = $this->db->get('tb_evaluasi')->result_array();
         $data['judul'] = 'Monitoring';
@@ -89,6 +90,7 @@ class Monitoring extends CI_Controller
         // update tabel evaluasi
         $this->db->set('evaluasi', $evaluasi);
         $this->db->where('id_daily', $id);
+        $this->db->where('penulis', $nama);
         $this->db->update('tb_evaluasi');
 
         // Update tabel daily
@@ -136,11 +138,14 @@ class Monitoring extends CI_Controller
         redirect('Monitoring/monitoring_daily/' . $nip);
     }
 
-    public function monitoring_report()
+    public function monitoring_report($nip)
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Monitoring';
+        $tanggal = date('Y-m-d');
+        $data['daily'] = $this->db->query("SELECT * FROM tb_ldr_daily WHERE nip = $nip AND status = 'Approve' AND tgl != '$tanggal' ORDER BY tgl DESC")->result_array();
+        $data['evaluasi'] = $this->db->get('tb_evaluasi')->result_array();
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

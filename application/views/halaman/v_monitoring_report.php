@@ -61,8 +61,8 @@
                                 <table class="table table-bordered table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                     <thead>
                                         <tr align="center">
-                                            <th width="40px">No</th>
-                                            <th width="90px">Tanggal</th>
+                                            <th width="50px">No</th>
+                                            <th width="100px">Tanggal</th>
                                             <th width="260px">Aktivitas</th>
                                             <th width="260px">Catatan</th>
                                             <th width="260px">Evaluasi</th>
@@ -70,34 +70,36 @@
                                             <th width="80px">Urgensi</th>
                                         </tr>
                                     </thead>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>6/10/2020</td>
-                                        <td>Membuat invoice permintaan produk kertas A4</td>
-                                        <td>Invoice belum diketahui nominalnya</td>
-                                        <td>Minta data permintaan</td>
-                                        <td align="center"><span class="badge badge-danger">Pending</span></td>
-                                        <td align="center"><span class="badge badge-danger">Top</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>7/10/2020</td>
-                                        <td>Membuat laporan penjualan bulan Oktober</td>
-                                        <td>Laporan belum dimintakan tanda tangan</td>
-                                        <td>Segera konfirmasi ke Kepala Gudang</td>
-                                        <td align="center"><span class="badge badge-primary">Approve</span></td>
-                                        <td align="center"><span class="badge badge-primary">Finish</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>8/10/2020</td>
-                                        <td>Membuat laporan penjualan bulan Oktober</td>
-                                        <td>Laporan belum dimintakan tanda tangan</td>
-                                        <td>Segera konfirmasi ke Kepala Gudang</td>
-                                        <td align="center"><span class="badge badge-danger">Pending</span></td>
-                                        <td align="center"><span class="badge badge-warning">Middle</span></td>
-                                    </tr>
                                     <tbody>
+
+                                        <?php
+                                        $a = 1;
+                                        foreach ($daily as $dy) : ?>
+                                            <tr>
+                                                <td><?php echo $a++; ?></td>
+                                                <td><?php echo date('d-m-Y', strtotime($dy['tgl'])); ?></td>
+
+                                                <td><?php echo $dy['aktivitas']; ?></td>
+                                                <td><?php echo $dy['catatan']; ?></td>
+                                                <td>
+                                                    <?php
+                                                    foreach ($evaluasi as $ev) :
+                                                        if ($dy['id'] == $ev['id_daily']) {
+                                                            echo $ev['evaluasi'];
+                                                    ?>
+                                                            <br>
+                                                            <p style="font-size:12px; font-weight:bold;" class="mb-0 text-info">Oleh: <?php echo $ev['penulis']; ?></p>
+                                                    <?php
+                                                        }
+                                                    endforeach; ?>
+                                                </td>
+
+                                                <td align="center"><span class="badge badge-success"><?php echo $dy['status']; ?></span></td>
+                                                <td align="center"><span class="badge badge-success"><?php echo $dy['urgensi']; ?></span></td>
+                                            </tr>
+                                        <?php
+                                        endforeach;
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

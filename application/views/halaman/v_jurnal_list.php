@@ -30,14 +30,14 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <a href="<?php echo base_url('Jurnal/jurnal_form') ?>" class="btn btn-block btn-sm btn-success mb-3" style="width: 100px;">New Journal</a>
+                            <a href="<?php echo base_url('Jurnal/jurnal_form/' . $nip) ?>" class="btn btn-block btn-sm btn-success mb-3" style="width: 100px;">New Journal</a>
                             <div class="bungkus p-0" style="overflow: scroll;">
-                                <table class="table table-hover" style="table-layout: fixed; word-wrap: break-word;">
+                                <table class="table table-hover table-bordered" style="table-layout: fixed; word-wrap: break-word;">
                                     <tr align="center">
                                         <th width="50px">No</th>
-                                        <th width="50px">NIP</th>
-                                        <th width="350px">Aktivitas</th>
-                                        <th width="80px">Jam</th>
+                                        <th width="60px">NIP</th>
+                                        <th width="300px">Aktivitas</th>
+                                        <th width="90px">Jam</th>
                                         <th width="100px">Tanggal</th>
                                         <th width="60px">Aksi</th>
                                     </tr>
@@ -47,15 +47,13 @@
                                         $no = 1;
                                         foreach ($jurnal as $ju) : ?>
                                             <tr align="center">
-
                                                 <td><?php echo $no++ ?></td>
-                                                <td><a href="<?php echo $ju->nip ?>"><span class="badge badge-primary"><?php echo $ju->nip ?></span></a></td>
-                                                <td><?php echo $ju->aktivitas ?></td>
-                                                <td>Jam error</td>
-                                                <!--                       <td><?php echo $ju->jam ?></td> -->
-                                                <td><?php echo $ju->tgl ?></td>
-                                                <td align="center" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                    <?php echo anchor('Jurnal/jurnal_proses_hapus/' . $ju->id, '<div class="btn btn-danger ml-2"><i class="fas fa-trash"></i></div>'); ?>
+                                                <td><span class="badge badge-primary"><?php echo $ju['nip'] ?></span></td>
+                                                <td align="left" class="pl-3"><?php echo $ju['aktivitas'] ?></td>
+                                                <td><?php echo $ju['jam'] ?></td>
+                                                <td><?php echo $ju['tgl'] ?></td>
+                                                <td align="center" class="pl-1" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
+                                                    <?php echo anchor('Jurnal/jurnal_proses_hapus/' . $ju['id'], '<div class="btn btn-danger ml-2"><i class="fas fa-trash"></i></div>'); ?>
                                                 </td>
                                             <?php endforeach ?>
                                             </tr>
