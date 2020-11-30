@@ -142,7 +142,6 @@ $level_akses = $this->session->userdata('role_id');
     </section>
 
 <?php endforeach; ?>
-
     <?php if ($level_akses == 3) { ?>
         <section class="content">
             <div class="container-fluid">
@@ -203,6 +202,7 @@ $level_akses = $this->session->userdata('role_id');
                             </div>
                             <div class="card-body">
                                 <div class="col-12" style="overflow: scroll;">
+                                <?php echo anchor('Data_pribadi/status_karyawan_form/' . $kar['nip'], '<div class="btn btn-success mb-3">Tambah Data</div>'); ?>
                                     <table class="table table-bordered table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                         <thead>
                                             <tr>
@@ -214,30 +214,34 @@ $level_akses = $this->session->userdata('role_id');
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <?php 
+                                            $no=1;
+                                            foreach ($status as $st): 
+                                            
+                                        ?>
                                             <tr>
-                                                <td>1</td>
-                                                <td>PKWT</td>
-                                                <td>10-10-2020</td>
-                                                <td>10-12-2020</td>
+                                                <input type="text" name="id" hidden>
+                                                <td><?php echo $no++; ?></td>
+                                                <td>
+                                                <?php
+                                                    $get_id = $st['status'];
+                                                    $status = $this->db->get_where('tb_status', ['id' => $get_id])->row_array();
+                                                    echo $status['status'];
+                                                ?>
+                                                </td>
+                                                <td><?php echo $st['tgl_mulai']; ?></td>
+                                                <td><?php echo $st['tgl_akhir']; ?></td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="<?php echo base_url('Status/status_update') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
-                                                        <a href="#" onclick="return confirm('Yakin menghapus data ?')" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></a>
+                                                        <?php echo anchor('Data_pribadi/status_karyawan_update/' . $st['id_status'], '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
+
+                                                        <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
+                                                            <?php echo anchor('Data_pribadi/status_karyawan_hapus/' . $st['id_status'], '<div class="btn btn-danger"><i class="fas fa-trash" style="color:white;"></i></div>'); ?>
+                                                        </label>
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>PKWT</td>
-                                                <td>10-12-2020</td>
-                                                <td>10-02-2021</td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <a href="<?php echo base_url('Status/status_update') ?>" class="btn btn-warning btn-sm" title="Update"><i class="fas fa-edit" style="color:white;"></i></a>
-                                                        <a href="#" onclick="return confirm('Yakin menghapus data ?')" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                           <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>

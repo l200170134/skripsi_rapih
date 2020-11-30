@@ -58,8 +58,12 @@
                                                 <input type="text" class="form-control" name="tempat_lahir" value="<?php echo $ud->tempat_lahir; ?>">
                                                 </div>
                                                 <div class="col-lg-6 col-12">
-                                                <input type="date" class="form-control" name="tgl_lahir" value="<?php echo $ud->tgl_lahir; ?>">
+                                                <input type="date" class="form-control" name="tgl_lahir" value="
+                                                    <?php
+                                                        echo $ud->tgl_lahir;
+                                                    ?>">
                                                 </div>
+
                                             </div>
                                         </div>
                                         <div class="form-group">

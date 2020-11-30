@@ -100,6 +100,7 @@ $level_akses = $this->session->userdata('role_id');
                                                         <?php echo anchor('Data_pribadi/data_pribadi/' . $dv['nip'], '<div class="btn btn-success"><i class="fas fa-eye" style="color:white;"></i></div>'); ?>
 
                                                         <?php echo anchor('Data_karyawan/update_data_karyawan/' . $dv['nip'], '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
+                                                        
                                                         <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
                                                             <?php echo anchor('Data_karyawan/hapus_data_karyawan/' . $dv['nip'], '<div class="btn btn-danger"><i class="fas fa-trash" style="color:white;"></i></div>'); ?>
                                                         </label>

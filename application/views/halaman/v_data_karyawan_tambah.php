@@ -51,7 +51,7 @@
                                                 <input type="text" class="form-control" placeholder="Masukkan Tempat Lahir" name="tempat_lahir">
                                                 </div>
                                                 <div class="col-lg-6 col-12">
-                                                <input type="date" class="form-control" name="tgl_lahir" value=" <?php echo date("d-m-Y") ?>">
+                                                <input type="date" class="form-control" name="tgl_lahir" value="<?php echo date("d-m-Y") ?>">
                                                 </div>
                                             </div>
                                         </div>

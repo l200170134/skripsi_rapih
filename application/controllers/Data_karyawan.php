@@ -89,6 +89,7 @@ class Data_karyawan extends CI_Controller
 
         $tempat_lahir   = $this->input->post('tempat_lahir');
         $tgl_lahir      = $this->input->post('tgl_lahir');
+        $tgl_lahir      = date('d-m-Y', strtotime($tgl_lahir));
         $no_hp          = $this->input->post('no_hp');
         $no_hp_kel      = $this->input->post('no_hp_kel');
         $bank           = $this->input->post('bank');
@@ -99,10 +100,10 @@ class Data_karyawan extends CI_Controller
         $pernikahan     = $this->input->post('pernikahan');
         $alamat         = $this->input->post('alamat');
         $alamat_ktp     = $this->input->post('alamat_ktp');
-        $jabatan        = $this->input->post('jabatan');
+        $jabatan        = $this->input->post('jabatan');  
         $nik            = $this->input->post('nik');
-        $jk             = $this->input->post('jk');
-        $image          = $this->input->post('image');
+        $jk             = $this->input->post('jk');      
+
 
         $data = array(
             'nip'           => $nip,
@@ -201,12 +202,12 @@ class Data_karyawan extends CI_Controller
         $id = $data['id_divisi'];
         redirect('Data_karyawan/detail_karyawan/' . $id);
     }
-    public function hapus_data_karyawan($nip)
-    {
+    public function hapus_data_karyawan($nip) {
         $id_divisi = $this->session->userdata('id_divisi');
-        var_dump($id_divisi);
+        //var_dump($id_divisi);
         $where = array('nip' => $nip);
         $this->hrd_model->delate($where, 'user');
-        redirect('Data_karyawan/detail_karyawan/' . $id_divisi);
+        redirect('Data_karyawan/detail_karyawan/'.$id_divisi);
     }
+
 }
