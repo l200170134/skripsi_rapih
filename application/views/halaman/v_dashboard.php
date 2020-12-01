@@ -1,6 +1,7 @@
 <?php
 $this->load->library('session');
 $level_akses = $this->session->userdata('role_id');
+echo $level_akses;
 
 if ($level_akses == 1) { ?>
     <!-- Dashboard Karyawan -->
