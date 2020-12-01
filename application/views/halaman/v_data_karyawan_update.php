@@ -61,7 +61,8 @@
                                                 <input type="date" class="form-control" name="tgl_lahir" value="
                                                     <?php
                                                         echo $ud->tgl_lahir;
-                                                    ?>">
+                                                    ?>"> 
+                                                <?php echo $ud->tgl_lahir; ?>   
                                                 </div>
 
                                             </div>
