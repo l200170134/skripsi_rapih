@@ -75,6 +75,7 @@ class Monitoring extends CI_Controller
         }
         $data['daily'] = $this->db->get_where('tb_ldr_daily', ['id' => $id])->row_array();
         $data['id'] = $id;
+        $data['role_id'] = $this->session->userdata('role_id');
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
