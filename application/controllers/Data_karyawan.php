@@ -89,7 +89,7 @@ class Data_karyawan extends CI_Controller
 
         $tempat_lahir   = $this->input->post('tempat_lahir');
         $tgl_lahir      = $this->input->post('tgl_lahir');
-        $tgl_lahir      = date('d-m-Y', strtotime($tgl_lahir));
+        $tgl_lahir      = date('Y-m-d', strtotime($tgl_lahir));
         $no_hp          = $this->input->post('no_hp');
         $no_hp_kel      = $this->input->post('no_hp_kel');
         $bank           = $this->input->post('bank');
@@ -155,7 +155,7 @@ class Data_karyawan extends CI_Controller
 
         $tempat_lahir = $this->input->post('tempat_lahir');
         $tgl_lahir  = $this->input->post('tgl_lahir');
-        $tgl_lahir  = date('d-m-Y', strtotime($tgl_lahir));
+        $tgl_lahir  = date('Y-m-d', strtotime($tgl_lahir));
         $no_hp      = $this->input->post('no_hp');
         $no_hp_kel  = $this->input->post('no_hp_kel');
         $bank       = $this->input->post('bank');
