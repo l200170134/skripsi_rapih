@@ -67,11 +67,12 @@ class Monitoring extends CI_Controller
         $user = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $user = $user['username'];
         $data['judul'] = 'Monitoring';
+
         $evaluasi = $this->db->get_where('tb_evaluasi', ['id_daily' => $id, 'penulis' => $user]);
-        if ($evaluasi->num_rows() < 1) {
-            echo "kurang dari satu";
-        } else {
+        if ($evaluasi->num_rows() > 0) {
             $data['evaluasi'] = $this->db->get_where('tb_evaluasi', ['id_daily' => $id, 'penulis' => $user])->row_array();
+        } else {
+            $data['evaluasi'] = array('status' => 0, 'penulis' => 'null');
         }
         $data['daily'] = $this->db->get_where('tb_ldr_daily', ['id' => $id])->row_array();
         $data['id'] = $id;
