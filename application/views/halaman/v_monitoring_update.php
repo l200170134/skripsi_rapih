@@ -36,7 +36,7 @@ $user =  $user['username'];
             </div>
 
             <?php
-            if ($user != $evaluasi['penulis']) { ?>
+            if ($daily['urgensi'] == '') { ?>
               <!-- /.card-header -->
               <form role="form" action="<?php echo base_url('Monitoring/monitoring_tambah/' . $id); ?>" method="post">
                 <div class="card-body">

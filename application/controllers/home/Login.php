@@ -32,7 +32,6 @@ class Login extends CI_Controller
         if ($user) {
             // usernya ditemukan
             if ($user['password'] == $password) { //cek apakah passwordnya sama
-
                 if ($user['role_id'] == 1) {
                     $data = [
                         'username' => $user['username'],
