@@ -157,7 +157,9 @@ class Daily extends CI_Controller
     {
         $where = array('id' => $id);
         $this->leader_model->daily_hapus($where, 'tb_ldr_daily');
-        redirect("Daily");
+        $nip=$this->session->userdata('nip');
+        $link=$this->session->userdata('link');
+        redirect("Daily/index/" .$nip.'/'.$link);
     }
 
     public function daily_update($id)
