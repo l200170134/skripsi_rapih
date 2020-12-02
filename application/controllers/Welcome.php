@@ -20,7 +20,6 @@ class Welcome extends CI_Controller
 	 */
 	public function index()
 	{
-		$this->load->library('session');
 		$this->session->set_flashdata('message', '<div class="alert alert-info" role="alert">Masukkan Username dan Password</div>');
 		$this->load->view('home/Login');
 	}

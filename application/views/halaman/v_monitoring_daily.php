@@ -30,7 +30,7 @@
                             <h3 class="card-title">Monitoring Daily</h3>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body" style="overflow: scroll;">
+                        <div class="card-body mb-2" style="overflow: scroll;">
                             <table class="table table-bordered table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                 <thead>
                                     <tr align="center">
@@ -51,7 +51,7 @@
                                     foreach ($daily as $dl) :
                                     ?>
                                         <tr>
-                                            <td><?php echo $a++; ?></td>
+                                            <td><?php echo ++$start; ?></td>
                                             <!-- kolom aktifitas -->
                                             <td><?php echo $dl['aktivitas']; ?></td>
                                             <!-- kolom hasil -->
@@ -114,6 +114,9 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        <!-- PAGINATION -->
+                        <?php echo $this->pagination->create_links();  ?>
                     </div>
                 </div>
                 <!-- ./col -->

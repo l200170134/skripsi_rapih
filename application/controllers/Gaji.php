@@ -6,7 +6,6 @@ class Gaji extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
         cek_login();
     }
 
@@ -15,8 +14,8 @@ class Gaji extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Gaji';
-        
-        $nip = $this->session->userdata('nip_gaji');
+        $nip = $this->session->userdata('nip');
+        $data['nip'] = $nip;
         $data['gaji'] = $this->hrd_model->hrd_view_gaji($nip)->result();
 
         $this->load->view('_partials/header');
@@ -129,7 +128,7 @@ class Gaji extends CI_Controller
     public function gaji_hapus_proses($id_gaji)
     {
         $nip = $this->session->userdata('nip_gaji');
-        $this->session->unset_userdata('nip_gaji');
+        //$this->session->unset_userdata('nip_gaji');
         //var_dump($id_divisi);
         $where = array('id_gaji' => $id_gaji);
         $this->hrd_model->delate($where, 'tb_gaji');

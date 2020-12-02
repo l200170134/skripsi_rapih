@@ -34,18 +34,20 @@ $nip = $this->session->userdata('nip');
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <div class="row">
-                <div class="col-md-2 col-12">
-                  <a href="<?php echo base_url('Daily/daily_form') ?>" class="btn btn-block btn-md btn-success">Tambahkan Tugas Baru</a>
+              
+                <div class="col-lg-6 col-12">
+                  <div class="row">
+                  <a href="<?php echo base_url('Daily/daily_form') ?>" class="mr-1 btn btn-md btn-success">Tambahkan Tugas Baru</a>
 
-                    <a href="<?php echo base_url('Daily/daily_report/' . $nip) ?>" class="btn btn-block btn-md btn-primary">Report</a>
+                    <a href="<?php echo base_url('Daily/daily_report/' . $nip) ?>" class=" btn btn-md btn-primary">Report</a>
                 </div>
               </div>
                   
               <br>
-              <div class="bungkus p-0" style="overflow: scroll;">
+              <div class="bungkus p-0 mb-2" style="overflow: scroll;">
                 <table class="table table-hover table-md" style="table-layout: fixed; word-wrap: break-word;">
                   <thead class="bg-secondary">
+
                     <tr align="center">
                       <th width="50px">No</th>
                       <th width="250px">Aktivitas</th>
@@ -64,10 +66,9 @@ $nip = $this->session->userdata('nip');
                   </thead>
                   <tbody>
                     <?php
-                    $no = 1;
                     foreach ($daily as $dy) : ?>
                       <tr>
-                        <td><?php echo $no++ ?></td>
+                        <td><?php echo ++$start ?></td>
                         <td><?php echo $dy['aktivitas']; ?></td>
                         <td>
                           <?php echo ($dy['hasil'] == 'Belum' ? '<span class="badge badge-danger ">Belum</span>' : ''); ?>
@@ -114,14 +115,14 @@ $nip = $this->session->userdata('nip');
                   </tbody>
                 </table>
               </div>
+              <!-- PAGINATION -->
+              <?php echo $this->pagination->create_links();  ?>
+
             </div>
           </div>
         </div>
         <!-- ./col -->
       </div>
-      <!-- /.row -->
-      <!-- Main row -->
-
       <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
   </section>

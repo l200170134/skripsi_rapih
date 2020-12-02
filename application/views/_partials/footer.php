@@ -1,6 +1,6 @@
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-  <strong>Copyright &copy; 2020 <a href="#">PT. Sinar Grafindo</a>. </strong>
+  <strong>Copyright &copy; <?php echo date('Y') ?> <a href="#">PT. Sinar Grafindo</a>. </strong>
   All rights reserved.
   <div class="float-right d-none d-sm-inline-block">
     <label>Programmer</label>

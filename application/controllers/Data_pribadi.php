@@ -6,7 +6,6 @@ class Data_pribadi extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
         cek_login();
     }
 
@@ -61,7 +60,8 @@ class Data_pribadi extends CI_Controller
         $this->load->view('_partials/js');
     }
 
-    public function status_karyawan_tambah($nip_get){
+    public function status_karyawan_tambah($nip_get)
+    {
         $nip            = $this->input->post('nip');
         $status         = $this->input->post('status');
         $tgl_mulai      = $this->input->post('tgl_mulai');
@@ -77,7 +77,7 @@ class Data_pribadi extends CI_Controller
         );
 
         $this->hrd_model->input($data, 'tb_status_data');
-        redirect('Data_pribadi/data_pribadi/' .$nip_get);   
+        redirect('Data_pribadi/data_pribadi/' . $nip_get);
     }
 
     public function status_karyawan_update($id_status)
@@ -97,10 +97,11 @@ class Data_pribadi extends CI_Controller
         $this->load->view('_partials/js');
     }
 
-    public function status_karyawan_update_proses($nip_get){
-        
+    public function status_karyawan_update_proses($nip_get)
+    {
+
         $id_status      = $this->input->post('id_status');
-        
+
         $status         = $this->input->post('status');
         $nip            = $this->input->post('nip');
         $tgl_mulai      = $this->input->post('tgl_mulai');
@@ -122,13 +123,13 @@ class Data_pribadi extends CI_Controller
         );
 
         $this->hrd_model->update_proses($where, $data, 'tb_status_data');
-        redirect('Data_pribadi/data_pribadi/' .$nip_get);
+        redirect('Data_pribadi/data_pribadi/' . $nip_get);
     }
-    public function status_karyawan_hapus($id_status) {
+    public function status_karyawan_hapus($id_status)
+    {
         $nip = $this->session->userdata('nip_status');
         $where = array('id_status' => $id_status);
         $this->hrd_model->delate($where, 'tb_status_data');
-        redirect('Data_pribadi/data_pribadi/' .$nip);
-        
+        redirect('Data_pribadi/data_pribadi/' . $nip);
     }
 }

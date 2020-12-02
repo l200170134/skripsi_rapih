@@ -57,7 +57,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="bungkus" style="overflow: scroll;">
+                            <div class="bungkus m-2" style="overflow: scroll;">
                                 <table class="table table-bordered table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                     <thead>
                                         <tr align="center">
@@ -76,7 +76,7 @@
                                         $a = 1;
                                         foreach ($daily as $dy) : ?>
                                             <tr>
-                                                <td><?php echo $a++; ?></td>
+                                                <td><?php echo ++$start; ?></td>
                                                 <td><?php echo date('d-m-Y', strtotime($dy['tgl'])); ?></td>
 
                                                 <td><?php echo $dy['aktivitas']; ?></td>
@@ -103,6 +103,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <?php echo $this->pagination->create_links() ?>
                             <br>
                             <a href="#" class="btn btn-primary btn"><i class="fas fa-download" style="color:white;"> Download</i></a>
                         </div>
