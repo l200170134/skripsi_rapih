@@ -1,7 +1,6 @@
-
-<?php 
+<?php
 $link = $this->session->userdata('link');
- ?>
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -53,7 +52,7 @@ $link = $this->session->userdata('link');
                                             <td class="p-2"><?php echo $a++; ?></td>
                                             <td class="p-2"><?php echo $ls['nama']; ?></td>
                                             <td align="center" class="p-2">
-                                                <?php echo anchor('Monitoring/monitoring_daily/' . $ls['nip'].'/'.$link, '<div class="btn btn-success btn-sm">Today</div>'); ?>
+                                                <?php echo anchor('Monitoring/monitoring_daily/' . $ls['nip'], '<div class="btn btn-success btn-sm">Today</div>'); ?>
                                             </td>
                                             <td align="center" class="p-2">
                                                 <a href="<?php echo base_url('Monitoring/monitoring_report/' . $ls['nip']) ?>" class="btn btn-primary btn-sm">Report</a>
