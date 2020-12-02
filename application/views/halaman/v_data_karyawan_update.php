@@ -1,3 +1,4 @@
+<?php $link = $this->session->userdata('link_kar') ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -281,7 +282,7 @@
 
                                     <div class="card-footer d-flex justify-content-center m-2">
                                         <button type="submit" class="btn btn-primary">Submit</button>
-                                        <button type="submit" class="btn btn-secondary ml-2">Cancel</button>
+                                        <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link) ?>" class="btn btn-secondary ml-2">Cancel</a>
                                     </div>
                                     <!--             </form>  -->
                                 </div>

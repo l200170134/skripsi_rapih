@@ -16,6 +16,39 @@ class Monitoring extends CI_Controller
         $data['judul'] = 'Monitoring';
         $id_divisi = $this->session->userdata('divisi');
         $data['list_user'] = $this->db->get_where('user', ['id_divisi' => $id_divisi])->result_array();
+        $username = $this->session->userdata('username');
+        // PAGIANTION
+        $this->load->model('Pagination_model', 'page');
+        // config
+        $config['base_url'] = base_url() . 'Monitoring/index';
+        $config['total_rows'] = $this->page->getMemberRows($id_divisi, $username);
+        $config['per_page'] = 5;
+        // styling
+        $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close'] = '</ul></nav>';
+        $config['first_link'] = 'First';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+        $config['last_link'] = 'Last';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close'] = '</span></li>';
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+        $config['attributes'] = array('class' => 'page-link');
+        // inisiasi
+        $this->pagination->initialize($config);
+        $start = $this->uri->segment(3);
+        $data['start'] = 0 + $start;
+        $data['list_user'] = $this->page->getMonitoringMembers($id_divisi, $username, $config['per_page'], $data['start']);
+        // END PAGINATION
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -79,7 +112,7 @@ class Monitoring extends CI_Controller
         $this->pagination->initialize($config);
         $start = $this->uri->segment(4);
         $data['start'] = 0 + $start;
-        $this->session->set_userdata('link', $data['start']);
+        $this->session->set_userdata('link_mon', $data['start']);
         $data['daily'] = $this->pages->getMonitoringDaily($nip, $tanggal, $config['per_page'], $data['start']);
         // END PAGIANTION
 
@@ -140,8 +173,8 @@ class Monitoring extends CI_Controller
         // mendapatkan nip pegawai
         $nipp = $this->db->get_where('tb_ldr_daily', ['id' => $id])->row_array();
         $nip = $nipp['nip'];
-        $link = $this->session->userdata('link');
-        $this->session->unset_userdata('link');
+        $link = $this->session->userdata('link_mon');
+        $this->session->unset_userdata('link_mon');
         redirect('Monitoring/monitoring_daily/' . $nip . '/' . $link);
     }
 
@@ -175,8 +208,8 @@ class Monitoring extends CI_Controller
         // mengambil nip dari tabel tb_ldr_daily
         $nipp = $this->db->get_where('tb_ldr_daily', ['id' => $id_daily])->row_array();
         $nip = $nipp['nip'];
-        $link = $this->session->userdata('link');
-        $this->session->unset_userdata('link');
+        $link = $this->session->userdata('link_mon');
+        $this->session->unset_userdata('link_mon');
         redirect('Monitoring/monitoring_daily/' . $nip . '/' . $link);
     }
 

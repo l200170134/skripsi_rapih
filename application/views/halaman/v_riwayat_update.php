@@ -21,81 +21,81 @@
 
     <!-- Main content -->
     <section class="content">
-            <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
-                <div class="row">
-                    <div class="col-12 col-lg-6">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Update Riwayat Kepegawaian</h3>                                
-                            </div>
-                            <!-- /.card-header -->
-                            <!-- form start -->
-                                
-                            <div class="card-body">
-                                <div class="row">
-                                    <!-- form bagian kiri -->
-                                    <div class="col-12">
-                                    <form action="<?php echo base_url('Data_pribadi/status_karyawan_update_proses/' .$status['nip']); ?>" method="post">
-                                        <?php 
-                                            foreach ($update as $up):
-                                         ?>
-                                         <input type="text" name="nip" value=" <?php echo $up->nip; ?>" hidden>
-                                         <input type="text" name="id_status" value=" <?php echo $up->id_status; ?>" hidden>
-                                        <div class="form-group">
-                                            <label for="nama">Status Kepegawaian</label>
-                                            <select class="form-control" name="status">
-                                                <?php 
-                                                    $id_status = $up->status;  
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Update Riwayat Kepegawaian</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- form bagian kiri -->
+                                <div class="col-12">
+                                    <form action="<?php echo base_url('Data_pribadi/status_karyawan_update_proses/' . $status['nip']); ?>" method="post">
+                                        <?php
+                                        foreach ($update as $up) :
+                                        ?>
+                                            <input type="text" name="nip" value=" <?php echo $up->nip; ?>" hidden>
+                                            <input type="text" name="id_status" value=" <?php echo $up->id_status; ?>" hidden>
+                                            <div class="form-group">
+                                                <label for="nama">Status Kepegawaian</label>
+                                                <select class="form-control" name="status">
+                                                    <?php
+                                                    $id_status = $up->status;
                                                     $status = $this->db->get('tb_status')->result_array();
 
-                                                    foreach ($status as $st):
-                                                    if($st['id']==$id_status){
-                                                ?>
-                                                    <option value="<?php echo $st['id']; ?>" selected><?php echo $st['status']; ?></option>
-                                                <?php 
-                                                    }else{
-                                                 ?>
-                                                    <option value="<?php echo $st['id']; ?>"><?php echo $st['status']; ?></option>
-                                                <?php 
-                                                    }
-                                                    endforeach; 
-                                                ?>
-                                            </select> 
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Tanggal Mulai</label>
-                                            <input type="date" name="tgl_mulai" class="form-control" value="<?php echo $up->tgl_mulai;?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Tanggal Selesai</label>
-                                            <input type="date" name="tgl_akhir" class="form-control" value="<?php echo $up->tgl_akhir;?>">
-                                        </div>
+                                                    foreach ($status as $st) :
+                                                        if ($st['id'] == $id_status) {
+                                                    ?>
+                                                            <option value="<?php echo $st['id']; ?>" selected><?php echo $st['status']; ?></option>
+                                                        <?php
+                                                        } else {
+                                                        ?>
+                                                            <option value="<?php echo $st['id']; ?>"><?php echo $st['status']; ?></option>
+                                                    <?php
+                                                        }
+                                                    endforeach;
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tanggal Mulai</label>
+                                                <input type="date" name="tgl_mulai" class="form-control" value="<?php echo $up->tgl_mulai; ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tanggal Selesai</label>
+                                                <input type="date" name="tgl_akhir" class="form-control" value="<?php echo $up->tgl_akhir; ?>">
+                                            </div>
 
-                                    </div>
-                                    <!-- end form bagian kanan -->
                                 </div>
-                                <!-- end row -->
+                                <!-- end form bagian kanan -->
                             </div>
-                            <!-- /.card-body -->
-                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-                                        <?php endforeach; ?>
-                                    </form>                        
+                            <!-- end row -->
                         </div>
-                        <!-- /.card -->
-                        <!-- New Card -->
-                        
-                        <!--  End New Card -->
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    <?php endforeach; ?>
+                    </form>
                     </div>
-                    <!-- ./col -->
-                </div>
-                <!-- /.row -->
-                <!-- Main row -->
+                    <!-- /.card -->
+                    <!-- New Card -->
 
-                <!-- /.row (main row) -->
-            </div><!-- /.container-fluid -->
+                    <!--  End New Card -->
+                </div>
+                <!-- ./col -->
+            </div>
+            <!-- /.row -->
+            <!-- Main row -->
+
+            <!-- /.row (main row) -->
+        </div><!-- /.container-fluid -->
         </form>
     </section>
     <!-- /.content -->

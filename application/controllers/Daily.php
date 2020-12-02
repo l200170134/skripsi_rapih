@@ -88,7 +88,7 @@ class Daily extends CI_Controller
         // config
         $config['base_url'] = base_url() . 'Daily/daily_report/' . $nip . '/';
         $config['total_rows'] = $this->page->getReportRows($nip, $tanggal);
-        $config['per_page'] = 10;
+        $config['per_page'] = 6;
         // styleing
         $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
         $config['full_tag_close'] = '</ul></nav>';
@@ -157,9 +157,9 @@ class Daily extends CI_Controller
     {
         $where = array('id' => $id);
         $this->leader_model->daily_hapus($where, 'tb_ldr_daily');
-        $nip=$this->session->userdata('nip');
-        $link=$this->session->userdata('link');
-        redirect("Daily/index/" .$nip.'/'.$link);
+        $nip = $this->session->userdata('nip');
+        $link = $this->session->userdata('link');
+        redirect("Daily/index/" . $nip . '/' . $link);
     }
 
     public function daily_update($id)

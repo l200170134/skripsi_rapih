@@ -32,7 +32,7 @@ $link = $this->session->userdata('link');
                             <h3 class="card-title">Monitoring</h3>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body" style="overflow: scroll;">
+                        <div class="card-body mb-2" style="overflow: scroll;">
                             <table class="table table-bordered table-hover table-sm">
                                 <thead>
                                     <tr align="center">
@@ -49,7 +49,7 @@ $link = $this->session->userdata('link');
                                     foreach ($list_user as $ls) :
                                     ?>
                                         <tr>
-                                            <td class="p-2"><?php echo $a++; ?></td>
+                                            <td class="p-2"><?php echo ++$start; ?></td>
                                             <td class="p-2"><?php echo $ls['nama']; ?></td>
                                             <td align="center" class="p-2">
                                                 <?php echo anchor('Monitoring/monitoring_daily/' . $ls['nip'], '<div class="btn btn-success btn-sm">Today</div>'); ?>
@@ -61,11 +61,11 @@ $link = $this->session->userdata('link');
                                     <?php
                                     endforeach;
                                     ?>
-
                                 </tbody>
                             </table>
-
                         </div>
+
+                        <?php echo $this->pagination->create_links(); ?>
                     </div>
                 </div>
                 <!-- ./col -->

@@ -61,7 +61,7 @@ $level_akses = $this->session->userdata('role_id');
                             <?php } ?>
 
                             <br>
-                            <div class="bungkus" style="overflow: scroll;">
+                            <div class="bungkus mb-2" style="overflow: scroll;">
                                 <table class="table  table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                     <thead class="bg-secondary">
                                         <tr align="center">
@@ -80,51 +80,53 @@ $level_akses = $this->session->userdata('role_id');
                                             <th width="150px">Aksi</th>
                                         </tr>
                                     </thead>
-                                    <?php
-                                    $no = 1;
-                                    foreach ($divisi as $dv) : ?>
-                                        <tr>
-                                            <td><?php echo $no++; ?></td>
-                                            <td><?php echo $dv['nip']; ?></td>
-                                            <td><?php echo $dv['nama']; ?></td>
-                                            <td><?php echo $dv['jabatan']; ?></td>
-                                            <td><?php echo $dv['perusahaan']; ?></td>
-
-
-                                            <?php
-                                            if ($level_akses != '4') { ?>
-                                                <td align="center">
-                                                    
-                                                    <?php echo anchor('Gaji/gaji_view/' . $dv['nip'], '<div class="btn btn-primary btn-sm mr-1"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Gaji"></i></div>'); ?>
-
-                                                    <?php echo anchor('Gaji/gaji_form/' . $dv['nip'], '<div class="btn btn-success btn-sm mr-1"><i class="fas fa-plus p-1" style="color:white;" title="Tambah Gaji"></i></div>'); ?>
-
-                                                    
-                                                <td align="center"><a href="<?php echo base_url('Kinerja') ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja"><i class="fas fa-eye p-1"></i></a></td>
-                                                <td align="center">
-                                                    <div class="btn-group">
-                                                        <?php echo anchor('Data_pribadi/data_pribadi/' . $dv['nip'], '<div class="btn btn-primary btn-sm mr-1"><i class="fas fa-eye p-1" style="color:white;" title="Detail Data"></i></div>'); ?>
-
-                                                        <?php echo anchor('Data_karyawan/update_data_karyawan/' . $dv['nip'], '<div class="btn btn-warning btn-sm mr-1"><i class="fas fa-edit p-1" style="color:white;" title="Update Data"></i></div>'); ?>
-                                                        
-                                                        <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                            <?php echo anchor('Data_karyawan/hapus_data_karyawan/' . $dv['nip'], '<div class="btn btn-danger btn-sm" title="Hapus Data"><i class="fas fa-trash-alt p-1" style="color:white;"></i></div>'); ?>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            <?php } else { ?>
-                                                <td align="center">
-                                                    <div class="btn-group">
-                                                        <a href="<?php echo base_url('Data_pribadi') ?>" class="btn btn-success btn-sm" title="Lihat Detail"><i class="fas fa-eye" style="color:white;"></i></a>
-                                                </td>
-                                            <?php } ?>
-                                        </tr>
-                                    <?php endforeach; ?>
 
                                     <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($divisi as $dv) : ?>
+                                            <tr>
+                                                <td><?php echo $no++; ?></td>
+                                                <td><?php echo $dv['nip']; ?></td>
+                                                <td><?php echo $dv['nama']; ?></td>
+                                                <td><?php echo $dv['jabatan']; ?></td>
+                                                <td><?php echo $dv['perusahaan']; ?></td>
+
+
+                                                <?php
+                                                if ($level_akses != '4') { ?>
+                                                    <td align="center">
+
+                                                        <?php echo anchor('Gaji/gaji_view/' . $dv['nip'], '<div class="btn btn-primary btn-sm mr-1"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Gaji"></i></div>'); ?>
+
+                                                        <?php echo anchor('Gaji/gaji_form/' . $dv['nip'], '<div class="btn btn-success btn-sm mr-1"><i class="fas fa-plus p-1" style="color:white;" title="Tambah Gaji"></i></div>'); ?>
+
+
+                                                    <td align="center"><a href="<?php echo base_url('Kinerja') ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja"><i class="fas fa-eye p-1"></i></a></td>
+                                                    <td align="center">
+                                                        <div class="    btn-group">
+                                                            <?php echo anchor('Data_pribadi/data_pribadi/' . $dv['nip'], '<div class="btn btn-primary btn-sm mr-1"><i class="fas fa-eye p-1" style="color:white;" title="Detail Data"></i></div>'); ?>
+
+                                                            <?php echo anchor('Data_karyawan/update_data_karyawan/' . $dv['nip'], '<div class="btn btn-warning btn-sm mr-1"><i class="fas fa-edit p-1" style="color:white;" title="Update Data"></i></div>'); ?>
+
+                                                            <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
+                                                                <?php echo anchor('Data_karyawan/hapus_data_karyawan/' . $dv['nip'], '<div class="btn btn-danger btn-sm" title="Hapus Data"><i class="fas fa-trash-alt p-1" style="color:white;"></i></div>'); ?>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                <?php } else { ?>
+                                                    <td align="center">
+                                                        <div class="btn-group">
+                                                            <a href="<?php echo base_url('Data_pribadi') ?>" class="btn btn-success btn-sm" title="Lihat Detail"><i class="fas fa-eye" style="color:white;"></i></a>
+                                                    </td>
+                                                <?php } ?>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
+
+                            <?php echo $this->pagination->create_links() ?>
                         </div>
                     </div>
                 </div>

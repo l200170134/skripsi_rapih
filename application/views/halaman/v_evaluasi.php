@@ -185,6 +185,8 @@
                                       </tbody>
                                   </table>
                               </div>
+                              <?php //$this->pagination->create_links(); 
+                                ?>
                           </div>
                       </div>
                   </div>

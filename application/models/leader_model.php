@@ -43,10 +43,6 @@ class Leader_model extends CI_Model
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
-	public function kinerja_tampil()
-	{
-		return $this->db->get('tb_ldr_kinerja');
-	}
 	public function kinerja_input($data, $table)
 	{
 		$this->db->insert($table, $data);
