@@ -6,7 +6,6 @@ class Jurnal extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
         cek_login();
     }
 

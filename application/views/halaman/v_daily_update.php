@@ -1,3 +1,6 @@
+<?php
+$link = $this->session->userdata('link');
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -48,7 +51,7 @@
                 </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
-                  <a href="<?php echo base_url('Daily') ?>" class="btn btn-secondary">Cancel</a>
+                  <a href="<?php echo base_url('Daily/index/' . $link) ?>" class="btn btn-secondary">Cancel</a>
                 </div>
               </form>
             <?php } ?>

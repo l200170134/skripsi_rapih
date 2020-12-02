@@ -1,6 +1,7 @@
 <?php
 $nip = $daily['nip'];
 $user =  $user['username'];
+$link = $this->session->userdata('link');
 
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -85,7 +86,7 @@ $user =  $user['username'];
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
                   <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                  <?php echo anchor('Monitoring/monitoring_daily/' . $nip, '<div class="btn btn-secondary">Cancel</div>'); ?>
+                  <?php echo anchor('Monitoring/monitoring_daily/' . $nip . '/' . $link, '<div class="btn btn-secondary">Cancel</div>'); ?>
                 </div>
               </form>
 
@@ -137,7 +138,7 @@ $user =  $user['username'];
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
                   <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                  <?php echo anchor('Monitoring/monitoring_daily/' . $nip, '<div class="btn btn-secondary">Cancel</div>'); ?>
+                  <?php echo anchor('Monitoring/monitoring_daily/' . $nip . '/' . $link, '<div class="btn btn-secondary">Cancel</div>'); ?>
                 </div>
               </form>
             <?php
