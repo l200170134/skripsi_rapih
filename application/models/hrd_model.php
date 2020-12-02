@@ -12,6 +12,12 @@ class Hrd_model extends CI_Model
         return $this->db->get('user_role');
     }
 
+    public function hrd_view_gaji($nip)
+    {
+        return $this->db->get_where('tb_gaji',['nip'=> $nip]);
+
+    }
+
     public function input($data,$table)
 	{
 		$this->db->insert($table,$data);

@@ -1,3 +1,7 @@
+<?php
+date_default_timezone_set('Asia/Jakarta');
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -33,7 +37,7 @@
                             <div class="card-body">
                                 <input name="nip" type="text" class="form-control" value="0" hidden>
                                 <input name="tgl" type="text" class="form-control" value=" <?php echo date("d-m-Y"); ?> " hidden>
-                                <input name="jam" type="text" class="form-control" value=" <?php echo date("H:m:s"); ?> " hidden>
+                                <input name="jam" type="text" class="form-control" value=" <?php echo date("H:i:s"); ?> " hidden>
                                 <div class="form-group">
                                     <textarea name="aktivitas" rows="3" class="form-control" placeholder="Masukkan aktivitas" required></textarea>
                                 </div>

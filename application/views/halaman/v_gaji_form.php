@@ -35,8 +35,7 @@
                                 <div class="row">
                                     <!-- form bagian kiri -->
                                     <div class="col-12">
-                                    <form action="<?php echo base_url('Data_pribadi/status_karyawan_tambah/'. $nip); ?>" method="post">
-                                    
+                                    <form action="<?php echo base_url('Gaji/gaji_tambah_proses') ?>" method="post">
                                         <div>
                                             <?php 
                                                 foreach ($nip_karyawan as $nip):
@@ -44,29 +43,32 @@
                                                 <input type="text" name="nip" value="<?php echo $nip['nip']; ?>" hidden>
                                             <?php endforeach; ?>
                                         </div>
-                                        
                                         <div class="form-group">
-                                            <label for="nama">Status Kepegawaian</label>
-                                            <select class="form-control select2" name="status">
-                                                <option>--Pilih--</option>
-                                                <?php 
-                                                    $status = $this->db->get('tb_status')->result_array();
-                                                    foreach ($status as $st):
-                                                 ?>
-                                                    <option value="<?php echo $st['id']; ?>"><?php echo $st['status']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select> 
-
+                                            <input type="date" name="tgl_pembayaran" class="form-control" value="<?php echo date("Y-m-d") ?>" hidden>
                                         </div>
                                         <div class="form-group">
-                                            <label>Tanggal Mulai</label>
-                                            <input type="date" name="tgl_mulai" class="form-control" value="<?php echo date("d-m-Y") ?>">
+                                            <label for="nama">Nominal</label>
+                                            <input type="text" name="gaji" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label>Tanggal Selesai</label>
-                                            <input type="date" name="tgl_akhir" class="form-control" value="<?php echo date("d-m-Y") ?>">
+                                            <label>Periode</label>
+                                            <select class="form-control" name="bulan">
+                                                <option value="Januari">Januari</option>
+                                                <option value="Februari">Februari</option>
+                                                <option value="Maret">Maret</option>
+                                                <option value="April">April</option>
+                                                <option value="Mei">Mei</option>
+                                                <option value="Juni">Juni</option>
+                                                <option value="Juli">Juli</option>
+                                                <option value="Agustus">Agustus</option>
+                                                <option value="September">September</option>
+                                                <option value="Oktober">Oktober</option>
+                                                <option value="November">November</option>
+                                                <option value="Desember">Desember</option>
+                                            </select>
+                                            
+                                            <input type="text" class="form-control" name="tahun" value=" <?php echo date('Y'); ?>" hidden>
                                         </div>
-                                    </div>
                                     <!-- end form bagian kanan -->
                                 </div>
                                 <!-- end row -->
@@ -89,4 +91,6 @@
     </section>
     <!-- /.content -->
 </div>
-<!-- /.content-wrapper
+<!-- /.content-wrapper -->
+<script type="text/javascript">
+</script>

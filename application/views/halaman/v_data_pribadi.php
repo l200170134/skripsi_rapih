@@ -29,7 +29,7 @@ $level_akses = $this->session->userdata('role_id');
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
+                    <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Data Pribadi</h3>
                         </div>
@@ -38,9 +38,10 @@ $level_akses = $this->session->userdata('role_id');
                                 <div class="col-lg-2 d-flex justify-content-center">
                                     <img class="profile-img img-fluid img-circle img-lg" src="<?php echo base_url('assets/dist/img/user4-128x128.jpg') ?>" alt="User profile picture">
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <h5 class="profile-username mb-0 mt-3"><?php echo $kar['nama']; ?></h5>
                                     <p class="text-muted mb-0">
+                                        
                                         <?php
                                             echo $kar['jabatan'];
                                             echo " - ";
@@ -49,30 +50,20 @@ $level_akses = $this->session->userdata('role_id');
                                             echo $divisi['divisi'];
                                         ?>
                                     </p>
-                                    <p class="text-muted"><?php echo $kar['office']; ?></p>
+                                    <p class="text-muted">Office <?php echo $kar['office']; ?></p>
                                 </div>
-                                <div class="col-lg-2">
-                                    <p class="mb-0"><i class="fas fa-phone-alt mr-3" style="color:#007bff;"></i><?php echo $kar['no_hp']; ?><br></p>
-                                    <p class="mb-0"><i class="fas fa-envelope mr-3" style="color:#007bff;"></i><?php echo $kar['email']; ?><br></p>
+                                <div class="col-lg-5">
+                                <div class="row">
+
+                                    <p class="mb-0 col-6 p-1"><i class="fas fa-phone-alt mr-3" style="color:#007bff;"></i><?php echo $kar['no_hp']; ?><br></p>
+                                    <p class="mb-0 col-6 p-1"><i class="fas fa-phone-alt mr-3" style="color:#dc3545;"></i><?php echo $kar['no_hp_kel']; ?><br></p>
+                                    <p class="mb-0 col-12 p-1" ><i class="fas fa-envelope mr-3" style="color:#007bff;"></i><?php echo $kar['email']; ?><br></p>
+                                    
                                 </div>
-                                <div class="col-lg-2">
-                                    <p class="mb-0"><i class="fas fa-phone-alt mr-3" style="color:#dc3545;"></i><?php echo $kar['no_hp_kel']; ?><br></p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
+    
+                            <div class="row pt-4">
                                 <!-- kiri utama -->
                                 <div class="col-lg-8">
                                     <div class="row">
@@ -89,9 +80,10 @@ $level_akses = $this->session->userdata('role_id');
                                             <p class="text-muted">
                                             <?php 
                                                 echo $kar['tempat_lahir'];
-                                                echo ',';
+                                                echo ', ';
                                                 echo $kar['tgl_lahir'];
                                             ?>
+                                            
                                             </p>
                                             <label class="mb-0">NIK</label>
                                             <p class="text-muted"><?php echo $kar['pernikahan']; ?></p>
@@ -147,9 +139,9 @@ $level_akses = $this->session->userdata('role_id');
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card card-success">
                             <div class="card-header">
-                            <div class="card-title">Akses</div>
+                            <div class="card-title">Hak Akses</div>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -196,20 +188,21 @@ $level_akses = $this->session->userdata('role_id');
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card card-warning">
                             <div class="card-header">
                                 <div class="card-title">Riwayat Kepegawaian</div>
                             </div>
                             <div class="card-body">
+                                <?php echo anchor('Data_pribadi/status_karyawan_form/' . $kar['nip'], '<div class="btn btn-success mb-3 btn-sm">Tambah Status Karyawan</div>'); ?>
                                 <div class="col-12" style="overflow: scroll;">
-                                <?php echo anchor('Data_pribadi/status_karyawan_form/' . $kar['nip'], '<div class="btn btn-success mb-3">Tambah Data</div>'); ?>
-                                    <table class="table table-bordered table-hover" style="table-layout: fixed; word-wrap: break-word;">
-                                        <thead>
-                                            <tr>
-                                                <th width="50px">No</th>
-                                                <th width="120px">Status</th>
-                                                <th width="150px">Tgl Mulai</th>
-                                                <th width="150px">Tgl Akhir</th>
+                                
+                                    <table class="table table-sm  table-hover" style="table-layout: fixed; word-wrap: break-word;">
+                                        <thead class="bg-secondary">
+                                            <tr align="center">
+                                                <th width="30px">No</th>
+                                                <th width="200px">Status</th>
+                                                <th width="150px">Tanggal Mulai</th>
+                                                <th width="150px">Tanggal Akhir</th>
                                                 <th width="90px">Aksi</th>
                                             </tr>
                                         </thead>
@@ -219,7 +212,7 @@ $level_akses = $this->session->userdata('role_id');
                                             foreach ($status as $st): 
                                             
                                         ?>
-                                            <tr>
+                                            <tr align="center">
                                                 <input type="text" name="id" hidden>
                                                 <td><?php echo $no++; ?></td>
                                                 <td>
@@ -233,10 +226,10 @@ $level_akses = $this->session->userdata('role_id');
                                                 <td><?php echo $st['tgl_akhir']; ?></td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <?php echo anchor('Data_pribadi/status_karyawan_update/' . $st['id_status'], '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
+                                                        <?php echo anchor('Data_pribadi/status_karyawan_update/' . $st['id_status'], '<div class="btn btn-warning btn-sm mr-2"><i class="fas fa-edit" style="color:white;" title="Update Data"></i></div>'); ?>
 
                                                         <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                            <?php echo anchor('Data_pribadi/status_karyawan_hapus/' . $st['id_status'], '<div class="btn btn-danger"><i class="fas fa-trash" style="color:white;"></i></div>'); ?>
+                                                            <?php echo anchor('Data_pribadi/status_karyawan_hapus/' . $st['id_status'], '<div class="btn btn-danger btn-sm"><i class="fas fa-trash-alt" style="color:white;" title="Hapus Data"></i></div>'); ?>
                                                         </label>
                                                     </div>
                                                 </td>

@@ -33,7 +33,7 @@ class Monitoring extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Monitoring';
         $data['list_user'] = $this->db->get_where('user', ['id_divisi' => $id_divisi])->result_array();
-        
+
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -67,14 +67,16 @@ class Monitoring extends CI_Controller
         $user = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $user = $user['username'];
         $data['judul'] = 'Monitoring';
+
         $evaluasi = $this->db->get_where('tb_evaluasi', ['id_daily' => $id, 'penulis' => $user]);
         if ($evaluasi->num_rows() > 0) {
             $data['evaluasi'] = $this->db->get_where('tb_evaluasi', ['id_daily' => $id, 'penulis' => $user])->row_array();
         } else {
-            $data['evaluasi']=array('status' => 0, 'penulis' => 'null');
+            $data['evaluasi'] = array('status' => 0, 'penulis' => 'null');
         }
         $data['daily'] = $this->db->get_where('tb_ldr_daily', ['id' => $id])->row_array();
         $data['id'] = $id;
+        $data['role_id'] = $this->session->userdata('role_id');
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

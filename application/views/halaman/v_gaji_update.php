@@ -35,38 +35,37 @@
                                 <div class="row">
                                     <!-- form bagian kiri -->
                                     <div class="col-12">
-                                    <form action="<?php echo base_url('Data_pribadi/status_karyawan_tambah/'. $nip); ?>" method="post">
-                                    
+                                    <form action="<?php echo base_url('Gaji/gaji_update_proses/') ?>" method="post">
                                         <div>
-                                            <?php 
-                                                foreach ($nip_karyawan as $nip):
-                                             ?>
-                                                <input type="text" name="nip" value="<?php echo $nip['nip']; ?>" hidden>
-                                            <?php endforeach; ?>
+                                                <input type="text" name="id_gaji" value="<?php echo $update['id_gaji']; ?>" hidden>
+                                                <input type="text" name="nip" value="<?php echo $update['nip']; ?>" hidden>
                                         </div>
-                                        
                                         <div class="form-group">
-                                            <label for="nama">Status Kepegawaian</label>
-                                            <select class="form-control select2" name="status">
-                                                <option>--Pilih--</option>
-                                                <?php 
-                                                    $status = $this->db->get('tb_status')->result_array();
-                                                    foreach ($status as $st):
-                                                 ?>
-                                                    <option value="<?php echo $st['id']; ?>"><?php echo $st['status']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select> 
+                                            <input type="date" name="tgl_pembayaran" class="form-control" value="<?php echo date("Y-m-d") ?>" hidden>
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label for="nama">Nominal</label>
+                                            <input type="text" name="gaji" class="form-control" value="<?php echo $update['gaji'];?>">
                                         </div>
                                         <div class="form-group">
-                                            <label>Tanggal Mulai</label>
-                                            <input type="date" name="tgl_mulai" class="form-control" value="<?php echo date("d-m-Y") ?>">
+                                            <label>Periode</label>
+                                            <select class="form-control" name="bulan">
+                                                <option value="Januari" <?php echo ($update['bulan'] == 'Januari' ? ' selected' : ''); ?>>Januari</option>
+                                                <option value="Februari" <?php echo ($update['bulan'] == 'Februari' ? ' selected' : ''); ?>>Februari</option>
+                                                <option value="Maret" <?php echo ($update['bulan'] == 'Maret' ? ' selected' : ''); ?>>Maret</option>
+                                                <option value="April" <?php echo ($update['bulan'] == 'April' ? ' selected' : ''); ?>>April</option>
+                                                <option value="Mei" <?php echo ($update['bulan'] == 'Mei' ? ' selected' : ''); ?>>Mei</option>
+                                                <option value="Juni" <?php echo ($update['bulan'] == 'Juni' ? ' selected' : ''); ?>>Juni</option>
+                                                <option value="Juli" <?php echo ($update['bulan'] == 'Juli' ? ' selected' : ''); ?>>Juli</option>
+                                                <option value="Agustus" <?php echo ($update['bulan'] == 'Agustus' ? ' selected' : ''); ?>>Agustus</option>
+                                                <option value="September" <?php echo ($update['bulan'] == 'September' ? ' selected' : ''); ?>>September</option>
+                                                <option value="Oktober" <?php echo ($update['bulan'] == 'Oktober' ? ' selected' : ''); ?>>Oktober</option>
+                                                <option value="November" <?php echo ($update['bulan'] == 'November' ? ' selected' : ''); ?>>November</option>
+                                                <option value="Desember" <?php echo ($update['bulan'] == 'Desember' ? ' selected' : ''); ?>>Desember</option>
+                                            </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Tanggal Selesai</label>
-                                            <input type="date" name="tgl_akhir" class="form-control" value="<?php echo date("d-m-Y") ?>">
-                                        </div>
-                                    </div>
+                                        <input type="text" name="tahun" value=" <?php echo $update['tahun']; ?>" hidden>
                                     <!-- end form bagian kanan -->
                                 </div>
                                 <!-- end row -->
@@ -89,4 +88,6 @@
     </section>
     <!-- /.content -->
 </div>
-<!-- /.content-wrapper
+<!-- /.content-wrapper -->
+<script type="text/javascript">
+</script>

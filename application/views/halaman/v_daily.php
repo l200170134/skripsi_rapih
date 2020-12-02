@@ -34,16 +34,18 @@ $nip = $this->session->userdata('nip');
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table>
-                <tr>
-                  <td class="pr-2"><a href="<?php echo base_url('Daily/daily_form') ?>" class="btn btn-block btn-sm btn-success" style="width: 100px;">New Task</a></td>
-                  <td><a href="<?php echo base_url('Daily/daily_report/' . $nip) ?>" class="btn btn-block btn-sm btn-primary" style="width: 100px;">Report</a></td>
-                </tr>
-              </table>
+              <div class="row">
+                <div class="col-md-2 col-12">
+                  <a href="<?php echo base_url('Daily/daily_form') ?>" class="btn btn-block btn-md btn-success">Tambahkan Tugas Baru</a>
+
+                    <a href="<?php echo base_url('Daily/daily_report/' . $nip) ?>" class="btn btn-block btn-md btn-primary">Report</a>
+                </div>
+              </div>
+                  
               <br>
               <div class="bungkus p-0" style="overflow: scroll;">
-                <table class="table table-hover table-bordered" style="table-layout: fixed; word-wrap: break-word;">
-                  <thead class="">
+                <table class="table table-hover table-md" style="table-layout: fixed; word-wrap: break-word;">
+                  <thead class="bg-secondary">
                     <tr align="center">
                       <th width="50px">No</th>
                       <th width="250px">Aktivitas</th>
@@ -68,7 +70,7 @@ $nip = $this->session->userdata('nip');
                         <td><?php echo $no++ ?></td>
                         <td><?php echo $dy['aktivitas']; ?></td>
                         <td>
-                          <?php echo ($dy['hasil'] == 'Belum' ? '<span class="badge badge-danger">Belum</span>' : ''); ?>
+                          <?php echo ($dy['hasil'] == 'Belum' ? '<span class="badge badge-danger ">Belum</span>' : ''); ?>
                           <?php echo ($dy['hasil'] == 'Proses' ? '<span class="badge badge-primary">Proses</span>' : ''); ?>
                           <?php echo ($dy['hasil'] == 'Selesai' ? '<span class="badge badge-success">Selesai</span>' : ''); ?>
                         </td>
@@ -102,10 +104,10 @@ $nip = $this->session->userdata('nip');
                         <?php endif; ?>
 
                         <td class="pl-2">
-                          <?php echo anchor('Daily/daily_update/' . $dy['id'], '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
+                          <?php echo anchor('Daily/daily_update/' . $dy['id'], '<div class="btn btn-warning btn-md"><i class="fas fa-edit" style="color:white;" title="Update Data"></i></div>'); ?>
                         </td>
                         <td class="pl-2" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                          <?php echo anchor('Daily/daily_proses_hapus/' . $dy['id'], '<div class="btn btn-danger"><i class="fas fa-trash"></i></div>'); ?>
+                          <?php echo anchor('Daily/daily_proses_hapus/' . $dy['id'], '<div class="btn btn-danger btn-md"><i class="fas fa-trash-alt" title="Hapus Data"></i></div>'); ?>
                         </td>
                       </tr>
                     <?php endforeach ?>

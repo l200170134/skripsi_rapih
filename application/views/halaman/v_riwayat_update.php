@@ -24,7 +24,7 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12 col-lg-6">
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Update Riwayat Kepegawaian</h3>                                
@@ -35,7 +35,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <!-- form bagian kiri -->
-                                    <div class="col-lg-12 col-6">
+                                    <div class="col-12">
                                     <form action="<?php echo base_url('Data_pribadi/status_karyawan_update_proses/' .$status['nip']); ?>" method="post">
                                         <?php 
                                             foreach ($update as $up):
@@ -65,23 +65,24 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Tanggal Mulai</label>
-                                            <input type="date" name="tgl_mulai" class="form-control" value=" <?php $up->tgl_mulai;?> ">
+                                            <input type="date" name="tgl_mulai" class="form-control" value="<?php echo $up->tgl_mulai;?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Tanggal Selesai</label>
-                                            <input type="date" name="tgl_akhir" class="form-control" value="<?php $up->tgl_akhir;?> ">
+                                            <input type="date" name="tgl_akhir" class="form-control" value="<?php echo $up->tgl_akhir;?>">
                                         </div>
-                                         <div class="card-footer d-flex justify-content-center m-2">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-                                        <?php endforeach; ?>
-                                    </form>
+
                                     </div>
                                     <!-- end form bagian kanan -->
                                 </div>
                                 <!-- end row -->
                             </div>
                             <!-- /.card-body -->
+                                         <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                        <?php endforeach; ?>
+                                    </form>                        
                         </div>
                         <!-- /.card -->
                         <!-- New Card -->

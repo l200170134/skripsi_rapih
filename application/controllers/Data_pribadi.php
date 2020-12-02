@@ -50,6 +50,8 @@ class Data_pribadi extends CI_Controller
         $data['judul'] = 'Data Karyawan';
         $data['nip_karyawan'] = $this->db->get_where('user', ['nip' => $nip])->result_array();
         $data['nip'] = $nip;
+        $data['status'] = $this->db->get_where('tb_status_data', ['nip' => $nip])->result_array();
+        
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -63,9 +65,9 @@ class Data_pribadi extends CI_Controller
         $nip            = $this->input->post('nip');
         $status         = $this->input->post('status');
         $tgl_mulai      = $this->input->post('tgl_mulai');
-        $tgl_mulai      = date('d-m-Y', strtotime($tgl_mulai));
+        $tgl_mulai      = date('Y-m-d', strtotime($tgl_mulai));
         $tgl_akhir      = $this->input->post('tgl_akhir');
-        $tgl_akhir      = date('d-m-Y', strtotime($tgl_akhir));
+        $tgl_akhir      = date('Y-m-d', strtotime($tgl_akhir));
 
         $data = array(
             'nip'        => $nip,
@@ -102,9 +104,9 @@ class Data_pribadi extends CI_Controller
         $status         = $this->input->post('status');
         $nip            = $this->input->post('nip');
         $tgl_mulai      = $this->input->post('tgl_mulai');
-        $tgl_mulai      = date('d-m-Y', strtotime($tgl_mulai));
+        $tgl_mulai      = date('Y-m-d', strtotime($tgl_mulai));
         $tgl_akhir      = $this->input->post('tgl_akhir');
-        $tgl_akhir      = date('d-m-Y', strtotime($tgl_akhir));
+        $tgl_akhir      = date('Y-m-d', strtotime($tgl_akhir));
 
         echo $nip_get;
         $data = array(

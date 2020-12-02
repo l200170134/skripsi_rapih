@@ -26,61 +26,63 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Riwayat Gaji</h5>
+                            <h5>Data Kumulatif Gaji</h5>
                             <div class="alert alert-sm alert-success alert-dismissible m-1">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 Menampilkan riwayat gaji anda setiap bulan serta status pembayaran.
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body" style="overflow: scroll;">
-                            <table class="table table-bordered table-hover col-lg-6 col-12" style="table-layout: fixed; word-wrap: break-word;">
+                            <div class="card-body">
+                                <?php
+                                    $user = $this->db->get_where('user', ['nip' => $nip])->row_array(); ?>
+                                <table class="mb-2">
+                                    <tr>
+                                        
+                                        <td><?php echo $user['nip']; ?></td>
+                                        <td> - </td>
+                                        <td><span class="badge badge-primary"><?php echo $user['nama']; ?></span></td>
+                                        </label>
+                                    </tr>   
+                                </table>
+                                
+                            <div style="overflow: scroll;">
+                            <table class="table col-12 col-lg-6 table-hover" style="table-layout: fixed; word-wrap: break-word;" >
                                 <thead>
-                                    <tr align="center">
-                                        <th align="center">Bulan</th>
-                                        <th align="center">Tahun</th>
-                                        <th align="center">Gaji Pokok</th>
-                                        <th align="center">Status</th>
+                                    <tr class="bg-secondary" align="center">
+                                        <th width="50px">No</th>
+                                        <th width="150px">Periode</th>
+                                        <th width="150px">Nominal</th>
+                                        <th width="180px">Tanggal Pembayaran</th>
+                                        <th width="150px">Aksi</td>
                                     </tr>
                                 </thead>
-                                <tr align="center">
-                                    <td align="center">Januari</td>
-                                    <td align="center">2020</td>
-                                    <td align="center">Rp.4.500.000</td>
-                                    <td align="center">
-                                        <button type="button" class="btn badge badge-success" data-toggle="modal" data-target="#modal-info">
-                                            Terbayar
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr align="center">
-                                    <td align="center">Februari</td>
-                                    <td align="center">2020</td>
-                                    <td align="center">Rp.4.500.000</td>
-                                    <td align="center">
-                                        <button type="button" class="btn badge badge-success" data-toggle="modal" data-target="#modal-info">
-                                            Terbayar
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr align="center">
-                                    <td align="center">Maret</td>
-                                    <td align="center">2020</td>
-                                    <td align="center">Rp.4.500.000</td>
-                                    <td align="center">
-                                        <button type="button" class="btn badge badge-success" data-toggle="modal" data-target="#modal-info">
-                                            Terbayar
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr align="center">
-                                    <td align="center">April</td>
-                                    <td align="center">2020</td>
-                                    <td align="center">Rp.0</td>
-                                    <td align="center"><span class="badge badge-danger">Belum</span></td>
-                                </tr>
+                                
                                 <tbody>
+                                    <?php 
+                                        $no=1;
+                                        foreach($gaji as $gj): 
+
+                                    ?>
+
+                                    <tr>
+                                        <td align="center"><?php echo $no++; ?></td>
+                                        <td><?php echo $gj->bulan; echo ' ' ;echo $gj->tahun; ?></td>
+
+
+                                        <td align="center">Rp. <?php echo $gj->gaji; ?></td>
+                                        <td align="center"><?php echo $gj->tgl_pembayaran; ?></td>
+                                        <td align="center">
+                                            <?php echo anchor('Gaji/gaji_update/' . $gj->id_gaji, '<div class="btn btn-warning btn-sm mr-1"><i class="fas fa-edit p-1" style="color:white;" title="Update Gaji"></i></div>'); ?>
+                                            <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
+                                            <?php echo anchor('Gaji/gaji_hapus_proses/' .$gj->id_gaji, '<div class="btn btn-danger btn-sm mr-1"><i class="fas fa-trash-alt p-1" style="color:white;" title="Hapus Gaji"></i></div>'); ?>
+                                            </label>
+                                        </td>
+
+                                    </tr>
+                                    <?php endforeach ?>
                                 </tbody>
+                                    
                             </table>
 
                             <div class="modal fade" id="modal-info">
@@ -106,6 +108,7 @@
 
                         </div>
                     </div>
+                </div>
                 </div>
                 <!-- ./col -->
             </div>

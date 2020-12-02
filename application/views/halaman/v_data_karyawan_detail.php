@@ -32,7 +32,7 @@ $level_akses = $this->session->userdata('role_id');
                     <div class="card">
                         <div class="card-header">
                             <?php foreach ($nama_divisi as $nd) : ?>
-                                <h5>Tabel Karyawan <?php echo $nd['divisi'] ?></h5>
+                                <h5>Data Karyawan Divisi <?php echo $nd['divisi'] ?></h5>
                                 <!-- Variabel Global  -->
                             <?php
                                 $this->session->set_userdata('id_divisi', $nd['id_divisi']);
@@ -46,7 +46,7 @@ $level_akses = $this->session->userdata('role_id');
                                     <tr>
                                         <td>
                                             <?php foreach ($nama_divisi as $nd) : ?>
-                                                <?php echo anchor('Data_karyawan/tambah_data_karyawan/' . $nd['id_divisi'], '<div class="btn btn-block btn-md btn-success">Tambah</div>'); ?>
+                                                <?php echo anchor('Data_karyawan/tambah_data_karyawan/' . $nd['id_divisi'], '<div class="btn btn-block btn-md btn-success">Tambah Data Karyawan</div>'); ?>
                                             <?php endforeach; ?>
                                         </td>
                                     </tr>
@@ -62,22 +62,22 @@ $level_akses = $this->session->userdata('role_id');
 
                             <br>
                             <div class="bungkus" style="overflow: scroll;">
-                                <table class="table table-bordered table-hover" style="table-layout: fixed; word-wrap: break-word;">
-                                    <thead>
+                                <table class="table  table-hover" style="table-layout: fixed; word-wrap: break-word;">
+                                    <thead class="bg-secondary">
                                         <tr align="center">
                                             <th width="50px">No</th>
-                                            <th width="150px">NIP</th>
+                                            <th width="80px">NIP</th>
                                             <th width="200px">Nama</th>
-                                            <th width="150px">Jabatan</th>
+                                            <th width="120px">Jabatan</th>
                                             <th width="150px">Perusahaan</th>
 
                                             <?php if ($level_akses != 4) { ?>
-                                                <th width="80px">Gaji</th>
+                                                <th width="120px">Gaji</th>
                                                 <th width="80px">Kinerja</th>
                                             <?php } else {
                                             }; ?>
 
-                                            <th width="120px">Aksi</th>
+                                            <th width="150px">Aksi</th>
                                         </tr>
                                     </thead>
                                     <?php
@@ -93,16 +93,22 @@ $level_akses = $this->session->userdata('role_id');
 
                                             <?php
                                             if ($level_akses != '4') { ?>
-                                                <td align="center"><a href="<?php echo base_url('Gaji') ?>" class="btn btn-primary btn-sm" title="Lihat Gaji">Lihat</a></td>
-                                                <td align="center"><a href="<?php echo base_url('Kinerja') ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja">Lihat</a></td>
+                                                <td align="center">
+                                                    
+                                                    <?php echo anchor('Gaji/gaji_view/' . $dv['nip'], '<div class="btn btn-primary btn-sm mr-1"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Gaji"></i></div>'); ?>
+
+                                                    <?php echo anchor('Gaji/gaji_form/' . $dv['nip'], '<div class="btn btn-success btn-sm mr-1"><i class="fas fa-plus p-1" style="color:white;" title="Tambah Gaji"></i></div>'); ?>
+
+                                                    
+                                                <td align="center"><a href="<?php echo base_url('Kinerja') ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja"><i class="fas fa-eye p-1"></i></a></td>
                                                 <td align="center">
                                                     <div class="btn-group">
-                                                        <?php echo anchor('Data_pribadi/data_pribadi/' . $dv['nip'], '<div class="btn btn-success"><i class="fas fa-eye" style="color:white;"></i></div>'); ?>
+                                                        <?php echo anchor('Data_pribadi/data_pribadi/' . $dv['nip'], '<div class="btn btn-primary btn-sm mr-1"><i class="fas fa-eye p-1" style="color:white;" title="Detail Data"></i></div>'); ?>
 
-                                                        <?php echo anchor('Data_karyawan/update_data_karyawan/' . $dv['nip'], '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
+                                                        <?php echo anchor('Data_karyawan/update_data_karyawan/' . $dv['nip'], '<div class="btn btn-warning btn-sm mr-1"><i class="fas fa-edit p-1" style="color:white;" title="Update Data"></i></div>'); ?>
                                                         
                                                         <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                            <?php echo anchor('Data_karyawan/hapus_data_karyawan/' . $dv['nip'], '<div class="btn btn-danger"><i class="fas fa-trash" style="color:white;"></i></div>'); ?>
+                                                            <?php echo anchor('Data_karyawan/hapus_data_karyawan/' . $dv['nip'], '<div class="btn btn-danger btn-sm" title="Hapus Data"><i class="fas fa-trash-alt p-1" style="color:white;"></i></div>'); ?>
                                                         </label>
                                                     </div>
                                                 </td>

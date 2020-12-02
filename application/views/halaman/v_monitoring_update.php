@@ -44,22 +44,43 @@ $user =  $user['username'];
                   <div class="form-group">
                     <textarea class="form-control" name="evaluasi" rows="3" placeholder="Tuliskan evaluasi" required></textarea>
                   </div>
-                  <div class="form-group">
-                    <select name="status" class="form-control" required>
-                      <option>Status...</option>
-                      <option value="Pending" <?php echo ($daily['status'] == 'Pending' ? 'selected' : ''); ?>>Pending</option>
-                      <option value="Approve" <?php echo ($daily['status'] == 'Approve' ? 'selected' : ''); ?>>Approve</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <select name="urgensi" class="form-control" required>
-                      <option selected>Urgensi...</option>
-                      <option value="Top" <?php echo ($daily['urgensi'] == 'Top' ? 'selected' : ''); ?>>Top</option>
-                      <option value="Middle" <?php echo ($daily['urgensi'] == 'Middle' ? 'selected' : ''); ?>>Middle</option>
-                      <option value="Low" <?php echo ($daily['urgensi'] == 'Low' ? 'selected' : ''); ?>>Low</option>
-                      <option value="Selesai" <?php echo ($daily['urgensi'] == 'Selesai' ? 'selected' : ''); ?>>Selesai</option>
-                    </select>
-                  </div>
+                  <?php
+                  if ($role_id == 2) { ?>
+                    <div class="form-group">
+                      <select name="status" class="form-control" required>
+                        <option>Status...</option>
+                        <option value="Pending" <?php echo ($daily['status'] == 'Pending' ? 'selected' : ''); ?>>Pending</option>
+                        <option value="Approve" <?php echo ($daily['status'] == 'Approve' ? 'selected' : ''); ?>>Approve</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <select name="urgensi" class="form-control" required>
+                        <option selected>Urgensi...</option>
+                        <option value="Top" <?php echo ($daily['urgensi'] == 'Top' ? 'selected' : ''); ?>>Top</option>
+                        <option value="Middle" <?php echo ($daily['urgensi'] == 'Middle' ? 'selected' : ''); ?>>Middle</option>
+                        <option value="Low" <?php echo ($daily['urgensi'] == 'Low' ? 'selected' : ''); ?>>Low</option>
+                        <option value="Selesai" <?php echo ($daily['urgensi'] == 'Selesai' ? 'selected' : ''); ?>>Selesai</option>
+                      </select>
+                    </div>
+                  <?php } else if ($role_id == 4) { ?>
+                    <div class="form-group">
+                      <select name="status" class="form-control" required hidden>
+                        <option>Status...</option>
+                        <option value="Pending" <?php echo ($daily['status'] == 'Pending' ? 'selected' : ''); ?>>Pending</option>
+                        <option value="Approve" <?php echo ($daily['status'] == 'Approve' ? 'selected' : ''); ?>>Approve</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <select name="urgensi" class="form-control" required hidden>
+                        <option selected>Urgensi...</option>
+                        <option value="Top" <?php echo ($daily['urgensi'] == 'Top' ? 'selected' : ''); ?>>Top</option>
+                        <option value="Middle" <?php echo ($daily['urgensi'] == 'Middle' ? 'selected' : ''); ?>>Middle</option>
+                        <option value="Low" <?php echo ($daily['urgensi'] == 'Low' ? 'selected' : ''); ?>>Low</option>
+                        <option value="Selesai" <?php echo ($daily['urgensi'] == 'Selesai' ? 'selected' : ''); ?>>Selesai</option>
+                      </select>
+                    </div>
+                  <?php }
+                  ?>
                 </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -75,20 +96,43 @@ $user =  $user['username'];
                   <div class="form-group">
                     <textarea class="form-control" name="evaluasi" rows="3" placeholder="Tuliskan evaluasi" required><?php echo $evaluasi['evaluasi']; ?></textarea>
                   </div>
-                  <div class="form-group">
-                    <select name="status" class="form-control" required>
-                      <option value="Pending" <?php echo ($daily['status'] == 'Pending' ? 'selected' : ''); ?>>Pending</option>
-                      <option value="Approve" <?php echo ($daily['status'] == 'Approve' ? 'selected' : ''); ?>>Approve</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <select name="urgensi" class="form-control" required>
-                      <option value="Top" <?php echo ($daily['urgensi'] == 'Top' ? 'selected' : ''); ?>>Top</option>
-                      <option value="Middle" <?php echo ($daily['urgensi'] == 'Middle' ? 'selected' : ''); ?>>Middle</option>
-                      <option value="Low" <?php echo ($daily['urgensi'] == 'Low' ? 'selected' : ''); ?>>Low</option>
-                      <option value="Selesai" <?php echo ($daily['urgensi'] == 'Selesai' ? 'selected' : ''); ?>>Selesai</option>
-                    </select>
-                  </div>
+                  <?php
+                  if ($role_id == 2) { ?>
+                    <div class="form-group">
+                      <select name="status" class="form-control" required>
+                        <option>Status...</option>
+                        <option value="Pending" <?php echo ($daily['status'] == 'Pending' ? 'selected' : ''); ?>>Pending</option>
+                        <option value="Approve" <?php echo ($daily['status'] == 'Approve' ? 'selected' : ''); ?>>Approve</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <select name="urgensi" class="form-control" required>
+                        <option selected>Urgensi...</option>
+                        <option value="Top" <?php echo ($daily['urgensi'] == 'Top' ? 'selected' : ''); ?>>Top</option>
+                        <option value="Middle" <?php echo ($daily['urgensi'] == 'Middle' ? 'selected' : ''); ?>>Middle</option>
+                        <option value="Low" <?php echo ($daily['urgensi'] == 'Low' ? 'selected' : ''); ?>>Low</option>
+                        <option value="Selesai" <?php echo ($daily['urgensi'] == 'Selesai' ? 'selected' : ''); ?>>Selesai</option>
+                      </select>
+                    </div>
+                  <?php } else if ($role_id == 4) { ?>
+                    <div class="form-group">
+                      <select name="status" class="form-control" required hidden>
+                        <option>Status...</option>
+                        <option value="Pending" <?php echo ($daily['status'] == 'Pending' ? 'selected' : ''); ?>>Pending</option>
+                        <option value="Approve" <?php echo ($daily['status'] == 'Approve' ? 'selected' : ''); ?>>Approve</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <select name="urgensi" class="form-control" required hidden>
+                        <option selected>Urgensi...</option>
+                        <option value="Top" <?php echo ($daily['urgensi'] == 'Top' ? 'selected' : ''); ?>>Top</option>
+                        <option value="Middle" <?php echo ($daily['urgensi'] == 'Middle' ? 'selected' : ''); ?>>Middle</option>
+                        <option value="Low" <?php echo ($daily['urgensi'] == 'Low' ? 'selected' : ''); ?>>Low</option>
+                        <option value="Selesai" <?php echo ($daily['urgensi'] == 'Selesai' ? 'selected' : ''); ?>>Selesai</option>
+                      </select>
+                    </div>
+                  <?php }
+                  ?>
                 </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
