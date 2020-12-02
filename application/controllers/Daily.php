@@ -201,10 +201,10 @@ class Daily extends CI_Controller
         $where = array(
             'id' => $id
         );
-
+        $nip = $this->session->userdata('nip');
         $link = $this->session->userdata('link');
         $this->session->unset_userdata('link');
         $this->leader_model->daily_update_proses($where, $data, 'tb_ldr_daily');
-        redirect('Daily/index/' . $link);
+        redirect('Daily/index/' . $nip . '/' . $link);
     }
 }
