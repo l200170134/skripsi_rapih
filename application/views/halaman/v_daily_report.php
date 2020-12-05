@@ -1,5 +1,7 @@
 <?php
 $level_akses = $this->session->userdata('role_id');
+$tgl_awal = $this->session->userdata('tgl_awal');
+$tgl_akhir = $this->session->userdata('tgl_akhir');
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -36,25 +38,27 @@ $level_akses = $this->session->userdata('role_id');
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <form role="form">
-                            <div class="card-body">
+                        <div class="card-body">
+                            <form method="post" action="<?php base_url('Daily/daily_report'); ?>">
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-4 pb-1">
+                                        <div class="col-md-3 pb-1">
                                             <label> Tanggal awal</label>
-                                            <input type="date" class="form-control" required>
+                                            <input type="date" class="form-control" name="tgl_awal" value="<?php echo $tgl_awal ?>" required autofocus>
                                         </div>
-                                        <div class="col-md-4 pb-1">
+                                        <div class="col-md-3 pb-1">
                                             <label>Tanggal akhir</label>
-                                            <input type="date" class="form-control" required>
+                                            <input type="date" class="form-control" name="tgl_akhir" value="<?php echo $tgl_akhir ?>" required>
                                         </div>
-                                        <div class="col-md-4" style="margin-top:33px;">
-                                            <button class="btn btn-md btn-primary">Cari</button>
+                                        <div class="col-md-2" style="margin-top:33px;">
+                                            <input type="submit" class="btn btn-md btn-primary" name="submit" value="Cari">
+                                            <input type="submit" class="btn btn-md btn-secondary" name="batal" value="Batal">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                            <span class="badge badge-primary"><?php echo  'Hasil : ' . $results; ?></span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">

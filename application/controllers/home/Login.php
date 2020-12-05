@@ -81,7 +81,6 @@ class Login extends CI_Controller
                 redirect('home/Login');
             }
         } else {
-            // tidak ada user dengan username itu
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">User tidak ditemukan!</div>');
             redirect('home/Login');
         }

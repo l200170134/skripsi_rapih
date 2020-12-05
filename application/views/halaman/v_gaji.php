@@ -51,7 +51,10 @@
                                             <th width="150px">Periode</th>
                                             <th width="150px">Nominal</th>
                                             <th width="180px">Tanggal Pembayaran</th>
-                                            <th width="150px">Aksi</td>
+                                            <?php if ($role_id == 3) {
+                                                echo '<th width="150px">Aksi</td>';
+                                            } else {
+                                            } ?>
                                         </tr>
                                     </thead>
 
@@ -71,12 +74,14 @@
 
                                                 <td align="center">Rp. <?php echo $gj['gaji']; ?></td>
                                                 <td align="center"><?php echo $gj['tgl_pembayaran']; ?></td>
-                                                <td align="center">
-                                                    <?php echo anchor('Gaji/gaji_update/' . $gj['id_gaji'], '<div class="btn btn-warning btn-sm mr-1"><i class="fas fa-edit p-1" style="color:white;" title="Update Gaji"></i></div>'); ?>
-                                                    <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                        <?php echo anchor('Gaji/gaji_hapus_proses/' . $gj['id_gaji'], '<div class="btn btn-danger btn-sm mr-1"><i class="fas fa-trash-alt p-1" style="color:white;" title="Hapus Gaji"></i></div>'); ?>
-                                                    </label>
-                                                </td>
+                                                <?php if ($role_id == 3) { ?>
+                                                    <td align="center">
+                                                        <?php echo anchor('Gaji/gaji_update/' . $gj['id_gaji'], '<div class="btn btn-warning btn-sm mr-1"><i class="fas fa-edit p-1" style="color:white;" title="Update Gaji"></i></div>'); ?>
+                                                        <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
+                                                            <?php echo anchor('Gaji/gaji_hapus_proses/' . $gj['id_gaji'], '<div class="btn btn-danger btn-sm mr-1"><i class="fas fa-trash-alt p-1" style="color:white;" title="Hapus Gaji"></i></div>'); ?>
+                                                        </label>
+                                                    </td>
+                                                <?php } ?>
 
                                             </tr>
                                         <?php endforeach ?>

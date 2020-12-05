@@ -16,6 +16,7 @@ class Gaji extends CI_Controller
         $data['judul'] = 'Gaji';
         $nip = $this->session->userdata('nip');
         $data['nip'] = $nip;
+        $data['role_id'] = $this->session->userdata('role_id');
 
         // PAGINATION
         $this->load->model('Pagination_model', 'page');
@@ -63,6 +64,7 @@ class Gaji extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Karyawan';
         $data['nip'] = $nip;
+        $data['role_id'] = $this->session->userdata('role_id');
         $this->session->set_userdata('nip_gaji', $nip);
 
         // PAGINATION
@@ -71,26 +73,6 @@ class Gaji extends CI_Controller
         $config['base_url'] = base_url() . 'Gaji/gaji_view/' . $nip . '/';
         $config['total_rows'] = $this->page->getGajiRows($nip);
         $config['per_page'] = 6;
-        // styling
-        $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
-        $config['full_tag_close'] = '</ul></nav>';
-        $config['first_link'] = 'First';
-        $config['first_tag_open'] = '<li class="page-item">';
-        $config['first_tag_close'] = '</li>';
-        $config['last_link'] = 'Last';
-        $config['last_tag_open'] = '<li class="page-item">';
-        $config['last_tag_close'] = '</li>';
-        $config['next_link'] = '&raquo';
-        $config['next_tag_open'] = '<li class="page-item">';
-        $config['next_tag_close'] = '</li>';
-        $config['prev_link'] = '&laquo';
-        $config['prev_tag_open'] = '<li class="page-item">';
-        $config['prev_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="page-item active"><span class="page-link">';
-        $config['cur_tag_close'] = '</span></li>';
-        $config['num_tag_open'] = '<li class="page-item">';
-        $config['num_tag_close'] = '</li>';
-        $config['attributes'] = array('class' => 'page-link');
         // inisiasi
         $this->pagination->initialize($config);
         $start = $this->uri->segment(4);
@@ -151,7 +133,6 @@ class Gaji extends CI_Controller
         $data['judul'] = 'Data Karyawan';
         $where = array('id_gaji' => $id_gaji);
         $data['update'] = $this->hrd_model->update($where, 'tb_gaji')->row_array();
-        //$data['gaji'] = $this->db->get_where('tb_gaji', ['nip' => $nip])->result_array();
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

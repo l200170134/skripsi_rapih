@@ -117,7 +117,7 @@ $level_akses = $this->session->userdata('role_id');
                                                 <?php } else { ?>
                                                     <td align="center">
                                                         <div class="btn-group">
-                                                            <a href="<?php echo base_url('Data_pribadi') ?>" class="btn btn-success btn-sm" title="Lihat Detail"><i class="fas fa-eye" style="color:white;"></i></a>
+                                                            <a href="<?php echo base_url('Data_pribadi/data_pribadi/' . $dv['nip']) ?>" class="btn btn-success btn-sm" title="Lihat Detail"><i class="fas fa-eye" style="color:white;"></i></a>
                                                     </td>
                                                 <?php } ?>
                                             </tr>

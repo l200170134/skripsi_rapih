@@ -14,13 +14,13 @@ class Pagination_model extends CI_Model
     }
 
     // Halaman report daily
-    public function getReportDaily($nip, $tanggal, $limit, $offset)
+    public function getReportDaily($nip, $tanggal, $limit, $offset, $tgl_awal, $tgl_akhir)
     {
-        return $this->db->query("SELECT * FROM tb_ldr_daily WHERE nip = $nip AND status = 'Approve' AND tgl != '$tanggal' ORDER BY tgl DESC LIMIT $offset,$limit")->result_array();
-    }
-    public function getReportRows($nip, $tanggal)
-    {
-        return $this->db->query("SELECT * FROM tb_ldr_daily WHERE nip = $nip AND status = 'Approve' AND tgl != '$tanggal' ORDER BY tgl DESC")->num_rows();
+        if ($tgl_awal && $tgl_akhir) {
+            return $this->db->query("SELECT * FROM tb_ldr_daily WHERE nip = $nip AND status = 'Approve' AND tgl != '$tanggal' AND tgl BETWEEN '$tgl_awal' AND '$tgl_akhir' ORDER BY tgl DESC LIMIT $offset,$limit")->result_array();
+        } else {
+            return $this->db->query("SELECT * FROM tb_ldr_daily WHERE nip = $nip AND status = 'Approve' AND tgl != '$tanggal' ORDER BY tgl DESC LIMIT $offset,$limit")->result_array();
+        }
     }
 
     // Halaman monitoring Utama
@@ -44,15 +44,6 @@ class Pagination_model extends CI_Model
         return $this->db->query("SELECT * FROM tb_ldr_daily WHERE (nip = $nip AND status != 'Approve') OR (nip = $nip AND tgl = '$tanggal' ) ORDER BY tgl ASC")->num_rows();
     }
 
-    // Halaman monitoring report daily
-    public function getMonitoringReport($nip, $tanggal, $limit, $offset)
-    {
-        return $this->db->query("SELECT * FROM tb_ldr_daily WHERE nip = $nip AND status = 'Approve' AND tgl != '$tanggal' ORDER BY tgl DESC LIMIT $offset,$limit")->result_array();
-    }
-    public function getMonReportRows($nip, $tanggal)
-    {
-        return $this->db->query("SELECT * FROM tb_ldr_daily WHERE nip = $nip AND status = 'Approve' AND tgl != '$tanggal' ORDER BY tgl DESC")->num_rows();
-    }
 
     // Halaman Evaluasi
     public function getEvaluasi($limit, $offset)
