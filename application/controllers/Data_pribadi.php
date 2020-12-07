@@ -89,6 +89,8 @@ class Data_pribadi extends CI_Controller
             'tgl_akhir' => $tgl_akhir,
         );
 
+        $aktivasi       = 1;
+        $this->db->query("UPDATE tb_status_data SET aktivasi = '$aktivasi'  WHERE nip = $nip");
         $this->hrd_model->input($data, 'tb_status_data');
         redirect('Data_pribadi/data_pribadi/' . $nip_get);
     }
@@ -122,7 +124,6 @@ class Data_pribadi extends CI_Controller
         $tgl_akhir      = $this->input->post('tgl_akhir');
         $tgl_akhir      = date('Y-m-d', strtotime($tgl_akhir));
 
-        echo $nip_get;
         $data = array(
             'id_status'        => $id_status,
             'nip'       => $nip,

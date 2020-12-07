@@ -111,7 +111,7 @@ $tgl_akhir = $this->session->userdata('tgl_akhir');
                             </div>
                             <?php echo $this->pagination->create_links() ?>
                             <br>
-                            <a href="#" class="btn btn-primary btn"><i class="fas fa-download" style="color:white;"> Download</i></a>
+                            <a href="#" class="btn btn-success"><i class="fas fa-file-excel" style="color:white;" title="export to CSV"> Export All</i></a>
                         </div>
                     </div>
                 </div>

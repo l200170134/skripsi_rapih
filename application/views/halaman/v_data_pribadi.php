@@ -81,7 +81,7 @@ $level_akses = $this->session->userdata('role_id');
                                                     <?php
                                                     echo $kar['tempat_lahir'];
                                                     echo ', ';
-                                                    echo $kar['tgl_lahir'];
+                                                    echo date('d-m-Y', strtotime($kar['tgl_lahir']));
                                                     ?>
 
                                                 </p>
@@ -202,6 +202,7 @@ $level_akses = $this->session->userdata('role_id');
                                             <th width="200px">Status</th>
                                             <th width="150px">Tanggal Mulai</th>
                                             <th width="150px">Tanggal Akhir</th>
+                                            <th width="150px">Ketetangan</th>
                                             <th width="90px">Aksi</th>
                                         </tr>
                                     </thead>
@@ -221,8 +222,15 @@ $level_akses = $this->session->userdata('role_id');
                                                     echo $status['status'];
                                                     ?>
                                                 </td>
-                                                <td><?php echo $st['tgl_mulai']; ?></td>
-                                                <td><?php echo $st['tgl_akhir']; ?></td>
+                                                <td><?php echo date('d-m-Y', strtotime($st['tgl_mulai'])); ?></td>
+                                                <td><?php echo date('d-m-Y', strtotime($st['tgl_akhir'])); ?></td>
+                                                <td>
+                                                    <?php if ($st['aktivasi'] == 1) { ?>
+                                                        <span class="badge badge-secondary">Berakhir</span>
+                                                    <?php } else { ?>
+                                                        <span class="badge badge-primary">Aktif</span>
+                                                    <?php } ?>
+                                                </td>
                                                 <td>
                                                     <div class="btn-group">
                                                         <?php echo anchor('Data_pribadi/status_karyawan_update/' . $st['id_status'], '<div class="btn btn-warning btn-sm mr-2"><i class="fas fa-edit" style="color:white;" title="Update Data"></i></div>'); ?>

@@ -110,10 +110,10 @@ class Pagination_model extends CI_Model
         return $this->db->get_where('tb_gaji', ['nip' => $nip])->num_rows();
     }
 
-    // Halaman Gaji HRD
+    // Halaman Status Karyawan
     public function getStatus($nip, $limit, $offset)
     {
-        return $this->db->get_where('tb_status_data', ['nip' => $nip], $limit, $offset)->result_array();
+        return $this->db->order_by('id_status', 'DESC')->get_where('tb_status_data', ['nip' => $nip], $limit, $offset)->result_array();
     }
     public function getStatusRows($nip)
     {
