@@ -31,8 +31,8 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body mb-2" style="overflow: scroll;">
-                            <table class="table table-bordered table-hover" style="table-layout: fixed; word-wrap: break-word;">
-                                <thead>
+                            <table class="table  table-hover" style="table-layout: fixed; word-wrap: break-word;">
+                                <thead class="bg-secondary">
                                     <tr align="center">
                                         <th width="50px">No</th>
                                         <th width="250px">Aktivitas</th>

@@ -69,9 +69,6 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Divisi</label>
-
-                                                <option value="Belum Menikah" <?php echo ($ud->pernikahan == 'Belum Menikah' ? ' selected' : ''); ?>>Belum Menikah</option>
-
                                                 <select name="id_divisi" class="form-control">
                                                     <?php
                                                     $id_divisi = $ud->id_divisi;

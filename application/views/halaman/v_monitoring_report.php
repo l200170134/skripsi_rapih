@@ -58,8 +58,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="bungkus m-2" style="overflow: scroll;">
-                                <table class="table table-bordered table-hover" style="table-layout: fixed; word-wrap: break-word;">
-                                    <thead>
+                                <table class="table  table-hover" style="table-layout: fixed; word-wrap: break-word;">
+                                    <thead class="bg-secondary">
                                         <tr align="center">
                                             <th width="50px">No</th>
                                             <th width="100px">Tanggal</th>

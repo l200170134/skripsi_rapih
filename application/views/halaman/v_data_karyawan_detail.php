@@ -40,18 +40,23 @@ $level_akses = $this->session->userdata('role_id');
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-
-                            <?php if ($level_akses != 4) { ?>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <?php foreach ($nama_divisi as $nd) : ?>
-                                                <?php echo anchor('Data_karyawan/tambah_data_karyawan/' . $nd['id_divisi'], '<div class="btn btn-block btn-md btn-success">Tambah Data Karyawan</div>'); ?>
-                                            <?php endforeach; ?>
-                                        </td>
-                                    </tr>
-                                </table>
-                            <?php } else if ($level_akses == 4) { ?>
+                        <?php if ($level_akses != 4) { ?>
+                                <?php foreach ($nama_divisi as $nd) : ?>
+                            <div class="col-12 col-lg-12">
+                                <div class="row">
+                                    <div class="mr-1">
+                                        <?php echo anchor('Data_karyawan', '<div class="btn btn-block btn-md btn-secondary"><i class="fas fa-arrow-left p-1" style="color:white;" title="Kembali"></i></div>'); ?>
+                                    </div>
+                                    <div class="mr-1">
+                                        <?php echo anchor('Data_karyawan/tambah_data_karyawan/' . $nd['id_divisi'], '<div class="btn btn-block btn-md btn-success">Tambah Data Karyawan</div>'); ?>
+                                    </div>
+                                    <div>
+                                        <?php echo anchor('Evaluasi/kpi/' . $nd['id_divisi'], '<div class="btn btn-block btn-md btn-primary">KPI</div>'); ?>
+                                    </div>
+                                </div>
+                            </div>                    
+                                <?php endforeach; ?>
+                                <?php } else if ($level_akses == 4) { ?>
                                 <table>
                                     <tr>
                                         <td class="pr-2"><a href="<?php echo base_url('Monitoring/monitoring_direksi/' . $id_divisi); ?>" class="btn btn-block btn-md btn-success">Monitoring</a></td>
@@ -73,7 +78,7 @@ $level_akses = $this->session->userdata('role_id');
 
                                             <?php if ($level_akses != 4) { ?>
                                                 <th width="120px">Gaji</th>
-                                                <th width="80px">Kinerja</th>
+                                                <th width="50px">KPI</th>
                                             <?php } else {
                                             }; ?>
 
@@ -95,12 +100,14 @@ $level_akses = $this->session->userdata('role_id');
                                             if ($level_akses != '4') { ?>
                                                 <td align="center">
                                                     
-                                                    <?php echo anchor('Gaji/gaji_view/' . $dv['nip'], '<div class="btn btn-primary btn-sm mr-1"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Gaji"></i></div>'); ?>
+                                                    <?php echo anchor('Gaji/gaji_view/' . $dv['nip'], '<div class="btn btn-primary btn-sm mr-1"><i class="fas fa-eye p-1" style="color:white;" title="Lihat Gaji"></i></div>'); ?>
 
                                                     <?php echo anchor('Gaji/gaji_form/' . $dv['nip'], '<div class="btn btn-success btn-sm mr-1"><i class="fas fa-plus p-1" style="color:white;" title="Tambah Gaji"></i></div>'); ?>
 
                                                     
-                                                <td align="center"><a href="<?php echo base_url('Kinerja') ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja"><i class="fas fa-eye p-1"></i></a></td>
+                                                <td align="center">
+                                                    <?php echo anchor('Evaluasi/kpivalue/' . $dv['nip'], '<div class="btn btn-primary btn-sm mr-1"><i class="fas fa-eye p-1" style="color:white;" title="Lihat Nilai"></i></div>'); ?>
+                                                </td>
                                                 <td align="center">
                                                     <div class="btn-group">
                                                         <?php echo anchor('Data_pribadi/data_pribadi/' . $dv['nip'], '<div class="btn btn-primary btn-sm mr-1"><i class="fas fa-eye p-1" style="color:white;" title="Detail Data"></i></div>'); ?>
