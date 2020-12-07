@@ -31,10 +31,8 @@ class Evaluasi extends CI_Controller
         $nip = $this->session->userdata('nip');
         $data['judul'] = "Evaluasi";
         $data['user'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
-       
         $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai ASC")->result_array();
-        
-
+    }
     public function kpi($id_divisi)
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
@@ -57,7 +55,7 @@ class Evaluasi extends CI_Controller
         $data['judul'] = "Data Karyawan";
         $data['divisi'] = $this->db->get_where('tb_divisi', ['id_divisi' => $id_divisi])->row_array();
         $this->session->set_userdata('id_pertanyaan', $id_divisi);
-        
+
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -69,18 +67,18 @@ class Evaluasi extends CI_Controller
 
     public function kpi_tambah_proses($id)
     {
-    $pertanyaan             = $this->input->post('pertanyaan');
-    $id_divisi              = $this->input->post('id_divisi');
-    $id_kpi               = $this->input->post('id_kpi');
+        $pertanyaan             = $this->input->post('pertanyaan');
+        $id_divisi              = $this->input->post('id_divisi');
+        $id_kpi               = $this->input->post('id_kpi');
 
-    $data=array(
-        'pertanyaan'        => $pertanyaan,
-        'id_divisi'         => $id_divisi,
-        'id_kpi'          => $id_kpi,
+        $data = array(
+            'pertanyaan'        => $pertanyaan,
+            'id_divisi'         => $id_divisi,
+            'id_kpi'          => $id_kpi,
         );
 
-    $this->hrd_model->input($data, 'tb_kpi');
-    redirect('Evaluasi/kpi/' . $id);
+        $this->hrd_model->input($data, 'tb_kpi');
+        redirect('Evaluasi/kpi/' . $id);
     }
 
     public function kpi_hapus_proses($id_pertanyaan)
@@ -97,8 +95,8 @@ class Evaluasi extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = "Data Karyawan";
         $data['kpi_update'] = $this->db->get_where('tb_kpi', ['id_pertanyaan' => $id_pertanyaan])->row_array();
-        
-        
+
+
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -110,23 +108,23 @@ class Evaluasi extends CI_Controller
 
     public function kpi_update_proses()
     {
-    $id_pertanyaan          = $this->input->post('id_pertanyaan');    
-    $pertanyaan             = $this->input->post('pertanyaan');
-    $id_divisi              = $this->input->post('id_divisi');
-    $id_kpi               = $this->input->post('id_kpi');
+        $id_pertanyaan          = $this->input->post('id_pertanyaan');
+        $pertanyaan             = $this->input->post('pertanyaan');
+        $id_divisi              = $this->input->post('id_divisi');
+        $id_kpi               = $this->input->post('id_kpi');
 
-    $data = array(
-        'pertanyaan'        => $pertanyaan,
-        'id_divisi'         => $id_divisi,
-        'id_kpi'          => $id_kpi,
+        $data = array(
+            'pertanyaan'        => $pertanyaan,
+            'id_divisi'         => $id_divisi,
+            'id_kpi'          => $id_kpi,
         );
 
-    $where = array(
-        'id_pertanyaan'        => $id_pertanyaan
-    );    
+        $where = array(
+            'id_pertanyaan'        => $id_pertanyaan
+        );
 
-    $this->hrd_model->update_proses($where, $data, 'tb_kpi');
-    redirect('Evaluasi/kpi/' . $id_divisi);
+        $this->hrd_model->update_proses($where, $data, 'tb_kpi');
+        redirect('Evaluasi/kpi/' . $id_divisi);
     }
 
     public function kpivalue($nip)
@@ -141,10 +139,10 @@ class Evaluasi extends CI_Controller
         //AVG(value) AS rata
         //$data['bulan'] = $this->db->query("SELECT DISTINCT bulan, tahun FROM tb_kpi_value WHERE nip = '$nip'")->result_array();
         $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai ASC")->result_array();
-        
 
 
-    
+
+
         //$data['kpi_value'] = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
 
         $this->load->view('_partials/header');
@@ -173,29 +171,29 @@ class Evaluasi extends CI_Controller
     public function kpivalue_tambah_proses($id_divisi)
     {
         $kpi_data = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
-        foreach($kpi_data as $kpi){
-        $nip            = $this->input->post('nip');
-        $id_divisi      = $this->input->post('id_divisi');
-        $bulan          = $this->input->post('bulan');
-        $tahun          = $this->input->post('tahun');
-        $value         = $this->input->post($kpi['id_pertanyaan']);
+        foreach ($kpi_data as $kpi) {
+            $nip            = $this->input->post('nip');
+            $id_divisi      = $this->input->post('id_divisi');
+            $bulan          = $this->input->post('bulan');
+            $tahun          = $this->input->post('tahun');
+            $value         = $this->input->post($kpi['id_pertanyaan']);
 
-        $data = array (
-            'nip'           => $nip,
-            'id_divisi'     => $id_divisi,
-            'bulan'         => $bulan,
-            'tahun'         => $tahun,
-            'value'        => $value,
+            $data = array(
+                'nip'           => $nip,
+                'id_divisi'     => $id_divisi,
+                'bulan'         => $bulan,
+                'tahun'         => $tahun,
+                'value'        => $value,
 
-        );
+            );
 
-        $this->hrd_model->input($data, 'tb_kpi_value');
+            $this->hrd_model->input($data, 'tb_kpi_value');
         }
         $get = $this->db->get_where('user', ['id_divisi' => $id_divisi])->row_array();
 
         redirect('Evaluasi/kpivalue/' . $get['nip']);
     }
-    
+
     public function kpivalue_hapus_proses($nip, $bulan, $tahun)
     {
         //$where = array('id_pertanyaan' => $id_pertanyaan);
