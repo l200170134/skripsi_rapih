@@ -28,9 +28,23 @@ class Data_karyawan extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Karyawan';
-        $data['nama_divisi'] = $this->db->get_where('tb_divisi', ['id_divisi' => $id_divisi])->result_array();
-        $data['divisi'] = $this->db->get_where('user', ['id_divisi' => $id_divisi])->result_array();
         $data['id_divisi'] = $id_divisi;
+
+        // PAGINATION
+        $this->load->model('Pagination_model', 'pages');
+        // config
+        $config['base_url'] = base_url() . 'Data_karyawan/detail_karyawan/' . $id_divisi . '/';
+        $config['total_rows'] = $this->pages->getKaryawanRows($id_divisi);;
+        $config['per_page'] = 5;
+        // inisiasi pagination
+        $this->pagination->initialize($config);
+        $start = $this->uri->segment(4);
+        $data['start'] = 0 + $start;
+        $this->session->set_userdata('link_kar', $data['start']);
+        $data['divisi'] = $this->pages->getKaryawan($id_divisi, $config['per_page'], $data['start']);
+        // END PAGIANTION
+
+        $data['nama_divisi'] = $this->pages->getNamaDivisi($id_divisi);
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -138,7 +152,8 @@ class Data_karyawan extends CI_Controller
         );
 
         $this->hrd_model->update_proses($where, $data, 'user');
-        redirect('Data_karyawan/detail_karyawan/' . $id_divisi);
+        $link = $this->session->userdata('link_kar');
+        redirect('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link);
     }
 
     public function detail_karyawan_tambah()

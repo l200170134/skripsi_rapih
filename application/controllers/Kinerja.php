@@ -14,7 +14,20 @@ class Kinerja extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Kinerja';
-        $data['kinerja'] = $this->leader_model->kinerja_tampil()->result();
+
+        // PAGINATION
+        $this->load->model('Pagination_model', 'page');
+        // config
+        $config['base_url'] = base_url() . 'Kinerja/index';
+        $config['total_rows'] = $this->page->getKinerjaRows();
+        $config['per_page'] = 3;
+        // inisiasi
+        $this->pagination->initialize($config);
+        $start = $this->uri->segment(3);
+        $this->session->set_userdata('link_kinerja', $start);
+        $data['start'] = 0 + $start;
+        $data['kinerja'] = $this->page->getKinerja($config['per_page'], $data['start']);
+        // END PAGINATION
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -83,7 +96,8 @@ class Kinerja extends CI_Controller
     {
         $where = array('id' => $id);
         $this->leader_model->kinerja_hapus($where, 'tb_ldr_kinerja');
-        redirect("Kinerja");
+        $link = $this->session->userdata('link_kinerja');
+        redirect('Kinerja/index/' . $link);
     }
     public function kinerja_proses_update()
     {
@@ -110,7 +124,8 @@ class Kinerja extends CI_Controller
             'id' => $id
         );
         $this->leader_model->kinerja_update_proses($where, $data, 'tb_ldr_kinerja');
-        redirect('Kinerja');
+        $link = $this->session->userdata('link_kinerja');
+        redirect('Kinerja/index/' . $link);
     }
     public function kinerja_search()
     {

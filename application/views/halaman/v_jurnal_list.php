@@ -31,7 +31,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <a href="<?php echo base_url('Jurnal/jurnal_form/' . $nip) ?>" class="btn btn-block btn-sm btn-success mb-3" style="width: 100px;">New Journal</a>
-                            <div class="bungkus p-0" style="overflow: scroll;">
+                            <div class="bungkus p-0 mb-2" style="overflow: scroll;">
                                 <table class="table table-hover table-bordered" style="table-layout: fixed; word-wrap: break-word;">
                                     <tr align="center">
                                         <th width="50px">No</th>
@@ -47,7 +47,7 @@
                                         $no = 1;
                                         foreach ($jurnal as $ju) : ?>
                                             <tr align="center">
-                                                <td><?php echo $no++ ?></td>
+                                                <td><?php echo ++$start ?></td>
                                                 <td><span class="badge badge-primary"><?php echo $ju['nip'] ?></span></td>
                                                 <td align="left" class="pl-3"><?php echo $ju['aktivitas'] ?></td>
                                                 <td><?php echo $ju['jam'] ?></td>
@@ -60,6 +60,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <?php echo $this->pagination->create_links(); ?>
                         </div>
                     </div>
                 </div>

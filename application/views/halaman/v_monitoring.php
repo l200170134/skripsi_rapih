@@ -1,7 +1,6 @@
-
-<?php 
+<?php
 $link = $this->session->userdata('link');
- ?>
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -50,10 +49,11 @@ $link = $this->session->userdata('link');
                                     foreach ($list_user as $ls) :
                                     ?>
                                         <tr>
-                                            <td class="p-2"><?php echo $a++; ?></td>
+                                            <td class="p-2"><?php echo ++$start; ?></td>
                                             <td class="p-2"><?php echo $ls['nama']; ?></td>
-                                            <td align="center">
-                                                <?php echo anchor('Monitoring/monitoring_daily/' . $ls['nip'].'/'.$link, '<div class="btn btn-success btn-sm">Today</div>'); ?>
+
+                                            <td align="center" class="p-2">
+                                                <?php echo anchor('Monitoring/monitoring_daily/' . $ls['nip'], '<div class="btn btn-success btn-sm">Today</div>'); ?>
                                             </td>
                                             <td align="center">
                                                 <a href="<?php echo base_url('Monitoring/monitoring_report/' . $ls['nip']) ?>" class="btn btn-primary btn-sm">Report</a>
@@ -62,11 +62,12 @@ $link = $this->session->userdata('link');
                                     <?php
                                     endforeach;
                                     ?>
-
                                 </tbody>
                             </table>
+
                         </div>
-                        </div>
+
+                        <?php echo $this->pagination->create_links(); ?>
                     </div>
                 </div>
                 <!-- ./col -->

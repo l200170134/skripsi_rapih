@@ -35,18 +35,6 @@ class Evaluasi extends CI_Controller
         $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai ASC")->result_array();
         
 
-
-    
-        //$data['kpi_value'] = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
-
-        $this->load->view('_partials/header');
-        $this->load->view('_partials/navbar');
-        $this->load->view('_partials/sidebar', $data);
-        $this->load->view('halaman/v_kpivalue');
-        $this->load->view('_partials/footer');
-        $this->load->view('_partials/js');
-    }
-
     public function kpi($id_divisi)
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk

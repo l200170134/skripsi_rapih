@@ -1,5 +1,6 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
+$link = $this->session->userdata('link_jurnal');
 ?>
 
 <div class="content-wrapper">
@@ -43,7 +44,7 @@ date_default_timezone_set('Asia/Jakarta');
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <a href="<?php echo base_url('Jurnal/jurnal_list/' . $nip) ?>" class="btn btn-secondary">Cancel</a>
+                                    <a href="<?php echo base_url('Jurnal/jurnal_list/' . $nip . '/' . $link) ?>" class="btn btn-secondary">Cancel</a>
                                 </div>
                         </form>
                     </div>

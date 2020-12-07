@@ -1,5 +1,6 @@
 <?php
 $level_akses = $this->session->userdata('role_id');
+$link = $this->session->userdata('link_kinerja');
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -89,7 +90,7 @@ $level_akses = $this->session->userdata('role_id');
                                 </div>
                             </div>
                             <!-- </form> -->
-                            <div class="bungkus p-0" style="overflow: scroll;">
+                            <div class="bungkus p-0 mb-2" style="overflow: scroll;">
                                 <table class="table table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                     <thead>
                                         <tr align="center">
@@ -112,11 +113,11 @@ $level_akses = $this->session->userdata('role_id');
                                         $no = 1;
                                         foreach ($kinerja as $kj) : ?>
                                             <tr>
-                                                <td><?php echo $no++ ?></td>
-                                                <td><?php echo $kj->nama_karyawan ?></td>
+                                                <td><?php echo ++$start ?></td>
+                                                <td><?php echo $kj['nama_karyawan']; ?></td>
                                                 <td>
                                                     <?php
-                                                    $bulan = $kj->bulan;
+                                                    $bulan = $kj['bulan'];
                                                     if ($bulan == ' 1 ') {
                                                         echo "Januari";
                                                     } else if ($bulan == ' 2 ') {
@@ -144,15 +145,15 @@ $level_akses = $this->session->userdata('role_id');
                                                     }
                                                     ?>
 
-                                                    <?php echo $kj->tahun ?>
+                                                    <?php echo $kj['tahun'] ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $kj->point ?></td>
-                                                <!-- <?php echo ($kj->hrd_1 + $kj->hrd_2) / 2; ?> -->
+                                                    <?php echo $kj['point'] ?></td>
+                                                <!-- <?php echo ($kj['hrd_1'] + $kj['hrd_2']) / 2; ?> -->
                                                 </td>
                                                 <td>
                                                     <?php
-                                                    $point_ket = $kj->point;
+                                                    $point_ket = $kj['point'];
                                                     if ($point_ket >= 1 && $point_ket <= 3) {
                                                         echo "<span class='badge badge-danger'>Buruk</span>";
                                                     } else if ($point_ket >= 3.1 && $point_ket <= 3.7) {
@@ -167,17 +168,17 @@ $level_akses = $this->session->userdata('role_id');
                                                 </td>
                                                 <?php if ($level_akses != 4) : ?>
                                                     <td align="center">
-                                                        <?php echo anchor('Kinerja/kinerja_update/' . $kj->id, '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?></td>
+                                                        <?php echo anchor('Kinerja/kinerja_update/' . $kj['id'], '<div class="btn btn-warning"><i class="fas fa-edit" style="color:white;"></i></div>'); ?></td>
                                                     <td align="center" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                        <?php echo anchor('Kinerja/kinerja_proses_hapus/' . $kj->id, '<div class="btn btn-danger ml-2"><i class="fas fa-trash"></i></div>'); ?></td>
+                                                        <?php echo anchor('Kinerja/kinerja_proses_hapus/' . $kj['id'], '<div class="btn btn-danger ml-2"><i class="fas fa-trash"></i></div>'); ?></td>
                                                 <?php endif; ?>
                                             </tr>
                                         <?php endforeach ?>
                                     </tbody>
                                 </table>
-
-
                             </div>
+
+                            <?php echo $this->pagination->create_links(); ?>
                         </div>
                     </div>
                 </div>

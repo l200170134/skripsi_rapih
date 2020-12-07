@@ -29,7 +29,7 @@
                             <h3 class="card-title">Jurnal Harian Divisi</h3>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body" style="overflow: scroll;">
+                        <div class="card-body mb-2" style="overflow: scroll;">
                             <table class="table table-bordered table-hover table-sm" style="table-layout: fixed; word-wrap: break-word;">
                                 <thead>
                                     <tr align="center">
@@ -45,7 +45,7 @@
                                     foreach ($karyawan as $kr) :
                                     ?>
                                         <tr>
-                                            <td align="center"><?php echo $a++; ?></td>
+                                            <td align="center"><?php echo ++$start; ?></td>
                                             <td align="rignt" class="pl-3"><?php echo $kr['nama'] ?></td>
                                             <td align="center">Foto belum tersedia</td>
                                             <td align="center" class="p-2"><a href="<?php echo base_url('Jurnal/jurnal_list/' . $kr['nip']) ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye" style="color:white;"></i></a></td>
@@ -56,8 +56,8 @@
                                     ?>
                                 </tbody>
                             </table>
-
                         </div>
+                        <?php echo $this->pagination->create_links(); ?>
                     </div>
                 </div>
                 <!-- ./col -->

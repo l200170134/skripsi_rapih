@@ -81,7 +81,6 @@ class Login extends CI_Controller
                 redirect('home/Login');
             }
         } else {
-            // tidak ada user dengan username itu
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">User tidak ditemukan!</div>');
             redirect('home/Login');
         }
@@ -93,7 +92,22 @@ class Login extends CI_Controller
         $this->session->unset_userdata('role_id');
         $this->session->unset_userdata('nip');
         $this->session->unset_userdata('divisi');
+        $this->session->unset_userdata('link');
+        $this->session->unset_userdata('link_kar');
+        $this->session->unset_userdata('nip_status');
+        $this->session->unset_userdata('link_status');
+        $this->session->unset_userdata('nip_gaji');
+        $this->session->unset_userdata('link_gaji');
+        $this->session->unset_userdata('link_jurnal');
+        $this->session->unset_userdata('nip_jurnal');
+        $this->session->unset_userdata('link_kinerja');
+        $this->session->unset_userdata('link_mon');
+        $this->session->unset_userdata('link_mon');
+        $this->session->unset_userdata('id_daily');
+
         $this->session->set_flashdata('message', '<div class="alert alert-warning text-white" role="alert">Anda telah logout!</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-warning text-white" role="alert">Anda telah logout</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-warning text-white" role="alert">Anda telah logout</div>');
         redirect('home/Login');
     }
 

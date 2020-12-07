@@ -14,9 +14,41 @@ class Jurnal extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Jurnal';
-        $id = $this->session->userdata('divisi');
+        $id_divisi = $this->session->userdata('divisi');
         $username =  $this->session->userdata('username');
-        $data['karyawan'] = $this->db->get_where('user', ['id_divisi' => $id, 'username !=' => $username])->result_array();
+
+        // PAGIANTION
+        $this->load->model('Pagination_model', 'page');
+        // config
+        $config['base_url'] = base_url() . 'Jurnal/index';
+        $config['total_rows'] = $this->page->getEmployesRows($id_divisi, $username);
+        $config['per_page'] = 5;
+        // styling
+        $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close'] = '</ul></nav>';
+        $config['first_link'] = 'First';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+        $config['last_link'] = 'Last';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close'] = '</span></li>';
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+        $config['attributes'] = array('class' => 'page-link');
+        // inisiasi
+        $this->pagination->initialize($config);
+        $start = $this->uri->segment(3);
+        $data['start'] = 0 + $start;
+        $data['karyawan'] = $this->page->getEmployes($id_divisi, $username, $config['per_page'], $data['start']);
+        // END PAGINATION
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -33,7 +65,21 @@ class Jurnal extends CI_Controller
         $data['jurnal'] = $this->leader_model->jurnal_tampil()->result();
         $data['judul'] = 'Jurnal';
         $data['nip'] = $nip;
-        $data['jurnal'] = $this->db->query("SELECT * FROM tb_ldr_jurnal WHERE nip = $nip ORDER BY tgl ASC")->result_array();
+        $data['jurnal'] = $this->db->query("SELECT * FROM tb_ldr_jurnal WHERE nip = $nip ORDER BY tgl DESC")->result_array();
+
+        // PAGINATION
+        $this->load->model('Pagination_model', 'pages');
+        // config
+        $config['base_url'] = base_url() . 'Jurnal/jurnal_list/' . $nip . '/';
+        $config['total_rows'] = $this->pages->getJurnalRows($nip);
+        $config['per_page'] = 5;
+        // inisiasi pagination
+        $this->pagination->initialize($config);
+        $start = $this->uri->segment(4);
+        $data['start'] = 0 + $start;
+        $this->session->set_userdata('link_jurnal', $data['start']);
+        $data['jurnal'] = $this->pages->getJurnal($nip, $config['per_page'], $data['start']);
+        // END PAGIANTION
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -78,9 +124,10 @@ class Jurnal extends CI_Controller
     public function jurnal_proses_hapus($id)
     {
         $nip = $this->session->userdata('nip_jurnal');
+        $link = $this->session->userdata('link_jurnal');
         $where = array('id' => $id);
         $this->karyawan_model->daily_hapus($where, 'tb_ldr_jurnal');
-        redirect('Jurnal/jurnal_list/' . $nip);
+        redirect('Jurnal/jurnal_list/' . $nip . '/' . $link);
         $nip = $this->session->unset_userdata('nip_jurnal');
     }
 }
