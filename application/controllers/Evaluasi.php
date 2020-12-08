@@ -17,7 +17,6 @@ class Evaluasi extends CI_Controller
         $id_divisi = $this->session->userdata('divisi');
         $data['list_user'] = $this->db->get_where('user', ['id_divisi' => $id_divisi])->result_array();
 
-
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
         $this->load->view('_partials/sidebar', $data);
@@ -32,6 +31,13 @@ class Evaluasi extends CI_Controller
         $data['judul'] = "Evaluasi";
         $data['user'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
         $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai ASC")->result_array();
+
+        $this->load->view('_partials/header');
+        $this->load->view('_partials/navbar');
+        $this->load->view('_partials/sidebar', $data);
+        $this->load->view('halaman/v_kpivalue');
+        $this->load->view('_partials/footer');
+        $this->load->view('_partials/js');
     }
     public function kpi($id_divisi)
     {

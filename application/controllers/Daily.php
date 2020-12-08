@@ -60,6 +60,7 @@ class Daily extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user']       = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul']      = 'Daily Activity';
+        $data['nip']        = $nip;
         $nip                = $this->session->userdata('nip');
         $tanggal            = date('Y-m-d');
         $data['evaluasi']   = $this->db->get('tb_evaluasi')->result_array();
@@ -207,5 +208,65 @@ class Daily extends CI_Controller
         $this->session->unset_userdata('link');
         $this->leader_model->daily_update_proses($where, $data, 'tb_ldr_daily');
         redirect('Daily/index/' . $nip . '/' . $link);
+    }
+
+    public function export_csv($nip)
+    {
+        $this->load->model('exportcsv_model', 'export');
+        $nip            = $nip;
+        $tanggal        = date('Y-m-d');
+        $nam = $this->db->get_where('user', ['nip' => $nip])->row_array();
+        $nama = $nam['nama'];
+        $id_div = $nam['id_divisi'];
+        $div = $this->db->get_where('tb_divisi', ['id_divisi' => $id_div])->row_array();
+        $divisi = $div['divisi'];
+        $data['evaluasi']   = $this->db->get('tb_evaluasi')->result_array();
+        $data['report'] = $this->export->exportReport($nip, $tanggal);
+        require(APPPATH . 'PHPExcel-1.8/Classes/PHPExcel.php');
+        require(APPPATH . 'PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php');
+
+        // Bikin object
+        $object = new PHPExcel();
+        // Tamahkan properties
+        $object->getProperties()->setCreator("PT. Sinar Grafindo");
+        $object->getProperties()->setLastModifiedBy("PT. Sinar Grafindo");
+        $object->getProperties()->setTitle("Daily Report");
+
+        // Mengatur posisi sheet
+        // Memberi judul
+        $object->setActiveSheetIndex(0);
+        $object->getActiveSheet()->setCellValue('A1', 'NO');
+        $object->getActiveSheet()->setCellValue('B1', 'TANGGAL');
+        $object->getActiveSheet()->setCellValue('C1', 'AKTIVITAS');
+        $object->getActiveSheet()->setCellValue('D1', 'CATATAN');
+        $object->getActiveSheet()->setCellValue('E1', 'EVALUASI');
+
+        $baris = 2;
+        $no = 1;
+        // Mengisi data
+        foreach ($data['report'] as $rp) {
+            $object->getActiveSheet()->setCellValue('A' . $baris, $no++);
+            $object->getActiveSheet()->setCellValue('B' . $baris, $rp['tgl']);
+            $object->getActiveSheet()->setCellValue('C' . $baris, $rp['aktivitas']);
+            $object->getActiveSheet()->setCellValue('D' . $baris, $rp['catatan']);
+            foreach ($data['evaluasi'] as $ev) {
+                if ($rp['id'] == $ev['id_daily']) {
+                    $object->getActiveSheet()->setCellValue('E' . $baris, $ev['evaluasi']);
+                }
+            }
+
+            $baris++;
+        }
+
+        // Menentukan nama output file
+        $filename = "Daily_Report-$nama-$divisi" . '.xlsx';
+        $object->getActiveSheet()->setTitle("Daily Report");
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('cache-Contro: max-age=0');
+        $writer = PHPExcel_IOFactory::createWriter($object, 'Excel2007');
+        $writer->save('PHP://output');
+
+        exit;
     }
 }

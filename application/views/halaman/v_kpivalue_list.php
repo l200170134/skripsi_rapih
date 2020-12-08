@@ -1,7 +1,6 @@
-
-<?php 
+<?php
 $link = $this->session->userdata('link');
- ?>
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -36,34 +35,36 @@ $link = $this->session->userdata('link');
                         <div class="card-body">
                             <div class="bungkus p-0 mb-2" style="overflow: scroll;">
                                 <table class="table table-hover table-md col-6" style="table-layout: fixed; word-wrap: break-word;">
-                                <thead class="bg-secondary">
-                                    <tr align="center">
-                                        <th width="50px">No</th>
-                                        <th width="250px">Nama</th>
-                                        <th width="150px">Key Performance Index</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <?php
-                                    $a = 1;
-                                    foreach ($list_user as $ls) :
-                                    ?>
-                                        <tr>
-                                            <td class="p-2"><?php echo $a++; ?></td>
-                                            <td class="p-2"><?php echo $ls['nama']; ?></td>
-                                            <td align="center">
-                                                <?php echo anchor('Evaluasi/kpivalue/' . $ls['nip'], '<div class="btn btn-primary btn-sm"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Data"></i></div>'); ?>
-                                            </td>
-
+                                    <thead class="bg-secondary">
+                                        <tr align="center">
+                                            <th width="50px">No</th>
+                                            <th width="250px">Nama</th>
+                                            <th width="150px">Key Performance Index</th>
                                         </tr>
-                                    <?php
-                                    endforeach;
-                                    ?>
+                                    </thead>
+                                    <tbody>
 
-                                </tbody>
-                            </table>
-                        </div>
+                                        <?php
+                                        $a = 1;
+                                        foreach ($list_user as $ls) :
+                                        ?>
+                                            <tr>
+                                                <td class="p-2"><?php echo $a++; ?></td>
+                                                <td class="p-2"><?php echo $ls['nama']; ?></td>
+                                                <td align="center">
+                                                    <?php //echo anchor('Evaluasi/kpivalue' . $ls['nip'], '<div class="btn btn-primary btn-sm"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Data"></i></div>'); 
+                                                    ?>
+                                                    <a href="<?php echo base_url('Evaluasi/kpivalue/' . $ls['nip']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Data"></i></a>
+                                                </td>
+
+                                            </tr>
+                                        <?php
+                                        endforeach;
+                                        ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
