@@ -15,7 +15,8 @@ class Evaluasi extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = "Kinerja";
         $id_divisi = $this->session->userdata('divisi');
-        $data['list_user'] = $this->db->get_where('user', ['id_divisi' => $id_divisi])->result_array();
+        $nip = $this->session->userdata('nip');
+        $data['list_user'] = $this->db->get_where('user', ['id_divisi' => $id_divisi,'nip != '=>$nip])->result_array();
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

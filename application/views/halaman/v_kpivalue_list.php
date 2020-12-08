@@ -38,8 +38,9 @@ $link = $this->session->userdata('link');
                                     <thead class="bg-secondary">
                                         <tr align="center">
                                             <th width="50px">No</th>
-                                            <th width="250px">Nama</th>
-                                            <th width="150px">Key Performance Index</th>
+                                            <th width="100px">Foto</th>
+                                            <th width="200px">Nama Lengkap</th>
+                                            <th width="50px">KPI</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -50,6 +51,9 @@ $link = $this->session->userdata('link');
                                         ?>
                                             <tr>
                                                 <td class="p-2"><?php echo $a++; ?></td>
+                                                <td class="p-2">
+                                                    <img src="<?php echo base_url(); ?>assets/image/<?php echo $ls['image']; ?>" class="rounded" width="70%">
+                                                </td>
                                                 <td class="p-2"><?php echo $ls['nama']; ?></td>
                                                 <td align="center">
                                                     <?php //echo anchor('Evaluasi/kpivalue' . $ls['nip'], '<div class="btn btn-primary btn-sm"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Data"></i></div>'); 

@@ -34,12 +34,13 @@ $link = $this->session->userdata('link');
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="bungkus p-0 mb-2" style="overflow: scroll;">
-                                <table class="table table-hover table-md col-6" style="table-layout: fixed; word-wrap: break-word;">
+                                <table class="table table-hover table-md" style="table-layout: fixed; word-wrap: break-word;">
                                 <thead class="bg-secondary">
                                     <tr align="center">
                                         <th width="50px">No</th>
-                                        <th width="250px">Nama</th>
-                                        <th colspan="2" width="150px">Monitoring</th>
+                                        <th width="100px">Foto</th>
+                                        <th width="200px">Nama</th>
+                                        <th colspan="2" width="100px">Monitoring</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,6 +51,9 @@ $link = $this->session->userdata('link');
                                     ?>
                                         <tr>
                                             <td class="p-2"><?php echo ++$start; ?></td>
+                                            <td class="p-2">
+                                                <img src="<?php echo base_url(); ?>assets/image/<?php echo $ls['image']; ?>" class="rounded" width="30%">
+                                            </td>
                                             <td class="p-2"><?php echo $ls['nama']; ?></td>
 
                                             <td align="center" class="p-2">

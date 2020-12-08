@@ -14,6 +14,20 @@ class Dashboard extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Dashboard';
+        $nip = $this->session->userdata('nip'); 
+        $id_divisi = $this->session->userdata('id_divisi'); 
+
+        // Karyawan
+        $date = date('Y-m-d');
+        $data['select'] = $this->db->query(" SELECT * FROM tb_ldr_daily WHERE tgl = '$date' AND nip = '$nip'")->num_rows();
+        $data['kpi'] = $this->db->query("SELECT AVG(value) FROM tb_kpi_value as rata WHERE nip = '$nip'")->row_array();
+        $data['approve'] = $this->db->query(" SELECT * FROM tb_ldr_daily WHERE  nip = '$nip' AND status ='Pending'")->num_rows();
+
+        //Leader
+        $data['karyawan'] = $this->db->query(" SELECT * FROM user WHERE id_divisi = '$id_divisi'")->num_rows();
+        $data['pending'] = $this->db->query(" SELECT * FROM tb_ldr_daily WHERE id_divisi = '$id_divisi' AND status ='Pending'")->num_rows();
+        $data['belum'] = $this->db->query(" SELECT * FROM tb_ldr_daily WHERE  nip = '$nip' AND hasil !='Selesai'")->num_rows();
+
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

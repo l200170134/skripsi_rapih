@@ -36,11 +36,94 @@ if ($level_akses == 1) { ?>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <p>Selamat datang <span class="text-primary"><?php echo $user['username']; ?></span> di sistem kepegawaian PT. Sinar Grafindo</p>
+                            
+                            <?php 
+                                $nip = $user['nip'];
+                            ?>
+                            <!-- Kolom 3 -->
+                            <div class="col-lg-12 col-md-6">
+                                <div class="row">
+
+                                    <div class="col-lg-4 col-md-2" align="center">
+                                        <div class="small-box bg-primary">
+                                            <div class="inner">
+                                                <h1 class="font-weight-bold">
+                                                    <?php 
+                                                        if ($select==''){
+                                                            echo '0';
+                                                        } else {
+                                                            echo $select;
+                                                        }
+                                                    ?>         
+                                                </h1>
+                                                <p>Tugas Hari Ini</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-tasks"></i>
+                                            </div>
+                                            <a href="Daily" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>        
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-2" align="center">
+                                        <div class="small-box bg-danger">
+                                            <div class="inner">
+                                                <h1 class="font-weight-bold">
+                                                    <?php 
+                                                        if ($approve==''){
+                                                            echo '0';
+                                                        } else {
+                                                            echo $approve;
+                                                        }
+                                                    ?>   
+
+                                                </h1>
+                                                <p>Tugas Pending</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fas fa-times"></i>
+                                            </div> 
+                                            <a href="Daily" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>       
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-2" align="center">
+                                        <div class="small-box bg-warning">
+                                            <div class="inner">
+                                                <h1 class="font-weight-bold">
+                                                    <?php
+                                                        foreach($kpi as $kp):
+                                                        
+                                                        if ($kp==''){
+                                                            echo '0';
+                                                        }else{
+                                                            echo $kp;
+                                                        }
+                                                        endforeach;
+                                                    ?>
+                                                    
+                                                </h1>
+                                                <p>KPI Kumulatif</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-star"></i>
+                                            </div>  
+                                            <a href="Evaluasi/index_karyawan" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>      
+                                        </div>
+                                    </div> 
+
+                                </div>
+                            </div>
+
+                            <!-- End Kolom 3 -->
                             </div>
                         </div>
                     </div>
+
+                    
+
+                    <!-- Grafik
                     <div class="col-lg-6 col-12">
-                        <!-- BAR CHART -->
                         <div class="card card-success">
                             <div class="card-header">
                                 <h3 class="card-title">Approve Graphic</h3>
@@ -48,13 +131,12 @@ if ($level_akses == 1) { ?>
                             <div class="card-body">
                                 <div id="bar-chart" style="height: 300px;"></div>
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!-- ./col -->
+                    End Grafik -->
+
+                    <!-- Grafik 2
                     <div class="col-lg-6 col-12">
-                        <!-- BAR CHART -->
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Performance Rate</h3>
@@ -64,11 +146,10 @@ if ($level_akses == 1) { ?>
                                     <div id="bar-chart2" style="height: 300px;"></div>
                                 </div>
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!-- ./col -->
+                    End Grafik 2 -->
+
                 </div>
                 <!-- /.row -->
                 <!-- Main row -->
@@ -114,6 +195,78 @@ if ($level_akses == 1) { ?>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <p>Selamat datang <span class="text-primary"><?php echo $user['username']; ?></span> di sistem kepegawaian PT. Sinar Grafindo</p>
+
+                                <!-- 3 Kolom -->
+                                <div class="col-lg-12 col-md-6">
+                                <div class="row">
+
+                                    <div class="col-lg-4 col-md-2" align="center">
+                                        <div class="small-box bg-primary">
+                                            <div class="inner">
+                                                <h1 class="font-weight-bold">
+                                                      <?php 
+                                                        if ($karyawan==''){
+                                                            echo '0';
+                                                        } else {
+                                                            echo $karyawan;
+                                                        }
+                                                    ?>     
+                                                </h1>
+                                                <p>Total Karyawan</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>        
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-2" align="center">
+                                        <div class="small-box bg-danger">
+                                            <div class="inner">
+                                                <h1 class="font-weight-bold">
+                                                      <?php 
+                                                        if ($belum==''){
+                                                            echo '0';
+                                                        } else {
+                                                            echo $belum;
+                                                        }
+                                                    ?>     
+                                                </h1>
+                                                <p>Tugas Belum Selesai</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-times"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>        
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-2" align="center">
+                                        <div class="small-box bg-warning">
+                                            <div class="inner">
+                                                <h1 class="font-weight-bold">
+                                                      <?php 
+                                                        if ($pending==''){
+                                                            echo '0';
+                                                        } else {
+                                                            echo $pending;
+                                                        }
+                                                    ?>     
+                                                </h1>
+                                                <p>Koreksi Tugas</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-bell"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>        
+                                        </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                                <!-- End 3 Kolom -->
+
                             </div>
                         </div>
                     </div>
