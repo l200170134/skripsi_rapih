@@ -23,7 +23,8 @@
     <!-- Main content -->
     <section class="content">
         <?php foreach ($update as $ud) : ?>
-            <form role="form" action="<?php echo base_url('Data_karyawan/detail_karyawan_update'); ?>" method="post">
+            <!-- <form role="form" action="<?php //echo base_url('Data_karyawan/detail_karyawan_update'); ?>" method="post"> -->
+                <?php echo form_open_multipart('Data_karyawan/detail_karyawan_update/'. $ud->nip); ?>
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
@@ -205,12 +206,13 @@
                                                 <textarea class="form-control" rows="2" name="alamat_ktp"><?php echo $ud->alamat_ktp; ?></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="upload_foto">Upload Foto</label>
-                                                <div class="input-group">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" name="">
-                                                        <label class="custom-file-label" for="upload_foto">Choose file</label>
-                                                    </div>
+                                                <div class="col-12 mb-2">
+                                                    <img src="<?php echo base_url(); ?>assets/image/<?php echo $ud->image; ?>" class="img-thumbnail" width="12%">
+                                                </div>
+
+                                                <div class="col-12">
+                                                    <input type="file" class="form-control custom-file-label" name="image" value="<?php echo $ud->image; ?>">
+
                                                 </div>
                                             </div>
                                         </div>
@@ -294,8 +296,9 @@
 
                     <!-- /.row (main row) -->
                 </div><!-- /.container-fluid -->
-            </form>
-            ?>
+            <?php echo form_close(); ?>
+            <!-- </form> -->
+   
         <?php endforeach; ?>
     </section>
     <!-- /.content -->

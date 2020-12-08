@@ -21,7 +21,8 @@
 
     <!-- Main content -->
     <section class="content">
-        <form role="form" action="<?php echo base_url('Data_karyawan/detail_karyawan_tambah'); ?>" method="post">
+        <!-- <form role="form" action="<?php //echo base_url('Data_karyawan/detail_karyawan_tambah'); ?>" method="post"> -->
+        <?php echo form_open_multipart('Data_karyawan/detail_karyawan_tambah'); ?>
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
@@ -181,10 +182,10 @@
                                         <div class="form-group">
                                             <label for="upload_foto">Upload Foto</label>
                                             <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" name="image">
-                                                    <label class="custom-file-label" for="upload_foto">Choose file</label>
-                                                </div>
+                                              
+                                                    <input type="file" class="form-control custom-file-label" name="image">
+                                                    <!-- <label class="custom-file-label" for="upload_foto">Choose file</label> -->
+                                              
                                             </div>
                                         </div>
                                     </div>
@@ -257,7 +258,8 @@
 
                 <!-- /.row (main row) -->
             </div><!-- /.container-fluid -->
-        </form>
+        <!-- </form> -->
+        <?php echo form_close(); ?>
     </section>
     <!-- /.content -->
 </div>

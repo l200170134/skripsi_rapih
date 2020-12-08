@@ -88,11 +88,11 @@ class Data_karyawan extends CI_Controller
         $this->load->view('_partials/js');
     }
 
-    public function detail_karyawan_update()
+    public function detail_karyawan_update($nip)
     {
         $id_user        = $this->input->post('id_user');
         $nama           = $this->input->post('nama');
-        $nip            = $this->input->post('nip');
+        $nip_new        = $this->input->post('nip');
         $id_divisi      = $this->input->post('id_divisi');
         $username       = $this->input->post('username');
         $password       = $this->input->post('password');
@@ -117,10 +117,27 @@ class Data_karyawan extends CI_Controller
         $nik            = $this->input->post('nik');
         $jk             = $this->input->post('jk');
         $image          = $this->input->post('image');
+        // $image          = $_FILES['image'];
+        // if ($image =''){
+            
+        // }else{
+            
+        //     $config['upload_path']      = './assets/image';
+        //     $config['allowed_types']    = 'jpg|png|jpeg';
+
+        //     $this->load->library('upload',$config);
+        //     if(!$this->upload->do_upload('image')){
+        //         echo "Upload Gagal"; die();
+        //     }else{
+        //         $image=$this->upload->data('file_name');
+        //     }
+
+        // }
+
 
 
         $data = array(
-            'nip'           => $nip,
+            'nip'           => $nip_new,
             'username'      => $username,
             'password'      => $password,
             'role_id'       => $role_id,
@@ -152,6 +169,7 @@ class Data_karyawan extends CI_Controller
         );
 
         $this->hrd_model->update_proses($where, $data, 'user');
+
         $link = $this->session->userdata('link_kar');
         redirect('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link);
     }
@@ -184,6 +202,18 @@ class Data_karyawan extends CI_Controller
         $image      = $this->input->post('image');
         $nik        = $this->input->post('nik');
         $jk         = $this->input->post('jk');
+        $image          = $_FILES['image'];
+        if ($image=''){}else{
+            $config['upload_path']      = './assets/image';
+            $config['allowed_types']    = 'jpg|png|jpeg';
+
+            $this->load->library('upload',$config);
+            if(!$this->upload->do_upload('image')){
+                echo "Upload Gagal"; die();
+            }else{
+                $image=$this->upload->data('file_name');
+            }
+        }
 
 
         $data = array(
