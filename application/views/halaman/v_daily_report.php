@@ -32,7 +32,7 @@ $tgl_akhir = $this->session->userdata('tgl_akhir');
                     <div class="card">
                         <div class="card-header d-flex">
                             <h5 class="mr-auto">Monitoring Report Activity</h5>
-                            <a href="<?php echo base_url('Daily/export_csv/' . $nip); ?>" class="btn btn-success"><i class=" fas fa-download" style="color:white;" title="ekspor semua report menjadi Excel"> Unduh Excel</i></a>
+                            <a href="<?php echo base_url('Daily/export_csv/' . $nip); ?>" class="btn btn-sm btn-success" style="min-width:120px; max-height:30px;"><i class=" fas fa-download" style="color:white;" title="ekspor semua report menjadi Excel"> Unduh Excel</i></a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
