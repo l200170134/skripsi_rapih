@@ -46,6 +46,7 @@ class Evaluasi extends CI_Controller
         $data['judul'] = "Data Karyawan";
         $data['divisi'] = $this->db->get_where('tb_divisi', ['id_divisi' => $id_divisi])->row_array();
         $data['kpi_data'] = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
+        $data['id_divisi'] = $id_divisi;
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

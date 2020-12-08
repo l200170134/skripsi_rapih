@@ -14,7 +14,6 @@ $level_akses = $this->session->userdata('role_id');
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
-                        <li class="breadcrumb-item active">Divisi</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->

@@ -13,8 +13,6 @@ $link = $this->session->userdata('link');
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?php echo base_url('Daily') ?>">Daily Activity</a></li>
-            <li class="breadcrumb-item active">Update</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->

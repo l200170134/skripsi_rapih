@@ -30,9 +30,11 @@ $tgl_akhir = $this->session->userdata('tgl_akhir');
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header d-flex">
-                            <h5 class="mr-auto">Monitoring Report Activity</h5>
-                            <a href="<?php echo base_url('Daily/export_csv/' . $nip); ?>" class="btn btn-sm btn-success" style="min-width:120px; max-height:30px;"><i class=" fas fa-download" style="color:white;" title="ekspor semua report menjadi Excel"> Unduh Excel</i></a>
+                        <div class="card-header">
+                            <div class="col-12 col-lg-6">
+                                <a href="<?php echo base_url('Daily'); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                <h5 style="display:inline;"> Report Activity</h5>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -54,7 +56,10 @@ $tgl_akhir = $this->session->userdata('tgl_akhir');
                                     </div>
                                 </div>
                             </form>
-                            <span class="badge badge-primary"><?php echo  'Hasil : ' . $results; ?></span>
+                            <div class="">
+                                <span class="badge badge-primary p-2 mr-1"><?php echo  'Hasil : ' . $results; ?></span>
+                                <a href="<?php echo base_url('Daily/export_csv/' . $nip); ?>" class="btn btn-sm btn-success" style="min-width:120px; max-height:30px;"><i class=" fas fa-download" style="color:white;" title="ekspor semua report menjadi Excel"> Unduh Excel</i></a>
+                            </div>
                         </div>
                     </div>
                 </div>

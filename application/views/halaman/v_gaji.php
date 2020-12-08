@@ -1,3 +1,4 @@
+<?php $id_divisi =  $this->session->userdata('divisi_page') ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -10,7 +11,6 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
-                        <!-- <li class="breadcrumb-item active">Dashboard</li> -->
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -26,10 +26,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Data Kumulatif Gaji</h5>
-                            <div class="alert alert-sm alert-success alert-dismissible m-1">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                Menampilkan riwayat gaji anda setiap bulan serta status pembayaran.
+                            <div class="col-12 col-lg-6">
+                                <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                <h5 style="display:inline;">Data Kumulatif Gaji</h5>
                             </div>
                         </div>
                         <!-- /.card-header -->

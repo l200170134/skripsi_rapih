@@ -64,6 +64,7 @@ class Gaji extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Karyawan';
         $data['nip'] = $nip;
+        $this->session->set_userdata('nip_gaji', $nip);
         $data['role_id'] = $this->session->userdata('role_id');
         $this->session->set_userdata('nip_gaji', $nip);
 

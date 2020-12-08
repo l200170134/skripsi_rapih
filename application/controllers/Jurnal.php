@@ -66,7 +66,7 @@ class Jurnal extends CI_Controller
         $data['judul'] = 'Jurnal';
         $data['nip'] = $nip;
         $data['jurnal'] = $this->db->query("SELECT * FROM tb_ldr_jurnal WHERE nip = $nip ORDER BY tgl DESC")->result_array();
-
+        $this->session->set_userdata('nip_jurnal', $nip);
         // PAGINATION
         $this->load->model('Pagination_model', 'pages');
         // config
@@ -105,7 +105,7 @@ class Jurnal extends CI_Controller
     }
     public function jurnal_proses_tambah($nipp)
     {
-        $this->session->set_userdata('nip_jurnal', $nipp);
+        // $this->session->set_userdata('nip_jurnal', $nipp);
         $nip        = $nipp;
         $aktivitas  = $this->input->post('aktivitas');
         $tgl        = $this->input->post('tgl');
@@ -128,6 +128,5 @@ class Jurnal extends CI_Controller
         $where = array('id' => $id);
         $this->karyawan_model->daily_hapus($where, 'tb_ldr_jurnal');
         redirect('Jurnal/jurnal_list/' . $nip . '/' . $link);
-        $nip = $this->session->unset_userdata('nip_jurnal');
     }
 }

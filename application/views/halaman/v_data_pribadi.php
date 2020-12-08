@@ -15,7 +15,6 @@ $level_akses = $this->session->userdata('role_id');
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item active"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
-                        <li class="breadcrumb-item">Profil</li>
                         <!-- <li class="breadcrumb-item active">Dashboard</li> -->
                     </ol>
                 </div><!-- /.col -->
@@ -37,7 +36,8 @@ $level_akses = $this->session->userdata('role_id');
                                 <div class="row">
                                     <div class="col-lg-2 d-flex justify-content-center">
                                         <img src="<?php echo base_url(); ?>assets/image/<?php echo $kar['image']; ?>" class="profile-img img-fluid img-circle img-lg">
-                                        <!-- <img class="profile-img img-fluid img-circle img-lg" src="<?php //echo base_url('assets/dist/img/user4-128x128.jpg') ?>" alt="User profile picture"> -->
+                                        <!-- <img class="profile-img img-fluid img-circle img-lg" src="<?php //echo base_url('assets/dist/img/user4-128x128.jpg') 
+                                                                                                        ?>" alt="User profile picture"> -->
                                     </div>
                                     <div class="col-lg-5">
                                         <h5 class="profile-username mb-0 mt-3"><?php echo $kar['nama']; ?></h5>

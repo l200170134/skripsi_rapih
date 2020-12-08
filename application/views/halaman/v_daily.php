@@ -14,7 +14,6 @@ $nip = $this->session->userdata('nip');
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
-            <li class="breadcrumb-item active">Daily Activity</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -34,15 +33,15 @@ $nip = $this->session->userdata('nip');
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              
-                <div class="col-lg-6 col-12">
-                  <div class="row">
+
+              <div class="col-lg-6 col-12">
+                <div class="row">
                   <a href="<?php echo base_url('Daily/daily_form') ?>" class="mr-1 btn btn-md btn-success">Tambahkan Tugas Baru</a>
 
-                    <a href="<?php echo base_url('Daily/daily_report/' . $nip) ?>" class=" btn btn-md btn-primary">Report</a>
+                  <a href="<?php echo base_url('Daily/daily_report/' . $nip) ?>" class=" btn btn-md btn-primary">Report</a>
                 </div>
               </div>
-                  
+
               <br>
               <div class="bungkus p-0 mb-2" style="overflow: scroll;">
                 <table class="table table-hover table-md" style="table-layout: fixed; word-wrap: break-word;">

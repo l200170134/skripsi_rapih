@@ -14,8 +14,6 @@ $level_akses = $this->session->userdata('role_id');
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item active"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="<?php echo base_url('Data_karyawan') ?>">Divisi</a></li>
-                        <li class="breadcrumb-item">Karyawan</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -31,32 +29,31 @@ $level_akses = $this->session->userdata('role_id');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <?php foreach ($nama_divisi as $nd) : ?>
-                                <h5>Data Karyawan Divisi <?php echo $nd['divisi'] ?></h5>
-                                <!-- Variabel Global  -->
-                            <?php
-                                $this->session->set_userdata('id_divisi', $nd['id_divisi']);
-                            endforeach; ?>
+                            <div class="col-12 col-lg-6">
+                                <a href="<?php echo base_url('Data_karyawan'); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                <?php foreach ($nama_divisi as $nd) : ?>
+                                    <h5 style="display:inline;">Data Karyawan Divisi <?php echo $nd['divisi'] ?></h5>
+                                <?php
+                                    $this->session->set_userdata('id_divisi', $nd['id_divisi']);
+                                endforeach; ?>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                        <?php if ($level_akses != 4) { ?>
+                            <?php if ($level_akses != 4) { ?>
                                 <?php foreach ($nama_divisi as $nd) : ?>
-                            <div class="col-12 col-lg-12">
-                                <div class="row">
-                                    <div class="mr-1">
-                                        <?php echo anchor('Data_karyawan', '<div class="btn btn-block btn-md btn-secondary"><i class="fas fa-arrow-left p-1" style="color:white;" title="Kembali"></i></div>'); ?>
+                                    <div class="col-12 col-lg-12">
+                                        <div class="row">
+                                            <div class="mr-1">
+                                                <?php echo anchor('Data_karyawan/tambah_data_karyawan/' . $nd['id_divisi'], '<div class="btn btn-block btn-md btn-success">Tambah Data Karyawan</div>'); ?>
+                                            </div>
+                                            <div>
+                                                <?php echo anchor('Evaluasi/kpi/' . $nd['id_divisi'], '<div class="btn btn-block btn-md btn-primary">KPI</div>'); ?>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mr-1">
-                                        <?php echo anchor('Data_karyawan/tambah_data_karyawan/' . $nd['id_divisi'], '<div class="btn btn-block btn-md btn-success">Tambah Data Karyawan</div>'); ?>
-                                    </div>
-                                    <div>
-                                        <?php echo anchor('Evaluasi/kpi/' . $nd['id_divisi'], '<div class="btn btn-block btn-md btn-primary">KPI</div>'); ?>
-                                    </div>
-                                </div>
-                            </div>                    
                                 <?php endforeach; ?>
-                                <?php } else if ($level_akses == 4) { ?>
+                            <?php } else if ($level_akses == 4) { ?>
                                 <table>
                                     <tr>
                                         <td class="pr-2"><a href="<?php echo base_url('Monitoring/monitoring_direksi/' . $id_divisi); ?>" class="btn btn-block btn-md btn-success">Monitoring</a></td>
@@ -85,7 +82,7 @@ $level_akses = $this->session->userdata('role_id');
                                             <th width="150px">Aksi</th>
                                         </tr>
                                     </thead>
-<!-- SINI -->
+                                    <!-- SINI -->
 
                                     <tbody>
                                         <?php
