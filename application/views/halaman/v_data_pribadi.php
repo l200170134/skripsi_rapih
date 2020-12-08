@@ -36,7 +36,8 @@ $level_akses = $this->session->userdata('role_id');
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-2 d-flex justify-content-center">
-                                        <img class="profile-img img-fluid img-circle img-lg" src="<?php echo base_url('assets/dist/img/user4-128x128.jpg') ?>" alt="User profile picture">
+                                        <img src="<?php echo base_url(); ?>assets/image/<?php echo $kar['image']; ?>" class="profile-img img-fluid img-circle img-lg">
+                                        <!-- <img class="profile-img img-fluid img-circle img-lg" src="<?php //echo base_url('assets/dist/img/user4-128x128.jpg') ?>" alt="User profile picture"> -->
                                     </div>
                                     <div class="col-lg-5">
                                         <h5 class="profile-username mb-0 mt-3"><?php echo $kar['nama']; ?></h5>
