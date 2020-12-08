@@ -233,10 +233,10 @@ $level_akses = $this->session->userdata('role_id');
                                                 </td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <?php echo anchor('Data_pribadi/status_karyawan_update/' . $st['id_status'], '<div class="btn btn-warning btn-sm mr-2"><i class="fas fa-edit" style="color:white;" title="Update Data"></i></div>'); ?>
+                                                        <?php echo anchor('Data_pribadi/status_karyawan_update/' . $st['id_status'], '<div class="btn btn-warning btn-sm mr-2" title="Update Status"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
 
                                                         <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                            <?php echo anchor('Data_pribadi/status_karyawan_hapus/' . $st['id_status'], '<div class="btn btn-danger btn-sm"><i class="fas fa-trash-alt" style="color:white;" title="Hapus Data"></i></div>'); ?>
+                                                            <?php echo anchor('Data_pribadi/status_karyawan_hapus/' . $st['id_status'], '<div class="btn btn-danger btn-sm"  title="Hapus Status kepegawaian"><i class="fas fa-trash-alt" style="color:white;"></i></div>'); ?>
                                                         </label>
                                                     </div>
                                                 </td>

@@ -27,10 +27,13 @@ $role_id = $this->session->userdata('role_id');
           foreach ($tanggal as $tg) {
             $tgl_akhir = $tg['TglAkhir'];
             $nip = $tg['nip'];
+
             if ($tgl_akhir <= date('Y-m-d') && $tg['aktivasi'] == 0) {
               $notifikasi = $this->db->query("SELECT * FROM user WHERE nip = $nip")->result_array();
-              foreach ($notifikasi as $n) { ?>
-                <?php $a++; ?>
+
+              foreach ($notifikasi as $n) {
+                $div = $this->db->get_where('tb_divisi', ['id_divisi' => $n['id_divisi']])->row_array();
+                $a++; ?>
                 <a href="<?php echo base_url('Data_pribadi/data_pribadi/' . $n['nip']) ?>" class="dropdown-item">
                   <!-- Message Start -->
                   <div class="media">
@@ -41,7 +44,7 @@ $role_id = $this->session->userdata('role_id');
                         <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                       </h3>
                       <p class="text-sm">Kontrak kerja hampir habis</p>
-                      <p class="text-sm text-primary">Divisi <?php echo $n['id_divisi'] ?></p>
+                      <p class="text-sm text-primary">Divisi <?php echo $div['divisi']; ?></p>
                     </div>
                   </div>
                   <!-- Message End -->
@@ -59,5 +62,4 @@ $role_id = $this->session->userdata('role_id');
     </ul>
     <!-- /.navbar -->
   <?php } ?>
-
 </nav>
