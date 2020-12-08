@@ -199,6 +199,7 @@ class Monitoring extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['nip'] = $nip;
         $role_id = $this->session->userdata('role_id');
         if ($role_id != 2) {
             $data['judul'] = 'Data Karyawan';

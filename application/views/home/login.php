@@ -52,7 +52,7 @@ $this->load->library('session');
                         <input type="text" class="form-control" placeholder="Username" name="username" value="<?php echo set_value('username'); ?>">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                                <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
@@ -67,31 +67,11 @@ $this->load->library('session');
                     </div>
                     <?php echo form_error('password', '<small class="text-danger">', '</small>'); ?>
                     <div class="row">
-                        <!-- <div class="col-8">
-                            <div class="icheck-primary">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">
-                                Remember Me
-                            </label>
-                            </div>
-                        </div> -->
-                        <!-- /.col -->
                         <div class="col-4 mt-3">
                             <button type="submit" class="btn btn-primary btn-block">Log In</button>
                         </div>
-                        <!-- /.col -->
                     </div>
                 </form>
-
-                <!-- <div class="social-auth-links text-center mb-3">
-                    <p>- OR -</p>
-                    <a href="#" class="btn btn-block btn-primary">
-                    <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                    <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-                    </a>
-                </div> -->
                 <br>
                 <p class="mb-1">
                     <a href="#" onclick="return confirm('Hubungi pihak HRD')">I forgot my password</a>

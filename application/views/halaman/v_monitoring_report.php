@@ -29,12 +29,9 @@ $tgl_akhir = $this->session->userdata('tgl_akhir');
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h5>Monitoring Report Activity</h5>
-                            <div class="alert alert-sm alert-success alert-dismissible m-1">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                Report Kegiatan activity karyawan yang sudah dilaksanakan.
-                            </div>
+                        <div class="card-header d-flex">
+                            <h5 class="mr-auto">Monitoring Report Activity</h5>
+                            <a href="<?php echo base_url('Daily/export_csv/' . $nip); ?>" class="btn btn-success"><i class=" fas fa-download" style="color:white;" title="ekspor semua report menjadi Excel"> Unduh Excel</i></a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -110,8 +107,6 @@ $tgl_akhir = $this->session->userdata('tgl_akhir');
                                 </table>
                             </div>
                             <?php echo $this->pagination->create_links() ?>
-                            <br>
-                            <a href="#" class="btn btn-success"><i class="fas fa-file-excel" style="color:white;" title="export to CSV"> Export All</i></a>
                         </div>
                     </div>
                 </div>
