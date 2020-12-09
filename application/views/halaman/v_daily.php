@@ -60,7 +60,7 @@ $nip = $this->session->userdata('nip');
                         <th width="80px">Urgensi</th>
                       <?php endif; ?>
 
-                      <th width="110px" colspan="2">Aksi</th>
+                      <th width="110px">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -103,11 +103,11 @@ $nip = $this->session->userdata('nip');
                           </td>
                         <?php endif; ?>
 
-                        <td class="pl-2">
-                          <?php echo anchor('Daily/daily_update/' . $dy['id'], '<div class="btn btn-warning btn-md"><i class="fas fa-edit" style="color:white;" title="Update Data"></i></div>'); ?>
-                        </td>
-                        <td class="pl-2" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                          <?php echo anchor('Daily/daily_proses_hapus/' . $dy['id'], '<div class="btn btn-danger btn-md"><i class="fas fa-trash-alt" title="Hapus Data"></i></div>'); ?>
+                        <td class="pl-3" align="center">
+                          <?php echo anchor('Daily/daily_update/' . $dy['id'], '<div class="btn btn-warning btn-sm"><i class="fas fa-edit" style="color:white;" title="Update Data"></i></div>'); ?>
+                          <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
+                          <?php echo anchor('Daily/daily_proses_hapus/' . $dy['id'], '<div class="btn btn-danger btn-sm"><i class="fas fa-trash-alt" title="Hapus Data"></i></div>'); ?>
+                          </label>
                         </td>
                       </tr>
                     <?php endforeach ?>

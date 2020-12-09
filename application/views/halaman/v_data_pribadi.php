@@ -106,7 +106,13 @@ $id_divisi = $this->session->userdata('divisi_page');
                                                 <label class="mb-0">NPWP</label>
                                                 <p class="text-muted"><?php echo $kar['npwp']; ?></p>
                                                 <label class="mb-0">Status</label>
-                                                <p class="text-muted">PKWT</p>
+                                                <p class="text-muted">
+                                                 <?php 
+                                                    $kode= $status_p['status'];
+                                                    $get_status = $this->db->get_where('tb_status' ,['id' => $kode])->row_array(); 
+                                                    echo $get_status['status'];
+                                                    ?>
+                                                </p>
                                             </div>
                                             <div class="col-lg-6">
                                                 <label class="mb-0">No. Rekening</label>

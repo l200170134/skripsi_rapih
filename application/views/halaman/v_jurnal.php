@@ -29,13 +29,13 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body mb-2" style="overflow: scroll;">
-                            <table class="table table-bordered table-hover table-sm" style="table-layout: fixed; word-wrap: break-word;">
-                                <thead>
+                            <table class="table table-hover table-md col-6" style="table-layout: fixed; word-wrap: break-word;">
+                                <thead class="bg-secondary">
                                     <tr align="center">
                                         <th width="50px">No</th>
-                                        <th width="300px">Nama</th>
-                                        <th width="150px">Foto</th>
-                                        <th width="80px">Aksi</th>
+                                        <th width="100px">Foto</th>
+                                        <th width="200px">Nama Lengkap</th>
+                                        <th width="50px">Detail</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -44,10 +44,12 @@
                                     foreach ($karyawan as $kr) :
                                     ?>
                                         <tr>
-                                            <td align="center"><?php echo ++$start; ?></td>
-                                            <td align="rignt" class="pl-3"><?php echo $kr['nama'] ?></td>
-                                            <td align="center">Foto belum tersedia</td>
-                                            <td align="center" class="p-2"><a href="<?php echo base_url('Jurnal/jurnal_list/' . $kr['nip']) ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye" style="color:white;"></i></a></td>
+                                            <td class="p-2" align="center"><?php echo ++$start; ?></td>
+                                            <td class="p-2">
+                                                <img src="<?php echo base_url(); ?>assets/image/<?php echo $kr['image']; ?>" class="rounded" width="70%">
+                                            </td>
+                                            <td class="p-2" align="rignt" class="pl-3"><?php echo $kr['nama'] ?></td>
+                                            <td class="p-2" align="center" class="p-2"><a href="<?php echo base_url('Jurnal/jurnal_list/' . $kr['nip']) ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye" style="color:white;"></i></a></td>
                                         </tr>
 
                                     <?php

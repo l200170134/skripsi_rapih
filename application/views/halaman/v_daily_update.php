@@ -36,8 +36,8 @@ $link = $this->session->userdata('link');
                 <div class="card-body">
                   <input type="hidden" name="id" value="<?php echo $dy->id ?>">
                   <div class="form-group">
-                    <p class="text-sm">Masukkan Catatan</p>
-                    <textarea name="catatan" class="form-control" rows="3" required><?php echo $dy->catatan ?></textarea>
+<!--                     <p class="text-sm">Catatan</p> -->
+                    <textarea name="catatan" class="form-control" rows="3" required placeholder="Tulisan catatan tugas anda"><?php echo $dy->catatan ?></textarea>
                   </div>
                   <div class="form-group">
                     <select name="hasil" class="form-control">
@@ -48,8 +48,8 @@ $link = $this->session->userdata('link');
                   </div>
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <a href="<?php echo base_url('Daily/index/' . $link) ?>" class="btn btn-secondary">Cancel</a>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  <a href="<?php echo base_url('Daily/index/' . $link) ?>" class="btn btn-secondary">Batal</a>
                 </div>
               </form>
             <?php } ?>

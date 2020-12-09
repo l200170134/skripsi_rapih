@@ -119,23 +119,25 @@ class Data_karyawan extends CI_Controller
         $jabatan        = $this->input->post('jabatan');
         $nik            = $this->input->post('nik');
         $jk             = $this->input->post('jk');
-        $image          = $this->input->post('image');
-        // $image          = $_FILES['image'];
-        // if ($image =''){
+        //$image          = $this->input->post('image');
 
-        // }else{
+        $karyawan = $this->db->get_where('user', ['nip' => $nip])->result_array();
+        $image          = $_FILES['image'];
+        if ($image['error']>0){
+            $image = $karyawan[0]['image'];
+        }else{
 
-        //     $config['upload_path']      = './assets/image';
-        //     $config['allowed_types']    = 'jpg|png|jpeg';
+            $config['upload_path']      = './assets/image';
+            $config['allowed_types']    = 'jpg|png|jpeg';
 
-        //     $this->load->library('upload',$config);
-        //     if(!$this->upload->do_upload('image')){
-        //         echo "Upload Gagal"; die();
-        //     }else{
-        //         $image=$this->upload->data('file_name');
-        //     }
+            $this->load->library('upload',$config);
+            if(!$this->upload->do_upload('image')){
+                echo "Upload Gagal"; die();
+            }else{
+                $image=$this->upload->data('file_name');
+            }
 
-        // }
+        }
 
 
 

@@ -47,12 +47,14 @@ $id_divisi = $this->session->userdata('divisi_page');
                                             <input type="date" name="tgl_pembayaran" class="form-control" value="<?php echo date("Y-m-d") ?>" hidden>
                                         </div>
                                         <div class="form-group">
-                                            <label for="nama">Nominal</label>
-                                            <input type="text" name="gaji" class="form-control">
+                                            <?php foreach($nip_karyawan as $nip_k): ?>
+                                            <input type="text" class="form-control" value="<?php echo $nip_k['nama']; ?>" readonly>
+                                            <?php endforeach; ?>
                                         </div>
                                         <div class="form-group">
                                             <label>Periode</label>
                                             <select class="form-control" name="bulan">
+                                                <option value="0">--Pilih-</option>
                                                 <option value="Januari">Januari</option>
                                                 <option value="Februari">Februari</option>
                                                 <option value="Maret">Maret</option>
@@ -66,8 +68,11 @@ $id_divisi = $this->session->userdata('divisi_page');
                                                 <option value="November">November</option>
                                                 <option value="Desember">Desember</option>
                                             </select>
-
                                             <input type="text" class="form-control" name="tahun" value=" <?php echo date('Y'); ?>" hidden>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nama">Nominal</label>
+                                            <input type="text" name="gaji" class="form-control">
                                         </div>
                                         <!-- end form bagian kanan -->
                                 </div>

@@ -50,8 +50,8 @@
               </div>
               <div class="card-footer">
                 <!-- <a href="leader_daily.php" class="btn btn-primary">Submit</a> -->
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <a href="<?php echo base_url('Daily') ?>" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="<?php echo base_url('Daily') ?>" class="btn btn-secondary">Batal</a>
               </div>
             </form>
           </div>

@@ -105,7 +105,8 @@ $level_akses = $this->session->userdata('role_id');
                                                         <?php echo anchor('Gaji/gaji_form/' . $dv['nip'], '<div class="btn btn-success btn-sm mr-1"><i class="fas fa-plus p-1" style="color:white;" title="Tambah Gaji"></i></div>'); ?>
 
 
-                                                    <td align="center"><a href="<?php echo base_url('Kinerja') ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja"><i class="fas fa-eye p-1"></i></a></td>
+                                                    <td align="center"><a href="<?php echo base_url('Evaluasi/kpivalue/' .$dv['nip']); ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja"><i class="fas fa-eye p-1"></i></a></td>
+
                                                     <td align="center">
                                                         <div class="    btn-group">
                                                             <?php echo anchor('Data_pribadi/data_pribadi/' . $dv['nip'], '<div class="btn btn-primary btn-sm mr-1"><i class="fas fa-eye p-1" style="color:white;" title="Detail Data"></i></div>'); ?>

@@ -40,20 +40,20 @@ $link = $this->session->userdata('link');
               <form role="form" action="<?php echo base_url('Monitoring/monitoring_tambah/' . $id); ?>" method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <textarea class="form-control" name="evaluasi" rows="3" placeholder="Tuliskan evaluasi" required></textarea>
+                    <textarea class="form-control" name="evaluasi" rows="3" placeholder="Tuliskan evaluasi anda"></textarea>
                   </div>
                   <?php
                   if ($role_id == 2) { ?>
                     <div class="form-group">
-                      <select name="status" class="form-control" required>
-                        <option>Status...</option>
+                      <select name="status" class="form-control">
+                        <!-- <option>Pilih Status</option> -->
                         <option value="Pending" <?php echo ($daily['status'] == 'Pending' ? 'selected' : ''); ?>>Pending</option>
                         <option value="Approve" <?php echo ($daily['status'] == 'Approve' ? 'selected' : ''); ?>>Approve</option>
                       </select>
                     </div>
                     <div class="form-group">
-                      <select name="urgensi" class="form-control" required>
-                        <option selected>Urgensi...</option>
+                      <select name="urgensi" class="form-control">
+                        <option selected>Urgensi</option>
                         <option value="Top" <?php echo ($daily['urgensi'] == 'Top' ? 'selected' : ''); ?>>Top</option>
                         <option value="Middle" <?php echo ($daily['urgensi'] == 'Middle' ? 'selected' : ''); ?>>Middle</option>
                         <option value="Low" <?php echo ($daily['urgensi'] == 'Low' ? 'selected' : ''); ?>>Low</option>
@@ -62,15 +62,15 @@ $link = $this->session->userdata('link');
                     </div>
                   <?php } else if ($role_id == 4) { ?>
                     <div class="form-group">
-                      <select name="status" class="form-control" required hidden>
-                        <option>Status...</option>
+                      <select name="status" class="form-control" hidden>
+                        <!-- <option>Status</option> -->
                         <option value="Pending" <?php echo ($daily['status'] == 'Pending' ? 'selected' : ''); ?>>Pending</option>
                         <option value="Approve" <?php echo ($daily['status'] == 'Approve' ? 'selected' : ''); ?>>Approve</option>
                       </select>
                     </div>
                     <div class="form-group">
-                      <select name="urgensi" class="form-control" required hidden>
-                        <option selected>Urgensi...</option>
+                      <select name="urgensi" class="form-control" hidden>
+                        <option selected>Urgensi</option>
                         <option value="Top" <?php echo ($daily['urgensi'] == 'Top' ? 'selected' : ''); ?>>Top</option>
                         <option value="Middle" <?php echo ($daily['urgensi'] == 'Middle' ? 'selected' : ''); ?>>Middle</option>
                         <option value="Low" <?php echo ($daily['urgensi'] == 'Low' ? 'selected' : ''); ?>>Low</option>
@@ -81,9 +81,9 @@ $link = $this->session->userdata('link');
                   ?>
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
                   <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                  <?php echo anchor('Monitoring/monitoring_daily/' . $nip . '/' . $link, '<div class="btn btn-secondary">Cancel</div>'); ?>
+                  <?php echo anchor('Monitoring/monitoring_daily/' . $nip . '/' . $link, '<div class="btn btn-secondary">Batal</div>'); ?>
                 </div>
               </form>
 
@@ -92,20 +92,20 @@ $link = $this->session->userdata('link');
               <form role="form" action="<?php echo base_url('Monitoring/monitoring_proses_update/' . $id); ?>" method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <textarea class="form-control" name="evaluasi" rows="3" placeholder="Tuliskan evaluasi" required><?php echo $evaluasi['evaluasi']; ?></textarea>
+                    <textarea class="form-control" name="evaluasi" rows="3" placeholder="Tuliskan evaluasi anda"><?php echo $evaluasi['evaluasi']; ?></textarea>
                   </div>
                   <?php
                   if ($role_id == 2) { ?>
                     <div class="form-group">
                       <select name="status" class="form-control" required>
-                        <option>Status...</option>
+                        <!-- <option>Status...</option> -->
                         <option value="Pending" <?php echo ($daily['status'] == 'Pending' ? 'selected' : ''); ?>>Pending</option>
                         <option value="Approve" <?php echo ($daily['status'] == 'Approve' ? 'selected' : ''); ?>>Approve</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <select name="urgensi" class="form-control" required>
-                        <option selected>Urgensi...</option>
+                        <option selected>Urgensi</option>
                         <option value="Top" <?php echo ($daily['urgensi'] == 'Top' ? 'selected' : ''); ?>>Top</option>
                         <option value="Middle" <?php echo ($daily['urgensi'] == 'Middle' ? 'selected' : ''); ?>>Middle</option>
                         <option value="Low" <?php echo ($daily['urgensi'] == 'Low' ? 'selected' : ''); ?>>Low</option>
@@ -115,7 +115,7 @@ $link = $this->session->userdata('link');
                   <?php } else if ($role_id == 4) { ?>
                     <div class="form-group">
                       <select name="status" class="form-control" required hidden>
-                        <option>Status...</option>
+                        <option>Status</option>
                         <option value="Pending" <?php echo ($daily['status'] == 'Pending' ? 'selected' : ''); ?>>Pending</option>
                         <option value="Approve" <?php echo ($daily['status'] == 'Approve' ? 'selected' : ''); ?>>Approve</option>
                       </select>
@@ -133,9 +133,9 @@ $link = $this->session->userdata('link');
                   ?>
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
                   <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                  <?php echo anchor('Monitoring/monitoring_daily/' . $nip . '/' . $link, '<div class="btn btn-secondary">Cancel</div>'); ?>
+                  <?php echo anchor('Monitoring/monitoring_daily/' . $nip . '/' . $link, '<div class="btn btn-secondary">Batal</div>'); ?>
                 </div>
               </form>
             <?php

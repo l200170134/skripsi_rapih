@@ -34,10 +34,13 @@
                                 <div class="col-12">
                                     <form action="<?php echo base_url('Evaluasi/kpivalue_tambah_proses/' . $user['id_divisi']); ?>" method="post">
                                         <!-- Hidden -->
-                                        <input type="text" name="nip" value=" <?php echo $user['nip']; ?>" class="form-control" hidden>
+                                        <input type="text" name="nip" value="<?php echo $user['nip']; ?>" class="form-control" hidden>
                                         <input type="text" name="id_divisi" value=" <?php echo $user['id_divisi']; ?>" class="form-control" hidden>
                                         <input type="text" name="tahun" value="<?php echo date("Y") ?>" class="form-control" hidden>
                                         <!-- End Hiden -->
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="" value="<?php echo $user['nama']; ?>" readonly>
+                                        </div>
                                         <div class="form-group">
                                             <label>Pilih Periode</label>
                                             <select class="form-control" name="bulan">
