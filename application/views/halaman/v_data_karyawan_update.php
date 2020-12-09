@@ -1,4 +1,7 @@
-<?php $link = $this->session->userdata('link_kar') ?>
+<?php
+$link = $this->session->userdata('link_kar');
+$id_divisi = $this->session->userdata('divisi_page');
+?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -14,6 +17,9 @@
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
+            <div class="row ml-2">
+                <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+            </div>
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->

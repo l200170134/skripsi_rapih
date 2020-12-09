@@ -1,6 +1,7 @@
 <?php
 $this->load->library('session');
 $level_akses = $this->session->userdata('role_id');
+$id_divisi = $this->session->userdata('divisi_page');
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -19,6 +20,9 @@ $level_akses = $this->session->userdata('role_id');
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
+            <div class="row ml-2">
+                <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+            </div>
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->

@@ -15,13 +15,9 @@
               </div><!-- /.row -->
           </div><!-- /.container-fluid -->
       </div>
-      <!-- /.content-header -->
-
       <!-- Main content -->
-
       <section class="content">
           <div class="container-fluid">
-
               <!-- Small boxes (Stat box) -->
               <div class="row">
                   <div class="col-12">

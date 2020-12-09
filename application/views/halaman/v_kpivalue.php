@@ -1,3 +1,6 @@
+<?php
+$role_id  = $this->session->userdata('role_id');
+?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -25,8 +28,12 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="col-12 col-lg-6">
-                                <a href="<?php echo base_url('Evaluasi'); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
-                                <h5 style="display:inline;">Key Performance Index karyawan</h5>
+                                <?php if ($role_id == 2) { ?>
+                                    <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                    <h5 style="display:inline;">Key Performance Index</h5>
+                                <?php } else { ?>
+                                    <h5 style="display:inline;">Key Performance Index</h5>
+                                <?php  } ?>
                             </div>
                         </div>
                         <!-- /.card-header -->

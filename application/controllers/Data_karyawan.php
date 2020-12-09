@@ -29,6 +29,7 @@ class Data_karyawan extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Karyawan';
         $data['id_divisi'] = $id_divisi;
+        $this->session->unset_userdata('divisi_page');
         $this->session->set_userdata('divisi_page', $id_divisi);
 
         // PAGINATION
