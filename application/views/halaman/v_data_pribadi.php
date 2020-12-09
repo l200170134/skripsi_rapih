@@ -15,7 +15,6 @@ $level_akses = $this->session->userdata('role_id');
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item active"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
-                        <li class="breadcrumb-item">Profil</li>
                         <!-- <li class="breadcrumb-item active">Dashboard</li> -->
                     </ol>
                 </div><!-- /.col -->
@@ -37,7 +36,8 @@ $level_akses = $this->session->userdata('role_id');
                                 <div class="row">
                                     <div class="col-lg-2 d-flex justify-content-center">
                                         <img src="<?php echo base_url(); ?>assets/image/<?php echo $kar['image']; ?>" class="profile-img img-fluid img-circle img-lg">
-                                        <!-- <img class="profile-img img-fluid img-circle img-lg" src="<?php //echo base_url('assets/dist/img/user4-128x128.jpg') ?>" alt="User profile picture"> -->
+                                        <!-- <img class="profile-img img-fluid img-circle img-lg" src="<?php //echo base_url('assets/dist/img/user4-128x128.jpg') 
+                                                                                                        ?>" alt="User profile picture"> -->
                                     </div>
                                     <div class="col-lg-5">
                                         <h5 class="profile-username mb-0 mt-3"><?php echo $kar['nama']; ?></h5>
@@ -102,7 +102,13 @@ $level_akses = $this->session->userdata('role_id');
                                                 <label class="mb-0">NPWP</label>
                                                 <p class="text-muted"><?php echo $kar['npwp']; ?></p>
                                                 <label class="mb-0">Status</label>
-                                                <p class="text-muted">PKWT</p>
+                                                <p class="text-muted">
+                                                 <?php 
+                                                    $kode= $status_p['status'];
+                                                    $get_status = $this->db->get_where('tb_status' ,['id' => $kode])->row_array(); 
+                                                    echo $get_status['status'];
+                                                    ?>
+                                                </p>
                                             </div>
                                             <div class="col-lg-6">
                                                 <label class="mb-0">No. Rekening</label>
@@ -234,10 +240,10 @@ $level_akses = $this->session->userdata('role_id');
                                                 </td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <?php echo anchor('Data_pribadi/status_karyawan_update/' . $st['id_status'], '<div class="btn btn-warning btn-sm mr-2"><i class="fas fa-edit" style="color:white;" title="Update Data"></i></div>'); ?>
+                                                        <?php echo anchor('Data_pribadi/status_karyawan_update/' . $st['id_status'], '<div class="btn btn-warning btn-sm mr-2" title="Update Status"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
 
                                                         <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                            <?php echo anchor('Data_pribadi/status_karyawan_hapus/' . $st['id_status'], '<div class="btn btn-danger btn-sm"><i class="fas fa-trash-alt" style="color:white;" title="Hapus Data"></i></div>'); ?>
+                                                            <?php echo anchor('Data_pribadi/status_karyawan_hapus/' . $st['id_status'], '<div class="btn btn-danger btn-sm"  title="Hapus Status kepegawaian"><i class="fas fa-trash-alt" style="color:white;"></i></div>'); ?>
                                                         </label>
                                                     </div>
                                                 </td>

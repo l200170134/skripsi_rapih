@@ -10,8 +10,6 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?php echo base_url('Daily') ?>">Daily Activity</a></li>
-            <li class="breadcrumb-item active">Form</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -52,8 +50,8 @@
               </div>
               <div class="card-footer">
                 <!-- <a href="leader_daily.php" class="btn btn-primary">Submit</a> -->
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <a href="<?php echo base_url('Daily') ?>" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="<?php echo base_url('Daily') ?>" class="btn btn-secondary">Batal</a>
               </div>
             </form>
           </div>

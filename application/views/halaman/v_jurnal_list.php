@@ -10,7 +10,6 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
-                        <li class="breadcrumb-item active">Jurnal</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -26,7 +25,10 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Jurnal</h3>
+                            <div class="col-12 col-lg-6">
+                                <a href="<?php echo base_url('Jurnal'); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                <h5 style="display:inline;">Jurnal Harian Karyawan</h5>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">

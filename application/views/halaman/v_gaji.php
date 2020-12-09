@@ -1,3 +1,4 @@
+<?php $id_divisi =  $this->session->userdata('divisi_page') ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -10,7 +11,6 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
-                        <!-- <li class="breadcrumb-item active">Dashboard</li> -->
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -26,22 +26,23 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Data Kumulatif Gaji</h5>
-                            <div class="alert alert-sm alert-success alert-dismissible m-1">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                Menampilkan riwayat gaji anda setiap bulan serta status pembayaran.
+                            <div class="col-12 col-lg-6">
+                                <?php
+                                    $role_id = $this->session->userdata('role_id');
+                                    if ($role_id != 1) {
+                                ?>
+                                    <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi);?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                    <h5 style="display:inline;">Data Kumulatif Gaji</h5>
+                                <?php }else{ ?>
+                                    <h5 style="display:inline;">Data Kumulatif Gaji</h5>
+                                <?php } ?>
                             </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <?php
                             $user = $this->db->get_where('user', ['nip' => $nip])->row_array(); ?>
-                            <table class="mb-2">
-                                <tr>
-                                    <td><span class="badge badge-primary"><?php echo $user['nama']; ?></span></td>
-                                    </label>
-                                </tr>
-                            </table>
+                            
 
                             <div class="mb-2" style="overflow: scroll;">
                                 <table class="table col-12 col-lg-6 table-hover" style="table-layout: fixed; word-wrap: break-word;">

@@ -14,7 +14,6 @@ $nip = $this->session->userdata('nip');
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
-            <li class="breadcrumb-item active">Daily Activity</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -34,15 +33,15 @@ $nip = $this->session->userdata('nip');
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              
-                <div class="col-lg-6 col-12">
-                  <div class="row">
+
+              <div class="col-lg-6 col-12">
+                <div class="row">
                   <a href="<?php echo base_url('Daily/daily_form') ?>" class="mr-1 btn btn-md btn-success">Tambahkan Tugas Baru</a>
 
-                    <a href="<?php echo base_url('Daily/daily_report/' . $nip) ?>" class=" btn btn-md btn-primary">Report</a>
+                  <a href="<?php echo base_url('Daily/daily_report/' . $nip) ?>" class=" btn btn-md btn-primary">Report</a>
                 </div>
               </div>
-                  
+
               <br>
               <div class="bungkus p-0 mb-2" style="overflow: scroll;">
                 <table class="table table-hover table-md" style="table-layout: fixed; word-wrap: break-word;">
@@ -61,7 +60,7 @@ $nip = $this->session->userdata('nip');
                         <th width="80px">Urgensi</th>
                       <?php endif; ?>
 
-                      <th width="110px" colspan="2">Aksi</th>
+                      <th width="110px">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -104,11 +103,11 @@ $nip = $this->session->userdata('nip');
                           </td>
                         <?php endif; ?>
 
-                        <td class="pl-2">
-                          <?php echo anchor('Daily/daily_update/' . $dy['id'], '<div class="btn btn-warning btn-md"><i class="fas fa-edit" style="color:white;" title="Update Data"></i></div>'); ?>
-                        </td>
-                        <td class="pl-2" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                          <?php echo anchor('Daily/daily_proses_hapus/' . $dy['id'], '<div class="btn btn-danger btn-md"><i class="fas fa-trash-alt" title="Hapus Data"></i></div>'); ?>
+                        <td class="pl-3" align="center">
+                          <?php echo anchor('Daily/daily_update/' . $dy['id'], '<div class="btn btn-warning btn-sm"><i class="fas fa-edit" style="color:white;" title="Update Data"></i></div>'); ?>
+                          <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
+                          <?php echo anchor('Daily/daily_proses_hapus/' . $dy['id'], '<div class="btn btn-danger btn-sm"><i class="fas fa-trash-alt" title="Hapus Data"></i></div>'); ?>
+                          </label>
                         </td>
                       </tr>
                     <?php endforeach ?>

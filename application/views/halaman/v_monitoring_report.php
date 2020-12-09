@@ -29,9 +29,11 @@ $tgl_akhir = $this->session->userdata('tgl_akhir');
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header d-flex">
-                            <h5 class="mr-auto">Monitoring Report Activity</h5>
-                            <a href="<?php echo base_url('Daily/export_csv/' . $nip); ?>" class="btn btn-success"><i class=" fas fa-download" style="color:white;" title="ekspor semua report menjadi Excel"> Unduh Excel</i></a>
+                        <div class="card-header">
+                            <div class="col-12 col-lg-6">
+                                <a href="<?php echo base_url('Monitoring'); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                <h5 style="display:inline;">Monitoring Report Daily</h5>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -46,14 +48,17 @@ $tgl_akhir = $this->session->userdata('tgl_akhir');
                                             <label>Tanggal akhir</label>
                                             <input type="date" class="form-control" name="tgl_akhir" value="<?php echo $tgl_akhir ?>" required>
                                         </div>
-                                        <div class="col-md-2" style="margin-top:33px;">
+                                        <div class="col-md-4" style="margin-top:33px;">
                                             <input type="submit" class="btn btn-md btn-primary" name="submit" value="Cari">
                                             <input type="submit" class="btn btn-md btn-secondary" name="batal" value="Batal">
                                         </div>
                                     </div>
                                 </div>
                             </form>
-                            <span class="badge badge-primary"><?php echo  'Hasil : ' . $results; ?></span>
+                            <div class="">
+                                <span class="badge badge-primary p-2 mr-1"><?php echo  'Hasil : ' . $results; ?></span>
+                                <a href="<?php echo base_url('Daily/export_csv/' . $nip); ?>" class="btn btn-sm btn-success" style="min-width:120px; max-height:30px;"><i class=" fas fa-download" style="color:white;" title="ekspor semua report menjadi Excel"> Unduh Excel</i></a>
+                            </div>
                         </div>
                     </div>
                 </div>

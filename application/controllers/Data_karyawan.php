@@ -29,6 +29,7 @@ class Data_karyawan extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Karyawan';
         $data['id_divisi'] = $id_divisi;
+        $this->session->set_userdata('divisi_page', $id_divisi);
 
         // PAGINATION
         $this->load->model('Pagination_model', 'pages');
@@ -62,6 +63,7 @@ class Data_karyawan extends CI_Controller
         $data['divisi'] = $this->hrd_model->hrd_view_divisi()->result();
         $data['role'] = $this->hrd_model->hrd_view_role()->result();
         $data['nama_divisi'] = $this->db->get_where('tb_divisi', ['id_divisi' => $id_divisi])->result_array();
+        $data['id_divisi'] = $id_divisi;
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -116,23 +118,25 @@ class Data_karyawan extends CI_Controller
         $jabatan        = $this->input->post('jabatan');
         $nik            = $this->input->post('nik');
         $jk             = $this->input->post('jk');
-        $image          = $this->input->post('image');
-        // $image          = $_FILES['image'];
-        // if ($image =''){
-            
-        // }else{
-            
-        //     $config['upload_path']      = './assets/image';
-        //     $config['allowed_types']    = 'jpg|png|jpeg';
+        //$image          = $this->input->post('image');
 
-        //     $this->load->library('upload',$config);
-        //     if(!$this->upload->do_upload('image')){
-        //         echo "Upload Gagal"; die();
-        //     }else{
-        //         $image=$this->upload->data('file_name');
-        //     }
+        $karyawan = $this->db->get_where('user', ['nip' => $nip])->result_array();
+        $image          = $_FILES['image'];
+        if ($image['error']>0){
+            $image = $karyawan[0]['image'];
+        }else{
 
-        // }
+            $config['upload_path']      = './assets/image';
+            $config['allowed_types']    = 'jpg|png|jpeg';
+
+            $this->load->library('upload',$config);
+            if(!$this->upload->do_upload('image')){
+                echo "Upload Gagal"; die();
+            }else{
+                $image=$this->upload->data('file_name');
+            }
+
+        }
 
 
 
@@ -203,15 +207,17 @@ class Data_karyawan extends CI_Controller
         $nik        = $this->input->post('nik');
         $jk         = $this->input->post('jk');
         $image          = $_FILES['image'];
-        if ($image=''){}else{
+        if ($image = '') {
+        } else {
             $config['upload_path']      = './assets/image';
             $config['allowed_types']    = 'jpg|png|jpeg';
 
-            $this->load->library('upload',$config);
-            if(!$this->upload->do_upload('image')){
-                echo "Upload Gagal"; die();
-            }else{
-                $image=$this->upload->data('file_name');
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('image')) {
+                echo "Upload Gagal";
+                die();
+            } else {
+                $image = $this->upload->data('file_name');
             }
         }
 

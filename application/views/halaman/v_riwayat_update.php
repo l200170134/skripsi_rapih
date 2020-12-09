@@ -1,3 +1,6 @@
+<?php
+$nip = $status['nip'];
+?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -9,9 +12,6 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item active"><a href="<?php echo base_url('Dashboard') ?>">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="<?php echo base_url('Data_karyawan') ?>">Divisi</a></li>
-                        <li class="breadcrumb-item active"><a href="<?php echo base_url('Data_karyawan/detail_karyawan') ?>">Karyawan</a></li>
-                        <li class="breadcrumb-item">Form</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -30,7 +30,6 @@
                             <h3 class="card-title">Update Riwayat Kepegawaian</h3>
                         </div>
                         <!-- /.card-header -->
-                        <!-- form start -->
 
                         <div class="card-body">
                             <div class="row">
@@ -63,41 +62,28 @@
                                                     ?>
                                                 </select>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Tanggal Mulai</label>
-                                                <input type="date" name="tgl_mulai" class="form-control" value="<?php echo $up->tgl_mulai; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Tanggal Selesai</label>
-                                                <input type="date" name="tgl_akhir" class="form-control" value="<?php echo $up->tgl_akhir; ?>">
-                                            </div>
-
+                                        <?php
+                                        endforeach;
+                                        ?>
+                                        <div class="form-group">
+                                            <label>Tanggal Mulai</label>
+                                            <input type="date" name="tgl_mulai" class="form-control" value="<?php echo $up->tgl_mulai; ?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tanggal Selesai</label>
+                                            <input type="date" name="tgl_akhir" class="form-control" value="<?php echo $up->tgl_akhir; ?>">
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <a href="<?php echo base_url('Data_pribadi/data_pribadi/' . $nip); ?>" class="btn btn-secondary">Cancel</a>
+                                        </div>
+                                    </form>
                                 </div>
-                                <!-- end form bagian kanan -->
                             </div>
-                            <!-- end row -->
                         </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    <?php endforeach; ?>
-                    </form>
                     </div>
-                    <!-- /.card -->
-                    <!-- New Card -->
-
-                    <!--  End New Card -->
                 </div>
-                <!-- ./col -->
             </div>
-            <!-- /.row -->
-            <!-- Main row -->
-
-            <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-        </form>
+        </div>
     </section>
-    <!-- /.content -->
 </div>
-<!-- /.content-wrapper

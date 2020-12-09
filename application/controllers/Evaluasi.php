@@ -47,6 +47,7 @@ class Evaluasi extends CI_Controller
         $data['judul'] = "Data Karyawan";
         $data['divisi'] = $this->db->get_where('tb_divisi', ['id_divisi' => $id_divisi])->row_array();
         $data['kpi_data'] = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
+        $data['id_divisi'] = $id_divisi;
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -140,12 +141,13 @@ class Evaluasi extends CI_Controller
         //$data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = "Kinerja";
         $data['user'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
+
         //$data['value'] = $this->db->get_where('tb_kpi_value', ['nip' => $nip])->result_array();
 
         //$data['bulan'] = $this->db->query("SELECT DISTINCT bulan, tahun FROM tb_kpi_value WHERE nip = '$nip'")->result_array();
         //AVG(value) AS rata
         //$data['bulan'] = $this->db->query("SELECT DISTINCT bulan, tahun FROM tb_kpi_value WHERE nip = '$nip'")->result_array();
-        $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai ASC")->result_array();
+        $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY bulan, tahun ASC")->result_array();
 
 
 
@@ -196,9 +198,9 @@ class Evaluasi extends CI_Controller
 
             $this->hrd_model->input($data, 'tb_kpi_value');
         }
-        $get = $this->db->get_where('user', ['id_divisi' => $id_divisi])->row_array();
+        //$get = $this->db->get_where('user', ['id_divisi' => $id_divisi])->row_array();
 
-        redirect('Evaluasi/kpivalue/' . $get['nip']);
+        redirect('Evaluasi/kpivalue/' . $nip);
     }
 
     public function kpivalue_hapus_proses($nip, $bulan, $tahun)

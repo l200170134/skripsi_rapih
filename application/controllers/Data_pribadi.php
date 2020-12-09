@@ -12,11 +12,13 @@ class Data_pribadi extends CI_Controller
     public function index()
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
+
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Pribadi';
         $data['karyawan'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->result_array();
-        $nip = $this->session->userdata('nip_status');
-        $data['status'] = $this->db->get_where('tb_status_data', ['nip' => $nip])->result_array();
+        $nip = $this->session->userdata('nip');
+        // $nip = $this->session->userdata('nip_status');
+        $data['status_p'] = $this->db->order_by('id_status','desc')->get_where('tb_status_data', ['nip' => $nip], 1)->row_array();
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -31,6 +33,7 @@ class Data_pribadi extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Karyawan';
         $data['karyawan'] = $this->db->get_where('user', ['nip' => $nip])->result_array();
+        $data['status_p'] = $this->db->order_by('id_status','desc')->get_where('tb_status_data', ['nip' => $nip], 1)->row_array();
         $this->session->set_userdata('nip_status', $nip);
 
         // PAGINATION
