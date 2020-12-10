@@ -5,18 +5,31 @@
      * BAR CHART
      * ---------
      */
+    <?php
+    $direksi = $this->db->query("SELECT COUNT(nip) as jum FROM user WHERE id_divisi = 1")->row_array();
+    $hrd = $this->db->query("SELECT COUNT(nip) as jum FROM user WHERE id_divisi = 2")->row_array();
+    $marketing = $this->db->query("SELECT COUNT(nip) as jum FROM user WHERE id_divisi = 3")->row_array();
+    $purchasing = $this->db->query("SELECT COUNT(nip) as jum FROM user WHERE id_divisi = 4")->row_array();
+    $gudang = $this->db->query("SELECT COUNT(nip) as jum FROM user WHERE id_divisi = 5")->row_array();
+    $armada = $this->db->query("SELECT COUNT(nip) as jum FROM user WHERE id_divisi = 6")->row_array();
+    $teknisi = $this->db->query("SELECT COUNT(nip) as jum FROM user WHERE id_divisi = 7")->row_array();
+    $it = $this->db->query("SELECT COUNT(nip) as jum FROM user WHERE id_divisi = 8")->row_array();
+    $Recive = $this->db->query("SELECT COUNT(nip) as jum FROM user WHERE id_divisi = 9")->row_array();
+    $finnance = $this->db->query("SELECT COUNT(nip) as jum FROM user WHERE id_divisi = 10")->row_array();
+    ?>
+
     var bar_data = {
       data: [
-        [1, 10],
-        [2, 8],
-        [3, 4],
-        [4, 13],
-        [5, 17],
-        [6, 9],
-        [7, 5],
-        [8, 10],
-        [9, 8],
-        [10, 20]
+        [1, <?php echo $direksi['jum']; ?>],
+        [2, <?php echo $hrd['jum']; ?>],
+        [3, <?php echo $marketing['jum']; ?>],
+        [4, <?php echo $purchasing['jum']; ?>],
+        [5, <?php echo $gudang['jum']; ?>],
+        [6, <?php echo $armada['jum']; ?>],
+        [7, <?php echo $teknisi['jum']; ?>],
+        [8, <?php echo $it['jum']; ?>],
+        [9, <?php echo $Recive['jum']; ?>],
+        [10, <?php echo $finnance['jum']; ?>]
       ],
       bars: {
         show: true

@@ -281,9 +281,9 @@ if ($level_akses == 1) { ?>
                                             <div class="inner">
                                                 <p>Jumlah Karyawan</p>
                                                 <h3>
-                                                    <?php 
-                                                        echo $user_hrd;
-                                                     ?>
+                                                    <?php
+                                                    echo $user_hrd;
+                                                    ?>
                                                 </h3>
                                             </div>
                                             <div class="icon">
@@ -300,7 +300,7 @@ if ($level_akses == 1) { ?>
                                                 <p>Jumlah Karyawan Laki-Laki</p>
                                                 <h3>
                                                     <?php echo $user_male; ?>
-                                                <sup style="font-size: 20px"></sup></h3>
+                                                    <sup style="font-size: 20px"></sup></h3>
                                             </div>
                                             <div class="icon">
                                                 <i class="fas fa-male"></i>
@@ -326,35 +326,6 @@ if ($level_akses == 1) { ?>
                                     </div>
                                 </div>
                                 <!-- /.row -->
-                                <div>
-                                    Pengecekan
-                                        <table class="table table-bordered">
-                                            <tr class="bg-primary">
-                                                <?php foreach ($divisi as $div): ?>    
-                                                <td>
-                                                    <?php
-                                                        echo $div['divisi'];
-                                                    ?>
-                                                </td> 
-                                                <?php endforeach; ?>     
-                                            </tr>
-                                            <tr>
-                                                <?php foreach ($divisi as $div):
-                                                    $get = $div['id_divisi'];
-                                                    $get_id =$this->db->query("SELECT COUNT(*) as jumlah from user WHERE id_divisi='$get'")->result_array();
-                                                    foreach ($get_id as $id): 
-                                                ?>
-                                                <td>
-                                                    <?php echo $id['jumlah']; ?>
-                                                </td>
-                                                    <?php endforeach; ?>
-                                                <?php endforeach; ?>
-                                            </tr>
-                                        </table>
-                                    
-
-                                    End Pengecekan
-                                </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <!-- Bar chart -->
@@ -381,29 +352,6 @@ if ($level_akses == 1) { ?>
                                         <!-- /.card -->
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-12">
-                                        <!-- Donut chart -->
-                                        <div class="card card-primary card-outline">
-                                            <div class="card-header">
-                                                <h3 class="card-title">
-                                                    <i class="far fa-chart-bar"></i>
-                                                    Status Karyawan
-                                                </h3>
-                                                <div class="card-tools">
-                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                                                    </button>
-                                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div id="donut-chart" style="height: 300px;"></div>
-                                            </div>
-                                            <!-- /.card-body-->
-                                        </div>
-                                        <!-- /.card -->
-                                    </div>
-                                    <!-- /.col -->
                                 </div>
                                 <!-- /.row -->
                             </div>
@@ -412,8 +360,6 @@ if ($level_akses == 1) { ?>
                     <!-- ./col -->
                 </div>
                 <!-- /.row -->
-                <!-- Main row -->
-                <!-- /.row (main row) -->
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

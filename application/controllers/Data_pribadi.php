@@ -68,8 +68,7 @@ class Data_pribadi extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Karyawan';
         $data['karyawan'] = $this->db->get_where('user', ['nip' => $nip])->result_array();
-        
-        $data['status_p'] = $this->db->order_by('id_status','desc')->get_where('tb_status_data', ['nip' => $nip], 1)->row_array();
+        $data['status_p'] = $this->db->get_where('tb_status_data', ['nip' => $nip, 'aktivasi' => 0], 1)->row_array();
         $this->session->set_userdata('nip_status', $nip);
         $data['back'] = 1;
 

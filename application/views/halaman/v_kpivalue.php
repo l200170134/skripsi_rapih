@@ -92,16 +92,12 @@ $link = $this->session->userdata('link_kar');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $no = 1;
+                                        <?php
                                         foreach ($value as $bu) : ?>
-
                                             <tr align="center">
-                                                <td><?php echo $no++; ?></td>
+                                                <td><?php echo ++$start; ?></td>
                                                 <td> <?php echo $bu['bulan'] . ' ' . $bu['tahun']; ?></td>
                                                 <td><?php echo round($bu['rata'], 2); ?>/5</td>
-
-
-
                                                 <!-- Tombol Aksi -->
                                                 <?php
                                                 if ($role_id != 2) {
@@ -156,8 +152,8 @@ foreach ($value as $modal) : ?>
                             <tr>
                                 <?php
                                 $id_divisi = $user['id_divisi'];
-                                $kpi = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
-                                foreach ($kpi as $kp) :
+                                $kpi_data = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
+                                foreach ($kpi_data as $kp) :
                                 ?>
                                     <th><?php echo $kp['pertanyaan']; ?></th>
                                 <?php endforeach; ?>
