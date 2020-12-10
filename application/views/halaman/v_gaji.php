@@ -1,4 +1,7 @@
-<?php $id_divisi =  $this->session->userdata('divisi_page') ?>
+<?php
+$id_divisi =  $this->session->userdata('divisi_page');
+$link = $this->session->userdata('link_kar');
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -28,12 +31,12 @@
                         <div class="card-header">
                             <div class="col-12 col-lg-6">
                                 <?php
-                                    $role_id = $this->session->userdata('role_id');
-                                    if ($role_id != 1) {
+                                $role_id = $this->session->userdata('role_id');
+                                if ($back == 1) {
                                 ?>
-                                    <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi);?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                    <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
                                     <h5 style="display:inline;">Data Kumulatif Gaji</h5>
-                                <?php }else{ ?>
+                                <?php } else { ?>
                                     <h5 style="display:inline;">Data Kumulatif Gaji</h5>
                                 <?php } ?>
                             </div>
@@ -42,7 +45,7 @@
                         <div class="card-body">
                             <?php
                             $user = $this->db->get_where('user', ['nip' => $nip])->row_array(); ?>
-                            
+
 
                             <div class="mb-2" style="overflow: scroll;">
                                 <table class="table col-12 col-lg-6 table-hover" style="table-layout: fixed; word-wrap: break-word;">

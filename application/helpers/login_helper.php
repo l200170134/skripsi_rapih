@@ -12,11 +12,11 @@ function cek_login()
         $b = $ci->uri->segment(2);
         $menu = $a . '/' . $b;
 
-
         // mengambil id user_page berdasrkan url menu
         $queryMenu = $ci->db->get_where('user_page', ['url_page' => $menu])->row_array();
+        // var_dump($queryMenu);
+        // die;
         $id_page = $queryMenu['id_page'];
-
         $userAccess = $ci->db->get_where('user_access_page', ['role_id' => $role_id, 'id_page' => $id_page]);
         if ($userAccess->num_rows() < 1) {
             redirect('home/Login/blocked');

@@ -18,7 +18,7 @@ $id_divisi = $this->session->userdata('divisi_page');
                 </div><!-- /.col -->
             </div><!-- /.row -->
             <div class="row ml-2">
-                <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
             </div>
         </div><!-- /.container-fluid -->
     </div>
@@ -51,14 +51,6 @@ $id_divisi = $this->session->userdata('divisi_page');
                                             <input type="text" class="form-control" name="nama" value="<?php echo $ud->nama; ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="ttl">Jenis Kelamin</label>
-                                            <select class="form-control" name="jk">
-                                                <option>-- Pilih --</option>
-                                                <option value="Laki-Laki" <?php echo ($ud->jk == 'Laki-Laki' ? ' selected' : ''); ?>>Laki-Laki</option>
-                                                <option value="Perempuan" <?php echo ($ud->jk == 'Perempuan' ? ' selected' : ''); ?>>Perempuan</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
                                             <label for="nama">Tempat, Tanggal Lahir</label>
                                             <div class="row">
                                                 <div class="col-lg-6 col-12">
@@ -67,8 +59,15 @@ $id_divisi = $this->session->userdata('divisi_page');
                                                 <div class="col-lg-6 col-12">
                                                     <input type="date" class="form-control" name="tgl_lahir" value="<?php echo $ud->tgl_lahir; ?>">
                                                 </div>
-
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ttl">Jenis Kelamin</label>
+                                            <select class="form-control" name="jk">
+                                                <option>-- Pilih --</option>
+                                                <option value="Laki-Laki" <?php echo ($ud->jk == 'Laki-Laki' ? ' selected' : ''); ?>>Laki-Laki</option>
+                                                <option value="Perempuan" <?php echo ($ud->jk == 'Perempuan' ? ' selected' : ''); ?>>Perempuan</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>NIP</label>
@@ -96,10 +95,17 @@ $id_divisi = $this->session->userdata('divisi_page');
                                         <div class="form-group">
                                             <label>Jabatan</label>
                                             <select class="form-control" name="jabatan">
-                                                <option value="Staff" <?php echo ($ud->jabatan == 'Staff' ? ' selected' : ''); ?>>Staff</option>
-                                                <option value="Asisten Manajer" <?php echo ($ud->jabatan == 'Asisten Manajer' ? ' selected' : ''); ?>>Asisten Manajer</option>
-                                                <option value="Manajer" <?php echo ($ud->jabatan == 'Manajer' ? ' selected' : ''); ?>>Manajer</option>
-                                                <option value="Direksi" <?php echo ($ud->jabatan == 'Direksi' ? ' selected' : ''); ?>>Direksi</option>
+                                                <?php
+                                                $jabatan = $this->db->get('tb_jabatan')->result_array();
+                                                foreach ($jabatan as $jb) :
+                                                    if ($jabatan['jabatan'] == $ud->jabatan) { ?>
+                                                        <option value="<?php echo $jb['jabatan']; ?>" selected><?php echo $jb['jabatan']; ?></option>
+                                                    <?php } else { ?>
+                                                        <option value="<?php echo $jb['jabatan']; ?>"><?php echo $jb['jabatan']; ?></option>
+
+                                                    <?php }
+                                                    ?>
+                                                <?php endforeach; ?>
                                             </select>
 
                                         </div>

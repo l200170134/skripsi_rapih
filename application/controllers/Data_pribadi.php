@@ -15,10 +15,45 @@ class Data_pribadi extends CI_Controller
 
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Pribadi';
-        $data['karyawan'] = $this->db->get_where('user', ['nip' => $this->session->userdata('nip')])->result_array();
         $nip = $this->session->userdata('nip');
+        $data['karyawan'] = $this->db->get_where('user', ['nip' => $nip])->result_array();
         // $nip = $this->session->userdata('nip_status');
-        $data['status_p'] = $this->db->order_by('id_status','desc')->get_where('tb_status_data', ['nip' => $nip], 1)->row_array();
+        $data['status_p'] = $this->db->order_by('id_status', 'desc')->get_where('tb_status_data', ['nip' => $nip], 1)->row_array();
+        $data['status'] = $this->db->get_where('tb_status_data', ['nip' => $nip])->result_array();
+        $data['back'] = 0;
+
+        // PAGINATION
+        $this->load->model('Pagination_model', 'page');
+        // config
+        $config['base_url'] = base_url() . 'Data_pribadi/index/';
+        $config['total_rows'] = $this->page->getStatusRows($nip);
+        $config['per_page'] = 4;
+        $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav>';
+        $config['first_link']       = 'First';
+        $config['first_tag_open']   = '<li class="page-item">';
+        $config['first_tag_close']  = '</li>';
+        $config['last_link']        = 'Last';
+        $config['last_tag_open']    = '<li class="page-item">';
+        $config['last_tag_close']   = '</li>';
+        $config['next_link']        = '&raquo';
+        $config['next_tag_open']    = '<li class="page-item">';
+        $config['next_tag_close']   = '</li>';
+        $config['prev_link']        = '&laquo';
+        $config['prev_tag_open']    = '<li class="page-item">';
+        $config['prev_tag_close']   = '</li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '</span></li>';
+        $config['num_tag_open']     = '<li class="page-item">';
+        $config['num_tag_close']    = '</li>';
+        $config['attributes']       = array('class' => 'page-link');
+        // inisiasi
+        $this->pagination->initialize($config);
+        // $start = $this->uri->segment(4);
+        $data['start'] = $this->uri->segment(3);
+        $this->session->set_userdata('link_status', $data['start']);
+        $data['status'] = $this->page->getStatus($nip, $config['per_page'], $data['start']);
+        // END PAGINATION
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -33,15 +68,37 @@ class Data_pribadi extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Karyawan';
         $data['karyawan'] = $this->db->get_where('user', ['nip' => $nip])->result_array();
-        $data['status_p'] = $this->db->order_by('id_status','desc')->get_where('tb_status_data', ['nip' => $nip], 1)->row_array();
+        $data['status_p'] = $this->db->order_by('id_status', 'desc')->get_where('tb_status_data', ['nip' => $nip], 1)->row_array();
         $this->session->set_userdata('nip_status', $nip);
+        $data['back'] = 1;
 
         // PAGINATION
         $this->load->model('Pagination_model', 'page');
         // config
-        $config['base_url'] = base_url() . 'Data_pribadi/data_pribadi/' . $nip . '/';
-        $config['total_rows'] = $this->page->getStatusRows($nip);
-        $config['per_page'] = 4;
+        $config['base_url']         = base_url() . 'Data_pribadi/data_pribadi/' . $nip . '/';
+        $config['total_rows']       = $this->page->getStatusRows($nip);
+        $config['per_page']         = 4;
+        $config['first_url']        = '0';
+        $config['uri_segment']      = '4';
+        $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav>';
+        $config['first_link']       = 'First';
+        $config['first_tag_open']   = '<li class="page-item">';
+        $config['first_tag_close']  = '</li>';
+        $config['last_link']        = 'Last';
+        $config['last_tag_open']    = '<li class="page-item">';
+        $config['last_tag_close']   = '</li>';
+        $config['next_link']        = '&raquo';
+        $config['next_tag_open']    = '<li class="page-item">';
+        $config['next_tag_close']   = '</li>';
+        $config['prev_link']        = '&laquo';
+        $config['prev_tag_open']    = '<li class="page-item">';
+        $config['prev_tag_close']   = '</li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '</span></li>';
+        $config['num_tag_open']     = '<li class="page-item">';
+        $config['num_tag_close']    = '</li>';
+        $config['attributes']       = array('class' => 'page-link');
         // inisiasi
         $this->pagination->initialize($config);
         $start = $this->uri->segment(4);
@@ -119,17 +176,16 @@ class Data_pribadi extends CI_Controller
     {
 
         $id_status      = $this->input->post('id_status');
-
         $status         = $this->input->post('status');
-        $nip            = $this->input->post('nip');
+        // $nip            = $this->input->post('nip');
         $tgl_mulai      = $this->input->post('tgl_mulai');
         $tgl_mulai      = date('Y-m-d', strtotime($tgl_mulai));
         $tgl_akhir      = $this->input->post('tgl_akhir');
         $tgl_akhir      = date('Y-m-d', strtotime($tgl_akhir));
 
         $data = array(
-            'id_status'        => $id_status,
-            'nip'       => $nip,
+            'id_status' => $id_status,
+            // 'nip'       => $nip,
             'status'    => $status,
             'tgl_mulai' => $tgl_mulai,
             'tgl_akhir' => $tgl_akhir,

@@ -16,7 +16,7 @@ class Evaluasi extends CI_Controller
         $data['judul'] = "Kinerja";
         $id_divisi = $this->session->userdata('divisi');
         $nip = $this->session->userdata('nip');
-        $data['list_user'] = $this->db->get_where('user', ['id_divisi' => $id_divisi,'nip != '=>$nip])->result_array();
+        $data['list_user'] = $this->db->get_where('user', ['id_divisi' => $id_divisi, 'nip != ' => $nip])->result_array();
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -32,6 +32,41 @@ class Evaluasi extends CI_Controller
         $data['judul'] = "Evaluasi";
         $data['user'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
         $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai ASC")->result_array();
+        $data['back']   = 0;
+        // PAGINATION
+        $this->load->model('Pagination_model', 'page');
+        // config
+        $config['base_url']         = base_url() . 'Evaluasi/index_karyawan/';
+        $config['total_rows']       = $this->page->getKpiKarRows($nip);
+        $config['per_page']         = 5;
+        $config['first_url']        = '0';
+        $config['uri_segment']      = '4';
+        $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav>';
+        $config['first_link']       = 'First';
+        $config['first_tag_open']   = '<li class="page-item">';
+        $config['first_tag_close']  = '</li>';
+        $config['last_link']        = 'Last';
+        $config['last_tag_open']    = '<li class="page-item">';
+        $config['last_tag_close']   = '</li>';
+        $config['next_link']        = '&raquo';
+        $config['next_tag_open']    = '<li class="page-item">';
+        $config['next_tag_close']   = '</li>';
+        $config['prev_link']        = '&laquo';
+        $config['prev_tag_open']    = '<li class="page-item">';
+        $config['prev_tag_close']   = '</li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '</span></li>';
+        $config['num_tag_open']     = '<li class="page-item">';
+        $config['num_tag_close']    = '</li>';
+        $config['attributes']       = array('class' => 'page-link');
+        // inisiasi pagination
+        $this->pagination->initialize($config);
+        $start = $this->uri->segment(4);
+        $data['start'] = 0 + $start;
+        $this->session->set_userdata('link_kpi_kar', $data['start']);
+        $data['value'] = $this->page->getKpiKar($nip, $config['per_page'], $data['start']);
+        // END PAGIANTION
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -46,8 +81,43 @@ class Evaluasi extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = "Data Karyawan";
         $data['divisi'] = $this->db->get_where('tb_divisi', ['id_divisi' => $id_divisi])->row_array();
-        $data['kpi_data'] = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
+        // $data['kpi_data'] = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
         $data['id_divisi'] = $id_divisi;
+
+        // PAGINATION
+        $this->load->model('Pagination_model', 'page');
+        // config
+        $config['base_url']         = base_url() . 'Evaluasi/kpi/' . $id_divisi . '/';
+        $config['total_rows']       = $this->page->getKpiRows($id_divisi);
+        $config['per_page']         = 5;
+        $config['first_url']        = '0';
+        $config['uri_segment']      = '4';
+        $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav>';
+        $config['first_link']       = 'First';
+        $config['first_tag_open']   = '<li class="page-item">';
+        $config['first_tag_close']  = '</li>';
+        $config['last_link']        = 'Last';
+        $config['last_tag_open']    = '<li class="page-item">';
+        $config['last_tag_close']   = '</li>';
+        $config['next_link']        = '&raquo';
+        $config['next_tag_open']    = '<li class="page-item">';
+        $config['next_tag_close']   = '</li>';
+        $config['prev_link']        = '&laquo';
+        $config['prev_tag_open']    = '<li class="page-item">';
+        $config['prev_tag_close']   = '</li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '</span></li>';
+        $config['num_tag_open']     = '<li class="page-item">';
+        $config['num_tag_close']    = '</li>';
+        $config['attributes']       = array('class' => 'page-link');
+        // inisiasi pagination
+        $this->pagination->initialize($config);
+        $start = $this->uri->segment(4);
+        $data['start'] = 0 + $start;
+        $this->session->set_userdata('link_kpi', $data['start']);
+        $data['kpi_data'] = $this->page->getKpi($id_divisi, $config['per_page'], $data['start']);
+        // END PAGIANTION
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -77,12 +147,12 @@ class Evaluasi extends CI_Controller
     {
         $pertanyaan             = $this->input->post('pertanyaan');
         $id_divisi              = $this->input->post('id_divisi');
-        $id_kpi               = $this->input->post('id_kpi');
+        // $id_kpi                 = $this->input->post('id_kpi');
 
         $data = array(
             'pertanyaan'        => $pertanyaan,
-            'id_divisi'         => $id_divisi,
-            'id_kpi'          => $id_kpi,
+            'id_divisi'         => $id_divisi
+            // 'id_kpi'            => $id_kpi,
         );
 
         $this->hrd_model->input($data, 'tb_kpi');
@@ -104,8 +174,6 @@ class Evaluasi extends CI_Controller
         $data['judul'] = "Data Karyawan";
         $data['kpi_update'] = $this->db->get_where('tb_kpi', ['id_pertanyaan' => $id_pertanyaan])->row_array();
 
-
-
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
         $this->load->view('_partials/sidebar', $data);
@@ -119,12 +187,10 @@ class Evaluasi extends CI_Controller
         $id_pertanyaan          = $this->input->post('id_pertanyaan');
         $pertanyaan             = $this->input->post('pertanyaan');
         $id_divisi              = $this->input->post('id_divisi');
-        $id_kpi               = $this->input->post('id_kpi');
 
         $data = array(
             'pertanyaan'        => $pertanyaan,
-            'id_divisi'         => $id_divisi,
-            'id_kpi'          => $id_kpi,
+            'id_divisi'         => $id_divisi
         );
 
         $where = array(
@@ -138,21 +204,45 @@ class Evaluasi extends CI_Controller
     public function kpivalue($nip)
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
-        //$data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = "Kinerja";
+        $data['judul'] = "Data Karyawan";
         $data['user'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
-
-        //$data['value'] = $this->db->get_where('tb_kpi_value', ['nip' => $nip])->result_array();
-
-        //$data['bulan'] = $this->db->query("SELECT DISTINCT bulan, tahun FROM tb_kpi_value WHERE nip = '$nip'")->result_array();
-        //AVG(value) AS rata
-        //$data['bulan'] = $this->db->query("SELECT DISTINCT bulan, tahun FROM tb_kpi_value WHERE nip = '$nip'")->result_array();
         $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY bulan, tahun ASC")->result_array();
+        $data['back']   = 1;
 
-
-
-
-        //$data['kpi_value'] = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
+        // PAGINATION
+        $this->load->model('Pagination_model', 'page');
+        // config
+        $config['base_url']         = base_url() . 'Evaluasi/kpi/' . $nip . '/';
+        $config['total_rows']       = $this->page->getKpiRows($nip);
+        $config['per_page']         = 5;
+        $config['first_url']        = '0';
+        $config['uri_segment']      = '4';
+        $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav>';
+        $config['first_link']       = 'First';
+        $config['first_tag_open']   = '<li class="page-item">';
+        $config['first_tag_close']  = '</li>';
+        $config['last_link']        = 'Last';
+        $config['last_tag_open']    = '<li class="page-item">';
+        $config['last_tag_close']   = '</li>';
+        $config['next_link']        = '&raquo';
+        $config['next_tag_open']    = '<li class="page-item">';
+        $config['next_tag_close']   = '</li>';
+        $config['prev_link']        = '&laquo';
+        $config['prev_tag_open']    = '<li class="page-item">';
+        $config['prev_tag_close']   = '</li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '</span></li>';
+        $config['num_tag_open']     = '<li class="page-item">';
+        $config['num_tag_close']    = '</li>';
+        $config['attributes']       = array('class' => 'page-link');
+        // inisiasi pagination
+        $this->pagination->initialize($config);
+        $start = $this->uri->segment(4);
+        $data['start'] = 0 + $start;
+        $this->session->set_userdata('link_kpi', $data['start']);
+        $data['kpi_data'] = $this->page->getKpi($nip, $config['per_page'], $data['start']);
+        // END PAGIANTION
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
@@ -192,7 +282,7 @@ class Evaluasi extends CI_Controller
                 'id_divisi'     => $id_divisi,
                 'bulan'         => $bulan,
                 'tahun'         => $tahun,
-                'value'        => $value,
+                'value'         => $value,
 
             );
 

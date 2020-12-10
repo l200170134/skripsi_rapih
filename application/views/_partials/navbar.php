@@ -22,7 +22,7 @@ $role_id = $this->session->userdata('role_id');
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <?php
           // Mengambil tanggal akhir dikurangi 10 hari
-          $tanggal = $this->db->query('SELECT nip,DATE_ADD(tgl_akhir, INTERVAL -10 DAY) AS TglAkhir, aktivasi FROM tb_status_data')->result_array();
+          $tanggal = $this->db->query('SELECT nip,DATE_ADD(tgl_akhir, INTERVAL -10 DAY) AS TglAkhir,tgl_akhir, aktivasi FROM tb_status_data')->result_array();
           $a = 0;
           foreach ($tanggal as $tg) {
             $tgl_akhir = $tg['TglAkhir'];
@@ -41,9 +41,8 @@ $role_id = $this->session->userdata('role_id');
                     <div class="media-body">
                       <h3 class="dropdown-item-title">
                         <?php echo $n['nama']; ?>
-                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                       </h3>
-                      <p class="text-sm">Kontrak kerja hampir habis</p>
+                      <p class="text-md">Kontrak Sampai <span class="badge badge-danger"><?php echo date('d-m-Y', strtotime($tg['tgl_akhir'])) ?></span></p>
                       <p class="text-sm text-primary">Divisi <?php echo $div['divisi']; ?></p>
                     </div>
                   </div>
@@ -55,8 +54,6 @@ $role_id = $this->session->userdata('role_id');
           }
           $this->session->set_userdata('jumlah', $a);
           ?>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
       </li>
     </ul>

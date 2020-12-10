@@ -1,5 +1,6 @@
 <?php
 $role_id  = $this->session->userdata('role_id');
+$link = $this->session->userdata('link_kar');
 ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -29,10 +30,10 @@ $role_id  = $this->session->userdata('role_id');
                         <div class="card-header">
                             <?php
                             $role_id = $this->session->userdata('role_id');
-                            if ($role_id == 3) {
+                            if ($back == 1) {
                             ?>
                                 <div class="col-12 col-lg-6">
-                                    <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $user['id_divisi']); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                    <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $user['id_divisi'] . '/' . $link); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
                                     <h5 style="display:inline;">Key Performance Index Karyawan</h5>
                                 </div>
                             <?php
@@ -68,8 +69,6 @@ $role_id  = $this->session->userdata('role_id');
                                     <?php
                                     }
                                     ?>
-
-
                                 </div>
                             </div>
 
@@ -121,12 +120,10 @@ $role_id  = $this->session->userdata('role_id');
 
                                         <?php endforeach; ?>
                                     </tbody>
-
-
-
                                 </table>
-
-
+                            </div>
+                            <div class="d-flex justify-content-start m-2">
+                                <?php echo $this->pagination->create_links(); ?>
                             </div>
                         </div>
                     </div>

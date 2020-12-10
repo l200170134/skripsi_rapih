@@ -68,9 +68,9 @@ $level_akses = $this->session->userdata('role_id');
                                     <thead class="bg-secondary">
                                         <tr align="center">
                                             <th width="50px">No</th>
-                                            <th width="80px">NIP</th>
+                                            <th width="120px">NIP</th>
                                             <th width="200px">Nama</th>
-                                            <th width="120px">Jabatan</th>
+                                            <th width="80px">Jabatan</th>
                                             <th width="150px">Perusahaan</th>
 
                                             <?php if ($level_akses != 4) { ?>
@@ -89,7 +89,7 @@ $level_akses = $this->session->userdata('role_id');
                                         $no = 1;
                                         foreach ($divisi as $dv) : ?>
                                             <tr>
-                                                <td><?php echo $no++; ?></td>
+                                                <td><?php echo ++$start; ?></td>
                                                 <td><?php echo $dv['nip']; ?></td>
                                                 <td><?php echo $dv['nama']; ?></td>
                                                 <td><?php echo $dv['jabatan']; ?></td>
@@ -105,7 +105,7 @@ $level_akses = $this->session->userdata('role_id');
                                                         <?php echo anchor('Gaji/gaji_form/' . $dv['nip'], '<div class="btn btn-success btn-sm mr-1"><i class="fas fa-plus p-1" style="color:white;" title="Tambah Gaji"></i></div>'); ?>
 
 
-                                                    <td align="center"><a href="<?php echo base_url('Evaluasi/kpivalue/' .$dv['nip']); ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja"><i class="fas fa-eye p-1"></i></a></td>
+                                                    <td align="center"><a href="<?php echo base_url('Evaluasi/kpivalue/' . $dv['nip']); ?>" class="btn btn-primary btn-sm" title="Lihat Kinerja"><i class="fas fa-eye p-1"></i></a></td>
 
                                                     <td align="center">
                                                         <div class="    btn-group">

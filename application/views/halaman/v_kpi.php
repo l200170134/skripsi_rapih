@@ -1,6 +1,3 @@
-<?php
-$role_id  = $this->session->userdata('role_id');
-?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -28,7 +25,7 @@ $role_id  = $this->session->userdata('role_id');
                     <div class="card">
                         <div class="card-header">
                             <div class="col-12 col-lg-6">
-                                <a href="<?php echo base_url('Evaluasi'); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
                                 <h5 style="display:inline;">Key Performance Index karyawan</h5>
                             </div>
                         </div>
@@ -48,27 +45,23 @@ $role_id  = $this->session->userdata('role_id');
                                             <th width="50px">No</th>
                                             <th width="150px">Pertanyaan</th>
                                             <th width="150px">Divisi</th>
-                                            <th width="150px">Kategori</th>
                                             <th width="150px">Aksi</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $no = 1;
+                                        <?php
                                         foreach ($kpi_data as $kpi) : ?>
                                             <tr>
-                                                <td><?php echo $no++; ?></td>
+                                                <td><?php echo ++$start; ?></td>
                                                 <td><?php echo $kpi['pertanyaan']; ?></td>
                                                 <td align="center"><?php echo $divisi['divisi']; ?></td>
-                                                <td align="center"><?php echo $kpi['id_kpi']; ?></td>
                                                 <td align="center">
                                                     <div class="btn-group">
                                                         <?php echo anchor('Evaluasi/kpi_update/' . $kpi['id_pertanyaan'], '<div class="btn btn-block btn-sm btn-warning"><i class="fas fa-edit p-1" style="color:white;" title="Kembali"></i></div>'); ?>
                                                     </div>
                                                     <div class="btn-group mr-1" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-
                                                         <?php echo anchor('Evaluasi/kpi_hapus_proses/' . $kpi['id_pertanyaan'], '<div class="btn btn-block btn-sm btn-danger"><i class="fas fa-trash-alt p-1" style="color:white;" title="Kembali"></i></div>'); ?>
-
                                                     </div>
                                                 </td>
                                             </tr>
@@ -76,6 +69,7 @@ $role_id  = $this->session->userdata('role_id');
                                     </tbody>
                                     <!-- table ke 2 -->
                                 </table>
+
 
                                 <div class="modal fade" id="modal-info">
                                     <div class="modal-dialog">
@@ -94,7 +88,10 @@ $role_id  = $this->session->userdata('role_id');
                                     <!-- /.modal-dialog -->
                                 </div>
                                 <!-- /.modal -->
+                            </div>
+                            <div class="d-flex justify-content-start m-2">
 
+                                <?php echo $this->pagination->create_links(); ?>
                             </div>
                         </div>
                     </div>

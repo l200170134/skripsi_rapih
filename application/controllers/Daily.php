@@ -20,14 +20,36 @@ class Daily extends CI_Controller
 
         // PAGINATION
         $this->load->model('Pagination_model', 'page');
+
         // config
         $config['base_url']         = base_url() . 'Daily/index/' . $nip . '/';
         $config['total_rows']       = $this->page->getDailyRows($nip, $tanggal);
         $config['per_page']         = 5;
+        $config['first_url']        = '0';
+        $config['uri_segment']      = '4';
+        $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav>';
+        $config['first_link']       = 'First';
+        $config['first_tag_open']   = '<li class="page-item">';
+        $config['first_tag_close']  = '</li>';
+        $config['last_link']        = 'Last';
+        $config['last_tag_open']    = '<li class="page-item">';
+        $config['last_tag_close']   = '</li>';
+        $config['next_link']        = '&raquo';
+        $config['next_tag_open']    = '<li class="page-item">';
+        $config['next_tag_close']   = '</li>';
+        $config['prev_link']        = '&laquo';
+        $config['prev_tag_open']    = '<li class="page-item">';
+        $config['prev_tag_close']   = '</li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '</span></li>';
+        $config['num_tag_open']     = '<li class="page-item">';
+        $config['num_tag_close']    = '</li>';
+        $config['attributes']       = array('class' => 'page-link');
         // Inisiasi
         $this->pagination->initialize($config);
-        $start              = $this->uri->segment(4);
-        $data['start']      = 0 + $start;
+        $start  = $this->uri->segment(4);
+        $data['start']      =  0 + $start;
         $this->session->set_userdata('link', $data['start']);
         $data['daily']      = $this->page->getDaily($nip, $tanggal, $config['per_page'], $data['start']);
 
@@ -86,7 +108,9 @@ class Daily extends CI_Controller
         // PAGINATION
         // config
         $config['base_url']         = base_url() . 'Daily/daily_report/' . $nip . '/';
-        $config['per_page']         = 10;
+        $config['per_page']         = 5;
+        $config['first_url']        = '0';
+        $config['uri_segment']      = 4;
         $this->db->select('*');
         $this->db->from('tb_ldr_daily');
         $this->db->where('nip', $nip);
@@ -112,6 +136,26 @@ class Daily extends CI_Controller
             $start                  = $this->uri->segment(4);
             $data['start']          = 0 + $start;
         }
+
+        $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav>';
+        $config['first_link']       = 'First';
+        $config['first_tag_open']   = '<li class="page-item">';
+        $config['first_tag_close']  = '</li>';
+        $config['last_link']        = 'Last';
+        $config['last_tag_open']    = '<li class="page-item">';
+        $config['last_tag_close']   = '</li>';
+        $config['next_link']        = '&raquo';
+        $config['next_tag_open']    = '<li class="page-item">';
+        $config['next_tag_close']   = '</li>';
+        $config['prev_link']        = '&laquo';
+        $config['prev_tag_open']    = '<li class="page-item">';
+        $config['prev_tag_close']   = '</li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '</span></li>';
+        $config['num_tag_open']     = '<li class="page-item">';
+        $config['num_tag_close']    = '</li>';
+        $config['attributes']       = array('class' => 'page-link');
         // Inisiasi
         $this->pagination->initialize($config);
         $this->session->set_userdata('link', $data['start']);

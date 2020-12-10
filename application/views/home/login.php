@@ -74,7 +74,7 @@ $this->load->library('session');
                 </form>
                 <br>
                 <p class="mb-1">
-                    <a href="#" onclick="return confirm('Hubungi pihak HRD')">I forgot my password</a>
+                    <a href="#" onclick="return confirm('Hubungi pihak HRD')">Lupa Password</a>
                 </p>
             </div>
             <!-- /.login-card-body -->
