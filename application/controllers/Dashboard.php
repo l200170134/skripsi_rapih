@@ -28,6 +28,27 @@ class Dashboard extends CI_Controller
         $data['pending'] = $this->db->query(" SELECT * FROM tb_ldr_daily WHERE id_divisi = '$id_divisi' AND nip !='nip' AND status ='Pending'")->num_rows();
         $data['belum'] = $this->db->query(" SELECT * FROM tb_ldr_daily WHERE  nip = '$nip' AND hasil !='Selesai'")->num_rows();
 
+        //HRD
+        $data['user_hrd'] = $this->db->query("SELECT * FROM user")->num_rows();
+        $data['user_male'] = $this->db->query("SELECT * FROM user WHERE jk='Laki-Laki'")->num_rows();
+        $data['user_female'] = $this->db->query("SELECT * FROM user WHERE jk='Perempuan'")->num_rows();
+
+        //HRR Grafik
+        //$divisi = $this->db->query("SELECT id_divisi FROM tb_divisi")->row_array();
+        $data['divisi'] = $this->hrd_model->hrd_view_divisi()->result_array();
+        
+        // $divisi = $this->hrd_model->hrd_view_divisi()->result_array();
+        // foreach ($divisi as $div):
+        //     $get= $div['id_divisi'];
+        //     echo 'Divisi: ';
+        //     echo $get;
+        // $get_id = $this->db->query("SELECT COUNT(*) as jumlah from user WHERE id_divisi='$get'")->result_array();
+        // foreach ($get_id as $get):
+        //     echo 'Jumlah: ';
+        //     echo $get['jumlah'];
+        // endforeach; 
+        // endforeach;
+        
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

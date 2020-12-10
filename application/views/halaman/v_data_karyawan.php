@@ -42,7 +42,16 @@ $level_akses = $this->session->userdata('role_id');
                                     <div class="inner">
                                         <h4 class="font-weight-bold"><?php echo $dv->divisi; ?></h4>
 
-                                        <p>12 Orang</p>
+                                        <p>
+                                            <?php 
+                                                $get_id = $dv->id_divisi;
+                                                $qty_divisi = $this->db->query("SELECT COUNT(*) as jumlah from user WHERE id_divisi='$get_id'")->result_array();
+                                                foreach ($qty_divisi as $qty):
+                                                    echo $qty['jumlah'].' orang';
+                                                endforeach;
+
+                                             ?>
+                                        </p>
                                     </div>
                                     <div class="icon">
                                         <i class="<?php echo $dv->icon; ?>"></i>

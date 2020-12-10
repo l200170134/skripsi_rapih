@@ -313,7 +313,11 @@ if ($level_akses == 1) { ?>
                                         <div class="small-box bg-info">
                                             <div class="inner">
                                                 <p>Jumlah Karyawan</p>
-                                                <h3>120</h3>
+                                                <h3>
+                                                    <?php 
+                                                        echo $user_hrd;
+                                                     ?>
+                                                </h3>
                                             </div>
                                             <div class="icon">
                                                 <i class="ion ion-person-add"></i>
@@ -327,7 +331,9 @@ if ($level_akses == 1) { ?>
                                         <div class="small-box bg-success">
                                             <div class="inner">
                                                 <p>Jumlah Karyawan Laki-Laki</p>
-                                                <h3>60<sup style="font-size: 20px"></sup></h3>
+                                                <h3>
+                                                    <?php echo $user_male; ?>
+                                                <sup style="font-size: 20px"></sup></h3>
                                             </div>
                                             <div class="icon">
                                                 <i class="fas fa-male"></i>
@@ -341,7 +347,9 @@ if ($level_akses == 1) { ?>
                                         <div class="small-box bg-warning">
                                             <div class="inner">
                                                 <p>Jumlah Karyawan Perempuan</p>
-                                                <h3>60</h3>
+                                                <h3>
+                                                    <?php echo $user_female; ?>
+                                                </h3>
                                             </div>
                                             <div class="icon">
                                                 <i class="fas fa-female"></i>
@@ -351,6 +359,35 @@ if ($level_akses == 1) { ?>
                                     </div>
                                 </div>
                                 <!-- /.row -->
+                                <div>
+                                    Pengecekan
+                                        <table class="table table-bordered">
+                                            <tr class="bg-primary">
+                                                <?php foreach ($divisi as $div): ?>    
+                                                <td>
+                                                    <?php
+                                                        echo $div['divisi'];
+                                                    ?>
+                                                </td> 
+                                                <?php endforeach; ?>     
+                                            </tr>
+                                            <tr>
+                                                <?php foreach ($divisi as $div):
+                                                    $get = $div['id_divisi'];
+                                                    $get_id =$this->db->query("SELECT COUNT(*) as jumlah from user WHERE id_divisi='$get'")->result_array();
+                                                    foreach ($get_id as $id): 
+                                                ?>
+                                                <td>
+                                                    <?php echo $id['jumlah']; ?>
+                                                </td>
+                                                    <?php endforeach; ?>
+                                                <?php endforeach; ?>
+                                            </tr>
+                                        </table>
+                                    
+
+                                    End Pengecekan
+                                </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <!-- Bar chart -->

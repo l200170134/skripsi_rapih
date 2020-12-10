@@ -7,6 +7,11 @@ class Hrd_model extends CI_Model
         return $this->db->get('tb_divisi');
     }
 
+    public function hrd_view_user()
+    {
+        return $this->db->get('user');
+    }
+
     public function hrd_view_role()
     {
         return $this->db->get('user_role');

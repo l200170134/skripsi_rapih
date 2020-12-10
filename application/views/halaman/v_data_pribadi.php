@@ -104,9 +104,11 @@ $level_akses = $this->session->userdata('role_id');
                                                 <label class="mb-0">Status</label>
                                                 <p class="text-muted">
                                                  <?php 
-                                                    $kode= $status_p['status'];
-                                                    $get_status = $this->db->get_where('tb_status' ,['id' => $kode])->row_array(); 
-                                                    echo $get_status['status'];
+                                                    //$kode= $status_p['status'];
+                                                    //$get_status = $this->db->get_where('tb_status', ['id' => $kode])->row_array();
+                                                    //echo $get_status['status'];
+                                                   
+                                                    
                                                     ?>
                                                 </p>
                                             </div>

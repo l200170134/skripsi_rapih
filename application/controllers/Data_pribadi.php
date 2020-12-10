@@ -34,6 +34,7 @@ class Data_pribadi extends CI_Controller
         $data['judul'] = 'Data Karyawan';
         $data['karyawan'] = $this->db->get_where('user', ['nip' => $nip])->result_array();
         $data['status_p'] = $this->db->order_by('id_status','desc')->get_where('tb_status_data', ['nip' => $nip], 1)->row_array();
+        
         $this->session->set_userdata('nip_status', $nip);
 
         // PAGINATION
