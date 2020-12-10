@@ -1,6 +1,8 @@
 <?php
 $this->load->library('session');
 $level_akses = $this->session->userdata('role_id');
+$id_divisi = $this->session->userdata('divisi_page');
+$link = $this->session->userdata('link_kar');
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -19,6 +21,13 @@ $level_akses = $this->session->userdata('role_id');
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
+
+            <?php if ($back == 1) { ?>
+                <div class="row ml-2">
+                    <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                </div>
+            <?php } else {
+            } ?>
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -103,12 +112,11 @@ $level_akses = $this->session->userdata('role_id');
                                                 <p class="text-muted"><?php echo $kar['npwp']; ?></p>
                                                 <label class="mb-0">Status</label>
                                                 <p class="text-muted">
+
                                                  <?php 
-                                                    //$kode= $status_p['status'];
-                                                    //$get_status = $this->db->get_where('tb_status', ['id' => $kode])->row_array();
-                                                    //echo $get_status['status'];
-                                                   
-                                                    
+                                                    // $kode = $status_p['status'];
+                                                    // $get_status = $this->db->get_where('tb_status', ['id' => $kode])->row_array();
+                                                    // echo $get_status['status'];
                                                     ?>
                                                 </p>
                                             </div>
@@ -217,13 +225,12 @@ $level_akses = $this->session->userdata('role_id');
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $no = 1;
                                         foreach ($status as $st) :
 
                                         ?>
                                             <tr align="center">
                                                 <input type="text" name="id" hidden>
-                                                <td><?php echo $no++; ?></td>
+                                                <td><?php echo ++$start; ?></td>
                                                 <td>
                                                     <?php
                                                     $get_id = $st['status'];

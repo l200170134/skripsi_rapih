@@ -68,18 +68,6 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Divis</label>
-
-                                        <!-- <select class="form-control">
-                                                <option></option>
-                                                <?php //foreach ($divisi as $dv) : 
-                                                ?>
-                                                <option value="<?php //echo $dv->id_divisi; 
-                                                                ?>"><?php //echo $dv->divisi; 
-                                                                    ?></option>
-                                                <?php //endforeach; 
-                                                ?>
-                                            </select> -->
-
                                         <select class="form-control" name="id_divisi">
                                             <?php foreach ($nama_divisi as $nd) : ?>
                                                 <option value="<?php echo $nd['id_divisi'] ?>"><?php echo $nd['divisi'] ?></option>

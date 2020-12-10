@@ -15,19 +15,14 @@
               </div><!-- /.row -->
           </div><!-- /.container-fluid -->
       </div>
-      <!-- /.content-header -->
-
       <!-- Main content -->
-
       <section class="content">
           <div class="container-fluid">
-
               <!-- Small boxes (Stat box) -->
               <div class="row">
                   <div class="col-12">
                       <div class="card">
                           <div class="card-header">
-
                               <h3 class="card-title">Evaluasi Saya</h3>
                           </div>
                           <!-- /.card-header -->

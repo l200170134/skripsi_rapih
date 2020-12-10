@@ -45,10 +45,6 @@
                                                 <option value=" <?php echo $divisi['id_divisi']; ?>"><?php echo $divisi['divisi']; ?></option>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Kategori</label>
-                                            <input type="text" name="id_kpi" class="form-control">
-                                        </div>
                                 </div>
                             </div>
                             <!-- end row -->

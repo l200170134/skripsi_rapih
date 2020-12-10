@@ -14,12 +14,12 @@ class Dashboard extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Dashboard';
-        $nip = $this->session->userdata('nip'); 
-        $id_divisi = $this->session->userdata('divisi'); 
+        $nip = $this->session->userdata('nip');
+        $id_divisi = $this->session->userdata('divisi');
 
         // Karyawan
         $date = date('Y-m-d');
-        $data['select'] = $this->db->query(" SELECT * FROM tb_ldr_daily WHERE nip = '$nip' AND hasil !='Selesai'")->num_rows();
+        $data['select'] = $this->db->query(" SELECT * FROM tb_ldr_daily WHERE nip = '$nip' AND tgl = '$date' ")->num_rows();
         $data['kpi'] = $this->db->query("SELECT AVG(value) FROM tb_kpi_value as rata WHERE nip = '$nip'")->row_array();
         $data['approve'] = $this->db->query(" SELECT * FROM tb_ldr_daily WHERE  nip = '$nip' AND status ='Pending'")->num_rows();
 
