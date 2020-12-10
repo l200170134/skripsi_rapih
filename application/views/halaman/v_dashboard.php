@@ -171,7 +171,8 @@ if ($level_akses == 1) { ?>
                                                 <div class="icon">
                                                     <i class="fa fa-user"></i>
                                                 </div>
-                                                <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                                               
+                                                <a href="<?php echo base_url('Data_Karyawan/detail_karyawan_leader/' . $user['id_divisi']); ?>" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
 
@@ -192,7 +193,7 @@ if ($level_akses == 1) { ?>
                                                 <div class="icon">
                                                     <i class="fa fa-times"></i>
                                                 </div>
-                                                <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                                                <a href="<?php echo base_url('Daily'); ?>" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
 
@@ -213,7 +214,7 @@ if ($level_akses == 1) { ?>
                                                 <div class="icon">
                                                     <i class="fa fa-bell"></i>
                                                 </div>
-                                                <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                                                <a href="<?php echo base_url('Monitoring'); ?>" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
 
