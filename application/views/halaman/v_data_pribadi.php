@@ -96,7 +96,7 @@ $link = $this->session->userdata('link_kar');
 
                                                 </p>
                                                 <label class="mb-0">NIK</label>
-                                                <p class="text-muted"><?php echo $kar['pernikahan']; ?></p>
+                                                <p class="text-muted"><?php echo $kar['nik']; ?></p>
                                                 <label class="mb-0">Alamat KTP</label>
                                                 <p class="text-muted"><?php echo $kar['alamat_ktp']; ?></p>
                                             </div>
@@ -113,8 +113,15 @@ $link = $this->session->userdata('link_kar');
                                                 <label class="mb-0">Status</label>
                                                 <p class="text-muted">
 
-                                                 <?php 
+                                                    <?php
+                                                    if ($status_p != null) {
+                                                        $get_status = $this->db->get_where('tb_status', ['id' => $status_p['status']])->row_array();
+                                                        echo $get_status['status'];
+                                                    } else {
+                                                        echo "Belum Terisi";
+                                                    }
                                                     // $kode = $status_p['status'];
+                                                    // echo $kode;
                                                     // $get_status = $this->db->get_where('tb_status', ['id' => $kode])->row_array();
                                                     // echo $get_status['status'];
                                                     ?>

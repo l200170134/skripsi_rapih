@@ -121,26 +121,26 @@ class Pagination_model extends CI_Model
     }
 
     // halaman evaluasi
-    public function getKpi($id_divisi, $limit, $offset)
+    public function getKpi($nip, $limit, $offset)
     {
-        return $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi], $limit, $offset)->result_array();
+        return $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai DESC LIMIT $offset, $limit")->result_array();
     }
-    public function getKpiRows($id_divisi)
+    public function getKpiRows($nip)
     {
-        return $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->num_rows();
+        return $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun")->num_rows();
     }
 
     // halaman KPI Karyawan
     public function getKpiKar($nip, $limit, $offset)
     {
-        return $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai ASC LIMIT $offset,$limit")->result_array();
+        return $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai LIMIT $offset,$limit")->result_array();
     }
     public function getKpiKarRows($nip)
     {
         return $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai ASC")->num_rows();
     }
 
-    // halaman KI VALUE
+    // halaman KPI VALUE
     public function getKpiValue($nip, $limit, $offset)
     {
         return $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY bulan, tahun ASC LIMIT $offset, $limit")->result_array();

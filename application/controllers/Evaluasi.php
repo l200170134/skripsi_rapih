@@ -31,7 +31,6 @@ class Evaluasi extends CI_Controller
         $nip = $this->session->userdata('nip');
         $data['judul'] = "Evaluasi";
         $data['user'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
-        $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai ASC")->result_array();
         $data['back']   = 0;
         // PAGINATION
         $this->load->model('Pagination_model', 'page');
@@ -40,7 +39,6 @@ class Evaluasi extends CI_Controller
         $config['total_rows']       = $this->page->getKpiKarRows($nip);
         $config['per_page']         = 5;
         $config['first_url']        = '0';
-        $config['uri_segment']      = '4';
         $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
         $config['full_tag_close']   = '</ul></nav>';
         $config['first_link']       = 'First';
@@ -62,7 +60,7 @@ class Evaluasi extends CI_Controller
         $config['attributes']       = array('class' => 'page-link');
         // inisiasi pagination
         $this->pagination->initialize($config);
-        $start = $this->uri->segment(4);
+        $start = $this->uri->segment(3);
         $data['start'] = 0 + $start;
         $this->session->set_userdata('link_kpi_kar', $data['start']);
         $data['value'] = $this->page->getKpiKar($nip, $config['per_page'], $data['start']);
@@ -206,13 +204,13 @@ class Evaluasi extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['judul'] = "Data Karyawan";
         $data['user'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
-        $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY bulan, tahun ASC")->result_array();
+        // $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY bulan, tahun DESC")->result_array();
         $data['back']   = 1;
 
         // PAGINATION
         $this->load->model('Pagination_model', 'page');
         // config
-        $config['base_url']         = base_url() . 'Evaluasi/kpi/' . $nip . '/';
+        $config['base_url']         = base_url() . 'Evaluasi/kpivalue/' . $nip . '/';
         $config['total_rows']       = $this->page->getKpiRows($nip);
         $config['per_page']         = 5;
         $config['first_url']        = '0';
@@ -241,7 +239,7 @@ class Evaluasi extends CI_Controller
         $start = $this->uri->segment(4);
         $data['start'] = 0 + $start;
         $this->session->set_userdata('link_kpi', $data['start']);
-        $data['kpi_data'] = $this->page->getKpi($nip, $config['per_page'], $data['start']);
+        $data['value'] = $this->page->getKpi($nip, $config['per_page'], $data['start']);
         // END PAGIANTION
 
         $this->load->view('_partials/header');
