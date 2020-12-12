@@ -37,7 +37,7 @@ class Evaluasi extends CI_Controller
         // config
         $config['base_url']         = base_url() . 'Evaluasi/index_karyawan/';
         $config['total_rows']       = $this->page->getKpiKarRows($nip);
-        $config['per_page']         = 5;
+        $config['per_page']         = 10;
         $config['first_url']        = '0';
         $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
         $config['full_tag_close']   = '</ul></nav>';
@@ -79,43 +79,43 @@ class Evaluasi extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = "Data Karyawan";
         $data['divisi'] = $this->db->get_where('tb_divisi', ['id_divisi' => $id_divisi])->row_array();
-        // $data['kpi_data'] = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
+        $data['kpi_data'] = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
         $data['id_divisi'] = $id_divisi;
 
-        // PAGINATION
-        $this->load->model('Pagination_model', 'page');
-        // config
-        $config['base_url']         = base_url() . 'Evaluasi/kpi/' . $id_divisi . '/';
-        $config['total_rows']       = $this->page->getKpiRows($id_divisi);
-        $config['per_page']         = 5;
-        $config['first_url']        = '0';
-        $config['uri_segment']      = '4';
-        $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
-        $config['full_tag_close']   = '</ul></nav>';
-        $config['first_link']       = 'First';
-        $config['first_tag_open']   = '<li class="page-item">';
-        $config['first_tag_close']  = '</li>';
-        $config['last_link']        = 'Last';
-        $config['last_tag_open']    = '<li class="page-item">';
-        $config['last_tag_close']   = '</li>';
-        $config['next_link']        = '&raquo';
-        $config['next_tag_open']    = '<li class="page-item">';
-        $config['next_tag_close']   = '</li>';
-        $config['prev_link']        = '&laquo';
-        $config['prev_tag_open']    = '<li class="page-item">';
-        $config['prev_tag_close']   = '</li>';
-        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-        $config['cur_tag_close']    = '</span></li>';
-        $config['num_tag_open']     = '<li class="page-item">';
-        $config['num_tag_close']    = '</li>';
-        $config['attributes']       = array('class' => 'page-link');
-        // inisiasi pagination
-        $this->pagination->initialize($config);
-        $start = $this->uri->segment(4);
-        $data['start'] = 0 + $start;
-        $this->session->set_userdata('link_kpi', $data['start']);
-        $data['kpi_data'] = $this->page->getKpi($id_divisi, $config['per_page'], $data['start']);
-        // END PAGIANTION
+        // // PAGINATION
+        // $this->load->model('Pagination_model', 'page');
+        // // config
+        // $config['base_url']         = base_url() . 'Evaluasi/kpi/' . $id_divisi . '/';
+        // $config['total_rows']       = $this->page->getKpiRows($id_divisi);
+        // $config['per_page']         = 5;
+        // $config['first_url']        = '0';
+        // $config['uri_segment']      = '4';
+        // $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
+        // $config['full_tag_close']   = '</ul></nav>';
+        // $config['first_link']       = 'First';
+        // $config['first_tag_open']   = '<li class="page-item">';
+        // $config['first_tag_close']  = '</li>';
+        // $config['last_link']        = 'Last';
+        // $config['last_tag_open']    = '<li class="page-item">';
+        // $config['last_tag_close']   = '</li>';
+        // $config['next_link']        = '&raquo';
+        // $config['next_tag_open']    = '<li class="page-item">';
+        // $config['next_tag_close']   = '</li>';
+        // $config['prev_link']        = '&laquo';
+        // $config['prev_tag_open']    = '<li class="page-item">';
+        // $config['prev_tag_close']   = '</li>';
+        // $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        // $config['cur_tag_close']    = '</span></li>';
+        // $config['num_tag_open']     = '<li class="page-item">';
+        // $config['num_tag_close']    = '</li>';
+        // $config['attributes']       = array('class' => 'page-link');
+        // // inisiasi pagination
+        // $this->pagination->initialize($config);
+        // $start = $this->uri->segment(4);
+        // $data['start'] = 0 + $start;
+        // $this->session->set_userdata('link_kpi', $data['start']);
+        // $data['kpi_data'] = $this->page->getKpi($id_divisi, $config['per_page'], $data['start']);
+        // // END PAGIANTION
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');

@@ -45,10 +45,8 @@ $link = $this->session->userdata('link_kar');
                         <div class="card-body">
                             <?php
                             $user = $this->db->get_where('user', ['nip' => $nip])->row_array(); ?>
-
-
-                            <div class="mb-2" style="overflow: scroll;">
-                                <table class="table col-12 col-lg-6 table-hover" style="table-layout: fixed; word-wrap: break-word;">
+                            <div class="mb-2 col-12 col-lg-6" style="overflow: scroll;">
+                                <table class="table table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                     <thead>
                                         <tr class="bg-secondary" align="center">
                                             <th width="50px">No</th>
@@ -113,7 +111,11 @@ $link = $this->session->userdata('link_kar');
                                 </div>
                                 <!-- /.modal -->
                             </div>
-                            <?php echo $this->pagination->create_links() ?>
+                            <div class="col-12 col-lg-6">
+                                <div class="d-flex justify-content-center">
+                                    <?php echo $this->pagination->create_links() ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

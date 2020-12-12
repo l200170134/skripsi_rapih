@@ -36,8 +36,8 @@ $link = $this->session->userdata('link');
                 <div class="card-body">
                   <input type="hidden" name="id" value="<?php echo $dy->id ?>">
                   <div class="form-group">
-<!--                     <p class="text-sm">Catatan</p> -->
-                    <textarea name="catatan" class="form-control" rows="3" required placeholder="Tulisan catatan tugas anda"><?php echo $dy->catatan ?></textarea>
+                    <!--                     <p class="text-sm">Catatan</p> -->
+                    <textarea name="catatan" class="form-control" rows="3" required maxlength="1000" placeholder="Tulisan catatan tugas anda"><?php echo $dy->catatan ?></textarea>
                   </div>
                   <div class="form-group">
                     <select name="hasil" class="form-control">

@@ -133,7 +133,7 @@ class Pagination_model extends CI_Model
     // halaman KPI Karyawan
     public function getKpiKar($nip, $limit, $offset)
     {
-        return $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai LIMIT $offset,$limit")->result_array();
+        return $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY id_nilai DESC LIMIT $offset,$limit")->result_array();
     }
     public function getKpiKarRows($nip)
     {

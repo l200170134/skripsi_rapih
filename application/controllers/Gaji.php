@@ -24,7 +24,7 @@ class Gaji extends CI_Controller
         // config
         $config['base_url'] = base_url() . 'Gaji/index/';
         $config['total_rows'] = $this->page->getGajiRows($nip);
-        $config['per_page'] = 8;
+        $config['per_page'] = 10;
         // styling
         $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
         $config['full_tag_close'] = '</ul></nav>';
@@ -147,7 +147,8 @@ class Gaji extends CI_Controller
 
         $id_divisi = $this->session->userdata('id_divisi');
         $this->hrd_model->input($data, 'tb_gaji');
-        redirect('Data_karyawan/detail_karyawan/' . $id_divisi);
+        $link = $this->session->userdata('link_kar');
+        redirect('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link);
     }
 
     public function gaji_update($id_gaji)

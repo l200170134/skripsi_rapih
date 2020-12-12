@@ -73,8 +73,8 @@ $link = $this->session->userdata('link_kar');
                             </div>
 
                             <!-- end percobaan -->
-                            <div style="overflow: scroll;">
-                                <table class="table col-12 col-lg-6 table-hover" style="table-layout: fixed; word-wrap: break-word;">
+                            <div class="col-12 col-lg-6" style="overflow: scroll;">
+                                <table class="table table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                     <thead>
 
                                         <tr class="bg-secondary" align="center">
@@ -97,8 +97,18 @@ $link = $this->session->userdata('link_kar');
                                             <tr align="center">
                                                 <td><?php echo ++$start; ?></td>
                                                 <td> <?php echo $bu['bulan'] . ' ' . $bu['tahun']; ?></td>
-                                                <td><?php echo round($bu['rata'], 2); ?>/5</td>
-                                                <!-- Tombol Aksi -->
+                                                <?php if (round($bu['rata'], 2) >= 4.0) {
+                                                ?>
+                                                    <td><span class="badge badge-success"><?php echo round($bu['rata'], 2); ?></span></td>
+                                                <?php } else if (round($bu['rata'], 2) >= 3.0) { ?>
+                                                    <td><span class="badge badge-info"><?php echo round($bu['rata'], 2); ?></span></td>
+                                                <?php } else if (round($bu['rata'], 2) >= 2.0) { ?>
+                                                    <td><span class="badge badge-warning"><?php echo round($bu['rata'], 2); ?></span></td>
+                                                <?php } else if (round($bu['rata'], 2) >= 1.0) { ?>
+                                                    <td><span class="badge badge-secondary"><?php echo round($bu['rata'], 2); ?></span></td>
+                                                <?php } else { ?>
+                                                    <td><span class="badge badge-danger"><?php echo round($bu['rata'], 2); ?></span></td>
+                                                <?php } ?>
                                                 <?php
                                                 if ($role_id != 2) {
                                                 } else {
@@ -118,8 +128,10 @@ $link = $this->session->userdata('link_kar');
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="d-flex justify-content-start m-2">
-                                <?php echo $this->pagination->create_links(); ?>
+                            <div class="col-12 col-lg-6 mt-2">
+                                <div class="d-flex justify-content-center">
+                                    <?php echo $this->pagination->create_links(); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -150,27 +162,33 @@ foreach ($value as $modal) : ?>
                     <table style="table-layout: fixed; word-wrap: break-word;" class="table table-hover">
                         <thead class="bg-secondary">
                             <tr>
-                                <?php
-                                $id_divisi = $user['id_divisi'];
-                                $kpi_data = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
-                                foreach ($kpi_data as $kp) :
-                                ?>
-                                    <th><?php echo $kp['pertanyaan']; ?></th>
-                                <?php endforeach; ?>
+                                <th>Kpi</th>
+                                <th>Nilai</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+
+                            <?php
+                            $id_divisi = $user['id_divisi'];
+                            $kpi_data = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
+                            foreach ($kpi_data as $kp) : ?>
                                 <?php
                                 $nip = $bu['nip'];
                                 $bulan = $bu['bulan'];
                                 $tahun = $bu['tahun'];
                                 $nilai = $this->db->get_where('tb_kpi_value', ['nip' => $nip, 'bulan' => $bulan, 'tahun' => $tahun])->result_array();
-                                foreach ($nilai as $nil) :
-                                ?>
-                                    <td><?php echo $nil['value']; ?></td>
+                                foreach ($nilai as $nil) : ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo $kp['pertanyaan']; ?>
+                                        </td>
+
+                                        <td>
+                                            <?php echo $nil['value']; ?>
+                                        </td>
+                                    </tr>
                                 <?php endforeach; ?>
-                            </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

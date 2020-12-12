@@ -108,7 +108,7 @@ class Daily extends CI_Controller
         // PAGINATION
         // config
         $config['base_url']         = base_url() . 'Daily/daily_report/' . $nip . '/';
-        $config['per_page']         = 5;
+        $config['per_page']         = 10;
         $config['first_url']        = '0';
         $config['uri_segment']      = 4;
         $this->db->select('*');
@@ -194,6 +194,13 @@ class Daily extends CI_Controller
 
 
         $this->leader_model->daily_input($data, 'tb_ldr_daily');
+        $this->session->set_flashdata(
+            'tambahDaily',
+            '<div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            Data berhasil Ditambahkan !
+        </div>'
+        );
         redirect('Daily');
     }
 
@@ -203,6 +210,13 @@ class Daily extends CI_Controller
         $this->leader_model->daily_hapus($where, 'tb_ldr_daily');
         $nip            = $this->session->userdata('nip');
         $link           = $this->session->userdata('link');
+        $this->session->set_flashdata(
+            'hapusDaily',
+            '<div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            Data berhasil Dihapus !
+        </div>'
+        );
         redirect("Daily/index/" . $nip . '/' . $link);
     }
 
@@ -251,6 +265,13 @@ class Daily extends CI_Controller
         $link           = $this->session->userdata('link');
         $this->session->unset_userdata('link');
         $this->leader_model->daily_update_proses($where, $data, 'tb_ldr_daily');
+        $this->session->set_flashdata(
+            'updateDaily',
+            '<div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            Data berhasil Diperbaharui !
+        </div>'
+        );
         redirect('Daily/index/' . $nip . '/' . $link);
     }
 

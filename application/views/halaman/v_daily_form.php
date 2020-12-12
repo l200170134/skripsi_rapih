@@ -45,7 +45,7 @@
                   <input name="tgl" type="text" class="form-control" value=" <?php echo date("Y-m-d") ?> " hidden>
                 </div>
                 <div class="form-group">
-                  <textarea name="aktivitas" class="form-control" rows="3" placeholder="Tuliskan rencana aktivitas" required></textarea>
+                  <textarea name="aktivitas" class="form-control" rows="3" placeholder="Tuliskan rencana aktivitas" maxlength="1000" required></textarea>
                 </div>
               </div>
               <div class="card-footer">

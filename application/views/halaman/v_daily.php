@@ -33,16 +33,19 @@ $nip = $this->session->userdata('nip');
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-
-              <div class="col-lg-6 col-12">
+              <div class="col-lg-6 col-12 pb-3">
                 <div class="row">
                   <a href="<?php echo base_url('Daily/daily_form') ?>" class="mr-1 btn btn-md btn-success">Tambahkan Tugas Baru</a>
-
                   <a href="<?php echo base_url('Daily/daily_report/' . $nip) ?>" class=" btn btn-md btn-primary">Report</a>
                 </div>
               </div>
 
-              <br>
+              <?php
+              echo $this->session->flashdata('tambahDaily');
+              echo $this->session->flashdata('hapusDaily');
+              echo $this->session->flashdata('updateDaily');
+              ?>
+
               <div class="bungkus p-0 mb-2" style="overflow: scroll;">
                 <table class="table table-hover table-md" style="table-layout: fixed; word-wrap: break-word;">
                   <thead class="bg-secondary">
@@ -106,7 +109,7 @@ $nip = $this->session->userdata('nip');
                         <td class="pl-3" align="center">
                           <?php echo anchor('Daily/daily_update/' . $dy['id'], '<div class="btn btn-warning btn-sm"><i class="fas fa-edit" style="color:white;" title="Update Data"></i></div>'); ?>
                           <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                          <?php echo anchor('Daily/daily_proses_hapus/' . $dy['id'], '<div class="btn btn-danger btn-sm"><i class="fas fa-trash-alt" title="Hapus Data"></i></div>'); ?>
+                            <?php echo anchor('Daily/daily_proses_hapus/' . $dy['id'], '<div class="btn btn-danger btn-sm"><i class="fas fa-trash-alt" title="Hapus Data"></i></div>'); ?>
                           </label>
                         </td>
                       </tr>
