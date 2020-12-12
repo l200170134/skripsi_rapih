@@ -28,39 +28,47 @@ $link = $this->session->userdata('link');
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Monitoring</h3>
+                            <h3 class="card-title">Kinerja (Key Performance Index)</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="bungkus p-0 mb-2" style="overflow: scroll;">
-                                <table class="table table-hover table-md col-6" style="table-layout: fixed; word-wrap: break-word;">
+                            <div class="bungkus p-0 mb-2 col-lg-12 col-md-12" style="overflow: scroll;">
+                                <table class="table table-hover table-md" style="table-layout: fixed; word-wrap: break-word;">
                                     <thead class="bg-secondary">
                                         <tr align="center">
                                             <th width="50px">No</th>
                                             <th width="100px">Foto</th>
                                             <th width="200px">Nama Lengkap</th>
-                                            <th width="50px">KPI</th>
+                                            <th width="150px">Nilai KPI</th>
+                                            <th width="50px"><i class="fas fa-bell"></i></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                         <?php
                                         $a = 1;
                                         foreach ($list_user as $ls) :
                                         ?>
-                                            <tr>
-                                                <td class="p-2"><?php echo $a++; ?></td>
-                                                <td class="p-2">
-                                                    <img src="<?php echo base_url(); ?>assets/image/<?php echo $ls['image']; ?>" class="rounded" width="70%">
-                                                </td>
-                                                <td class="p-2"><?php echo $ls['nama']; ?></td>
-                                                <td align="center">
-                                                    <?php //echo anchor('Evaluasi/kpivalue' . $ls['nip'], '<div class="btn btn-primary btn-sm"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Data"></i></div>'); 
-                                                    ?>
-                                                    <a href="<?php echo base_url('Evaluasi/kpivalue/' . $ls['nip']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Data"></i></a>
-                                                </td>
-
-                                            </tr>
+                                        <tr>
+                                            <td align="center" class="p-2"><?php echo $a++; ?></td>
+                                            <td align="center" class="p-2">
+                                                <img src="<?php echo base_url(); ?>assets/image/<?php echo $ls['image']; ?>" class="rounded" width="30%">
+                                            </td>
+                                            <td class="p-2">
+                                                <?php 
+                                                    echo $ls['nama'];
+                                                    $get =  $ls['nip'];
+                                                    $nip = $this->db->get_where('user', ['nip' => $get])->row_array();
+                                                ?><br>
+                                                <label style="font-size:15px;" class="font-italic text-primary">
+                                                    <?php echo $nip['jabatan']; ?>    
+                                                </label>      
+                                            </td>
+                                            <td align="center">
+                                                <a href="<?php echo base_url('Evaluasi/kpivalue/' . $ls['nip']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Data"></i></a>
+                                            </td>
+                                            <td> 
+                                            </td>
+                                        </tr>
                                         <?php
                                         endforeach;
                                         ?>
