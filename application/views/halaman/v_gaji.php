@@ -55,7 +55,7 @@ $link = $this->session->userdata('link_kar');
                                             <th width="150px">Periode</th>
                                             <th width="150px">Nominal</th>
                                             <th width="180px">Tanggal Pembayaran</th>
-                                            <?php if ($role_id == 3) {
+                                            <?php if ($role_id == 3 && $tampil== 1) {
                                                 echo '<th width="150px">Aksi</td>';
                                             } else {
                                             } ?>
@@ -84,7 +84,7 @@ $link = $this->session->userdata('link_kar');
                                                 <td align="center">Rp. <?php echo $gj['gaji']; ?></td>
 
                                                 <td align="center"><?php echo date('d-m-Y', strtotime($gj['tgl_pembayaran'])); ?></td>
-                                                <?php if ($role_id == 3) { ?>
+                                                <?php if ($role_id == 3 && $tampil == 1) { ?>
                                                     <td align="center">
                                                         <?php echo anchor('Gaji/gaji_update/' . $gj['id_gaji'], '<div class="btn btn-warning btn-sm mr-1"><i class="fas fa-edit p-1" style="color:white;" title="Update Gaji"></i></div>'); ?>
                                                         <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">

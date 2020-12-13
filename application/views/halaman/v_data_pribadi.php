@@ -23,7 +23,7 @@ $link = $this->session->userdata('link_kar');
             </div><!-- /.row -->
 
             <div class="row ml-2">
-                <?php if ($back == 1 && $role_id == 3) { ?>
+                <?php if ($back == 1 && $role_id == 3 OR $role_id == 4) { ?>
                     <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
                 <?php } else if ($back == 1 && $role_id == 2) { ?>
                     <a href="<?php echo base_url('Data_karyawan/detail_karyawan_leader/' . $id_divisi . '/' . $link); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>

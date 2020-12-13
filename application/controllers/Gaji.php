@@ -18,6 +18,7 @@ class Gaji extends CI_Controller
         $data['nip'] = $nip;
         $data['role_id'] = $this->session->userdata('role_id');
         $data['back'] = 0;
+        $data['tampil'] = 0;
 
         // PAGINATION
         $this->load->model('Pagination_model', 'page');
@@ -68,6 +69,7 @@ class Gaji extends CI_Controller
         $data['nip'] = $nip;
         $data['back'] = 1;
         $data['role_id'] = $this->session->userdata('role_id');
+        $data['tampil'] = 1;
         $this->session->set_userdata('nip_gaji', $nip);
 
         // PAGINATION

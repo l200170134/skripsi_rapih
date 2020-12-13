@@ -1,6 +1,7 @@
 <?php
 $role_id  = $this->session->userdata('role_id');
 $link = $this->session->userdata('link_kar');
+$id_divisi = $this->session->userdata('divisi_page');
 ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -30,8 +31,9 @@ $link = $this->session->userdata('link_kar');
                         <div class="card-header">
                             <?php
                             $role_id = $this->session->userdata('role_id');
-                            if ($role_id == 1) {
-                            ?>
+                            if ($role_id == 4) { ?>
+                                <a href="<?php echo base_url('Evaluasi/index_direksi/' .$id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                    <h5 style="display:inline;">Key Performance Index Karyawan</h5>
                             <?php
                             } elseif ($role_id == 2) {
                             ?>

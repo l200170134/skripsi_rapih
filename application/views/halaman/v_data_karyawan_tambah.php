@@ -232,8 +232,8 @@
                             <!-- End Row -->
 
                             <div class="card-footer d-flex justify-content-center m-2">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi) ?>" class="btn btn-secondary ml-2">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi) ?>" class="btn btn-secondary ml-2">Kembali</a>
 
                             </div>
                             <!--             </form>  -->

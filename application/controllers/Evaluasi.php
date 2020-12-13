@@ -26,6 +26,24 @@ class Evaluasi extends CI_Controller
         $this->load->view('_partials/js');
     }
 
+    public function index_direksi($id_divisi)
+    {
+        // mengambil data dari database berdasarakan session yang sudah terbentuk
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['judul'] = "Kinerja";
+        //$id_divisi = $this->session->userdata('divisi');
+        $nip = $this->session->userdata('nip');
+        $data['list_user'] = $this->db->get_where('user', ['id_divisi' => $id_divisi, 'nip != ' => $nip])->result_array();
+
+        $this->load->view('_partials/header');
+        $this->load->view('_partials/navbar');
+        $this->load->view('_partials/sidebar', $data);
+        $this->load->view('halaman/v_kpivalue_list');
+        $this->load->view('_partials/footer');
+        $this->load->view('_partials/js');
+    }
+    
+
     public function index_karyawan()
     {
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();

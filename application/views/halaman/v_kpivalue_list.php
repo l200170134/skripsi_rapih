@@ -1,5 +1,7 @@
 <?php
 $link = $this->session->userdata('link');
+$role_id = $this->session->userdata('role_id');
+$id_divisi = $this->session->userdata('divisi_page');
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -28,7 +30,15 @@ $link = $this->session->userdata('link');
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Kinerja (Key Performance Index)</h3>
+                            <?php 
+                                if($role_id==4){ ?>
+                                    <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' .$id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                <?php }else{
+
+                                };
+                             ?>
+                            
+                            <h5 style="display:inline;">Kinerja (Key Performance Index)</h5>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
