@@ -24,7 +24,7 @@ class Gaji extends CI_Controller
         // config
         $config['base_url'] = base_url() . 'Gaji/index/';
         $config['total_rows'] = $this->page->getGajiRows($nip);
-        $config['per_page'] = 10;
+        $config['per_page'] = 4;
         // styling
         $config['full_tag_open'] = '<nav><ul class="pagination justify-content-center">';
         $config['full_tag_close'] = '</ul></nav>';
@@ -148,6 +148,13 @@ class Gaji extends CI_Controller
         $id_divisi = $this->session->userdata('id_divisi');
         $this->hrd_model->input($data, 'tb_gaji');
         $link = $this->session->userdata('link_kar');
+        $this->session->set_flashdata(
+            'tambahGaji',
+            '<div class="alert alert-success alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Gaji Pegawai Berhasil Ditambahkan !</center>
+        </div>'
+        );
         redirect('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link);
     }
 
@@ -190,6 +197,13 @@ class Gaji extends CI_Controller
             'id_gaji'               => $id_gaji
         );
         $this->hrd_model->update_proses($where, $data, 'tb_gaji');
+        $this->session->set_flashdata(
+            'ubahGaji',
+            '<div class="alert alert-info alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Gaji Pegawai Berhasil Diperbaharui !</center>
+        </div>'
+        );
         redirect('Gaji/gaji_view/' . $nip);
     }
 
@@ -199,6 +213,13 @@ class Gaji extends CI_Controller
         $link = $this->session->userdata('link_gaji');
         $where = array('id_gaji' => $id_gaji);
         $this->hrd_model->delate($where, 'tb_gaji');
+        $this->session->set_flashdata(
+            'hapusGaji',
+            '<div class="alert alert-warning alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Gaji Pegawai Berhasil Dihapus !</center>
+        </div>'
+        );
         redirect('Gaji/gaji_view/' . $nip . '/' . $link);
     }
 }

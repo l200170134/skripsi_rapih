@@ -157,6 +157,13 @@ class Data_pribadi extends CI_Controller
         $aktivasi       = 1;
         $this->db->query("UPDATE tb_status_data SET aktivasi = '$aktivasi'  WHERE nip = $nip");
         $this->hrd_model->input($data, 'tb_status_data');
+        $this->session->set_flashdata(
+            'tambahStatus',
+            '<div class="alert alert-success alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Status Pegawai Berhasil Ditambahkan !</center>
+        </div>'
+        );
         redirect('Data_pribadi/data_pribadi/' . $nip_get);
     }
 
@@ -202,6 +209,13 @@ class Data_pribadi extends CI_Controller
 
         $this->hrd_model->update_proses($where, $data, 'tb_status_data');
         $link = $this->session->userdata('link_status');
+        $this->session->set_flashdata(
+            'ubahStatus',
+            '<div class="alert alert-info alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Status Pegawai Berhasil Diperbaharui !</center>
+        </div>'
+        );
         redirect('Data_pribadi/data_pribadi/' . $nip_get . '/' . $link);
     }
     public function status_karyawan_hapus($id_status)
@@ -210,6 +224,13 @@ class Data_pribadi extends CI_Controller
         $where = array('id_status' => $id_status);
         $this->hrd_model->delate($where, 'tb_status_data');
         $link = $this->session->userdata('link_status');
+        $this->session->set_flashdata(
+            'hapusStatus',
+            '<div class="alert alert-warning alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Status Pegawai berhasil Dihapus !</center>
+        </div>'
+        );
         redirect('Data_pribadi/data_pribadi/' . $nip . '/' . $link);
     }
 }

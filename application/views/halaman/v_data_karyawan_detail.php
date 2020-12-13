@@ -31,25 +31,25 @@ $level_akses = $this->session->userdata('role_id');
                         <div class="card-header">
                             <div class="col-12 col-lg-6">
 
-                            <!-- Button Back dan Nama Divisi -->        
-                                <?php  if($level_akses==3){?>
+                                <!-- Button Back dan Nama Divisi -->
+                                <?php if ($level_akses == 3) { ?>
                                     <a href="<?php echo base_url('Data_karyawan'); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
                                     <?php foreach ($nama_divisi as $nd) : ?>
-                                    <h5 style="display:inline;">Data Karyawan Divisi <?php echo $nd['divisi'] ?></h5>
+                                        <h5 style="display:inline;">Data Karyawan Divisi <?php echo $nd['divisi'] ?></h5>
                                     <?php $this->session->set_userdata('id_divisi', $nd['id_divisi']);
-                                    endforeach;?>
-                                <?php }elseif ($level_akses==2){ ?>
-                                    <a href="<?php echo base_url('Dashboard' ); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                    endforeach; ?>
+                                <?php } elseif ($level_akses == 2) { ?>
+                                    <a href="<?php echo base_url('Dashboard'); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
                                     <?php foreach ($nama_divisi as $nd) : ?>
-                                    <h5 style="display:inline;">Data Karyawan Divisi <?php echo $nd['divisi'] ?></h5>
+                                        <h5 style="display:inline;">Data Karyawan Divisi <?php echo $nd['divisi'] ?></h5>
                                     <?php $this->session->set_userdata('id_divisi', $nd['id_divisi']);
-                                    endforeach;?>
-                                <?php }else{
+                                    endforeach; ?>
+                                <?php } else {
                                     //1 dan 4 Kosong
                                 } ?>
-                            <!-- End Button Back dan Nama Divisi -->
+                                <!-- End Button Back dan Nama Divisi -->
 
-                                
+
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -68,6 +68,14 @@ $level_akses = $this->session->userdata('role_id');
                                     </div>
                                     <br>
                                 <?php endforeach; ?>
+                                <div class="col-12">
+                                    <?php
+                                    echo $this->session->flashdata('tambahKar');
+                                    echo $this->session->flashdata('ubahKar');
+                                    echo $this->session->flashdata('hapusKar');
+                                    echo $this->session->flashdata('tambahGaji');
+                                    ?>
+                                </div>
                             <?php } else if ($level_akses == 4) { ?>
                                 <table>
                                     <tr>
@@ -76,11 +84,10 @@ $level_akses = $this->session->userdata('role_id');
                                     </tr>
                                 </table>
                                 <br>
-                            <?php } else{
-
+                            <?php } else {
                             } ?>
 
-                            
+
                             <div class="bungkus mb-2" style="overflow: scroll;">
                                 <table class="table  table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                     <thead class="bg-secondary">

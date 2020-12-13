@@ -38,6 +38,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-12 col-lg-6">
+                                <?php
+                                echo $this->session->flashdata('tambahKpiDiv');
+                                echo $this->session->flashdata('ubahKpiDiv');
+                                echo $this->session->flashdata('hapusKpiDiv');
+                                ?>
+                            </div>
                             <div style="overflow: scroll;">
                                 <table class="table col-12 col-lg-6 table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                     <thead>

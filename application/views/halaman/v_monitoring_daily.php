@@ -30,7 +30,10 @@
                                 <h5 style="display:inline;">Monitoring Daily</h5>
                             </div>
                         </div>
-                        <?php echo $this->session->flashdata('updateMonitoring'); ?>
+                        <?php
+                        echo $this->session->flashdata('updateMonitoring');
+                        echo $this->session->flashdata('tambahMonitoring');
+                        ?>
                         <!-- /.card-header -->
                         <div class="card-body mb-2" style="overflow: scroll;">
                             <table class="table  table-hover" style="table-layout: fixed; word-wrap: break-word;">
@@ -81,25 +84,23 @@
                                                 <?php } else {
                                                     }
                                                 endforeach; ?>
-                                            
-                                                <?php 
-                                                    $kondisi_1 = ($dl['status'] == 'Approve');
-                                                    $kondisi_2 = ($dl['urgensi'] != 'Selesai');
-                                                    $kondisi_3 = ($dl['status'] != 'Approve');
-                                                    $kondisi_4 = ($dl['urgensi'] == 'Selesai');
-                                                    if ($kondisi_1 AND $kondisi_2){ ?>
-                                                        <span class="badge badge-danger"><?php echo 'Error: Urgensi harus diubah Selesai'; ?></span>
-                                                    <?php
-                                                    } else {
 
-                                                    };
-                                                    if ($kondisi_3 AND $kondisi_4){ ?>
-                                                        <span class="badge badge-danger"><?php echo 'Error: Urgensi tidak boleh Selesai'; ?></span>
-                                                    <?php
-                                                    } else {
-
-                                                    };
-                                                 ?>
+                                                <?php
+                                                $kondisi_1 = ($dl['status'] == 'Approve');
+                                                $kondisi_2 = ($dl['urgensi'] != 'Selesai');
+                                                $kondisi_3 = ($dl['status'] != 'Approve');
+                                                $kondisi_4 = ($dl['urgensi'] == 'Selesai');
+                                                if ($kondisi_1 and $kondisi_2) { ?>
+                                                    <span class="badge badge-danger"><?php echo 'Error: Urgensi harus diubah Selesai'; ?></span>
+                                                <?php
+                                                } else {
+                                                };
+                                                if ($kondisi_3 and $kondisi_4) { ?>
+                                                    <span class="badge badge-danger"><?php echo 'Error: Urgensi tidak boleh Selesai'; ?></span>
+                                                <?php
+                                                } else {
+                                                };
+                                                ?>
 
                                             </td>
 
@@ -132,8 +133,8 @@
                                                 <div class="btn-group">
                                                     <?php echo anchor('Monitoring/monitoring_update/' . $dl['id'], '<div class="btn btn-warning btn-sm"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
                                                 </div>
-                                            <br>
-                                            
+                                                <br>
+
                                             </td>
                                         </tr>
                                     <?php

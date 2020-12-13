@@ -44,6 +44,8 @@ $link = $this->session->userdata('link_kar');
                         <!-- /.card-header -->
                         <div class="card-body">
                             <?php
+                            echo $this->session->flashdata('ubahGaji');
+                            echo $this->session->flashdata('hapusGaji');
                             $user = $this->db->get_where('user', ['nip' => $nip])->row_array(); ?>
                             <div class="mb-2" style="overflow: scroll;">
                                 <table class="table table-hover" style="table-layout: fixed; word-wrap: break-word;">
@@ -70,14 +72,14 @@ $link = $this->session->userdata('link_kar');
                                             <tr>
                                                 <td align="center"><?php echo ++$start; ?></td>
                                                 <td>
-                                                    <?php 
+                                                    <?php
                                                     $id_bulan = $gj['bulan'];
                                                     $bulan_gaji = $this->db->get_where('tb_bulan', ['id_bulan' => $id_bulan])->result_array();
-                                                    foreach($bulan_gaji as $bulan):
+                                                    foreach ($bulan_gaji as $bulan) :
                                                         echo $bulan['bulan'];
                                                     endforeach;
                                                     echo ' ';
-                                                    echo $gj['tahun']; ?>    
+                                                    echo $gj['tahun']; ?>
                                                 </td>
                                                 <td align="center">Rp. <?php echo $gj['gaji']; ?></td>
 
@@ -117,7 +119,7 @@ $link = $this->session->userdata('link_kar');
                                 </div>
                                 <!-- /.modal -->
                             </div>
-                            <div class="col-12 col-lg-6">
+                            <div class="col-12">
                                 <div class="d-flex justify-content-center">
                                     <?php echo $this->pagination->create_links() ?>
                                 </div>

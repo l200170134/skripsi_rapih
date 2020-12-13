@@ -37,7 +37,7 @@ $role_id = $this->session->userdata('role_id');
                 <a href="<?php echo base_url('Data_pribadi/data_pribadi/' . $n['nip']) ?>" class="dropdown-item">
                   <!-- Message Start -->
                   <div class="media">
-                    <img src="<?php echo base_url('assets/dist/img/default.png') ?>" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                    <img src="<?php echo base_url(); ?>assets/image/<?php echo $n['image']; ?>" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                     <div class="media-body">
                       <h3 class="dropdown-item-title">
                         <?php echo $n['nama']; ?>

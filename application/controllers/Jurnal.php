@@ -140,6 +140,13 @@ class Jurnal extends CI_Controller
         );
 
         $this->leader_model->jurnal_input($data, 'tb_ldr_jurnal');
+        $this->session->set_flashdata(
+            'tambahJurnal',
+            '<div class="alert alert-success alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Jurnal Berhasil Ditambahkan !</center>
+        </div>'
+        );
         redirect('Jurnal/jurnal_list/' . $nipp);
     }
     public function jurnal_proses_hapus($id)
@@ -148,6 +155,13 @@ class Jurnal extends CI_Controller
         $link = $this->session->userdata('link_jurnal');
         $where = array('id' => $id);
         $this->karyawan_model->daily_hapus($where, 'tb_ldr_jurnal');
+        $this->session->set_flashdata(
+            'hapusjurnal',
+            '<div class="alert alert-warning alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Jurnal Berhasil Dihapus !</center>
+        </div>'
+        );
         redirect('Jurnal/jurnal_list/' . $nip . '/' . $link);
     }
 }

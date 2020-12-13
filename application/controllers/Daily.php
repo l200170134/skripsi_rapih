@@ -198,7 +198,7 @@ class Daily extends CI_Controller
             'tambahDaily',
             '<div class="alert alert-success alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <center>Data berhasil Ditambahkan ! </center>
+            <center>Data Berhasil Ditambahkan ! </center>
         </div>'
         );
         redirect('Daily');
@@ -214,7 +214,7 @@ class Daily extends CI_Controller
             'hapusDaily',
             '<div class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <center> Data berhasil Dihapus !</center>
+            <center> Data Berhasil Dihapus !</center>
         </div>'
         );
         redirect("Daily/index/" . $nip . '/' . $link);
@@ -269,7 +269,7 @@ class Daily extends CI_Controller
             'updateDaily',
             '<div class="alert alert-info alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <center>Data berhasil Diperbaharui !</center>
+            <center>Data Berhasil Diperbaharui !</center>
         </div>'
         );
         redirect('Daily/index/' . $nip . '/' . $link);

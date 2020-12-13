@@ -216,8 +216,6 @@ class Data_karyawan extends CI_Controller
             }
         }
 
-
-
         $data = array(
             'nip'           => $nip_new,
             'username'      => $username,
@@ -253,6 +251,13 @@ class Data_karyawan extends CI_Controller
         $this->hrd_model->update_proses($where, $data, 'user');
 
         $link = $this->session->userdata('link_kar');
+        $this->session->set_flashdata(
+            'ubahKar',
+            '<div class="alert alert-info alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Data Diri Pegawai Berhasil Diubah !</center>
+        </div>'
+        );
         redirect('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link);
     }
 
@@ -329,6 +334,13 @@ class Data_karyawan extends CI_Controller
 
         $this->hrd_model->input($data, 'user');
         $id = $data['id_divisi'];
+        $this->session->set_flashdata(
+            'tambahKar',
+            '<div class="alert alert-success alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Data Diri Pegawai Berhasil Ditambahkan !</center>
+        </div>'
+        );
         redirect('Data_karyawan/detail_karyawan/' . $id);
     }
     public function hapus_data_karyawan($nip)
@@ -338,6 +350,13 @@ class Data_karyawan extends CI_Controller
         $where = array('nip' => $nip);
         $this->hrd_model->delate($where, 'user');
         $link = $this->session->userdata('link_kar');
+        $this->session->set_flashdata(
+            'hapusKar',
+            '<div class="alert alert-warning alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Data Diri Pegawai Berhasil Dihapus !</center>
+        </div>'
+        );
         redirect('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link);
     }
 }

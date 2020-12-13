@@ -160,7 +160,7 @@ $link = $this->session->userdata('link_kar');
     </section>
 
 <?php endforeach; ?>
-<?php if ($role_id == 3) { ?>
+<?php if ($role_id == 3 && $back == 1) { ?>
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -220,6 +220,13 @@ $link = $this->session->userdata('link_kar');
                         </div>
                         <div class="card-body">
                             <?php echo anchor('Data_pribadi/status_karyawan_form/' . $kar['nip'], '<div class="btn btn-success mb-3 btn-sm">Tambah Status Karyawan</div>'); ?>
+                            <div class="col-12">
+                                <?php
+                                echo $this->session->flashdata('tambahStatus');
+                                echo $this->session->flashdata('ubahStatus');
+                                echo $this->session->flashdata('hapusStatus');
+                                ?>
+                            </div>
                             <div class="col-12 mb-2" style="overflow: scroll;">
                                 <table class="table table-sm  table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                     <thead class="bg-secondary">

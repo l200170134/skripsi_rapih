@@ -32,12 +32,13 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <!-- <div class="col-2">
-                                <div class="row"> -->
-                                    <a href="<?php echo base_url('Jurnal/jurnal_form/' . $nip) ?>" class="btn btn-block btn-success mb-3" style="width:180px;">Tambahkan Aktivitas</a>
-                                <!-- </div>
-                            </div -->
-                            
+                            <a href="<?php echo base_url('Jurnal/jurnal_form/' . $nip) ?>" class="btn btn-block btn-success mb-3" style="width:180px;">Tambahkan Aktivitas</a>
+                            <div class="col-12">
+                                <?php
+                                echo $this->session->flashdata('tambahJurnal');
+                                echo $this->session->flashdata('hapusjurnal');
+                                ?>
+                            </div>
                             <div class="bungkus p-0 mb-2" style="overflow: scroll;">
                                 <table class="table table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                     <tr align="center" class="bg-secondary">
@@ -55,7 +56,8 @@
                                         foreach ($jurnal as $ju) : ?>
                                             <tr align="center">
                                                 <td><?php echo ++$start ?></td>
-                                                <!-- <td><span class="badge badge-primary"><?php //echo $ju['nip'] ?></span></td> -->
+                                                <!-- <td><span class="badge badge-primary"><?php //echo $ju['nip'] 
+                                                                                            ?></span></td> -->
                                                 <td align="left" class="pl-3"><?php echo $ju['aktivitas'] ?></td>
                                                 <td><?php echo $ju['jam'] ?></td>
                                                 <td><?php echo $ju['tgl'] ?></td>

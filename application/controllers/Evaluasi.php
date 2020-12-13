@@ -156,6 +156,13 @@ class Evaluasi extends CI_Controller
         );
 
         $this->hrd_model->input($data, 'tb_kpi');
+        $this->session->set_flashdata(
+            'tambahKpiDiv',
+            '<div class="alert alert-success alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>KPI Pegawai Berhasil Ditambahkan !</center>
+        </div>'
+        );
         redirect('Evaluasi/kpi/' . $id);
     }
 
@@ -164,6 +171,13 @@ class Evaluasi extends CI_Controller
         $id_divisi = $this->session->userdata('id_divisi');
         $where = array('id_pertanyaan' => $id_pertanyaan);
         $this->hrd_model->delate($where, 'tb_kpi');
+        $this->session->set_flashdata(
+            'hapusKpiDiv',
+            '<div class="alert alert-warning alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>KPI Pegawai Berhasil Dihapus !</center>
+        </div>'
+        );
         redirect('Evaluasi/kpi/' . $id_divisi);
     }
 
@@ -198,6 +212,13 @@ class Evaluasi extends CI_Controller
         );
 
         $this->hrd_model->update_proses($where, $data, 'tb_kpi');
+        $this->session->set_flashdata(
+            'ubahKpiDiv',
+            '<div class="alert alert-info alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>KPI Pegawai Berhasil Diperbaharui !</center>
+        </div>'
+        );
         redirect('Evaluasi/kpi/' . $id_divisi);
     }
 
@@ -291,7 +312,13 @@ class Evaluasi extends CI_Controller
             $this->hrd_model->input($data, 'tb_kpi_value');
         }
         //$get = $this->db->get_where('user', ['id_divisi' => $id_divisi])->row_array();
-
+        $this->session->set_flashdata(
+            'tambahKpi',
+            '<div class="alert alert-success alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Key Performance Index Berhasil Ditambahkan !</center>
+        </div>'
+        );
         redirect('Evaluasi/kpivalue/' . $nip);
     }
 
@@ -301,6 +328,13 @@ class Evaluasi extends CI_Controller
         //$this->hrd_model->delate($where, 'tb_kpi');
 
         $this->db->query("DELETE FROM tb_kpi_value WHERE nip='$nip' AND bulan = '$bulan' AND tahun = '$tahun' ");
+        $this->session->set_flashdata(
+            'hapusKpi',
+            '<div class="alert alert-warning alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Key Performance Index Berhasil Dihapus !</center>
+        </div>'
+        );
         redirect('Evaluasi/kpivalue/' . $nip);
     }
 }

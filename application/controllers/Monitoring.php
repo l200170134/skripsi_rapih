@@ -260,6 +260,13 @@ class Monitoring extends CI_Controller
         $nip = $nipp['nip'];
         $link = $this->session->userdata('link_mon');
         $this->session->unset_userdata('link_mon');
+        $this->session->set_flashdata(
+            'tambahMonitoring',
+            '<div class="alert alert-success alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Evaluasi berhasil Ditambahkan !</center>
+        </div>'
+        );
         redirect('Monitoring/monitoring_daily/' . $nip . '/' . $link);
     }
 

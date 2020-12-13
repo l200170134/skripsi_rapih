@@ -77,6 +77,13 @@ $link = $this->session->userdata('link_kar');
                                 </div>
                             </div>
 
+                            <div class="col-12">
+                                <?php
+                                echo $this->session->flashdata('tambahKpi');
+                                echo $this->session->flashdata('hapusKpi');
+                                ?>
+                            </div>
+
                             <!-- end percobaan -->
                             <div class="col-lg-12 col-md-6" style="overflow: scroll;">
                                 <table class="table table-hover" style="table-layout: fixed; word-wrap: break-word;">
