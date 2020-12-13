@@ -83,14 +83,15 @@ class Data_karyawan extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Dashboard';
         $data['id_divisi'] = $id_divisi;
+        $nip_leader = $this->session->userdata('nip');
         $this->session->unset_userdata('divisi_page');
         $this->session->set_userdata('divisi_page', $id_divisi);
 
         // PAGINATION
         $this->load->model('Pagination_model', 'pages');
         // config
-        $config['base_url']         = base_url() . 'Data_karyawan/detail_karyawan/' . $id_divisi . '/';
-        $config['total_rows']       = $this->pages->getKaryawanRows($id_divisi);
+        $config['base_url']         = base_url() . 'Data_karyawan/detail_karyawan_leader/' . $id_divisi . '/';
+        $config['total_rows']       = $this->pages->getKaryawanLeaderRows($id_divisi);
         $config['per_page']         = 5;
         $config['first_url']        = '0';
         $config['uri_segment']      = '4';
@@ -118,7 +119,7 @@ class Data_karyawan extends CI_Controller
         $start  = $this->uri->segment(4);
         $data['start']      =  0 + $start;
         $this->session->set_userdata('link_kar', $data['start']);
-        $data['divisi'] = $this->pages->getKaryawan($id_divisi, $config['per_page'], $data['start']);
+        $data['divisi'] = $this->pages->getKaryawanleader($id_divisi, $nip_leader, $config['per_page'], $data['start']);
         // END PAGIANTION
 
         $data['nama_divisi'] = $this->pages->getNamaDivisi($id_divisi);

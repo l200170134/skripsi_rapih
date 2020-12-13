@@ -86,6 +86,15 @@ class Pagination_model extends CI_Model
     }
 
     // Halaman Data list karyawan
+    public function getKaryawanLeader($id_divisi, $nip_leader, $limit, $offset)
+    {
+        return $this->db->order_by('role_id', 'desc')->get_where('user', ['id_divisi' => $id_divisi], $limit, $offset)->result_array();
+    }
+    public function getKaryawanLeaderRows($id_divisi)
+    {
+        return $this->db->get_where('user', ['id_divisi' => $id_divisi])->num_rows();
+    }
+    // Halaman Data list karyawan
     public function getKaryawan($id_divisi, $limit, $offset)
     {
         return $this->db->order_by('role_id', 'desc')->get_where('user', ['id_divisi' => $id_divisi], $limit, $offset)->result_array();
@@ -96,7 +105,6 @@ class Pagination_model extends CI_Model
     }
     public function getNamaDivisi($id_divisi)
     {
-
         return $this->db->get_where('tb_divisi', ['id_divisi' => $id_divisi])->result_array();
     }
 
