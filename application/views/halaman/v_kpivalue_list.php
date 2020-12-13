@@ -63,7 +63,7 @@ $link = $this->session->userdata('link');
                                                     <?php echo $nip['jabatan']; ?>    
                                                 </label>      
                                             </td>
-                                            <td align="center" p-2>
+                                            <td align="center">
                                                 <a href="<?php echo base_url('Evaluasi/kpivalue/' . $ls['nip']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Data"></i></a>
                                             </td>
                                             <td class="p-2" align="center">

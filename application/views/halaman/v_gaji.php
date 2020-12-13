@@ -45,7 +45,7 @@ $link = $this->session->userdata('link_kar');
                         <div class="card-body">
                             <?php
                             $user = $this->db->get_where('user', ['nip' => $nip])->row_array(); ?>
-                            <div class="mb-2 col-12 col-lg-6" style="overflow: scroll;">
+                            <div class="mb-2" style="overflow: scroll;">
                                 <table class="table table-hover" style="table-layout: fixed; word-wrap: break-word;">
                                     <thead>
                                         <tr class="bg-secondary" align="center">
@@ -69,13 +69,19 @@ $link = $this->session->userdata('link_kar');
 
                                             <tr>
                                                 <td align="center"><?php echo ++$start; ?></td>
-                                                <td><?php echo $gj['bulan'];
+                                                <td>
+                                                    <?php 
+                                                    $id_bulan = $gj['bulan'];
+                                                    $bulan_gaji = $this->db->get_where('tb_bulan', ['id_bulan' => $id_bulan])->result_array();
+                                                    foreach($bulan_gaji as $bulan):
+                                                        echo $bulan['bulan'];
+                                                    endforeach;
                                                     echo ' ';
-                                                    echo $gj['tahun']; ?></td>
-
-
+                                                    echo $gj['tahun']; ?>    
+                                                </td>
                                                 <td align="center">Rp. <?php echo $gj['gaji']; ?></td>
-                                                <td align="center"><?php echo $gj['tgl_pembayaran']; ?></td>
+
+                                                <td align="center"><?php echo date('d-m-Y', strtotime($gj['tgl_pembayaran'])); ?></td>
                                                 <?php if ($role_id == 3) { ?>
                                                     <td align="center">
                                                         <?php echo anchor('Gaji/gaji_update/' . $gj['id_gaji'], '<div class="btn btn-warning btn-sm mr-1"><i class="fas fa-edit p-1" style="color:white;" title="Update Gaji"></i></div>'); ?>

@@ -27,7 +27,7 @@ $id_divisi = $this->session->userdata('divisi_page');
                 <div class="col-12 col-lg-6">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Riwayat Kepegawaian</h3>
+                            <h3 class="card-title">Form Masukan Gaji</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -54,19 +54,13 @@ $id_divisi = $this->session->userdata('divisi_page');
                                         <div class="form-group">
                                             <label>Periode</label>
                                             <select class="form-control" name="bulan">
-                                                <option value="0">--Pilih-</option>
-                                                <option value="Januari">Januari</option>
-                                                <option value="Februari">Februari</option>
-                                                <option value="Maret">Maret</option>
-                                                <option value="April">April</option>
-                                                <option value="Mei">Mei</option>
-                                                <option value="Juni">Juni</option>
-                                                <option value="Juli">Juli</option>
-                                                <option value="Agustus">Agustus</option>
-                                                <option value="September">September</option>
-                                                <option value="Oktober">Oktober</option>
-                                                <option value="November">November</option>
-                                                <option value="Desember">Desember</option>
+                                                <option>--Pilih--</option>
+                                                <?php
+                                                    $bulan_gaji = $this->db->get('tb_bulan')->result_array();
+                                                    foreach ($bulan_gaji as $bulan) :
+                                                ?>
+                                                <option value="<?php echo $bulan['id_bulan']; ?>"><?php echo $bulan['bulan']; ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                             <input type="text" class="form-control" name="tahun" value=" <?php echo date('Y'); ?>" hidden>
                                         </div>
@@ -78,14 +72,15 @@ $id_divisi = $this->session->userdata('divisi_page');
                                 </div>
                                 <!-- end row -->
                             </div>
+                        </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi) ?>" class="btn btn-secondary">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi) ?>" class="btn btn-secondary">Kembali</a>
                             </div>
 
                             </form>
-                        </div>
+                        
                         <!-- /.card -->
                         <!--  End New Card -->
                     </div>

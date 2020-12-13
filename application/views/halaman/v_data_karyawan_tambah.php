@@ -137,7 +137,7 @@
                                             $perusahaan = $this->db->get('tb_perusahaan')->result_array();
                                             foreach ($perusahaan as $ph) :
                                             ?>
-                                                <option><?php echo $ph['perusahaan']; ?></option>
+                                                <option value="<?php echo $ph['perusahaan']; ?>"><?php echo $ph['perusahaan']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
