@@ -86,13 +86,14 @@ class Data_karyawan extends CI_Controller
         $nip_leader = $this->session->userdata('nip');
         $this->session->unset_userdata('divisi_page');
         $this->session->set_userdata('divisi_page', $id_divisi);
+        $this->session->set_userdata('sidebar_leader', '1');
 
         // PAGINATION
         $this->load->model('Pagination_model', 'pages');
         // config
         $config['base_url']         = base_url() . 'Data_karyawan/detail_karyawan_leader/' . $id_divisi . '/';
         $config['total_rows']       = $this->pages->getKaryawanLeaderRows($id_divisi);
-        $config['per_page']         = 5;
+        $config['per_page']         = 10;
         $config['first_url']        = '0';
         $config['uri_segment']      = '4';
         $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
