@@ -14,7 +14,7 @@ class Login extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('home/login');
+            $this->load->view('home/Login');
         } else {
             // Dijalankan ketika form validationnya berhasil
             $this->_login();
