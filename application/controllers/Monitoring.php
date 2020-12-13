@@ -290,7 +290,7 @@ class Monitoring extends CI_Controller
         }
         // config
         $config['base_url'] = base_url() . 'Monitoring/monitoring_report/' . $nip . '/';
-        $config['per_page'] = 5;
+        $config['per_page'] = 10;
         $config['first_url']        = '0';
         $config['uri_segment']      = '4';
         $this->db->select('*');

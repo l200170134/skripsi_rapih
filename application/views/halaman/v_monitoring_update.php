@@ -40,7 +40,7 @@ $link = $this->session->userdata('link');
               <form role="form" action="<?php echo base_url('Monitoring/monitoring_tambah/' . $id); ?>" method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <textarea class="form-control" name="evaluasi" rows="3" placeholder="Tuliskan evaluasi anda"></textarea>
+                    <textarea class="form-control" name="evaluasi" rows="3" placeholder="Tuliskan evaluasi anda" required></textarea>
                   </div>
                   <?php
                   if ($role_id == 2) { ?>

@@ -25,7 +25,7 @@ class Dashboard extends CI_Controller
 
         //Leader
         $data['karyawan'] = $this->db->query(" SELECT * FROM user WHERE id_divisi = '$id_divisi'")->num_rows();
-        $data['pending'] = $this->db->query(" SELECT * FROM tb_ldr_daily WHERE id_divisi = '$id_divisi' AND nip !='nip' AND status ='Pending'")->num_rows();
+        $data['pending'] = $this->db->query(" SELECT * FROM tb_ldr_daily WHERE id_divisi = '$id_divisi' AND nip !='$nip' AND status ='Pending'")->num_rows();
         $data['belum'] = $this->db->query(" SELECT * FROM tb_ldr_daily WHERE  nip = '$nip' AND hasil !='Selesai'")->num_rows();
 
         //HRD
@@ -36,7 +36,7 @@ class Dashboard extends CI_Controller
         //HRR Grafik
         //$divisi = $this->db->query("SELECT id_divisi FROM tb_divisi")->row_array();
         $data['divisi'] = $this->hrd_model->hrd_view_divisi()->result_array();
-        
+
         // $divisi = $this->hrd_model->hrd_view_divisi()->result_array();
         // foreach ($divisi as $div):
         //     $get= $div['id_divisi'];
@@ -48,7 +48,7 @@ class Dashboard extends CI_Controller
         //     echo $get['jumlah'];
         // endforeach; 
         // endforeach;
-        
+
 
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
