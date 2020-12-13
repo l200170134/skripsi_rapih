@@ -172,7 +172,7 @@ if ($level_akses == 1) { ?>
                                                     <i class="fa fa-user"></i>
                                                 </div>
                                                
-                                                <a href="<?php echo base_url('Data_Karyawan/detail_karyawan_leader/' . $user['id_divisi']); ?>" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                                                <a href="<?php echo base_url('Data_karyawan/detail_karyawan_leader/' . $user['id_divisi']); ?>" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
 
@@ -289,7 +289,7 @@ if ($level_akses == 1) { ?>
                                             <div class="icon">
                                                 <i class="ion ion-person-add"></i>
                                             </div>
-                                            <a href="<?php echo base_url('Data_Karyawan') ?>" class="small-box-footer">Lihat Detail<i class="fas fa-arrow-circle-right"></i></a>
+                                            <a href="<?php echo base_url('Data_karyawan') ?>" class="small-box-footer">Lihat Detail<i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                     <!-- ./col -->
@@ -305,7 +305,7 @@ if ($level_akses == 1) { ?>
                                             <div class="icon">
                                                 <i class="fas fa-male"></i>
                                             </div>
-                                            <a href="<?php echo base_url('Data_Karyawan') ?>" class="small-box-footer">Lihat Detail<i class="fas fa-arrow-circle-right"></i></a>
+                                            <a href="<?php echo base_url('Data_karyawan') ?>" class="small-box-footer">Lihat Detail<i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                     <!-- ./col -->
@@ -321,7 +321,7 @@ if ($level_akses == 1) { ?>
                                             <div class="icon">
                                                 <i class="fas fa-female"></i>
                                             </div>
-                                            <a href="<?php echo base_url('Data_Karyawan') ?>" class="small-box-footer">Lihat Detail<i class="fas fa-arrow-circle-right"></i></a>
+                                            <a href="<?php echo base_url('Data_karyawan') ?>" class="small-box-footer">Lihat Detail<i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
