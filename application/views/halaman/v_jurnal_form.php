@@ -29,9 +29,10 @@ $link = $this->session->userdata('link_jurnal');
                 <div class="col-lg-6 col-xs-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Daily Journal</h3>
+                            <h3 class="card-title">Form Jurnal Harian Karyawan</h3>
                         </div>
-                        <!-- /.card-header -->
+                        
+                        <!-- form -->
                         <form role="form" action="<?php echo base_url('Jurnal/jurnal_proses_tambah/' . $nip); ?>" method="post">
                             <div class="card-body">
                                 <input name="nip" type="text" class="form-control" value="0" hidden>
@@ -40,11 +41,14 @@ $link = $this->session->userdata('link_jurnal');
                                 <div class="form-group">
                                     <textarea name="aktivitas" rows="3" class="form-control" placeholder="Masukkan aktivitas" required></textarea>
                                 </div>
+                            </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <a href="<?php echo base_url('Jurnal/jurnal_list/' . $nip . '/' . $link) ?>" class="btn btn-secondary">Cancel</a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <a href="<?php echo base_url('Jurnal/jurnal_list/' . $nip . '/' . $link) ?>" class="btn btn-secondary">Kembali</a>
                                 </div>
+                            
                         </form>
+                        <!-- end form -->
                     </div>
                 </div>
                 <!-- ./col -->

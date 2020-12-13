@@ -1,6 +1,6 @@
 <?php
 $this->load->library('session');
-$level_akses = $this->session->userdata('role_id');
+$role_id = $this->session->userdata('role_id');
 $id_divisi = $this->session->userdata('divisi_page');
 $link = $this->session->userdata('link_kar');
 ?>
@@ -22,12 +22,14 @@ $link = $this->session->userdata('link_kar');
                 </div><!-- /.col -->
             </div><!-- /.row -->
 
-            <?php if ($back == 1) { ?>
-                <div class="row ml-2">
+            <div class="row ml-2">
+                <?php if ($back == 1 && $role_id == 3) { ?>
                     <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
-                </div>
-            <?php } else {
-            } ?>
+                <?php } else if ($back == 1 && $role_id == 2) { ?>
+                    <a href="<?php echo base_url('Data_karyawan/detail_karyawan_leader/' . $id_divisi . '/' . $link); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                <?php } else {
+                } ?>
+            </div>
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -158,7 +160,7 @@ $link = $this->session->userdata('link_kar');
     </section>
 
 <?php endforeach; ?>
-<?php if ($level_akses == 3) { ?>
+<?php if ($role_id == 3) { ?>
     <section class="content">
         <div class="container-fluid">
             <div class="row">

@@ -51,9 +51,10 @@
                                     </thead>
                                     <tbody>
                                         <?php
+                                        $a = 1;
                                         foreach ($kpi_data as $kpi) : ?>
                                             <tr>
-                                                <td><?php echo ++$start; ?></td>
+                                                <td><?php echo $a++; ?></td>
                                                 <td><?php echo $kpi['pertanyaan']; ?></td>
                                                 <td align="center"><?php echo $divisi['divisi']; ?></td>
                                                 <td align="center">

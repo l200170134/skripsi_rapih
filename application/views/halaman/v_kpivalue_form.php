@@ -24,7 +24,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Riwayat Kepegawaian</h3>
+                            <h3 class="card-title">Form Nilai Key Performance Index</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -32,14 +32,14 @@
                             <div class="row">
                                 <!-- form bagian kiri -->
                                 <div class="col-12">
-                                    <form action="<?php echo base_url('Evaluasi/kpivalue_tambah_proses/' . $user['id_divisi']); ?>" method="post">
+                                    <form action="<?php echo base_url('Evaluasi/kpivalue_tambah_proses/' . $user_data['id_divisi']); ?>" method="post">
                                         <!-- Hidden -->
-                                        <input type="text" name="nip" value="<?php echo $user['nip']; ?>" class="form-control" hidden>
-                                        <input type="text" name="id_divisi" value=" <?php echo $user['id_divisi']; ?>" class="form-control" hidden>
+                                        <input type="text" name="nip" value="<?php echo $user_data['nip']; ?>" class="form-control" hidden>
+                                        <input type="text" name="id_divisi" value=" <?php echo $user_data['id_divisi']; ?>" class="form-control" hidden>
                                         <input type="text" name="tahun" value="<?php echo date("Y") ?>" class="form-control" hidden>
                                         <!-- End Hiden -->
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="" value="<?php echo $user['nama']; ?>" readonly>
+                                            <input type="text" class="form-control" name="" value="<?php echo $user_data['nama']; ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>Pilih Periode</label>
@@ -49,14 +49,14 @@
                                             $bulan = $this->db->get('tb_bulan')->result_array();
                                             foreach ($bulan as $bln) :
                                             ?>
-                                                <option><?php echo $bln['bulan']; ?></option>
+                                                <option value="<?php echo $bln['id_bulan']; ?>"><?php echo $bln['bulan']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Key Performance Index Divisi</label>
                                             <?php
-                                            $id_divisi = $user['id_divisi'];
+                                            $id_divisi = $user_data['id_divisi'];
                                             $kpi_data = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
                                             foreach ($kpi_data as $kpi) :
                                             ?>
@@ -86,7 +86,7 @@
                         <!-- /.card-body -->
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <a class="btn btn-secondary" href="<?php echo base_url('Evaluasi/kpivalue/' . $user['nip']); ?>">Kembali</a></li>
+                            <a class="btn btn-secondary" href="<?php echo base_url('Evaluasi/kpivalue/' . $user_data['nip']); ?>">Kembali</a></li>
                         </div>
                         </form>
 

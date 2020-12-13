@@ -83,7 +83,7 @@ $link = $this->session->userdata('link');
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
                   <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                  <?php echo anchor('Monitoring/monitoring_daily/' . $nip . '/' . $link, '<div class="btn btn-secondary">Batal</div>'); ?>
+                  <?php echo anchor('Monitoring/monitoring_daily/' . $nip . '/' . $link, '<div class="btn btn-secondary">Kembali</div>'); ?>
                 </div>
               </form>
 
@@ -135,7 +135,7 @@ $link = $this->session->userdata('link');
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
                   <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                  <?php echo anchor('Monitoring/monitoring_daily/' . $nip . '/' . $link, '<div class="btn btn-secondary">Batal</div>'); ?>
+                  <?php echo anchor('Monitoring/monitoring_daily/' . $nip . '/' . $link, '<div class="btn btn-secondary">Kembali</div>'); ?>
                 </div>
               </form>
             <?php
