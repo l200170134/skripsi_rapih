@@ -111,7 +111,7 @@ class Pagination_model extends CI_Model
     // Halaman Gaji Karyawan
     public function getGaji($nip, $limit, $offset)
     {
-        return $this->db->get_where('tb_gaji', ['nip' => $nip], $limit, $offset)->result_array();
+        return $this->db->order_by('tahun DESC, bulan DESC')->get_where('tb_gaji', ['nip' => $nip], $limit, $offset)->result_array();
     }
     public function getGajiRows($nip)
     {

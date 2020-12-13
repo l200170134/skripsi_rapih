@@ -49,7 +49,7 @@ $link = $this->session->userdata('link');
                 </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Simpan</button>
-                  <a href="<?php echo base_url('Daily/index/' . $link) ?>" class="btn btn-secondary">Batal</a>
+                  <a href="<?php echo base_url('Daily/index/' . $link) ?>" class="btn btn-secondary">Kembali</a>
                 </div>
               </form>
             <?php } ?>

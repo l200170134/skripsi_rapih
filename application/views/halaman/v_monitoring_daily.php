@@ -80,6 +80,26 @@
                                                 <?php } else {
                                                     }
                                                 endforeach; ?>
+                                            
+                                                <?php 
+                                                    $kondisi_1 = ($dl['status'] == 'Approve');
+                                                    $kondisi_2 = ($dl['urgensi'] != 'Selesai');
+                                                    $kondisi_3 = ($dl['status'] != 'Approve');
+                                                    $kondisi_4 = ($dl['urgensi'] == 'Selesai');
+                                                    if ($kondisi_1 AND $kondisi_2){ ?>
+                                                        <span class="badge badge-danger"><?php echo 'Error: Urgensi harus diubah Selesai'; ?></span>
+                                                    <?php
+                                                    } else {
+
+                                                    };
+                                                    if ($kondisi_3 AND $kondisi_4){ ?>
+                                                        <span class="badge badge-danger"><?php echo 'Error: Urgensi tidak boleh Selesai'; ?></span>
+                                                    <?php
+                                                    } else {
+
+                                                    };
+                                                 ?>
+
                                             </td>
 
                                             <!-- kolom status -->
@@ -100,13 +120,19 @@
                                             <?php } else if ($dl['urgensi'] == 'Selesai') { ?>
                                                 <td align="center" class="pl-1 pr-1"><span class="badge badge-success"><?php echo $dl['urgensi']; ?></span></td>
                                             <?php } else { ?>
-                                                <td align="center"><span class="badge badge-info"></span></td>
+                                                <td align="center"><span class="badge badge-info"></span>
+                                                </td>
                                             <?php } ?>
+
+
+
                                             <!-- kolom aksi -->
                                             <td align="center" class="pl-1 pr-1">
                                                 <div class="btn-group">
                                                     <?php echo anchor('Monitoring/monitoring_update/' . $dl['id'], '<div class="btn btn-warning btn-sm"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
                                                 </div>
+                                            <br>
+                                            
                                             </td>
                                         </tr>
                                     <?php

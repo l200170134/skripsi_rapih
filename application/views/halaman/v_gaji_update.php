@@ -27,7 +27,7 @@ $nip = $this->session->userdata('nip_gaji');
                 <div class="col-12 col-lg-6">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Riwayat Kepegawaian</h3>
+                            <h3 class="card-title">Form Update Gaji</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -51,18 +51,21 @@ $nip = $this->session->userdata('nip_gaji');
                                         <div class="form-group">
                                             <label>Periode</label>
                                             <select class="form-control" name="bulan">
-                                                <option value="Januari" <?php echo ($update['bulan'] == 'Januari' ? ' selected' : ''); ?>>Januari</option>
-                                                <option value="Februari" <?php echo ($update['bulan'] == 'Februari' ? ' selected' : ''); ?>>Februari</option>
-                                                <option value="Maret" <?php echo ($update['bulan'] == 'Maret' ? ' selected' : ''); ?>>Maret</option>
-                                                <option value="April" <?php echo ($update['bulan'] == 'April' ? ' selected' : ''); ?>>April</option>
-                                                <option value="Mei" <?php echo ($update['bulan'] == 'Mei' ? ' selected' : ''); ?>>Mei</option>
-                                                <option value="Juni" <?php echo ($update['bulan'] == 'Juni' ? ' selected' : ''); ?>>Juni</option>
-                                                <option value="Juli" <?php echo ($update['bulan'] == 'Juli' ? ' selected' : ''); ?>>Juli</option>
-                                                <option value="Agustus" <?php echo ($update['bulan'] == 'Agustus' ? ' selected' : ''); ?>>Agustus</option>
-                                                <option value="September" <?php echo ($update['bulan'] == 'September' ? ' selected' : ''); ?>>September</option>
-                                                <option value="Oktober" <?php echo ($update['bulan'] == 'Oktober' ? ' selected' : ''); ?>>Oktober</option>
-                                                <option value="November" <?php echo ($update['bulan'] == 'November' ? ' selected' : ''); ?>>November</option>
-                                                <option value="Desember" <?php echo ($update['bulan'] == 'Desember' ? ' selected' : ''); ?>>Desember</option>
+                                                <?php
+                                                $id_bulan = $update['id_bulan'];
+                                                $bulan_gaji = $this->db->get('tb_bulan')->result_array();
+                                                foreach ($bulan_gaji as $bulan) :
+                                                    if ($bulan['id_bulan'] == $id_bulan) {
+                                                ?>
+                                                        <option value="<?php echo $bulan['id_bulan']; ?>" selected> <?php echo $bulan['bulan']; ?> </option>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <option value="<?php echo $bulan['id_bulan']; ?>"> <?php echo $bulan['bulan']; ?> </option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                         <input type="text" name="tahun" value=" <?php echo $update['tahun']; ?>" hidden>
@@ -70,14 +73,15 @@ $nip = $this->session->userdata('nip_gaji');
                                 </div>
                                 <!-- end row -->
                             </div>
+                        </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="<?php echo base_url('Gaji/gaji_view/' . $nip) ?>" class="btn btn-secondary">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a href="<?php echo base_url('Gaji/gaji_view/' . $nip) ?>" class="btn btn-secondary">Kembali</a>
                             </div>
 
                             </form>
-                        </div>
+                        
                         <!-- /.card -->
                         <!--  End New Card -->
                     </div>

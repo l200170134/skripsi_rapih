@@ -22,20 +22,21 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Jurnal Harian Divisi</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body mb-2" style="overflow: scroll;">
-                            <table class="table table-hover table-md col-6" style="table-layout: fixed; word-wrap: break-word;">
+                            <table class="table table-hover table-md" style="table-layout: fixed; word-wrap: break-word;">
                                 <thead class="bg-secondary">
                                     <tr align="center">
                                         <th width="50px">No</th>
                                         <th width="100px">Foto</th>
                                         <th width="200px">Nama Lengkap</th>
-                                        <th width="50px">Detail</th>
+                                        <th width="150px">Detail</th>
+                                        <th width="50px"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,11 +46,21 @@
                                     ?>
                                         <tr>
                                             <td class="p-2" align="center"><?php echo ++$start; ?></td>
-                                            <td class="p-2">
-                                                <img src="<?php echo base_url(); ?>assets/image/<?php echo $kr['image']; ?>" class="rounded" width="70%">
+                                            <td class="p-2" align="center">
+                                                <img src="<?php echo base_url(); ?>assets/image/<?php echo $kr['image']; ?>" class="rounded" width="30%">
                                             </td>
-                                            <td class="p-2" align="rignt" class="pl-3"><?php echo $kr['nama'] ?></td>
-                                            <td class="p-2" align="center" class="p-2"><a href="<?php echo base_url('Jurnal/jurnal_list/' . $kr['nip']) ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye" style="color:white;"></i></a></td>
+                                            <td class="p-2" align="rignt" class="pl-3">
+                                                <?php
+                                                    echo $kr['nama'];
+                                                    $get = $kr['nip'];
+                                                    $nip = $this->db->get_where('user', ['nip' => $get])->row_array();
+                                                ?><br>
+                                                <label style="font-size:15px;" class="font-italic text-primary">
+                                                    <?php echo $nip['jabatan']; ?>    
+                                                </label>
+                                            </td>
+                                            <td align="center"><a href="<?php echo base_url('Jurnal/jurnal_list/' . $kr['nip']) ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye p-1" style="color:white;"></i></a></td>
+                                            <td></td>
                                         </tr>
 
                                     <?php
