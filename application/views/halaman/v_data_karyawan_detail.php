@@ -32,7 +32,7 @@ $level_akses = $this->session->userdata('role_id');
                             <div class="col-12 col-lg-6">
 
                             <!-- Button Back dan Nama Divisi -->        
-                                <?php  if($level_akses==3){?>
+                                <?php  if($level_akses==3 OR $level_akses==4){?>
                                     <a href="<?php echo base_url('Data_karyawan'); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
                                     <?php foreach ($nama_divisi as $nd) : ?>
                                     <h5 style="display:inline;">Data Karyawan Divisi <?php echo $nd['divisi'] ?></h5>
@@ -44,9 +44,7 @@ $level_akses = $this->session->userdata('role_id');
                                     <h5 style="display:inline;">Data Karyawan Divisi <?php echo $nd['divisi'] ?></h5>
                                     <?php $this->session->set_userdata('id_divisi', $nd['id_divisi']);
                                     endforeach;?>
-                                <?php }else{
-                                    //1 dan 4 Kosong
-                                } ?>
+                                <?php }else{} ?>
                             <!-- End Button Back dan Nama Divisi -->
 
                                 
@@ -72,7 +70,7 @@ $level_akses = $this->session->userdata('role_id');
                                 <table>
                                     <tr>
                                         <td class="pr-2"><a href="<?php echo base_url('Monitoring/monitoring_direksi/' . $id_divisi); ?>" class="btn btn-block btn-md btn-success">Monitoring</a></td>
-                                        <td class="pr-2"><a href="<?php echo base_url('Kinerja/kinerja_direksi/' . $id_divisi) ?>" class="btn btn-block btn-md btn-primary">Kinerja</a></td>
+                                        <td class="pr-2"><a href="<?php echo base_url('Evaluasi/index_direksi/' .$id_divisi) ?>" class="btn btn-block btn-md btn-primary">Kinerja</a></td>
                                     </tr>
                                 </table>
                                 <br>

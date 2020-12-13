@@ -1,3 +1,8 @@
+<?php
+$link = $this->session->userdata('link');
+$role_id = $this->session->userdata('role_id');
+$id_divisi = $this->session->userdata('divisi_page');
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -26,8 +31,18 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="col-12 col-lg-6">
-                                <a href="<?php echo base_url('Monitoring'); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
-                                <h5 style="display:inline;">Monitoring Daily</h5>
+                                <?php 
+                                    if($role_id==2){ ?>
+                                        <a href="<?php echo base_url('Monitoring'); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                        <h5 style="display:inline;">Monitoring Daily</h5>
+                                    <?php }elseif ($role_id==4){ ?>
+                                        <a href="<?php echo base_url('Monitoring/monitoring_direksi/' .$id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                        <h5 style="display:inline;">Monitoring Daily</h5>
+                                    <?php }else {
+
+                                    }
+                                 ?>
+                                
                             </div>
                         </div>
                         <?php echo $this->session->flashdata('updateMonitoring'); ?>
