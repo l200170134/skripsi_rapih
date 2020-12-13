@@ -55,9 +55,9 @@ $tgl_akhir = $this->session->userdata('tgl_akhir');
                                     </div>
                                 </div>
                             </form>
-                            <div class="">
+                            <div class="d-flex">
                                 <span class="badge badge-primary p-2 mr-1"><?php echo  'Hasil : ' . $results; ?></span>
-                                <a href="<?php echo base_url('Daily/export_csv/' . $nip); ?>" class="btn btn-sm btn-success" style="min-width:120px; max-height:30px;"><i class=" fas fa-download" style="color:white;" title="ekspor semua report menjadi Excel"> Unduh Excel</i></a>
+                                <a href="<?php echo base_url('Daily/export_csv/' . $nip); ?>" class="btn btn-sm btn-success ml-auto" style="min-width:120px; max-height:30px;"><i class=" fas fa-download" style="color:white;" title="ekspor semua report menjadi Excel"> Unduh Excel</i></a>
                             </div>
                         </div>
                     </div>

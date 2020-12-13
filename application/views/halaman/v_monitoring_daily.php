@@ -30,6 +30,7 @@
                                 <h5 style="display:inline;">Monitoring Daily</h5>
                             </div>
                         </div>
+                        <?php echo $this->session->flashdata('updateMonitoring'); ?>
                         <!-- /.card-header -->
                         <div class="card-body mb-2" style="overflow: scroll;">
                             <table class="table  table-hover" style="table-layout: fixed; word-wrap: break-word;">

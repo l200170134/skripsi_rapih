@@ -198,7 +198,7 @@ class Daily extends CI_Controller
             'tambahDaily',
             '<div class="alert alert-success alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            Data berhasil Ditambahkan !
+            <center>Data berhasil Ditambahkan ! </center>
         </div>'
         );
         redirect('Daily');
@@ -214,7 +214,7 @@ class Daily extends CI_Controller
             'hapusDaily',
             '<div class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            Data berhasil Dihapus !
+            <center> Data berhasil Dihapus !</center>
         </div>'
         );
         redirect("Daily/index/" . $nip . '/' . $link);
@@ -267,9 +267,9 @@ class Daily extends CI_Controller
         $this->leader_model->daily_update_proses($where, $data, 'tb_ldr_daily');
         $this->session->set_flashdata(
             'updateDaily',
-            '<div class="alert alert-success alert-dismissible" role="alert">
+            '<div class="alert alert-info alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            Data berhasil Diperbaharui !
+            <center>Data berhasil Diperbaharui !</center>
         </div>'
         );
         redirect('Daily/index/' . $nip . '/' . $link);
