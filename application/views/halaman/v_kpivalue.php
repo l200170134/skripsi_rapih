@@ -32,10 +32,6 @@ $link = $this->session->userdata('link_kar');
                             $role_id = $this->session->userdata('role_id');
                             if ($role_id == 1) {
                             ?>
-                                <div class="col-12 col-lg-6">
-                                    <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $user_data['id_divisi'] . '/' . $link); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
-                                    <h5 style="display:inline;">Key Performance Index Karyawan</h5>
-                                </div>
                             <?php
                             } elseif ($role_id == 2) {
                             ?>
@@ -108,13 +104,13 @@ $link = $this->session->userdata('link_kar');
                                                 <td><?php echo ++$start; ?></td>
                                                 <td>
                                                     <?php
-                                                        //echo $bu['bulan'] . ' ' . $bu['tahun'];
-                                                        $get_id = $bu['bulan'];
-                                                        $bulan = $this->db->get_where('tb_bulan', ['id_bulan' => $get_id])->result_array(); 
-                                                        foreach($bulan as $nama):
-                                                            echo $nama['bulan'] . ' ' . $bu['tahun'];
-                                                        endforeach;
-                                                    ?>        
+                                                    //echo $bu['bulan'] . ' ' . $bu['tahun'];
+                                                    $get_id = $bu['bulan'];
+                                                    $bulan = $this->db->get_where('tb_bulan', ['id_bulan' => $get_id])->result_array();
+                                                    foreach ($bulan as $nama) :
+                                                        echo $nama['bulan'] . ' ' . $bu['tahun'];
+                                                    endforeach;
+                                                    ?>
                                                 </td>
                                                 <?php if (round($bu['rata'], 2) >= 4.0) {
                                                 ?>
@@ -129,13 +125,13 @@ $link = $this->session->userdata('link_kar');
                                                     <td><span class="badge badge-danger"><?php echo round($bu['rata'], 2); ?></span></td>
                                                 <?php } ?>
                                                 <td>
-                                                    <?php if($bu['rata'] >=4) {
+                                                    <?php if ($bu['rata'] >= 4) {
                                                         echo "Kinerja Sangat Memuaskan";
-                                                    }elseif($bu['rata'] >=3){
+                                                    } elseif ($bu['rata'] >= 3) {
                                                         echo "Kinerja Memuaskan";
-                                                    }elseif($bu['rata'] >=2){
+                                                    } elseif ($bu['rata'] >= 2) {
                                                         echo "Kinerja Cukup Memuaskan";
-                                                    }else{
+                                                    } else {
                                                         echo "Kinerja Tidak Memuaskan";
                                                     }
                                                     ?>
@@ -189,11 +185,11 @@ foreach ($value as $modal) : ?>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <?php 
-                        $id_bulan = $modal['bulan'];
-                        $bulan = $this->db->get_where('tb_bulan', ['id_bulan' => $id_bulan])->row_array();
+                    <?php
+                    $id_bulan = $modal['bulan'];
+                    $bulan = $this->db->get_where('tb_bulan', ['id_bulan' => $id_bulan])->row_array();
 
-                     ?>
+                    ?>
                     <?= $bulan['bulan'] ?> <?= $modal['tahun'] ?>
                     <table style="table-layout: fixed; word-wrap: break-word;" class="table table-hover">
                         <thead class="bg-secondary">

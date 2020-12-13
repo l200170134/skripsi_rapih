@@ -28,10 +28,12 @@ class Evaluasi extends CI_Controller
 
     public function index_karyawan()
     {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $nip = $this->session->userdata('nip');
         $data['judul'] = "Evaluasi";
-        $data['user'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
+        $data['user_data'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
         $data['back']   = 0;
+
         // PAGINATION
         $this->load->model('Pagination_model', 'page');
         // config
@@ -206,7 +208,6 @@ class Evaluasi extends CI_Controller
         $data['judul'] = "Data Karyawan";
         $data['judul'] = "Kinerja";
         $data['user_data'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
-        // $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY bulan, tahun DESC")->result_array();
         $data['back']   = 1;
 
         // PAGINATION
