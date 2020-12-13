@@ -201,9 +201,11 @@ class Evaluasi extends CI_Controller
 
     public function kpivalue($nip)
     {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['judul'] = "Data Karyawan";
-        $data['user'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
+        $data['judul'] = "Kinerja";
+        $data['user_data'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
         // $data['value'] = $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY bulan, tahun DESC")->result_array();
         $data['back']   = 1;
 
@@ -255,7 +257,8 @@ class Evaluasi extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = "Kinerja";
-        $data['user'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
+        $data['user_data'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
+        //var_dump($data['user_data']);die;
         //$data['kpi_value'] = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
 
         $this->load->view('_partials/header');

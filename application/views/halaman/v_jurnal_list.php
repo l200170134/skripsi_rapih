@@ -32,12 +32,17 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <a href="<?php echo base_url('Jurnal/jurnal_form/' . $nip) ?>" class="btn btn-block btn-sm btn-success mb-3" style="width: 100px;">New Journal</a>
+                            <!-- <div class="col-2">
+                                <div class="row"> -->
+                                    <a href="<?php echo base_url('Jurnal/jurnal_form/' . $nip) ?>" class="btn btn-block btn-success mb-3" style="width:180px;">Tambahkan Aktivitas</a>
+                                <!-- </div>
+                            </div -->
+                            
                             <div class="bungkus p-0 mb-2" style="overflow: scroll;">
-                                <table class="table table-hover table-bordered" style="table-layout: fixed; word-wrap: break-word;">
-                                    <tr align="center">
+                                <table class="table table-hover" style="table-layout: fixed; word-wrap: break-word;">
+                                    <tr align="center" class="bg-secondary">
                                         <th width="50px">No</th>
-                                        <th width="60px">NIP</th>
+                                        <!-- <th width="60px">NIP</th> -->
                                         <th width="300px">Aktivitas</th>
                                         <th width="90px">Jam</th>
                                         <th width="100px">Tanggal</th>
@@ -50,12 +55,12 @@
                                         foreach ($jurnal as $ju) : ?>
                                             <tr align="center">
                                                 <td><?php echo ++$start ?></td>
-                                                <td><span class="badge badge-primary"><?php echo $ju['nip'] ?></span></td>
+                                                <!-- <td><span class="badge badge-primary"><?php //echo $ju['nip'] ?></span></td> -->
                                                 <td align="left" class="pl-3"><?php echo $ju['aktivitas'] ?></td>
                                                 <td><?php echo $ju['jam'] ?></td>
                                                 <td><?php echo $ju['tgl'] ?></td>
                                                 <td align="center" class="pl-1" onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                    <?php echo anchor('Jurnal/jurnal_proses_hapus/' . $ju['id'], '<div class="btn btn-danger ml-2"><i class="fas fa-trash"></i></div>'); ?>
+                                                    <?php echo anchor('Jurnal/jurnal_proses_hapus/' . $ju['id'], '<div class="btn btn-danger btn-sm ml-2"><i class="fas fa-trash"></i></div>'); ?>
                                                 </td>
                                             <?php endforeach ?>
                                             </tr>

@@ -40,7 +40,7 @@ $link = $this->session->userdata('link');
                                             <th width="100px">Foto</th>
                                             <th width="200px">Nama Lengkap</th>
                                             <th width="150px">Nilai KPI</th>
-                                            <th width="50px"><i class="fas fa-bell"></i></th>
+                                            <th width="50px"><i class="fas fa-check-circle"></i></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -63,10 +63,22 @@ $link = $this->session->userdata('link');
                                                     <?php echo $nip['jabatan']; ?>    
                                                 </label>      
                                             </td>
-                                            <td align="center">
+                                            <td align="center" p-2>
                                                 <a href="<?php echo base_url('Evaluasi/kpivalue/' . $ls['nip']); ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye p-1" style="color:white;" title="Tambah Data"></i></a>
                                             </td>
-                                            <td> 
+                                            <td class="p-2" align="center">
+                                                <?php 
+                                                    $nip= $ls['nip'];
+                                                    $kpi_value= $this->db->query("SELECT AVG(value) FROM tb_kpi_value as rata WHERE nip = '$nip'")->row_array();
+                                                    foreach ($kpi_value as $kpi) :
+
+                                                            if ($kpi == '') {
+                                                                echo '0';
+                                                            } else {
+                                                                echo round($kpi, 2);
+                                                            }
+                                                        endforeach;
+                                                ?>
                                             </td>
                                         </tr>
                                         <?php
