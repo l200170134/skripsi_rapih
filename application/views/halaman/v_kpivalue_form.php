@@ -43,21 +43,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Pilih Periode</label>
-                                            <select class="form-control" name="bulan">
-                                                <option>--Pilih--</option>
-                                                <option value="Januari">Januari</option>
-                                                <option value="Februari">Februari</option>
-                                                <option value="Maret">Maret</option>
-                                                <option value="April">April</option>
-                                                <option value="Mei">Mei</option>
-                                                <option value="Juni">Juni</option>
-                                                <option value="Juli">Juli</option>
-                                                <option value="Agustus">Agustus</option>
-                                                <option value="September">September</option>
-                                                <option value="Oktober">Oktober</option>
-                                                <option value="November">November</option>
-                                                <option value="Desember">Desember</option>
-                                            </select>
+                                            <select name="bulan" class="form-control">
+                                            <option value="">-- Pilih --</option>
+                                            <?php
+                                            $bulan = $this->db->get('tb_bulan')->result_array();
+                                            foreach ($bulan as $bln) :
+                                            ?>
+                                                <option><?php echo $bln['bulan']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Key Performance Index Divisi</label>
