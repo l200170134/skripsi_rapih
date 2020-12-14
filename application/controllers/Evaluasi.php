@@ -30,7 +30,7 @@ class Evaluasi extends CI_Controller
     {
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['judul'] = "Kinerja";
+        $data['judul'] = "Data Karyawan";
         //$id_divisi = $this->session->userdata('divisi');
         $nip = $this->session->userdata('nip');
         $data['list_user'] = $this->db->get_where('user', ['id_divisi' => $id_divisi, 'nip != ' => $nip])->result_array();
@@ -244,10 +244,17 @@ class Evaluasi extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         // mengambil data dari database berdasarakan session yang sudah terbentuk
-        $data['judul'] = "Data Karyawan";
-        $data['judul'] = "Kinerja";
+        $sidebar = $this->session->userdata('sidebar_leader');
+        if($sidebar==1){
+            $data['judul'] = "Kinerja";
+        }else{
+            $data['judul'] = "Data Karyawan";
+        };
+        
         $data['user_data'] = $this->db->get_where('user', ['nip' => $nip])->row_array();
         $data['back']   = 1;
+
+
 
         // PAGINATION
         $this->load->model('Pagination_model', 'page');
