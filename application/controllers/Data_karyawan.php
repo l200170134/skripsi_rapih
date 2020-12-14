@@ -87,6 +87,7 @@ class Data_karyawan extends CI_Controller
         $this->session->unset_userdata('divisi_page');
         $this->session->set_userdata('divisi_page', $id_divisi);
         $this->session->set_userdata('sidebar_leader', '1');
+        
 
         // PAGINATION
         $this->load->model('Pagination_model', 'pages');

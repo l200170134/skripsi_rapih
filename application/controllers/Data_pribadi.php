@@ -67,8 +67,8 @@ class Data_pribadi extends CI_Controller
         // mengambil data dari database berdasarakan session yang sudah terbentuk
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $sidebar = $this->session->userdata('sidebar_leader');
-        if ($sidebar == '1') {
-            $data['judul'] = 'Dashboard';
+        if ($sidebar == 1) {
+            $data['judul'] = 'Data_pribadi';
         } else {
             $data['judul'] = 'Data Karyawan';
         }
