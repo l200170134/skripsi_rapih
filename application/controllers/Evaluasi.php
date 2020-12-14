@@ -42,7 +42,7 @@ class Evaluasi extends CI_Controller
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }
-    
+
 
     public function index_karyawan()
     {
@@ -99,7 +99,7 @@ class Evaluasi extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = "Data Karyawan";
         $data['divisi'] = $this->db->get_where('tb_divisi', ['id_divisi' => $id_divisi])->row_array();
-        $data['kpi_data'] = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
+        $data['kpi_data'] = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi, 'active' => 1])->result_array();
         $data['id_divisi'] = $id_divisi;
 
         // // PAGINATION
@@ -169,7 +169,8 @@ class Evaluasi extends CI_Controller
 
         $data = array(
             'pertanyaan'        => $pertanyaan,
-            'id_divisi'         => $id_divisi
+            'id_divisi'         => $id_divisi,
+            'active'            => 1
             // 'id_kpi'            => $id_kpi,
         );
 
@@ -187,8 +188,9 @@ class Evaluasi extends CI_Controller
     public function kpi_hapus_proses($id_pertanyaan)
     {
         $id_divisi = $this->session->userdata('id_divisi');
-        $where = array('id_pertanyaan' => $id_pertanyaan);
-        $this->hrd_model->delate($where, 'tb_kpi');
+        $this->db->query("UPDATE tb_kpi SET active = 0 WHERE id_pertanyaan = '$id_pertanyaan'");
+        // $where = array('id_pertanyaan' => $id_pertanyaan);
+        // $this->hrd_model->delate($where, 'tb_kpi');
         $this->session->set_flashdata(
             'hapusKpiDiv',
             '<div class="alert alert-warning alert-dismissible m-2" role="alert">
@@ -310,16 +312,17 @@ class Evaluasi extends CI_Controller
     }
     public function kpivalue_tambah_proses($id_divisi)
     {
-        $kpi_data = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
+        $kpi_data = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi, 'active' => 1])->result_array();
         foreach ($kpi_data as $kpi) {
             $nip            = $this->input->post('nip');
+            $kpiFK          = $kpi['id_pertanyaan'];
             $id_divisi      = $this->input->post('id_divisi');
             $bulan          = $this->input->post('bulan');
             $tahun          = $this->input->post('tahun');
-            $value         = $this->input->post($kpi['id_pertanyaan']);
-
+            $value          = $this->input->post($kpi['id_pertanyaan']);
             $data = array(
                 'nip'           => $nip,
+                'kpiFK'         => $kpiFK,
                 'id_divisi'     => $id_divisi,
                 'bulan'         => $bulan,
                 'tahun'         => $tahun,

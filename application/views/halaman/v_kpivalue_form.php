@@ -44,20 +44,20 @@
                                         <div class="form-group">
                                             <label>Pilih Periode</label>
                                             <select name="bulan" class="form-control">
-                                            <option value="">-- Pilih --</option>
-                                            <?php
-                                            $bulan = $this->db->get('tb_bulan')->result_array();
-                                            foreach ($bulan as $bln) :
-                                            ?>
-                                                <option value="<?php echo $bln['id_bulan']; ?>"><?php echo $bln['bulan']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
+                                                <option value="">-- Pilih --</option>
+                                                <?php
+                                                $bulan = $this->db->get('tb_bulan')->result_array();
+                                                foreach ($bulan as $bln) :
+                                                ?>
+                                                    <option value="<?php echo $bln['id_bulan']; ?>"><?php echo $bln['bulan']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Key Performance Index Divisi</label>
                                             <?php
                                             $id_divisi = $user_data['id_divisi'];
-                                            $kpi_data = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
+                                            $kpi_data = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi, 'active' => 1])->result_array();
                                             foreach ($kpi_data as $kpi) :
                                             ?>
                                                 <div class="col-12">

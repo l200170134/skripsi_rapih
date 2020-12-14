@@ -32,8 +32,8 @@ $id_divisi = $this->session->userdata('divisi_page');
                             <?php
                             $role_id = $this->session->userdata('role_id');
                             if ($role_id == 4) { ?>
-                                <a href="<?php echo base_url('Evaluasi/index_direksi/' .$id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
-                                    <h5 style="display:inline;">Key Performance Index Karyawan</h5>
+                                <a href="<?php echo base_url('Evaluasi/index_direksi/' . $id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+                                <h5 style="display:inline;">Key Performance Index Karyawan</h5>
                             <?php
                             } elseif ($role_id == 2) {
                             ?>
@@ -151,9 +151,9 @@ $id_divisi = $this->session->userdata('divisi_page');
                                                 ?>
                                                     <td>
                                                         <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                            <?php echo anchor('Evaluasi/kpivalue_hapus_proses/' . $bu['nip'] . '/' . $bu['bulan'] . '/' . $bu['tahun'], '<div class="btn btn-block btn-sm btn-danger"><i class="fas fa-trash-alt p-1" style="color:white;" title="Kembali"></i></div>'); ?>
+                                                            <?php echo anchor('Evaluasi/kpivalue_hapus_proses/' . $bu['nip'] . '/' . $bu['bulan'] . '/' . $bu['tahun'], '<div class="btn btn-block btn-sm btn-danger"><i class="fas fa-trash-alt p-1" style="color:white;" title="Hapus"></i></div>'); ?>
                                                         </label>
-                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal-<?= $bu['bulan'] ?>-<?= $bu['tahun'] ?>"><i class="fas fa-eye p-1" style="color:white;" title="Kembali"></i></button>
+                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal-<?= $bu['bulan'] ?>-<?= $bu['tahun'] ?>"><i class="fas fa-eye p-1" style="color:white;" title="Lihat"></i></button>
                                                     </td>
                                                 <?php
                                                 }
@@ -212,12 +212,15 @@ foreach ($value as $modal) : ?>
                             <?php
                             $id_divisi = $user_data['id_divisi'];
                             $kpi_data = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi])->result_array();
+                            // var_dump($kpi_data);
                             foreach ($kpi_data as $kp) : ?>
                                 <?php
-                                $nip = $bu['nip'];
-                                $bulan = $bu['bulan'];
-                                $tahun = $bu['tahun'];
-                                $nilai = $this->db->get_where('tb_kpi_value', ['nip' => $nip, 'bulan' => $bulan, 'tahun' => $tahun])->result_array();
+                                $nip    = $bu['nip'];
+                                $kpiFK  = $kp['id_pertanyaan'];
+                                $bulan  = $modal['bulan'];
+                                $tahun  = $modal['tahun'];
+                                $nilai  = $this->db->get_where('tb_kpi_value', ['nip' => $nip, 'bulan' => $bulan, 'tahun' => $tahun, 'kpiFK' => $kpiFK])->result_array();
+                                // var_dump($nilai);
                                 foreach ($nilai as $nil) : ?>
                                     <tr>
                                         <td>
