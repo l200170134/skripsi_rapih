@@ -21,7 +21,6 @@ $link = $this->session->userdata('link_kar');
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
-
             <div class="row ml-2">
                 <?php if ($back == 1 && $role_id == 3) { ?>
                     <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
@@ -29,8 +28,7 @@ $link = $this->session->userdata('link_kar');
                     <a href="<?php echo base_url('Data_karyawan/detail_karyawan_leader/' . $id_divisi . '/' . $link); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
                 <?php } elseif ($back == 1 && $role_id == 4) { ?>
                     <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi . '/' . $link); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
-                <?php }else{
-                    
+                <?php } else {
                 } ?>
             </div>
         </div><!-- /.container-fluid -->
@@ -98,7 +96,6 @@ $link = $this->session->userdata('link_kar');
                                                     echo ', ';
                                                     echo date('d-m-Y', strtotime($kar['tgl_lahir']));
                                                     ?>
-
                                                 </p>
                                                 <label class="mb-0">NIK</label>
                                                 <p class="text-muted"><?php echo $kar['nik']; ?></p>
@@ -159,140 +156,241 @@ $link = $this->session->userdata('link_kar');
                         </div>
                     </div>
                 </div>
-            </div>
-    </section>
 
-<?php endforeach; ?>
-<?php if ($role_id == 3 && $back == 1) { ?>
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card card-success">
-                        <div class="card-header">
-                            <div class="card-title">Hak Akses</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <label class="mb-0">Username</label>
-                                    <p class="mb-0"><?php echo $kar['username']; ?></p>
-                                </div>
-                                <div class="col-lg-3">
-                                    <label class="mb-0">Password</label>
-                                    <p class="mb-0"><?php echo $kar['password']; ?></p>
-                                </div>
-                                <div class="col-lg-3">
-                                    <label class="mb-0">Level</label>
-                                    <p class="mb-0">
-                                        <?php
-                                        $get_id = $kar['role_id'];
-                                        $divisi = $this->db->get_where('user_role', ['id_role' => $get_id])->row_array();
-                                        echo $divisi['nama_role'];
-                                        ?>
-                                    </p>
-                                </div>
-                                <div class="col-lg-3">
-                                    <label class="mb-0">Status Karyawan</label>
-                                    <p class="mb-0">
-                                        <?php
-                                        $get_id = $kar['is_active'];
-                                        if ($get_id == '0') {
-                                            echo 'Tidak Aktif';
-                                        } else {
-                                            echo 'Aktif';
-                                        }
-                                        ?>
-                                    </p>
-                                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">Rincian Gaji</h3>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card card-warning">
-                        <div class="card-header">
-                            <div class="card-title">Riwayat Kepegawaian</div>
-                        </div>
-                        <div class="card-body">
-                            <?php echo anchor('Data_pribadi/status_karyawan_form/' . $kar['nip'], '<div class="btn btn-success mb-3 btn-sm">Tambah Status Karyawan</div>'); ?>
-                            <div class="col-12">
-                                <?php
-                                echo $this->session->flashdata('tambahStatus');
-                                echo $this->session->flashdata('ubahStatus');
-                                echo $this->session->flashdata('hapusStatus');
-                                ?>
-                            </div>
-                            <div class="col-12 mb-2" style="overflow: scroll;">
-                                <table class="table table-sm  table-hover" style="table-layout: fixed; word-wrap: break-word;">
-                                    <thead class="bg-secondary">
-                                        <tr align="center">
-                                            <th width="30px">No</th>
-                                            <th width="200px">Status</th>
-                                            <th width="150px">Tanggal Mulai</th>
-                                            <th width="150px">Tanggal Akhir</th>
-                                            <th width="150px">Ketetangan</th>
-                                            <th width="90px">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                            <div class="card-body">
+                                <div class="row">
+                                    <a href="<?php echo base_url('Gaji/rincian_form/' . $kar['nip']); ?>" class="btn btn-success p-1 ml-2 mb-3 btn-sm">Perbaharui Rincian Gaji</a>
+                                    <div class="col-12">
                                         <?php
-                                        foreach ($status as $st) :
-
+                                        echo $this->session->flashdata('tambahGaji');
+                                        echo $this->session->flashdata('ubahGaji');
+                                        echo $this->session->flashdata('hapusGaji');
                                         ?>
-                                            <tr align="center">
-                                                <input type="text" name="id" hidden>
-                                                <td><?php echo ++$start; ?></td>
-                                                <td>
-                                                    <?php
-                                                    $get_id = $st['status'];
-                                                    $status = $this->db->get_where('tb_status', ['id' => $get_id])->row_array();
-                                                    echo $status['status'];
-                                                    ?>
-                                                </td>
-                                                <td><?php echo date('d-m-Y', strtotime($st['tgl_mulai'])); ?></td>
-                                                <td><?php echo date('d-m-Y', strtotime($st['tgl_akhir'])); ?></td>
-                                                <td>
-                                                    <?php if ($st['aktivasi'] == 1) { ?>
-                                                        <span class="badge badge-secondary">Berakhir</span>
-                                                    <?php } else { ?>
-                                                        <span class="badge badge-primary">Aktif</span>
-                                                    <?php } ?>
-                                                </td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <?php echo anchor('Data_pribadi/status_karyawan_update/' . $st['id_status'], '<div class="btn btn-warning btn-sm mr-2" title="Update Status"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
-
+                                    </div>
+                                    <div class="col-12 mb-2" style="overflow: scroll;">
+                                        <table class="table table-sm  table-hover" style="table-layout: fixed; word-wrap: break-word;">
+                                            <thead class="bg-secondary">
+                                                <tr align="center">
+                                                    <th width="40px">No</th>
+                                                    <th width="150px">Gaji Pokok</th>
+                                                    <th width="150px">Bulan Mulai</th>
+                                                    <th width="150px">Bulan Akhir</th>
+                                                    <th width="100px">Status</th>
+                                                    <th width="150px">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr align="center">
+                                                    <td>1</td>
+                                                    <td>Rp. 2.000.000</td>
+                                                    <td>Mei 2020</td>
+                                                    <td>Sekarang</td>
+                                                    <td><span class="badge badge-primary">Aktif</span></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#modalGaji"><i class="fas fa-eye " style="color:white;" title="Lihat Detail"></i></button>
+                                                        <?php echo anchor('Data_pribadi/status_karyawan_update/', '<div class="btn btn-warning btn-sm mr-2" title="Update Rincian Gaji"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
                                                         <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                            <?php echo anchor('Data_pribadi/status_karyawan_hapus/' . $st['id_status'], '<div class="btn btn-danger btn-sm"  title="Hapus Status kepegawaian"><i class="fas fa-trash-alt" style="color:white;"></i></div>'); ?>
+                                                            <?php echo anchor('Data_pribadi/status_karyawan_hapus/', '<div class="btn btn-danger btn-sm"  title="Hapus Rincian Gaji"><i class="fas fa-trash-alt" style="color:white;"></i></div>'); ?>
                                                         </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-
-                            <?php echo $this->pagination->create_links() ?>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        <?php endforeach; ?>
     </section>
-    <!-- /.content -->
+
+    <?php if ($role_id == 3 && $back == 1) { ?>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <div class="card-title">Hak Akses</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-3 mb-2">
+                                        <label class="mb-0">Username</label>
+                                        <p class="mb-0"><?php echo $kar['username']; ?></p>
+                                    </div>
+                                    <div class="col-lg-3 mb-2">
+                                        <label class="mb-0">Password</label>
+                                        <p class="mb-0"><?php echo $kar['password']; ?></p>
+                                    </div>
+                                    <div class="col-lg-3 mb-2">
+                                        <label class="mb-0">Level</label>
+                                        <p class="mb-0">
+                                            <?php
+                                            $get_id = $kar['role_id'];
+                                            $divisi = $this->db->get_where('user_role', ['id_role' => $get_id])->row_array();
+                                            echo $divisi['nama_role'];
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-3 mb-2">
+                                        <label class="mb-0">Status Karyawan</label>
+                                        <p class="mb-0">
+                                            <?php
+                                            $get_id = $kar['is_active'];
+                                            if ($get_id == '0') {
+                                                echo 'Tidak Aktif';
+                                            } else {
+                                                echo 'Aktif';
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-warning">
+                            <div class="card-header">
+                                <div class="card-title">Riwayat Kepegawaian</div>
+                            </div>
+                            <div class="card-body">
+                                <?php echo anchor('Data_pribadi/status_karyawan_form/' . $kar['nip'], '<div class="btn btn-success ml-2 mb-3 btn-sm">Tambah Status Karyawan</div>'); ?>
+                                <div class="col-12">
+                                    <?php
+                                    echo $this->session->flashdata('tambahStatus');
+                                    echo $this->session->flashdata('ubahStatus');
+                                    echo $this->session->flashdata('hapusStatus');
+                                    ?>
+                                </div>
+                                <div class="col-12 mb-2" style="overflow: scroll;">
+                                    <table class="table table-sm  table-hover" style="table-layout: fixed; word-wrap: break-word;">
+                                        <thead class="bg-secondary">
+                                            <tr align="center">
+                                                <th width="30px">No</th>
+                                                <th width="200px">Status</th>
+                                                <th width="150px">Tanggal Mulai</th>
+                                                <th width="150px">Tanggal Akhir</th>
+                                                <th width="150px">Ketetangan</th>
+                                                <th width="90px">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($status as $st) :
+
+                                            ?>
+                                                <tr align="center">
+                                                    <input type="text" name="id" hidden>
+                                                    <td><?php echo ++$start; ?></td>
+                                                    <td>
+                                                        <?php
+                                                        $get_id = $st['status'];
+                                                        $status = $this->db->get_where('tb_status', ['id' => $get_id])->row_array();
+                                                        echo $status['status'];
+                                                        ?>
+                                                    </td>
+                                                    <td><?php echo date('d-m-Y', strtotime($st['tgl_mulai'])); ?></td>
+                                                    <td><?php echo date('d-m-Y', strtotime($st['tgl_akhir'])); ?></td>
+                                                    <td>
+                                                        <?php if ($st['aktivasi'] == 1) { ?>
+                                                            <span class="badge badge-secondary">Berakhir</span>
+                                                        <?php } else { ?>
+                                                            <span class="badge badge-primary">Aktif</span>
+                                                        <?php } ?>
+                                                    </td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <?php echo anchor('Data_pribadi/status_karyawan_update/' . $st['id_status'], '<div class="btn btn-warning btn-sm mr-2" title="Update Status"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
+
+                                                            <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
+                                                                <?php echo anchor('Data_pribadi/status_karyawan_hapus/' . $st['id_status'], '<div class="btn btn-danger btn-sm"  title="Hapus Status kepegawaian"><i class="fas fa-trash-alt" style="color:white;"></i></div>'); ?>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <?php echo $this->pagination->create_links() ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
 
 
-<?php } else {
-} ?>
+    <?php } else {
+    } ?>
 
 </div>
 <!-- /.content-wrapper -->
+
+<!-- Modal -->
+<div class="modal fade" id="modalGaji" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Rincian</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table style="table-layout: fixed; word-wrap: break-word;" class="table table-hover">
+                    <thead class="bg-secondary">
+                        <tr>
+                            <th>Rincian</th>
+                            <th>Nominal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tunjangan Kehadiran</td>
+                            <td>Rp. 200.000</td>
+                        </tr>
+                        <tr>
+                            <td>Uang Makan</td>
+                            <td>Rp. 200.000</td>
+                        </tr>
+                        <tr>
+                            <td>Uang Transport</td>
+                            <td>Rp. 200.000</td>
+                        </tr>
+                        <tr>
+                            <td>Lain-lain</td>
+                            <td>Rp. 200.000</td>
+                        </tr>
+                        <tr>
+                            <td>Over Time</td>
+                            <td>Rp. 200.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
