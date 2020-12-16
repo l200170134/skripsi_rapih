@@ -224,4 +224,28 @@ class Gaji extends CI_Controller
         );
         redirect('Gaji/gaji_view/' . $nip . '/' . $link);
     }
+    public function rinciangaji_form($nip)
+    {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['judul'] = 'Data Karyawan';
+        $data['nip'] = $nip;
+        $this->load->view('_partials/header');
+        $this->load->view('_partials/navbar');
+        $this->load->view('_partials/sidebar',  $data);
+        $this->load->view('halaman/v_rinciangaji_form');
+        $this->load->view('_partials/footer');
+        $this->load->view('_partials/js');
+    }
+        public function rinciangaji_update($nip)
+    {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['judul'] = 'Data Karyawan';
+        $data['nip'] = $nip;
+        $this->load->view('_partials/header');
+        $this->load->view('_partials/navbar');
+        $this->load->view('_partials/sidebar',  $data);
+        $this->load->view('halaman/v_rinciangaji_update');
+        $this->load->view('_partials/footer');
+        $this->load->view('_partials/js');
+    }
 }

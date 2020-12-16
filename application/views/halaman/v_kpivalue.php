@@ -150,10 +150,10 @@ $id_divisi = $this->session->userdata('divisi_page');
                                                 } else {
                                                 ?>
                                                     <td>
+                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal-<?= $bu['bulan'] ?>-<?= $bu['tahun'] ?>"><i class="fas fa-eye p-1" style="color:white;" title="Lihat"></i></button>
                                                         <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
                                                             <?php echo anchor('Evaluasi/kpivalue_hapus_proses/' . $bu['nip'] . '/' . $bu['bulan'] . '/' . $bu['tahun'], '<div class="btn btn-block btn-sm btn-danger"><i class="fas fa-trash-alt p-1" style="color:white;" title="Hapus"></i></div>'); ?>
                                                         </label>
-                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal-<?= $bu['bulan'] ?>-<?= $bu['tahun'] ?>"><i class="fas fa-eye p-1" style="color:white;" title="Lihat"></i></button>
                                                     </td>
                                                 <?php
                                                 }
