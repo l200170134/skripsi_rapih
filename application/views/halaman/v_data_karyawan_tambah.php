@@ -67,7 +67,7 @@
                                         <input type="text" class="form-control" name="nip" placeholder="Masukkan Nomor Induk Pegawai">
                                     </div>
                                     <div class="form-group">
-                                        <label>Divis</label>
+                                        <label>Divisi</label>
                                         <select class="form-control" name="id_divisi">
                                             <?php foreach ($nama_divisi as $nd) : ?>
                                                 <option value="<?php echo $nd['id_divisi'] ?>"><?php echo $nd['divisi'] ?></option>
@@ -89,11 +89,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="no_hp">No. HP</label>
-                                        <input type="text" class="form-control" name="no_hp" placeholder="Masukkan Nomor HP anda">
+                                        <input type="text" class="form-control" name="no_hp" placeholder="Masukkan Nomor HP ">
                                     </div>
                                     <div class="form-group">
                                         <label for="no_keluarga">No. HP Keluarga</label>
-                                        <input type="text" class="form-control" name="no_hp_kel" placeholder="Masukkan Nomor HP Keluarga anda">
+                                        <input type="text" class="form-control" name="no_hp_kel" placeholder="Masukkan Nomor HP Keluarga ">
                                     </div>
                                     <div class="form-group">
                                         <label for="rekening">Bank</label>
@@ -110,7 +110,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="rekening">No. Rekening</label>
-                                        <input type="text" class="form-control" name="no_rek" placeholder="Masukkan Nomor Rekening Anda">
+                                        <input type="text" class="form-control" name="no_rek" placeholder="Masukkan Nomor Rekening ">
                                     </div>
                                 </div>
                                 <!-- End form bagian kiri -->
@@ -119,15 +119,15 @@
                                 <div class="col-lg-6 col-12 pl-3 pr-3">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" class="form-control" name="email" placeholder="Masukkan alamat email anda">
+                                        <input type="email" class="form-control" name="email" placeholder="Masukkan Alamat Email ">
                                     </div>
                                     <div class="form-group">
                                         <label for="npwp">NIK</label>
-                                        <input type="text" class="form-control" name="nik" placeholder="Masukkan Nomor NPWP Anda">
+                                        <input type="text" class="form-control" name="nik" placeholder="Masukkan Nomor NPWP ">
                                     </div>
                                     <div class="form-group">
                                         <label for="npwp">NPWP</label>
-                                        <input type="text" class="form-control" name="npwp" placeholder="Masukkan Nomor NPWP Anda">
+                                        <input type="text" class="form-control" name="npwp" placeholder="Masukkan Nomor NPWP ">
                                     </div>
                                     <div class="form-group">
                                         <label for="ttl">Perusahaan</label>
@@ -163,11 +163,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Alamat Tinggal</label>
-                                        <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sekarang..." name="alamat"></textarea>
+                                        <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sekarang" name="alamat"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Alamat di KTP</label>
-                                        <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sesuai KTP..." name="alamat_ktp"></textarea>
+                                        <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sesuai KTP" name="alamat_ktp"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="upload_foto">Upload Foto</label>
@@ -199,7 +199,7 @@
                                 <div class="col-lg-6 col-12 pl-3 pr-3">
                                     <div class="form-group">
                                         <label for="ttl">Username</label>
-                                        <input type="text" class="form-control" name="username" placeholder="Format: Nama + Tanggal Lahir">
+                                        <input type="text" class="form-control" name="username" placeholder="Username Setiap Individu Wajib Beda">
                                     </div>
                                     <div class="form-group">
                                         <label for="ttl">Password</label>
@@ -230,6 +230,7 @@
                                 <!-- End New Left Colum -->
                             </div>
                             <!-- End Row -->
+                        </div>
 
                             <div class="card-footer d-flex justify-content-center m-2">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -237,7 +238,7 @@
 
                             </div>
                             <!--             </form>  -->
-                        </div>
+                        
                         <!-- End New Card Body -->
                     </div>
                     <!--  End New Card -->

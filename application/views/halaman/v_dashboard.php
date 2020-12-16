@@ -266,62 +266,67 @@ if ($level_akses == 1) { ?>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Selamat datang <span class="text-primary"><?php echo $user['username']; ?></span> di sistem kepegawaian PT. Sinar Grafindo.</h5>
-                                <div class="alert alert-sm alert-success alert-dismissible m-1">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    Halaman dashboard HRD menampilkan jumlah karyawan, jumlah karyawan tiap divisi dan jumlah karyawan tetap dan karyawan kontrak. Klik <span class="text-indigo"> lihat detail</span> atau klik menu yang ada di <span class="text-indigo"> sidebar</span> untuk mendapatkan informasi lebih detail.
-                                </div>
+                                <h5>Informasi Umum</h5>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+                                <p>Selamat datang <span class="text-primary"><?php echo $user['username']; ?></span> di sistem kepegawaian PT. Sinar Grafindo.</p>
+                                <div class="alert alert-sm alert-success alert-dismissible m-1">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    Halaman ini menampilkan informasi ringkas kepegawaian. Klik <span class="text-warning"> lihat detail</span> atau klik menu yang ada di <span class="text-warning"> sidebar</span> untuk mendapatkan informasi lebih detail.
+                                </div><br>
                                 <div class="row d-flex justify-content-between mr-2 ml-2">
-                                    <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-12" align="center">
                                         <!-- small box -->
-                                        <div class="small-box bg-info">
+                                        <div class="small-box bg-primary">
                                             <div class="inner">
-                                                <p>Jumlah Karyawan</p>
-                                                <h3>
+                                                
+                                                <h1 class="font-weight-bold">
                                                     <?php
                                                     echo $user_hrd;
                                                     ?>
-                                                </h3>
+                                                </h1>
+                                                <p>Jumlah Karyawan</p>
                                             </div>
                                             <div class="icon">
                                                 <i class="ion ion-person-add"></i>
                                             </div>
-                                            <a href="<?php echo base_url('Data_karyawan') ?>" class="small-box-footer">Lihat Detail<i class="fas fa-arrow-circle-right"></i></a>
+                                            <a href="<?php echo base_url('Data_karyawan') ?>" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                     <!-- ./col -->
-                                    <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-12" align="center">
                                         <!-- small box -->
                                         <div class="small-box bg-success">
                                             <div class="inner">
-                                                <p>Jumlah Karyawan Laki-Laki</p>
-                                                <h3>
+                                                
+                                                <h1 class="font-weight-bold">
                                                     <?php echo $user_male; ?>
-                                                    <sup style="font-size: 20px"></sup></h3>
+                                                    <sup style="font-size: 20px"></sup>
+                                                </h1>
+                                                <p>Jumlah Karyawan Laki-Laki</p>
                                             </div>
                                             <div class="icon">
                                                 <i class="fas fa-male"></i>
                                             </div>
-                                            <a href="<?php echo base_url('Data_karyawan') ?>" class="small-box-footer">Lihat Detail<i class="fas fa-arrow-circle-right"></i></a>
+                                            <a href="<?php echo base_url('Data_karyawan') ?>" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                     <!-- ./col -->
-                                    <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="col-lg-4 col-md-6 col-12" align="center">
                                         <!-- small box -->
                                         <div class="small-box bg-warning">
                                             <div class="inner">
-                                                <p>Jumlah Karyawan Perempuan</p>
-                                                <h3>
+                                                
+                                                <h1 class="font-weight-bold">
                                                     <?php echo $user_female; ?>
-                                                </h3>
+                                                </h1>
+                                                <p>Jumlah Karyawan Perempuan</p>
                                             </div>
                                             <div class="icon">
                                                 <i class="fas fa-female"></i>
                                             </div>
-                                            <a href="<?php echo base_url('Data_karyawan') ?>" class="small-box-footer">Lihat Detail<i class="fas fa-arrow-circle-right"></i></a>
+                                            <a href="<?php echo base_url('Data_karyawan') ?>" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -335,14 +340,14 @@ if ($level_akses == 1) { ?>
                                                     <i class="far fa-chart-bar"></i>
                                                     Jumlah Karyawan Tiap Divisi
                                                 </h3>
-                                                <div class="card-tools">
+                                                <!-- <div class="card-tools">
                                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                                         <i class="fas fa-minus"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-tool" data-card-widget="remove">
                                                         <i class="fas fa-times"></i>
                                                     </button>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="card-body">
                                                 <div id="bar-chart" style="height: 300px;"></div>

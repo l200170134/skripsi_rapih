@@ -29,7 +29,7 @@ $level_akses = $this->session->userdata('role_id');
                     <h5>Data Karyawan</h5>
                     <div class="alert alert-sm alert-success alert-dismissible m-1">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        Karyawan dikelompokkan berdasarkan Divisi masing-masing. <span class="text-indigo">Lihat Detail</span> untuk mendapatkan informasi lebih detail.
+                        Halaman ini menampilkan informasi masing-masing karyawan dalam satu divisi. <span class="text-warning">Lihat Detail</span> untuk mendapatkan informasi lebih lanjut.
                     </div>
                 </div>
                 <div class="card-body">
@@ -57,7 +57,7 @@ $level_akses = $this->session->userdata('role_id');
                                         <i class="<?php echo $dv->icon; ?>"></i>
                                     </div>
 
-                                    <?php echo anchor('Data_karyawan/detail_karyawan/' . $dv->id_divisi, '<div class="small-box-footer"><center>Lihat detail <i class="fas fa-arrow-circle-right"></i></center></div>'); ?>
+                                    <?php echo anchor('Data_karyawan/detail_karyawan/' . $dv->id_divisi, '<div class="small-box-footer"><center>Lihat Detail <i class="fas fa-arrow-circle-right"></i></center></div>'); ?>
                                 </div>
                             </div>
 
