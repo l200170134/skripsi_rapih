@@ -224,4 +224,53 @@ class Gaji extends CI_Controller
         );
         redirect('Gaji/gaji_view/' . $nip . '/' . $link);
     }
+    public function rinciangaji_form($nip)
+    {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['judul'] = 'Data Karyawan';
+        $data['nip'] = $nip;
+        $this->load->view('_partials/header');
+        $this->load->view('_partials/navbar');
+        $this->load->view('_partials/sidebar',  $data);
+        $this->load->view('halaman/v_rinciangaji_form');
+        $this->load->view('_partials/footer');
+        $this->load->view('_partials/js');
+    }
+        public function rinciangaji_update($nip)
+    {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['judul'] = 'Data Karyawan';
+        $data['nip'] = $nip;
+        
+        $this->load->view('_partials/header');
+        $this->load->view('_partials/navbar');
+        $this->load->view('_partials/sidebar',  $data);
+        $this->load->view('halaman/v_rinciangaji_update');
+        $this->load->view('_partials/footer');
+        $this->load->view('_partials/js');
+    }
+    public function rinciangaji_tambah_proses(){
+         $nip               = $this->input->post('nip');
+         $gaji_pokok        = $this->input->post('gaji_pokok');
+         $tun_bulanan       = $this->input->post('tun_bulanan');
+         $uang_makan        = $this->input->post('uang_makan');
+         $uang_transport    = $this->input->post('uang_transport');
+         $lembur            = $this->input->post('lembur');   
+         $lain_lain         = $this->input->post('lain_lain');
+         $tanggal_mulai     = $this->input->post('tanggal_mulai');
+
+         $data = array(
+            'nip'           => $nip,
+            'gaji_pokok'    => $gaji_pokok,
+            'tun_bulanan'   => $tun_bulanan,
+            'uang_makan'    => $uang_makan,
+            'uang_transport' => $uang_transport,
+            'lembur'        => $lembur,
+            'lain_lain'     => $lain_lain,
+            'tanggal_mulai' => $tanggal_mulai,
+         );
+         $this->hrd_model->input($data, 'tb_strukturgaji');
+         redirect('Data_pribadi/data_pribadi/' .$nip);
+
+    }
 }

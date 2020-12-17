@@ -159,13 +159,13 @@ $link = $this->session->userdata('link_kar');
 
                 <div class="row">
                     <div class="col-12">
-                        <div class="card card-info">
+                        <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Rincian Gaji</h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <a href="<?php echo base_url('Gaji/rincian_form/' . $kar['nip']); ?>" class="btn btn-success p-1 ml-2 mb-3 btn-sm">Perbaharui Rincian Gaji</a>
+                                    <a href="<?php echo base_url('Gaji/rinciangaji_form/' .$kar['nip']); ?>" class="btn btn-success p-1 ml-2 mb-3 btn-sm">Perbaharui Rincian Gaji</a>
                                     <div class="col-12">
                                         <?php
                                         echo $this->session->flashdata('tambahGaji');
@@ -186,20 +186,33 @@ $link = $this->session->userdata('link_kar');
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php 
+                                                    foreach ($gaji_str as $gaji):
+                                                 ?>
                                                 <tr align="center">
                                                     <td>1</td>
-                                                    <td>Rp. 2.000.000</td>
-                                                    <td>Mei 2020</td>
-                                                    <td>Sekarang</td>
-                                                    <td><span class="badge badge-primary">Aktif</span></td>
+                                                    <td><?php echo $gaji['gaji_pokok']; ?></td>
+                                                    <td>
+                                                        <?php 
+                                                            $get_id = $gaji['tanggal_mulai']; 
+                                                            $bulan = $this->db->get_where('tb_bulan', ['id_bulan' => $get_id])->row_array();
+                                                            echo $bulan['bulan'];
+                                                        ?>    
+                                                    </td>
+                                                    <td></td>
+                                                    <td><span class="badge badge-primary"><?php echo $gaji['status']; ?></span></td>
                                                     <td>
                                                         <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#modalGaji"><i class="fas fa-eye " style="color:white;" title="Lihat Detail"></i></button>
-                                                        <?php echo anchor('Data_pribadi/status_karyawan_update/', '<div class="btn btn-warning btn-sm mr-2" title="Update Rincian Gaji"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
+                                                        <?php echo anchor('Gaji/rinciangaji_update/' .$kar['nip'], '<div class="btn btn-warning btn-sm mr-2" title="Update Rincian Gaji"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
                                                         <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
                                                             <?php echo anchor('Data_pribadi/status_karyawan_hapus/', '<div class="btn btn-danger btn-sm"  title="Hapus Rincian Gaji"><i class="fas fa-trash-alt" style="color:white;"></i></div>'); ?>
                                                         </label>
                                                     </td>
                                                 </tr>
+                                                <?php 
+                                                    endforeach;
+                                                ?>
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -358,6 +371,9 @@ $link = $this->session->userdata('link_kar');
             </div>
             <div class="modal-body">
                 <table style="table-layout: fixed; word-wrap: break-word;" class="table table-hover">
+                    <?php
+                        foreach ($gaji_str as $gaji):
+                     ?>
                     <thead class="bg-secondary">
                         <tr>
                             <th>Rincian</th>
@@ -367,25 +383,26 @@ $link = $this->session->userdata('link_kar');
                     <tbody>
                         <tr>
                             <td>Tunjangan Kehadiran</td>
-                            <td>Rp. 200.000</td>
+                            <td><?php echo $gaji['tun_bulanan']; ?></td>
                         </tr>
                         <tr>
                             <td>Uang Makan</td>
-                            <td>Rp. 200.000</td>
+                            <td><?php echo $gaji['uang_makan']; ?></td>
                         </tr>
                         <tr>
                             <td>Uang Transport</td>
-                            <td>Rp. 200.000</td>
+                            <td><?php echo $gaji['uang_transport']; ?></td>
                         </tr>
                         <tr>
                             <td>Lain-lain</td>
-                            <td>Rp. 200.000</td>
+                            <td><?php echo $gaji['lain_lain']; ?></td>
                         </tr>
                         <tr>
                             <td>Over Time</td>
-                            <td>Rp. 200.000</td>
+                            <td><?php echo $gaji['lembur']; ?></td>
                         </tr>
                     </tbody>
+                    <?php endforeach; ?>
                 </table>
             </div>
             <div class="modal-footer">

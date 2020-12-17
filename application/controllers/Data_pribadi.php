@@ -76,6 +76,8 @@ class Data_pribadi extends CI_Controller
         $data['status_p'] = $this->db->get_where('tb_status_data', ['nip' => $nip, 'aktivasi' => 0], 1)->row_array();
         $this->session->set_userdata('nip_status', $nip);
         $data['back'] = 1;
+        $data['gaji_str'] = $this->db->get_where('tb_strukturgaji', ['nip' => $nip])->result_array();
+
 
         // PAGINATION
         $this->load->model('Pagination_model', 'page');
