@@ -32,7 +32,7 @@
                             <div class="row">
                                 <!-- form bagian kiri -->
                                 <div class="col-12">
-                                    <form action="<?php echo base_url(); ?>" method="post">
+                                    <form action="<?php echo base_url('Gaji/rinciangaji_tambah_proses'); ?>" method="post">
                                         <!-- bagian hidden -->
                                         <input type="text" name="nip" value="<?php echo $nip; ?>" class="form-control" hidden>
                                         <!-- end bagian hidden -->
