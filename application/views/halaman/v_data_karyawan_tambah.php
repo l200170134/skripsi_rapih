@@ -28,9 +28,6 @@
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Form Input Data Karyawan</h3>
-
-
-
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -55,7 +52,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ttl">Jenis Kelamin</label>
+                                        <label for="jk">Jenis Kelamin</label>
                                         <select class="form-control" name="jk">
                                             <option>-- Pilih --</option>
                                             <option value="Laki-Laki">Laki-Laki</option>
