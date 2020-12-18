@@ -236,12 +236,13 @@ class Gaji extends CI_Controller
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }
-        public function rinciangaji_update($nip)
+    public function rinciangaji_update($id_gaji)
     {
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['judul'] = 'Data Karyawan';
-        $data['nip'] = $nip;
-        
+        $data['nip'] = $this->session->userdata('nip_status');
+        $data['rincian_gaji'] = $this->hrd_model->getRincianGaji($id_gaji);
+
         $this->load->view('_partials/header');
         $this->load->view('_partials/navbar');
         $this->load->view('_partials/sidebar',  $data);
@@ -249,17 +250,19 @@ class Gaji extends CI_Controller
         $this->load->view('_partials/footer');
         $this->load->view('_partials/js');
     }
-    public function rinciangaji_tambah_proses(){
-         $nip               = $this->input->post('nip');
-         $gaji_pokok        = $this->input->post('gaji_pokok');
-         $tun_bulanan       = $this->input->post('tun_bulanan');
-         $uang_makan        = $this->input->post('uang_makan');
-         $uang_transport    = $this->input->post('uang_transport');
-         $lembur            = $this->input->post('lembur');   
-         $lain_lain         = $this->input->post('lain_lain');
-         $tanggal_mulai     = $this->input->post('tanggal_mulai');
+    public function rinciangaji_tambah_proses()
+    {
+        $nip               = $this->input->post('nip');
+        $gaji_pokok        = $this->input->post('gaji_pokok');
+        $tun_bulanan       = $this->input->post('tun_kehadiran');
+        $uang_makan        = $this->input->post('uang_makan');
+        $uang_transport    = $this->input->post('uang_transport');
+        $lembur            = $this->input->post('lembur');
+        $lain_lain         = $this->input->post('lain_lain');
+        $tanggal_mulai     = $this->input->post('tanggal_mulai');
+        $tahun_mulai       = date('Y');
 
-         $data = array(
+        $data = array(
             'nip'           => $nip,
             'gaji_pokok'    => $gaji_pokok,
             'tun_bulanan'   => $tun_bulanan,
@@ -267,10 +270,33 @@ class Gaji extends CI_Controller
             'uang_transport' => $uang_transport,
             'lembur'        => $lembur,
             'lain_lain'     => $lain_lain,
-            'tanggal_mulai' => $tanggal_mulai,
-         );
-         $this->hrd_model->input($data, 'tb_strukturgaji');
-         redirect('Data_pribadi/data_pribadi/' .$nip);
+            'bulan_mulai'   => $tanggal_mulai,
+            'tahun_awal'   => $tahun_mulai
+        );
+        $this->session->set_flashdata(
+            'tambahRincianGaji',
+            '<div class="alert alert-warning alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Rincian Gaji Berhasil Ditambahkan!</center>
+        </div>'
+        );
+        $this->hrd_model->update_gaji($nip, $tanggal_mulai, $tahun_mulai);
+        $this->hrd_model->input($data, 'tb_strukturgaji');
+        redirect('Data_pribadi/data_pribadi/' . $nip);
+    }
 
+    public function rincian_hapus($id_gaji)
+    {
+        $nip = $this->session->userdata('nip_status');
+        $where = array('id_strukturGaji' => $id_gaji);
+        $this->hrd_model->delate($where, 'tb_strukturgaji');
+        $this->session->set_flashdata(
+            'hapusRincianGaji',
+            '<div class="alert alert-warning alert-dismissible m-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>Rincian Gaji Berhasil Dihapus!</center>
+        </div>'
+        );
+        redirect('Data_pribadi/data_pribadi/' . $nip);
     }
 }

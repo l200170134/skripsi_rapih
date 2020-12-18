@@ -38,40 +38,40 @@
                                         <!-- end bagian hidden -->
                                         <div class="form-group">
                                             <label>Gaji Pokok</label>
-                                            <input type="text" class="form-control" name="gaji_pokok">
+                                            <input type="text" class="form-control" name="gaji_pokok" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Tunjangan Bulanan</label>
-                                            <input type="text" name="tun_bulanan" class="form-control">
+                                            <input type="text" name="tun_bulanan" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Makan</label>
-                                            <input type="text" name="uang_makan" class="form-control">
+                                            <input type="text" name="uang_makan" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Transport</label>
-                                            <input type="text" name="uang_transport" class="form-control">
+                                            <input type="text" name="uang_transport" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Lembur</label>
-                                            <input type="text" name="lembur" class="form-control">
+                                            <input type="text" name="lembur" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Lain-Lain</label>
-                                            <input type="text" name="lain_lain" class="form-control">
+                                            <input type="text" name="lain_lain" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Periode Awal</label>
-                                            <select class="form-control" name="tanggal_mulai">
+                                            <select class="form-control" name="tanggal_mulai" required>
                                                 <option>--Pilih--</option>
-                                                <?php 
-                                                    $bulan = $this->db->get('tb_bulan')->result_array();
-                                                    foreach($bulan as $bln):
-                                                 ?>
-                                                 <option value="<?php echo $bln['id_bulan'];  ?>"><?php echo $bln['bulan']; ?></option>
-                                                 <?php 
-                                                    endforeach;
-                                                  ?>
+                                                <?php
+                                                $bulan = $this->db->get('tb_bulan')->result_array();
+                                                foreach ($bulan as $bln) :
+                                                ?>
+                                                    <option value="<?php echo $bln['id_bulan'];  ?>"><?php echo $bln['bulan']; ?></option>
+                                                <?php
+                                                endforeach;
+                                                ?>
                                             </select>
                                         </div>
                                 </div>
@@ -81,7 +81,7 @@
                         <!-- /.card-body -->
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="<?php echo base_url('Data_pribadi/data_pribadi/' .$nip); ?>" class="btn btn-secondary">Kembali</a>
+                            <a href="<?php echo base_url('Data_pribadi/data_pribadi/' . $nip); ?>" class="btn btn-secondary">Kembali</a>
                         </div>
                         </form>
 

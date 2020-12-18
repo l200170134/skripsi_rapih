@@ -76,15 +76,15 @@ class Data_pribadi extends CI_Controller
         $data['status_p'] = $this->db->get_where('tb_status_data', ['nip' => $nip, 'aktivasi' => 0], 1)->row_array();
         $this->session->set_userdata('nip_status', $nip);
         $data['back'] = 1;
-        $data['gaji_str'] = $this->db->get_where('tb_strukturgaji', ['nip' => $nip])->result_array();
+        $data['gaji_str'] = $this->db->order_by('status ASC,tahun_akhir DESC, bulan_akhir DESC')->get_where('tb_strukturgaji', ['nip' => $nip])->result_array();
 
 
-        // PAGINATION
+        // PAGINATION STATUS KARYAWAN
         $this->load->model('Pagination_model', 'page');
         // config
         $config['base_url']         = base_url() . 'Data_pribadi/data_pribadi/' . $nip . '/';
         $config['total_rows']       = $this->page->getStatusRows($nip);
-        $config['per_page']         = 4;
+        $config['per_page']         = 5;
         $config['first_url']        = '0';
         $config['uri_segment']      = '4';
         $config['full_tag_open']    = '<nav><ul class="pagination justify-content-center">';
@@ -112,6 +112,7 @@ class Data_pribadi extends CI_Controller
         $data['start'] = 0 + $start;
         $this->session->set_userdata('link_status', $data['start']);
         $data['status'] = $this->page->getStatus($nip, $config['per_page'], $data['start']);
+        $data['status_page'] = $this->pagination->create_links();
         // END PAGINATION
 
         $this->load->view('_partials/header');

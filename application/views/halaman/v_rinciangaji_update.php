@@ -32,46 +32,50 @@
                             <div class="row">
                                 <!-- form bagian kiri -->
                                 <div class="col-12">
-                                    <form action="<?php echo base_url(); ?>" method="post">
+                                    <form action="<?php echo base_url('rinciangaji_tambah_proses/' . $nip); ?>" method="post">
                                         <!-- bagian hidden -->
                                         <input type="text" name="nip" value="<?php echo $nip; ?>" class="form-control" hidden>
                                         <!-- end bagian hidden -->
                                         <div class="form-group">
                                             <label>Gaji Pokok</label>
-                                            <input type="text" class="form-control" name="gaji_pokok" value="<?php ?>">
+                                            <input type="text" class="form-control" name="gaji_pokok" value="<?php echo $rincian_gaji['gaji_pokok'] ?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Tunjangan Bulanan</label>
-                                            <input type="text" name="tun_bulanan" class="form-control" value="<?php ?>">
+                                            <input type="text" name="tun_bulanan" class="form-control" value="<?php echo $rincian_gaji['tun_kehadiran'] ?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Makan</label>
-                                            <input type="text" name="uang_makan" class="form-control" value="<?php ?>">
+                                            <input type="text" name="uang_makan" class="form-control" value="<?php echo $rincian_gaji['uang_makan'] ?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Transport</label>
-                                            <input type="text" name="uang_transport" class="form-control" value="<?php ?>">
+                                            <input type="text" name="uang_transport" class="form-control" value="<?php echo $rincian_gaji['uang_transport'] ?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Lembur</label>
-                                            <input type="text" name="lembur" class="form-control" value="<?php ?>">
+                                            <input type="text" name="lembur" class="form-control" value="<?php echo $rincian_gaji['lembur'] ?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Lain-Lain</label>
-                                            <input type="text" name="lain_lain" class="form-control" value="<?php ?>">
+                                            <input type="text" name="lain_lain" class="form-control" value="<?php echo $rincian_gaji['lain_lain'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label>Periode Awal</label>
+                                            <label>Berlaku Mulai</label>
                                             <select class="form-control" name="tanggal_mulai">
                                                 <option>--Pilih--</option>
-                                                <?php 
-                                                    $bulan = $this->db->get('tb_bulan')->result_array();
-                                                    foreach($bulan as $bln):
-                                                 ?>
-                                                 <option value="<?php echo $bln['id_bulan'];  ?>"><?php echo $bln['bulan']; ?></option>
-                                                 <?php 
-                                                    endforeach;
-                                                  ?>
+                                                <?php
+                                                $bulan = $this->db->get('tb_bulan')->result_array();
+                                                foreach ($bulan as $bln) :
+                                                    if ($bln['id_bulan'] == $rincian_gaji['bulan_mulai']) { ?>
+                                                        <option value="<?php echo $bln['id_bulan'];  ?>" selected><?php echo $bln['bulan']; ?></option>
+                                                    <?php } else { ?>
+                                                        <option value="<?php echo $bln['id_bulan'];  ?>"><?php echo $bln['bulan']; ?></option>
+                                                    <?php }
+                                                    ?>
+                                                <?php
+                                                endforeach;
+                                                ?>
                                             </select>
                                         </div>
                                 </div>
@@ -81,7 +85,7 @@
                         <!-- /.card-body -->
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="<?php echo base_url('Data_pribadi/data_pribadi/' .$nip); ?>" class="btn btn-secondary">Kembali</a>
+                            <a href="<?php echo base_url('Data_pribadi/data_pribadi/' . $nip); ?>" class="btn btn-secondary">Kembali</a>
                         </div>
                         </form>
 

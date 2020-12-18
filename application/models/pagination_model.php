@@ -157,4 +157,15 @@ class Pagination_model extends CI_Model
     {
         return $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY bulan, tahun ASC")->num_rows();
     }
+
+    // halaman RINCIAN GAJI
+    public function getRincianGaji($nip, $limit, $offset)
+    {
+        return $this->db->order_by('status ASC,tahun_akhir DESC, bulan_akhir DESC')->get_where('tb_strukturgaji', ['nip' => $nip], $limit, $offset)->result_array();
+        // return $this->db->query("SELECT nip, bulan, tahun, AVG(value) as rata FROM tb_kpi_value WHERE nip = '$nip' GROUP BY nip, bulan, tahun ORDER BY bulan, tahun ASC LIMIT $offset, $limit")->result_array();
+    }
+    public function getRincianGajiRows($nip)
+    {
+        return $this->db->order_by('status ASC,tahun_akhir DESC, bulan_akhir DESC')->get_where('tb_strukturgaji', ['nip' => $nip])->num_rows();
+    }
 }

@@ -42,4 +42,19 @@ class Hrd_model extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);
     }
+
+    public function getRincianGaji($id_gaji)
+    {
+        return $this->db->get_where('tb_strukturgaji', ['id_strukturGaji' => $id_gaji])->row_array();
+    }
+
+    public function update_gaji($nip, $tanggal_akhir, $tahun_awal)
+    {
+        $this->db->set('tahun_akhir', $tahun_awal);
+        $this->db->set('bulan_akhir', $tanggal_akhir);
+        $this->db->set('status', 1);
+        $this->db->where('nip', $nip);
+        $this->db->where('bulan_akhir', 0);
+        $this->db->update('tb_strukturgaji');
+    }
 }
