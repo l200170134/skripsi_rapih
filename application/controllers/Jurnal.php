@@ -128,9 +128,9 @@ class Jurnal extends CI_Controller
     {
         // $this->session->set_userdata('nip_jurnal', $nipp);
         $nip        = $nipp;
-        $aktivitas  = $this->input->post('aktivitas');
-        $tgl        = $this->input->post('tgl');
-        $jam        = $this->input->post('jam');
+        $aktivitas  = htmlspecialchars($this->input->post('aktivitas'));
+        $tgl        = htmlspecialchars($this->input->post('tgl'));
+        $jam        = htmlspecialchars($this->input->post('jam'));
 
         $data = array(
             'nip'       => $nip,

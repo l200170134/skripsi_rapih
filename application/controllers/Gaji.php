@@ -132,12 +132,12 @@ class Gaji extends CI_Controller
 
     public function gaji_tambah_proses()
     {
-        $nip            = $this->input->post('nip');
-        $gaji           = $this->input->post('gaji');
-        $tgl_pembayaran = $this->input->post('tgl_pembayaran');
+        $nip            = htmlspecialchars($this->input->post('nip'));
+        $gaji           = htmlspecialchars($this->input->post('gaji'));
+        $tgl_pembayaran = htmlspecialchars($this->input->post('tgl_pembayaran'));
         $tgl_pembayaran = date('Y-m-d', strtotime($tgl_pembayaran));
-        $bulan           = $this->input->post('bulan');
-        $tahun           = $this->input->post('tahun');
+        $bulan           = htmlspecialchars($this->input->post('bulan'));
+        $tahun           = htmlspecialchars($this->input->post('tahun'));
 
         $data = array(
             'nip'               => $nip,
@@ -178,13 +178,13 @@ class Gaji extends CI_Controller
 
     public function gaji_update_proses()
     {
-        $id_gaji        = $this->input->post('id_gaji');
-        $nip            = $this->input->post('nip');
-        $gaji           = $this->input->post('gaji');
-        $tgl_pembayaran = $this->input->post('tgl_pembayaran');
+        $id_gaji        = htmlspecialchars($this->input->post('id_gaji'));
+        $nip            = htmlspecialchars($this->input->post('nip'));
+        $gaji           = htmlspecialchars($this->input->post('gaji'));
+        $tgl_pembayaran = htmlspecialchars($this->input->post('tgl_pembayaran'));
         $tgl_pembayaran = date('Y-m-d', strtotime($tgl_pembayaran));
-        $bulan           = $this->input->post('bulan');
-        $tahun           = $this->input->post('tahun');
+        $bulan           = htmlspecialchars($this->input->post('bulan'));
+        $tahun           = htmlspecialchars($this->input->post('tahun'));
 
         $data = array(
             'id_gaji'           => $id_gaji,
@@ -252,20 +252,20 @@ class Gaji extends CI_Controller
     }
     public function rinciangaji_tambah_proses()
     {
-        $nip               = $this->input->post('nip');
-        $gaji_pokok        = $this->input->post('gaji_pokok');
-        $tun_bulanan       = $this->input->post('tun_kehadiran');
-        $uang_makan        = $this->input->post('uang_makan');
-        $uang_transport    = $this->input->post('uang_transport');
-        $lembur            = $this->input->post('lembur');
-        $lain_lain         = $this->input->post('lain_lain');
-        $tanggal_mulai     = $this->input->post('tanggal_mulai');
+        $nip               = htmlspecialchars($this->input->post('nip'));
+        $gaji_pokok        = htmlspecialchars($this->input->post('gaji_pokok'));
+        $tun_kehadiran       = htmlspecialchars($this->input->post('tun_kehadiran'));
+        $uang_makan        = htmlspecialchars($this->input->post('uang_makan'));
+        $uang_transport    = htmlspecialchars($this->input->post('uang_transport'));
+        $lembur            = htmlspecialchars($this->input->post('lembur'));
+        $lain_lain         = htmlspecialchars($this->input->post('lain_lain'));
+        $tanggal_mulai     = htmlspecialchars($this->input->post('tanggal_mulai'));
         $tahun_mulai       = date('Y');
 
         $data = array(
             'nip'           => $nip,
             'gaji_pokok'    => $gaji_pokok,
-            'tun_bulanan'   => $tun_bulanan,
+            'tun_kehadiran'   => $tun_kehadiran,
             'uang_makan'    => $uang_makan,
             'uang_transport' => $uang_transport,
             'lembur'        => $lembur,
@@ -298,5 +298,33 @@ class Gaji extends CI_Controller
         </div>'
         );
         redirect('Data_pribadi/data_pribadi/' . $nip);
+    }
+    public function rinciangaji_update_proses($id_strukturGaji){
+        $nip                = htmlspecialchars($this->input->post('nip'));
+        $gaji_pokok        = htmlspecialchars($this->input->post('gaji_pokok'));
+        $tun_kehadiran      = htmlspecialchars($this->input->post('tun_kehadiran'));
+        $uang_makan        = htmlspecialchars($this->input->post('uang_makan'));
+        $uang_transport    = htmlspecialchars($this->input->post('uang_transport'));
+        $lembur            = htmlspecialchars($this->input->post('lembur'));
+        $lain_lain         = htmlspecialchars($this->input->post('lain_lain'));
+        $bulan_mulai     = htmlspecialchars($this->input->post('bulan_mulai');
+        $tahun_mulai       = date('Y');
+
+        $data = array(
+            'gaji_pokok'    => $gaji_pokok,
+            'tun_kehadiran'   => $tun_kehadiran,
+            'uang_makan'    => $uang_makan,
+            'uang_transport' => $uang_transport,
+            'lembur'        => $lembur,
+            'lain_lain'     => $lain_lain,
+            'bulan_mulai'   => $bulan_mulai,
+            'tahun_awal'   => $tahun_mulai
+        );
+        $where = array(
+            'id_strukturGaji'        => $id_strukturGaji
+        );
+        $this->hrd_model->updategaji_update($nip, $bulan_mulai, $tahun_mulai);
+        $this->hrd_model->update_proses($where, $data, 'tb_strukturgaji');
+        redirect('Data_pribadi/data_pribadi/' .$nip);        
     }
 }

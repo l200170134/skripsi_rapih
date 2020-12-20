@@ -32,17 +32,17 @@
                             <div class="row">
                                 <!-- form bagian kiri -->
                                 <div class="col-12">
-                                    <form action="<?php echo base_url('rinciangaji_tambah_proses/' . $nip); ?>" method="post">
+                                    <form action="<?php echo base_url('Gaji/rinciangaji_update_proses/' . $rincian_gaji['id_strukturGaji']); ?>" method="post">
                                         <!-- bagian hidden -->
-                                        <input type="text" name="nip" value="<?php echo $nip; ?>" class="form-control" hidden>
+                                        <input type="text" name="nip" value="<?php echo $rincian_gaji['nip']; ?>" hidden>
                                         <!-- end bagian hidden -->
                                         <div class="form-group">
                                             <label>Gaji Pokok</label>
                                             <input type="text" class="form-control" name="gaji_pokok" value="<?php echo $rincian_gaji['gaji_pokok'] ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label>Tunjangan Bulanan</label>
-                                            <input type="text" name="tun_bulanan" class="form-control" value="<?php echo $rincian_gaji['tun_kehadiran'] ?>">
+                                            <label>Tunjangan Kehadiran</label>
+                                            <input type="text" name="tun_kehadiran" class="form-control" value="<?php echo $rincian_gaji['tun_kehadiran'] ?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Makan</label>
@@ -62,11 +62,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Berlaku Mulai</label>
-                                            <select class="form-control" name="tanggal_mulai">
+                                            <select class="form-control" name="bulan_mulai">
                                                 <option>--Pilih--</option>
                                                 <?php
                                                 $bulan = $this->db->get('tb_bulan')->result_array();
-                                                foreach ($bulan as $bln) :
+                                                foreach ($bulan as $bln):
                                                     if ($bln['id_bulan'] == $rincian_gaji['bulan_mulai']) { ?>
                                                         <option value="<?php echo $bln['id_bulan'];  ?>" selected><?php echo $bln['bulan']; ?></option>
                                                     <?php } else { ?>
@@ -77,7 +77,9 @@
                                                 endforeach;
                                                 ?>
                                             </select>
+                                            <div class="form-control" value="<?php echo $rincian_gaji['tahun_awal']; ?>" hidden><?php echo $rincian_gaji['tahun_awal']; ?></div>
                                         </div>
+                                        
                                 </div>
                             </div>
                             <!-- end row -->

@@ -171,32 +171,32 @@ class Data_karyawan extends CI_Controller
 
     public function detail_karyawan_update($nip)
     {
-        $id_user        = $this->input->post('id_user');
-        $nama           = $this->input->post('nama');
-        $nip_new        = $this->input->post('nip');
-        $id_divisi      = $this->input->post('id_divisi');
-        $username       = $this->input->post('username');
-        $password       = $this->input->post('password');
-        $role_id        = $this->input->post('role_id');
-        $is_active      = $this->input->post('is_active');
-        $email          = $this->input->post('email');
+        $id_user        = htmlspecialchars($this->input->post('id_user'));
+        $nama           =  htmlspecialchars($this->input->post('nama'));
+        $nip_new        =  htmlspecialchars($this->input->post('nip'));
+        $id_divisi      =  htmlspecialchars($this->input->post('id_divisi'));
+        $username       =  htmlspecialchars($this->input->post('username'));
+        $password       =  htmlspecialchars($this->input->post('password'));
+        $role_id        =  htmlspecialchars($this->input->post('role_id'));
+        $is_active      =  htmlspecialchars($this->input->post('is_active'));
+        $email          =  htmlspecialchars($this->input->post('email'));
 
-        $tempat_lahir   = $this->input->post('tempat_lahir');
-        $tgl_lahir      = $this->input->post('tgl_lahir');
+        $tempat_lahir   =  htmlspecialchars($this->input->post('tempat_lahir'));
+        $tgl_lahir      =  htmlspecialchars($this->input->post('tgl_lahir'));
         $tgl_lahir      = date('Y-m-d', strtotime($tgl_lahir));
-        $no_hp          = $this->input->post('no_hp');
-        $no_hp_kel      = $this->input->post('no_hp_kel');
-        $bank           = $this->input->post('bank');
-        $no_rek         = $this->input->post('no_rek');
-        $npwp           = $this->input->post('npwp');
-        $perusahaan     = $this->input->post('perusahaan');
-        $office         = $this->input->post('office');
-        $pernikahan     = $this->input->post('pernikahan');
-        $alamat         = $this->input->post('alamat');
-        $alamat_ktp     = $this->input->post('alamat_ktp');
-        $jabatan        = $this->input->post('jabatan');
-        $nik            = $this->input->post('nik');
-        $jk             = $this->input->post('jk');
+        $no_hp          =  htmlspecialchars($this->input->post('no_hp'));
+        $no_hp_kel      =  htmlspecialchars($this->input->post('no_hp_kel'));
+        $bank           =  htmlspecialchars($this->input->post('bank'));
+        $no_rek         =  htmlspecialchars($this->input->post('no_rek'));
+        $npwp           =  htmlspecialchars($this->input->post('npwp'));
+        $perusahaan     =  htmlspecialchars($this->input->post('perusahaan'));
+        $office         =  htmlspecialchars($this->input->post('office'));
+        $pernikahan     =  htmlspecialchars($this->input->post('pernikahan'));
+        $alamat         =  htmlspecialchars($this->input->post('alamat'));
+        $alamat_ktp     =  htmlspecialchars($this->input->post('alamat_ktp'));
+        $jabatan        =  htmlspecialchars($this->input->post('jabatan'));
+        $nik            =  htmlspecialchars($this->input->post('nik'));
+        $jk             =  htmlspecialchars($this->input->post('jk'));
         //$image          = $this->input->post('image');
 
         $karyawan = $this->db->get_where('user', ['nip' => $nip])->result_array();
@@ -264,32 +264,32 @@ class Data_karyawan extends CI_Controller
 
     public function detail_karyawan_tambah()
     {
-        $nama       = $this->input->post('nama');
-        $nip        = $this->input->post('nip');
-        $id_divisi  = $this->input->post('id_divisi');
-        $username   = $this->input->post('username');
-        $password   = $this->input->post('password');
-        $role_id    = $this->input->post('role_id');
-        $is_active  = $this->input->post('is_active');
-        $email      = $this->input->post('email');
+        $nama       =  htmlspecialchars($this->input->post('nama'));
+        $nip        =  htmlspecialchars($this->input->post('nip'));
+        $id_divisi  =  htmlspecialchars($this->input->post('id_divisi'));
+        $username   =  htmlspecialchars($this->input->post('username'));
+        $password   =  htmlspecialchars($this->input->post('password'));
+        $role_id    =  htmlspecialchars($this->input->post('role_id'));
+        $is_active  =  htmlspecialchars($this->input->post('is_active'));
+        $email      =  htmlspecialchars($this->input->post('email'));
 
-        $tempat_lahir = $this->input->post('tempat_lahir');
-        $tgl_lahir  = $this->input->post('tgl_lahir');
+        $tempat_lahir =  htmlspecialchars($this->input->post('tempat_lahir'));
+        $tgl_lahir  =  htmlspecialchars($this->input->post('tgl_lahir'));
         $tgl_lahir  = date('Y-m-d', strtotime($tgl_lahir));
-        $no_hp      = $this->input->post('no_hp');
-        $no_hp_kel  = $this->input->post('no_hp_kel');
-        $bank       = $this->input->post('bank');
-        $no_rek     = $this->input->post('no_rek');
-        $npwp       = $this->input->post('npwp');
-        $perusahaan = $this->input->post('perusahaan');
-        $office     = $this->input->post('office');
-        $pernikahan = $this->input->post('pernikahan');
-        $alamat     = $this->input->post('alamat');
-        $alamat_ktp = $this->input->post('alamat_ktp');
-        $jabatan    = $this->input->post('jabatan');
-        $image      = $this->input->post('image');
-        $nik        = $this->input->post('nik');
-        $jk         = $this->input->post('jk');
+        $no_hp      =  htmlspecialchars($this->input->post('no_hp'));
+        $no_hp_kel  =  htmlspecialchars($this->input->post('no_hp_kel'));
+        $bank       =  htmlspecialchars($this->input->post('bank'));
+        $no_rek     =  htmlspecialchars($this->input->post('no_rek'));
+        $npwp       =  htmlspecialchars($this->input->post('npwp'));
+        $perusahaan =  htmlspecialchars($this->input->post('perusahaan'));
+        $office     =  htmlspecialchars($this->input->post('office'));
+        $pernikahan =  htmlspecialchars($this->input->post('pernikahan'));
+        $alamat     =  htmlspecialchars($this->input->post('alamat'));
+        $alamat_ktp =  htmlspecialchars($this->input->post('alamat_ktp'));
+        $jabatan    =  htmlspecialchars($this->input->post('jabatan'));
+        $image      =  htmlspecialchars($this->input->post('image'));
+        $nik        =  htmlspecialchars($this->input->post('nik'));
+        $jk         =  htmlspecialchars($this->input->post('jk'));
         $image          = $_FILES['image'];
         if ($image = '') {
         } else {

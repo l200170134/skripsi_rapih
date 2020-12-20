@@ -195,10 +195,10 @@ class Monitoring extends CI_Controller
 
     public function monitoring_proses_update($id)
     {
-        $evaluasi   = $this->input->post('evaluasi');
-        $nama       = $this->session->userdata('username');
-        $status     = $this->input->post('status');
-        $urgensi    = $this->input->post('urgensi');
+        $evaluasi   = htmlspecialchars($this->input->post('evaluasi'));
+        $nama       = htmlspecialchars($this->session->userdata('username'));
+        $status     = htmlspecialchars($this->input->post('status'));
+        $urgensi    = htmlspecialchars($this->input->post('urgensi'));
         $active     = 1;
 
         // update tabel evaluasi
@@ -231,10 +231,10 @@ class Monitoring extends CI_Controller
     public function monitoring_tambah($id)
     {
         $id_daily   = $id;
-        $evaluasi   = $this->input->post('evaluasi');
-        $nama       = $this->session->userdata('username');
-        $status     = $this->input->post('status');
-        $urgensi    = $this->input->post('urgensi');
+        $evaluasi   = htmlspecialchars($this->input->post('evaluasi'));
+        $nama       = htmlspecialchars($this->session->userdata('username'));
+        $status     = htmlspecialchars($this->input->post('status'));
+        $urgensi    = htmlspecialchars($this->input->post('urgensi'));
         $active     = 1;
 
         // Insert tabel evaluasi

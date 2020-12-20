@@ -66,14 +66,14 @@ class Kinerja extends CI_Controller
     }
     public function kinerja_proses_tambah()
     {
-        $nip        = $this->input->post('nip');
-        $bulan      = $this->input->post('bulan');
-        $tahun      = $this->input->post('tahun');
-        $hrd_1      = $this->input->post('hrd_1');
-        $hrd_2      = $this->input->post('hrd_2');
-        $ma_1       = $this->input->post('ma_1');
-        $ma_2       = $this->input->post('ma_2');
-        $ma_3       = $this->input->post('ma_3');
+        $nip        = htmlspecialchars($this->input->post('nip'));
+        $bulan      = htmlspecialchars($this->input->post('bulan'));
+        $tahun      = htmlspecialchars($this->input->post('tahun'));
+        $hrd_1      = htmlspecialchars($this->input->post('hrd_1'));
+        $hrd_2      = htmlspecialchars($this->input->post('hrd_2'));
+        $ma_1       = htmlspecialchars($this->input->post('ma_1'));
+        $ma_2       = htmlspecialchars($this->input->post('ma_2'));
+        $ma_3       = htmlspecialchars($this->input->post('ma_3'));
         $point      = ($hrd_1 + $hrd_2 + $ma_1 + $ma_2 + $ma_3) / 5;
 
         $data = array(
@@ -101,12 +101,12 @@ class Kinerja extends CI_Controller
     }
     public function kinerja_proses_update()
     {
-        $id         = $this->input->post('id');
-        $hrd_1      = $this->input->post('hrd_1');
-        $hrd_2      = $this->input->post('hrd_2');
-        $ma_1       = $this->input->post('ma_1');
-        $ma_2       = $this->input->post('ma_2');
-        $ma_3       = $this->input->post('ma_3');
+        $id         = htmlspecialchars($this->input->post('id'));
+        $hrd_1      = htmlspecialchars($this->input->post('hrd_1'));
+        $hrd_2      = htmlspecialchars($this->input->post('hrd_2'));
+        $ma_1       = htmlspecialchars($this->input->post('ma_1'));
+        $ma_2       = htmlspecialchars($this->input->post('ma_2'));
+        $ma_3       = htmlspecialchars($this->input->post('ma_3'));
         $point      = ($hrd_1 + $hrd_2 + $ma_1 + $ma_2 + $ma_3) / 5;
 
 

@@ -42,7 +42,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Tunjangan Bulanan</label>
-                                            <input type="text" name="tun_bulanan" class="form-control" required>
+                                            <input type="text" name="tun_kehadiran" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Makan</label>

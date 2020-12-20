@@ -163,8 +163,8 @@ class Evaluasi extends CI_Controller
 
     public function kpi_tambah_proses($id)
     {
-        $pertanyaan             = $this->input->post('pertanyaan');
-        $id_divisi              = $this->input->post('id_divisi');
+        $pertanyaan             = htmlspecialchars($this->input->post('pertanyaan'));
+        $id_divisi              = htmlspecialchars($this->input->post('id_divisi'));
         // $id_kpi                 = $this->input->post('id_kpi');
 
         $data = array(
@@ -218,9 +218,9 @@ class Evaluasi extends CI_Controller
 
     public function kpi_update_proses()
     {
-        $id_pertanyaan          = $this->input->post('id_pertanyaan');
-        $pertanyaan             = $this->input->post('pertanyaan');
-        $id_divisi              = $this->input->post('id_divisi');
+        $id_pertanyaan          = htmlspecialchars($this->input->post('id_pertanyaan'));
+        $pertanyaan             = htmlspecialchars($this->input->post('pertanyaan'));
+        $id_divisi              = htmlspecialchars($this->input->post('id_divisi'));
 
         $data = array(
             'pertanyaan'        => $pertanyaan,
@@ -321,12 +321,12 @@ class Evaluasi extends CI_Controller
     {
         $kpi_data = $this->db->get_where('tb_kpi', ['id_divisi' => $id_divisi, 'active' => 1])->result_array();
         foreach ($kpi_data as $kpi) {
-            $nip            = $this->input->post('nip');
+            $nip            = htmlspecialchars($this->input->post('nip'));
             $kpiFK          = $kpi['id_pertanyaan'];
-            $id_divisi      = $this->input->post('id_divisi');
-            $bulan          = $this->input->post('bulan');
-            $tahun          = $this->input->post('tahun');
-            $value          = $this->input->post($kpi['id_pertanyaan']);
+            $id_divisi      = htmlspecialchars($this->input->post('id_divisi'));
+            $bulan          = htmlspecialchars($this->input->post('bulan'));
+            $tahun          = htmlspecialchars($this->input->post('tahun'));
+            $value          = htmlspecialchars($this->input->post($kpi['id_pertanyaan']));
             $data = array(
                 'nip'           => $nip,
                 'kpiFK'         => $kpiFK,

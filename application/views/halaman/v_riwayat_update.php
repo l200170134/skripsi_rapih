@@ -39,6 +39,7 @@ $nip = $status['nip'];
                                         <?php
                                         foreach ($update as $up) :
                                         ?>
+                                            
                                             <input type="text" name="nip" value=" <?php echo $up->nip; ?>" hidden>
                                             <input type="text" name="id_status" value=" <?php echo $up->id_status; ?>" hidden>
                                             <div class="form-group">

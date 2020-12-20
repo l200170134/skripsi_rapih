@@ -172,14 +172,14 @@ class Daily extends CI_Controller
 
     public function daily_proses_tambah()
     {
-        $nip            = $this->input->post('nip');
-        $id_divisi      = $this->session->userdata('divisi');
-        $tgl            = $this->input->post('tgl');
-        $aktivitas      = $this->input->post('aktivitas');
-        $hasil          = $this->input->post('hasil');
-        $catatan        = $this->input->post('catatan');
-        $status         = $this->input->post('status');
-        $urgensi        = $this->input->post('urgensi');
+        $nip            = htmlspecialchars($this->input->post('nip'));
+        $id_divisi      = htmlspecialchars($this->session->userdata('divisi'));
+        $tgl            = htmlspecialchars($this->input->post('tgl'));
+        $aktivitas      = htmlspecialchars($this->input->post('aktivitas'));
+        $hasil          = htmlspecialchars($this->input->post('hasil'));
+        $catatan        = htmlspecialchars($this->input->post('catatan'));
+        $status         = htmlspecialchars($this->input->post('status'));
+        $urgensi        = htmlspecialchars($this->input->post('urgensi'));
 
         $data = array(
             'nip'       => $nip,
@@ -237,9 +237,9 @@ class Daily extends CI_Controller
     public function daily_proses_update()
     {
         $role_id        = $this->session->userdata('role_id');
-        $id             = $this->input->post('id');
-        $catatan        = $this->input->post('catatan');
-        $hasil          = $this->input->post('hasil');
+        $id             = htmlspecialchars($this->input->post('id'));
+        $catatan        = htmlspecialchars($this->input->post('catatan'));
+        $hasil          = htmlspecialchars($this->input->post('hasil'));
 
         if ($role_id == 2 && $hasil == 'Selesai') {
             $status     = 'Approve';

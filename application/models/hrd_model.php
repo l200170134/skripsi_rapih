@@ -57,4 +57,14 @@ class Hrd_model extends CI_Model
         $this->db->where('bulan_akhir', 0);
         $this->db->update('tb_strukturgaji');
     }
+    public function updategaji_update($nip, $bulan_mulai, $tahun_awal)
+    {
+        // $this->db->set('bulan_akhir', $bulan_mulai);
+        // $this->db->set('tahun_akhir', $tahun_awal);
+        // $this->db->where('nip', $nip);
+        // $this->db->where('status', 1);
+        // $this->db->LIMIT(1);
+        $this->db->query(" UPDATE tb_strukturgaji SET bulan_akhir='$bulan_mulai', tahun_akhir='$tahun_awal' WHERE nip='$nip' AND status=1 ORDER BY id_strukturGaji DESC LIMIT 1");
+
+    }
 }

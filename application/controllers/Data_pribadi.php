@@ -21,6 +21,7 @@ class Data_pribadi extends CI_Controller
         $data['status_p'] = $this->db->order_by('id_status', 'desc')->get_where('tb_status_data', ['nip' => $nip], 1)->row_array();
         $data['status'] = $this->db->get_where('tb_status_data', ['nip' => $nip])->result_array();
         $data['back'] = 0;
+        $data['gaji_str'] = $this->db->order_by('status ASC,tahun_akhir DESC, bulan_akhir DESC')->get_where('tb_strukturgaji', ['nip' => $nip])->result_array();
 
         // PAGINATION
         $this->load->model('Pagination_model', 'page');
@@ -143,11 +144,11 @@ class Data_pribadi extends CI_Controller
 
     public function status_karyawan_tambah($nip_get)
     {
-        $nip            = $this->input->post('nip');
-        $status         = $this->input->post('status');
-        $tgl_mulai      = $this->input->post('tgl_mulai');
+        $nip            = htmlspecialchars($this->input->post('nip'));
+        $status         = htmlspecialchars($this->input->post('status'));
+        $tgl_mulai      = htmlspecialchars($this->input->post('tgl_mulai'));
         $tgl_mulai      = date('Y-m-d', strtotime($tgl_mulai));
-        $tgl_akhir      = $this->input->post('tgl_akhir');
+        $tgl_akhir      = htmlspecialchars($this->input->post('tgl_akhir'));
         $tgl_akhir      = date('Y-m-d', strtotime($tgl_akhir));
 
         $data = array(
@@ -190,12 +191,12 @@ class Data_pribadi extends CI_Controller
     public function status_karyawan_update_proses($nip_get)
     {
 
-        $id_status      = $this->input->post('id_status');
-        $status         = $this->input->post('status');
+        $id_status      = htmlspecialchars($this->input->post('id_status'));
+        $status         = htmlspecialchars($this->input->post('status'));
         // $nip            = $this->input->post('nip');
-        $tgl_mulai      = $this->input->post('tgl_mulai');
+        $tgl_mulai      = htmlspecialchars($this->input->post('tgl_mulai'));
         $tgl_mulai      = date('Y-m-d', strtotime($tgl_mulai));
-        $tgl_akhir      = $this->input->post('tgl_akhir');
+        $tgl_akhir      = htmlspecialchars($this->input->post('tgl_akhir'));
         $tgl_akhir      = date('Y-m-d', strtotime($tgl_akhir));
 
         $data = array(

@@ -165,7 +165,13 @@ $link = $this->session->userdata('link_kar');
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <a href="<?php echo base_url('Gaji/rinciangaji_form/' . $kar['nip']); ?>" class="btn btn-success p-1 ml-2 mb-3 btn-sm">Perbaharui Rincian Gaji</a>
+                                    <?php
+                                        if($role_id==3){ ?>
+                                            <a href="<?php echo base_url('Gaji/rinciangaji_form/' . $kar['nip']); ?>" class="btn btn-success p-1 ml-2 mb-3 btn-sm">Perbaharui Rincian Gaji</a>
+                                    <?php
+                                        } else {}
+                                    ?>
+                                    
                                     <div class="col-12">
                                         <?php
                                         echo $this->session->flashdata('tambahRincianGaji');
@@ -182,7 +188,13 @@ $link = $this->session->userdata('link_kar');
                                                     <th width="150px">Bulan Mulai</th>
                                                     <th width="150px">Berlaku sampai</th>
                                                     <th width="100px">Status</th>
-                                                    <th width="150px">Aksi</th>
+                                                    <?php
+                                                    if($role_id==3){ ?>
+                                                        <th width="150px">Aksi</th>
+                                                    <?php
+                                                        } else {}
+                                                    ?>            
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -204,11 +216,18 @@ $link = $this->session->userdata('link_kar');
                                                             <?php
                                                             $get_akhir = $gaji['bulan_akhir'];
                                                             $bulan_akhir = $this->db->get_where('tb_bulan', ['id_bulan' => $get_akhir])->row_array();
-                                                            if ($bulan_akhir['id_bulan'] != 0) {
+                                                            
+                                                            if ($bulan_akhir != NULL){
+                                                                if ($bulan_akhir['id_bulan'] != 0) {
                                                                 echo $bulan_akhir['bulan'] . ' ' . $gaji['tahun_akhir'];
+                                                                } else {
+                                                                    echo "<span class='badge badge-success'>Sekarang</span>";
+                                                                }
                                                             } else {
-                                                                echo "<span class='badge badge-success'>Sekarang</span>";
-                                                            } ?>
+                                                                    echo "<span class='badge badge-success'>Sekarang</span>";
+                                                            }
+                                                             ?>
+                                                            
                                                         </td>
                                                         <td>
                                                             <?php if ($gaji['status'] == 0) { ?>
@@ -217,13 +236,19 @@ $link = $this->session->userdata('link_kar');
                                                                 <span class="badge badge-secondary">Berakhir</span>
                                                             <?php } ?>
                                                         </td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#modalGaji"><i class="fas fa-eye " style="color:white;" title="Lihat Detail"></i></button>
-                                                            <?php echo anchor('Gaji/rinciangaji_update/' . $gaji['id_strukturGaji'], '<div class="btn btn-warning btn-sm mr-2" title="Update Rincian Gaji"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
-                                                            <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
-                                                                <?php echo anchor('Gaji/rincian_hapus/' . $gaji['id_strukturGaji'], '<div class="btn btn-danger btn-sm"  title="Hapus Rincian Gaji"><i class="fas fa-trash-alt" style="color:white;"></i></div>'); ?>
-                                                            </label>
-                                                        </td>
+                                                        <?php
+                                                            if($role_id==3){ ?>
+                                                            <td>
+                                                                <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#modalGaji-<?= $gaji['id_strukturGaji'] ?>" id="<?php $gaji['id_strukturGaji']; ?>"><i class="fas fa-eye " style="color:white;" title="Lihat Detail"></i></button>
+                                                                <?php echo anchor('Gaji/rinciangaji_update/' . $gaji['id_strukturGaji'], '<div class="btn btn-warning btn-sm mr-2" title="Update Rincian Gaji"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
+                                                                <label onclick="javascript: return confirm('Anda yakin ingin menghapus')">
+                                                                    <?php echo anchor('Gaji/rincian_hapus/' . $gaji['id_strukturGaji'], '<div class="btn btn-danger btn-sm"  title="Hapus Rincian Gaji"><i class="fas fa-trash-alt" style="color:white;"></i></div>'); ?>
+                                                                </label>
+                                                            </td>
+                                                        <?php
+                                                            } else {}
+                                                        ?>   
+                                                        
                                                     </tr>
                                                 <?php
                                                 endforeach;
@@ -376,7 +401,10 @@ $link = $this->session->userdata('link_kar');
 <!-- /.content-wrapper -->
 
 <!-- Modal -->
-<div class="modal fade" id="modalGaji" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php 
+    foreach ($gaji_str as $modal):
+ ?>
+<div class="modal fade" id="modalGaji-<?= $modal['id_strukturGaji'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -387,9 +415,7 @@ $link = $this->session->userdata('link_kar');
             </div>
             <div class="modal-body">
                 <table style="table-layout: fixed; word-wrap: break-word;" class="table table-hover">
-                    <?php
-                    foreach ($gaji_str as $gaji) :
-                    ?>
+                    
                         <thead class="bg-secondary">
                             <tr>
                                 <th>Rincian</th>
@@ -399,26 +425,26 @@ $link = $this->session->userdata('link_kar');
                         <tbody>
                             <tr>
                                 <td>Tunjangan Kehadiran</td>
-                                <td><?php echo $gaji['tun_bulanan']; ?></td>
+                                <td><?php echo $modal['tun_kehadiran']; ?></td>
                             </tr>
                             <tr>
                                 <td>Uang Makan</td>
-                                <td><?php echo $gaji['uang_makan']; ?></td>
+                                <td><?php echo $modal['uang_makan']; ?></td>
                             </tr>
                             <tr>
                                 <td>Uang Transport</td>
-                                <td><?php echo $gaji['uang_transport']; ?></td>
+                                <td><?php echo $modal['uang_transport']; ?></td>
                             </tr>
                             <tr>
-                                <td>Lain-lain</td>
-                                <td><?php echo $gaji['lain_lain']; ?></td>
+                                <td>Lembur</td>
+                                <td><?php echo $modal['lembur']; ?></td>
                             </tr>
                             <tr>
-                                <td>Over Time</td>
-                                <td><?php echo $gaji['lembur']; ?></td>
+                                <td>Lain-Lain</td>
+                                <td><?php echo $modal['lain_lain']; ?></td>
                             </tr>
+                           
                         </tbody>
-                    <?php endforeach; ?>
                 </table>
             </div>
             <div class="modal-footer">
@@ -427,3 +453,4 @@ $link = $this->session->userdata('link_kar');
         </div>
     </div>
 </div>
+<?php  endforeach; ?>
