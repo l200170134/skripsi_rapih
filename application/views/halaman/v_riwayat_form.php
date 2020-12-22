@@ -60,7 +60,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Tanggal Selesai</label>
-                                            <input type="date" name="tgl_akhir" class="form-control" value="<?php echo date("d-m-Y") ?>" required>
+                                            <input type="date" name="tgl_akhir" class="form-control" value="<?php echo date("d-m-Y") ?>">
                                         </div>
                                 </div>
                                 <!-- end form bagian kanan -->

@@ -150,6 +150,11 @@ class Data_pribadi extends CI_Controller
         $tgl_mulai      = date('Y-m-d', strtotime($tgl_mulai));
         $tgl_akhir      = htmlspecialchars($this->input->post('tgl_akhir'));
         $tgl_akhir      = date('Y-m-d', strtotime($tgl_akhir));
+        if ($tgl_akhir == '1970-01-01') {
+            $tgl_akhir = 0;
+        } else {
+            $tgl_akhir = $tgl_akhir;
+        }
 
         $data = array(
             'nip'        => $nip,

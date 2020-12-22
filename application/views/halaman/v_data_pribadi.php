@@ -360,7 +360,16 @@ $link = $this->session->userdata('link_kar');
                                                         ?>
                                                     </td>
                                                     <td><?php echo date('d-m-Y', strtotime($st['tgl_mulai'])); ?></td>
-                                                    <td><?php echo date('d-m-Y', strtotime($st['tgl_akhir'])); ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($st['tgl_akhir'] == 0) { ?>
+                                                            <span class="badge badge-success">Sekarang</span>
+                                                        <?php
+                                                        } else {
+                                                            echo date('d-m-Y', strtotime($st['tgl_akhir']));
+                                                        }
+                                                        ?>
+                                                    </td>
                                                     <td>
                                                         <?php if ($st['aktivasi'] == 1) { ?>
                                                             <span class="badge badge-secondary">Berakhir</span>
