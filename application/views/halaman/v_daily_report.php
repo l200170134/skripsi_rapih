@@ -37,6 +37,7 @@ $tgl_akhir = $this->session->userdata('tgl_akhir');
                             </div>
                         </div>
                         <!-- /.card-header -->
+
                         <div class="card-body">
                             <form method="post" action="<?php base_url('Daily/daily_report'); ?>">
                                 <div class="form-group">

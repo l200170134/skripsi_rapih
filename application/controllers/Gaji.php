@@ -299,7 +299,8 @@ class Gaji extends CI_Controller
         );
         redirect('Data_pribadi/data_pribadi/' . $nip);
     }
-    public function rinciangaji_update_proses($id_strukturGaji){
+    public function rinciangaji_update_proses($id_strukturGaji)
+    {
         $nip                = htmlspecialchars($this->input->post('nip'));
         $gaji_pokok        = htmlspecialchars($this->input->post('gaji_pokok'));
         $tun_kehadiran      = htmlspecialchars($this->input->post('tun_kehadiran'));
@@ -307,7 +308,7 @@ class Gaji extends CI_Controller
         $uang_transport    = htmlspecialchars($this->input->post('uang_transport'));
         $lembur            = htmlspecialchars($this->input->post('lembur'));
         $lain_lain         = htmlspecialchars($this->input->post('lain_lain'));
-        $bulan_mulai     = htmlspecialchars($this->input->post('bulan_mulai');
+        $bulan_mulai     = htmlspecialchars($this->input->post('bulan_mulai'));
         $tahun_mulai       = date('Y');
 
         $data = array(
@@ -325,6 +326,6 @@ class Gaji extends CI_Controller
         );
         $this->hrd_model->updategaji_update($nip, $bulan_mulai, $tahun_mulai);
         $this->hrd_model->update_proses($where, $data, 'tb_strukturgaji');
-        redirect('Data_pribadi/data_pribadi/' .$nip);        
+        redirect('Data_pribadi/data_pribadi/' . $nip);
     }
 }

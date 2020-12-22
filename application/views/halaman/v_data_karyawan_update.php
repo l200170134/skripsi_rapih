@@ -48,13 +48,13 @@ $id_divisi = $this->session->userdata('divisi_page');
                                     <div class="col-lg-6 col-12 pl-3 pr-3">
                                         <div class="form-group">
                                             <label for="nama">Nama</label>
-                                            <input type="text" class="form-control" name="nama" value="<?php echo $ud->nama; ?>">
+                                            <input type="text" class="form-control" name="nama" value="<?php echo $ud->nama; ?>" maxlength="100">
                                         </div>
                                         <div class="form-group">
                                             <label for="nama">Tempat, Tanggal Lahir</label>
                                             <div class="row">
                                                 <div class="col-lg-6 col-12">
-                                                    <input type="text" class="form-control" name="tempat_lahir" value="<?php echo $ud->tempat_lahir; ?>">
+                                                    <input type="text" class="form-control" name="tempat_lahir" value="<?php echo $ud->tempat_lahir; ?>" maxlength="100">
                                                 </div>
                                                 <div class="col-lg-6 col-12">
                                                     <input type="date" class="form-control" name="tgl_lahir" value="<?php echo $ud->tgl_lahir; ?>">
@@ -71,7 +71,7 @@ $id_divisi = $this->session->userdata('divisi_page');
                                         </div>
                                         <div class="form-group">
                                             <label>NIP</label>
-                                            <input type="text" class="form-control" name="nip" value="<?php echo $ud->nip; ?>">
+                                            <input type="text" class="form-control" name="nip" value="<?php echo $ud->nip; ?>" maxlength="16">
                                         </div>
                                         <div class="form-group">
                                             <label>Divisi</label>
@@ -98,7 +98,7 @@ $id_divisi = $this->session->userdata('divisi_page');
                                                 <?php
                                                 $jabatan = $this->db->get('tb_jabatan')->result_array();
                                                 foreach ($jabatan as $jb) :
-                                                    if ($jabatan['jabatan'] == $ud->jabatan) { ?>
+                                                    if ($jb['jabatan'] == $ud->jabatan) { ?>
                                                         <option value="<?php echo $jb['jabatan']; ?>" selected><?php echo $jb['jabatan']; ?></option>
                                                     <?php } else { ?>
                                                         <option value="<?php echo $jb['jabatan']; ?>"><?php echo $jb['jabatan']; ?></option>
@@ -111,11 +111,11 @@ $id_divisi = $this->session->userdata('divisi_page');
                                         </div>
                                         <div class="form-group">
                                             <label for="no_hp">No. HP</label>
-                                            <input type="text" class="form-control" name="no_hp" value="<?php echo $ud->no_hp; ?>">
+                                            <input type="text" class="form-control" name="no_hp" value="<?php echo $ud->no_hp; ?>" maxlength="13">
                                         </div>
                                         <div class="form-group">
                                             <label for="no_keluarga">No. HP Keluarga</label>
-                                            <input type="text" class="form-control" name="no_hp_kel" value="<?php echo $ud->no_hp_kel; ?>">
+                                            <input type="text" class="form-control" name="no_hp_kel" value="<?php echo $ud->no_hp_kel; ?>" maxlength="13">
                                         </div>
                                         <div class="form-group">
                                             <label for="rekening">Bank</label>
@@ -139,7 +139,7 @@ $id_divisi = $this->session->userdata('divisi_page');
                                         </div>
                                         <div class="form-group">
                                             <label for="rekening">No. Rekening</label>
-                                            <input type="text" class="form-control" name="no_rek" value="<?php echo $ud->no_rek; ?>">
+                                            <input type="text" class="form-control" name="no_rek" value="<?php echo $ud->no_rek; ?>" maxlength="25">
                                         </div>
                                     </div>
                                     <!-- End form bagian kiri -->
@@ -149,15 +149,15 @@ $id_divisi = $this->session->userdata('divisi_page');
                                     <div class="col-lg-6 col-12 pl-3 pr-3">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control" name="email" value="<?php echo $ud->email; ?>">
+                                            <input type="email" class="form-control" name="email" value="<?php echo $ud->email; ?>" maxlength="128">
                                         </div>
                                         <div class="form-group">
                                             <label for="npwp">NIK</label>
-                                            <input type="text" class="form-control" name="nik" value="<?php echo $ud->nik; ?>">
+                                            <input type="text" class="form-control" name="nik" value="<?php echo $ud->nik; ?>" maxlength="17">
                                         </div>
                                         <div class="form-group">
                                             <label for="npwp">NPWP</label>
-                                            <input type="text" class="form-control" name="npwp" value="<?php echo $ud->npwp; ?>">
+                                            <input type="text" class="form-control" name="npwp" value="<?php echo $ud->npwp; ?>" maxlength="20">
                                         </div>
                                         <div class="form-group">
                                             <label for="ttl">Perusahaan</label>
@@ -210,11 +210,11 @@ $id_divisi = $this->session->userdata('divisi_page');
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat Tinggal</label>
-                                            <textarea class="form-control" rows="2" name="alamat"><?php echo $ud->alamat; ?></textarea>
+                                            <textarea class="form-control" rows="2" name="alamat" maxlength="250"><?php echo $ud->alamat; ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat di KTP</label>
-                                            <textarea class="form-control" rows="2" name="alamat_ktp"><?php echo $ud->alamat_ktp; ?></textarea>
+                                            <textarea class="form-control" rows="2" name="alamat_ktp" maxlength="250"><?php echo $ud->alamat_ktp; ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-12 mb-2">
@@ -247,11 +247,11 @@ $id_divisi = $this->session->userdata('divisi_page');
                                     <div class="col-lg-6 col-12 pl-3 pr-3">
                                         <div class="form-group">
                                             <label for="ttl">Username</label>
-                                            <input type="text" class="form-control" name="username" value="<?php echo $ud->username; ?>">
+                                            <input type="text" class="form-control" name="username" value="<?php echo $ud->username; ?>" maxlength="50">
                                         </div>
                                         <div class="form-group">
                                             <label for="ttl">Password</label>
-                                            <input type="text" class="form-control" name="password" value="<?php echo $ud->password; ?>">
+                                            <input type="text" class="form-control" name="password" value="<?php echo $ud->password; ?>" maxlength="50">
                                         </div>
                                     </div>
                                     <!-- End New Left Colum -->
@@ -279,8 +279,8 @@ $id_divisi = $this->session->userdata('divisi_page');
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="ttl">Aktivasi</label>
-                                            <select class="form-control" name="is_active">
+                                            <!-- <label for="ttl">Aktivasi</label> -->
+                                            <select class="form-control" name="is_active" hidden>
                                                 <option value="0" <?php echo ($ud->is_active == '0' ? ' selected' : ''); ?>>Tidak Aktiv</option>
                                                 <option value="1" <?php echo ($ud->is_active == '1' ? ' selected' : ''); ?>>Aktiv</option>
                                             </select>

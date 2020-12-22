@@ -41,7 +41,7 @@
                                             <input type="text" class="form-control" name="gaji_pokok" required>
                                         </div>
                                         <div class="form-group">
-                                            <label>Tunjangan Bulanan</label>
+                                            <label>Tunjangan Kehadiran</label>
                                             <input type="text" name="tun_kehadiran" class="form-control" required>
                                         </div>
                                         <div class="form-group">

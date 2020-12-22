@@ -92,7 +92,7 @@ $link = $this->session->userdata('link');
               <form role="form" action="<?php echo base_url('Monitoring/monitoring_proses_update/' . $id); ?>" method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <textarea class="form-control" name="evaluasi" rows="3" placeholder="Tuliskan evaluasi anda"><?php echo $evaluasi['evaluasi']; ?></textarea>
+                    <textarea class="form-control" name="evaluasi" rows="3" placeholder="Tuliskan evaluasi anda" required maxlength="1000"><?php echo $evaluasi['evaluasi']; ?></textarea>
                   </div>
                   <?php
                   if ($role_id == 2) { ?>

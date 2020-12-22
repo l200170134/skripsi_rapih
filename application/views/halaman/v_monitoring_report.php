@@ -33,15 +33,16 @@ $id_divisi = $this->session->userdata('divisi_page');
                     <div class="card">
                         <div class="card-header">
                             <div class="col-12 col-lg-6">
-                                <?php 
-                                if ($role_id == 2){ ?>
+                                <?php
+                                if ($role_id == 2) { ?>
                                     <a href="<?php echo base_url('Monitoring'); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
-                                    
-                                <?php }elseif($role_id==4){ ?>
-                                    <a href="<?php echo base_url('Monitoring/monitoring_direksi/' .$id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
-                                    
-                                <?php }else{}; ?>
-                                    <h5 style="display:inline;">Monitoring Report Daily</h5>
+
+                                <?php } elseif ($role_id == 4) { ?>
+                                    <a href="<?php echo base_url('Monitoring/monitoring_direksi/' . $id_divisi); ?>" class="mr-2 bg-info p-1 rounded-circle"><i class="fas fa-arrow-left p-1" style="color:#fff;display:inline;" title="Kembali"></i></a>
+
+                                <?php } else {
+                                }; ?>
+                                <h5 style="display:inline;">Monitoring Report Daily</h5>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -66,7 +67,10 @@ $id_divisi = $this->session->userdata('divisi_page');
                             </form>
                             <div class="d-flex">
                                 <span class="badge badge-primary p-2 mr-1"><?php echo  'Hasil : ' . $results; ?></span>
-                                <a href="<?php echo base_url('Daily/export_csv/' . $nip); ?>" class="btn btn-sm btn-success ml-auto" style="min-width:120px; max-height:30px;"><i class=" fas fa-download" style="color:white;" title="ekspor semua report menjadi Excel"> Unduh Excel</i></a>
+                                <?php if ($role_id != 4) { ?>
+                                    <a href="<?php echo base_url('Daily/export_csv/' . $nip); ?>" class="btn btn-sm btn-success ml-auto" style="min-width:120px; max-height:30px;"><i class=" fas fa-download" style="color:white;" title="ekspor semua report menjadi Excel"> Unduh Excel</i></a>
+                                <?php } else {
+                                } ?>
                             </div>
                         </div>
                     </div>

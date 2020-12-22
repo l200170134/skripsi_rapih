@@ -166,12 +166,13 @@ $link = $this->session->userdata('link_kar');
                             <div class="card-body">
                                 <div class="row">
                                     <?php
-                                        if($role_id==3){ ?>
-                                            <a href="<?php echo base_url('Gaji/rinciangaji_form/' . $kar['nip']); ?>" class="btn btn-success p-1 ml-2 mb-3 btn-sm">Perbaharui Rincian Gaji</a>
+                                    if ($role_id == 3) { ?>
+                                        <a href="<?php echo base_url('Gaji/rinciangaji_form/' . $kar['nip']); ?>" class="btn btn-success p-1 ml-2 mb-3 btn-sm">Perbaharui Rincian Gaji</a>
                                     <?php
-                                        } else {}
+                                    } else {
+                                    }
                                     ?>
-                                    
+
                                     <div class="col-12">
                                         <?php
                                         echo $this->session->flashdata('tambahRincianGaji');
@@ -188,13 +189,7 @@ $link = $this->session->userdata('link_kar');
                                                     <th width="150px">Bulan Mulai</th>
                                                     <th width="150px">Berlaku sampai</th>
                                                     <th width="100px">Status</th>
-                                                    <?php
-                                                    if($role_id==3){ ?>
-                                                        <th width="150px">Aksi</th>
-                                                    <?php
-                                                        } else {}
-                                                    ?>            
-                                                    
+                                                    <th width="150px">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -216,18 +211,18 @@ $link = $this->session->userdata('link_kar');
                                                             <?php
                                                             $get_akhir = $gaji['bulan_akhir'];
                                                             $bulan_akhir = $this->db->get_where('tb_bulan', ['id_bulan' => $get_akhir])->row_array();
-                                                            
-                                                            if ($bulan_akhir != NULL){
+
+                                                            if ($bulan_akhir != NULL) {
                                                                 if ($bulan_akhir['id_bulan'] != 0) {
-                                                                echo $bulan_akhir['bulan'] . ' ' . $gaji['tahun_akhir'];
+                                                                    echo $bulan_akhir['bulan'] . ' ' . $gaji['tahun_akhir'];
                                                                 } else {
                                                                     echo "<span class='badge badge-success'>Sekarang</span>";
                                                                 }
                                                             } else {
-                                                                    echo "<span class='badge badge-success'>Sekarang</span>";
+                                                                echo "<span class='badge badge-success'>Sekarang</span>";
                                                             }
-                                                             ?>
-                                                            
+                                                            ?>
+
                                                         </td>
                                                         <td>
                                                             <?php if ($gaji['status'] == 0) { ?>
@@ -237,7 +232,7 @@ $link = $this->session->userdata('link_kar');
                                                             <?php } ?>
                                                         </td>
                                                         <?php
-                                                            if($role_id==3){ ?>
+                                                        if ($role_id == 3) { ?>
                                                             <td>
                                                                 <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#modalGaji-<?= $gaji['id_strukturGaji'] ?>" id="<?php $gaji['id_strukturGaji']; ?>"><i class="fas fa-eye " style="color:white;" title="Lihat Detail"></i></button>
                                                                 <?php echo anchor('Gaji/rinciangaji_update/' . $gaji['id_strukturGaji'], '<div class="btn btn-warning btn-sm mr-2" title="Update Rincian Gaji"><i class="fas fa-edit" style="color:white;"></i></div>'); ?>
@@ -246,9 +241,13 @@ $link = $this->session->userdata('link_kar');
                                                                 </label>
                                                             </td>
                                                         <?php
-                                                            } else {}
-                                                        ?>   
-                                                        
+                                                        } else { ?>
+                                                            <td>
+                                                                <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#modalGaji-<?= $gaji['id_strukturGaji'] ?>" id="<?php $gaji['id_strukturGaji']; ?>"><i class="fas fa-eye " style="color:white;" title="Lihat Detail"></i></button>
+                                                            </td>
+                                                        <?php   }
+                                                        ?>
+
                                                     </tr>
                                                 <?php
                                                 endforeach;
@@ -401,21 +400,21 @@ $link = $this->session->userdata('link_kar');
 <!-- /.content-wrapper -->
 
 <!-- Modal -->
-<?php 
-    foreach ($gaji_str as $modal):
- ?>
-<div class="modal fade" id="modalGaji-<?= $modal['id_strukturGaji'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Rincian</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <table style="table-layout: fixed; word-wrap: break-word;" class="table table-hover">
-                    
+<?php
+foreach ($gaji_str as $modal) :
+?>
+    <div class="modal fade" id="modalGaji-<?= $modal['id_strukturGaji'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Rincian</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table style="table-layout: fixed; word-wrap: break-word;" class="table table-hover">
+
                         <thead class="bg-secondary">
                             <tr>
                                 <th>Rincian</th>
@@ -443,14 +442,14 @@ $link = $this->session->userdata('link_kar');
                                 <td>Lain-Lain</td>
                                 <td><?php echo $modal['lain_lain']; ?></td>
                             </tr>
-                           
+
                         </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<?php  endforeach; ?>
+<?php endforeach; ?>

@@ -38,13 +38,13 @@
                                 <div class="col-lg-6 col-12 pl-3 pr-3">
                                     <div class="form-group">
                                         <label for="nama">Nama</label>
-                                        <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap">
+                                        <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap" maxlength="100">
                                     </div>
                                     <div class="form-group">
                                         <label for="nama">Tempat, Tanggal Lahir</label>
                                         <div class="row">
                                             <div class="col-lg-6 col-12">
-                                                <input type="text" class="form-control" placeholder="Masukkan Tempat Lahir" name="tempat_lahir">
+                                                <input type="text" class="form-control" placeholder="Masukkan Tempat Lahir" name="tempat_lahir" maxlength="100">
                                             </div>
                                             <div class="col-lg-6 col-12">
                                                 <input type="date" class="form-control" name="tgl_lahir" value="<?php echo date("d-m-Y") ?>">
@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>NIP</label>
-                                        <input type="text" class="form-control" name="nip" placeholder="Masukkan Nomor Induk Pegawai">
+                                        <input type="text" class="form-control" name="nip" placeholder="Masukkan Nomor Induk Pegawai" maxlength="16">
                                     </div>
                                     <div class="form-group">
                                         <label>Divisi</label>
@@ -86,11 +86,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="no_hp">No. HP</label>
-                                        <input type="text" class="form-control" name="no_hp" placeholder="Masukkan Nomor HP ">
+                                        <input type="text" class="form-control" name="no_hp" placeholder="Masukkan Nomor HP" maxlength="13">
                                     </div>
                                     <div class="form-group">
                                         <label for="no_keluarga">No. HP Keluarga</label>
-                                        <input type="text" class="form-control" name="no_hp_kel" placeholder="Masukkan Nomor HP Keluarga ">
+                                        <input type="text" class="form-control" name="no_hp_kel" placeholder="Masukkan Nomor HP Keluarga" maxlength="13">
                                     </div>
                                     <div class="form-group">
                                         <label for="rekening">Bank</label>
@@ -107,7 +107,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="rekening">No. Rekening</label>
-                                        <input type="text" class="form-control" name="no_rek" placeholder="Masukkan Nomor Rekening ">
+                                        <input type="text" class="form-control" name="no_rek" placeholder="Masukkan Nomor Rekening" maxlength="25">
                                     </div>
                                 </div>
                                 <!-- End form bagian kiri -->
@@ -116,15 +116,15 @@
                                 <div class="col-lg-6 col-12 pl-3 pr-3">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" class="form-control" name="email" placeholder="Masukkan Alamat Email ">
+                                        <input type="email" class="form-control" name="email" placeholder="Masukkan Alamat Email" maxlength="128">
                                     </div>
                                     <div class="form-group">
                                         <label for="npwp">NIK</label>
-                                        <input type="text" class="form-control" name="nik" placeholder="Masukkan Nomor NPWP ">
+                                        <input type="text" class="form-control" name="nik" placeholder="Masukkan Nomor NPWP" maxlength="17">
                                     </div>
                                     <div class="form-group">
                                         <label for="npwp">NPWP</label>
-                                        <input type="text" class="form-control" name="npwp" placeholder="Masukkan Nomor NPWP ">
+                                        <input type="text" class="form-control" name="npwp" placeholder="Masukkan Nomor NPWP" maxlength="20">
                                     </div>
                                     <div class="form-group">
                                         <label for="ttl">Perusahaan</label>
@@ -160,11 +160,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Alamat Tinggal</label>
-                                        <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sekarang" name="alamat"></textarea>
+                                        <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sekarang" name="alamat" maxlength="250"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Alamat di KTP</label>
-                                        <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sesuai KTP" name="alamat_ktp"></textarea>
+                                        <textarea class="form-control" rows="2" placeholder="Masukkan Alamat Tinggal Sesuai KTP" name="alamat_ktp" maxlength="250"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="upload_foto">Upload Foto</label>
@@ -196,11 +196,11 @@
                                 <div class="col-lg-6 col-12 pl-3 pr-3">
                                     <div class="form-group">
                                         <label for="ttl">Username</label>
-                                        <input type="text" class="form-control" name="username" placeholder="Username Setiap Individu Wajib Beda">
+                                        <input type="text" class="form-control" name="username" placeholder="Username Setiap Individu Wajib Beda" maxlength="50">
                                     </div>
                                     <div class="form-group">
                                         <label for="ttl">Password</label>
-                                        <input type="password" class="form-control" name="password" placeholder="Masukkan Password">
+                                        <input type="password" class="form-control" name="password" placeholder="Masukkan Password" maxlength="50">
                                     </div>
                                 </div>
                                 <!-- End New Left Colum -->
@@ -216,11 +216,11 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ttl">Aktivasi</label>
-                                        <select class="form-control" name="is_active">
-                                            <option>-- Pilih --</option>
+                                        <!-- <label for="ttl">Aktivasi</label> -->
+                                        <select class="form-control" name="is_active" hidden>
+                                            <!-- <option>-- Pilih --</option> -->
                                             <option value="1">Aktiv</option>
-                                            <option value="0">Tidak Aktiv</option>
+                                            <!-- <option value="0">Tidak Aktiv</option> -->
                                         </select>
                                     </div>
                                 </div>
@@ -229,13 +229,13 @@
                             <!-- End Row -->
                         </div>
 
-                            <div class="card-footer d-flex justify-content-center m-2">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi) ?>" class="btn btn-secondary ml-2">Kembali</a>
+                        <div class="card-footer d-flex justify-content-center m-2">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <a href="<?php echo base_url('Data_karyawan/detail_karyawan/' . $id_divisi) ?>" class="btn btn-secondary ml-2">Kembali</a>
 
-                            </div>
-                            <!--             </form>  -->
-                        
+                        </div>
+                        <!--             </form>  -->
+
                         <!-- End New Card Body -->
                     </div>
                     <!--  End New Card -->
